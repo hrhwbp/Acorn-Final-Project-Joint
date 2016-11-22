@@ -276,7 +276,7 @@ public class BoardController {
             } // try - catch
         } // if
 		boolean b = daoInter.write(bean);
-		if(b) return "redirect:/myinfo";
+		if(b) return "redirect:/mywall";
 		else return "redirect:/error.jsp";
 	}
 	@RequestMapping(value="updateBoard", method=RequestMethod.GET)
@@ -311,25 +311,33 @@ public class BoardController {
             bean.setB_image(boardImg);
         }
 		boolean b = daoInter.updateBoard(bean);
-		if(b) return "redirect:/myinfo";
+		if(b) return "redirect:/mywall";
 		else return "redirect:/error.jsp";
 	}
 	
 	@RequestMapping(value="boardDelete", method = RequestMethod.POST)
 	public String deleteSubmit(@RequestParam("b_no") String b_no){
 		boolean b = daoInter.eraseBoard(b_no);
-		if(b) return "redirect:/myinfo";
+		if(b) return "redirect:/mywall";
 		else return "redirect:/error.jsp";
 	}
 	
 	@RequestMapping(value="boardDetail", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> boardDetail(@RequestParam("b_no") String b_no){
+    public Map<String, Object> boardDetail(@RequestParam("b_no") String b_no,HttpSession session){
+        String m_no = (String)session.getAttribute("mno");
+        Map<String, Object> map = new HashMap<String, Object>();
 		BoardDto dto = daoInter.showBoardDetail(b_no);
 		LikeDto ldto = daoInter.countLike(b_no);
-		Map<String, Object> map = new HashMap<String, Object>();
+        LikeBean bean = new LikeBean();
+        bean.setL_mno(m_no);
+        bean.setL_bno(b_no);
+        int likeYN = daoInter.likeYN(bean);
+        List<ReplyDto> listReply = daoInter.showReplyMore(b_no);
 		map.put("likeCount", ldto);
 		map.put("detailDto", dto);
+		map.put("reply", listReply);
+        map.put("likeYN", likeYN);
 		return map;
 	}
 	

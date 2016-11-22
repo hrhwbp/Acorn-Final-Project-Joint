@@ -92,11 +92,12 @@
 <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
     
-    <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
 	$('#updateSubmit').click(function() {
 		$('#boardUpdatefrm').submit()
 	});
+	
 	$('#infoSubmit').click(function() {
 		if($('#password').val() == $('#m_password').val()){
 			$('#infofrm').submit()
@@ -104,10 +105,12 @@ $(document).ready(function() {
 			$('#passwordErr').modal('show');
 		}
 	});
+	
 	$('#boardInsertBtn').click(function() {
 		$('#boardInsert').modal('show');
 		$('#boardInsertImg').hide();
 	});
+	
 	$('#boardInsertSubmit').click(function() {
 		/* alert(boardInsertFile.files[0]); */
 		if(boardInsertFile.files[0] == undefined){
@@ -119,8 +122,9 @@ $(document).ready(function() {
 			return;
 		}
 		$('#boardInsertfrm').submit();
-	})
-})
+	});
+	
+});
 
 /* 내 게시물 자세히 복 */
 function modalToggle(b_no) {
@@ -487,6 +491,19 @@ function boardDeleteOk(b_no) {
 	  </div>	  	
 	</div>
 	<!-- 프로필 수정 모달  끝-->
+	<!-- 비밀번호 모달 팝업 -->
+	<div class="modal fade " id="passwordErr" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+	  <div class="modal-dialog modal-sm" style="margin: 350px auto;">
+	    <div class="modal-content">
+	      <div class="row text-center">
+	      	비밀번호가 틀립니다.
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- 비밀번호 모달 팝업 끝-->
+	
+	
 	<!-- 기념일 추가 모달  insertAnni-->
 <%-- 	
 	<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
@@ -961,7 +978,47 @@ function boardDeleteOk(b_no) {
 <script src="resources/js/jquery.cookie.js"></script>
 <script src="resources/js/wp.switcher.js"></script>
 <script type="text/javascript" src="resources/js/wp.ga.js"></script>
-
+<script>
+/* 프로필 수정 이미지 미리보기 */
+var upload = document.getElementById('file'),
+ 	image = document.getElementById('image');
+upload.onchange = function (e) {
+  e.preventDefault();
+  var file = upload.files[0],
+      reader = new FileReader();
+  reader.onload = function (event) {
+    image.src = event.target.result;
+  };
+  reader.readAsDataURL(file);
+};
+/* 게시물 수정 이미지 미리보기 */
+/*  
+var boardFile = document.getElementById('boardFile'),
+	modalimg = document.getElementById('modalimg');
+boardFile.onchange = function (e) {
+  e.preventDefault();
+  var file2 = boardFile.files[0],
+      reader2 = new FileReader();
+  reader2.onload = function (event) {
+	  modalimg.src = event.target.result;
+  };
+  reader2.readAsDataURL(file2);
+}; */
+/* 게시물 쓰기 이미지 미리보기 */
+/* var boardInsertFile = document.getElementById('boardInsertFile'),
+	boardInsertImg = document.getElementById('boardInsertImg');
+boardInsertFile.onchange = function (e) {
+  e.preventDefault();
+  var file3 = boardInsertFile.files[0],
+      reader3 = new FileReader();
+  reader3.onload = function (event) {
+	  boardInsertImg.src = event.target.result;
+  };
+  reader3.readAsDataURL(file3);
+  //$('#insertBtag').text('');
+  $('#boardInsertImg').show();
+}; */
+</script>
 
 </body>
 </html>
