@@ -43,7 +43,16 @@ public class MemberController {
 		return new ModelAndView("myMain","myboard",daoInter.showMyMain(b_mno));
 	}
 
-	//회원가입
+	//회원가입 (페이지로 이동) 11/22 17:28 추가
+	@RequestMapping(value="join", method= RequestMethod.GET)
+	public ModelAndView join(){
+		ModelAndView view = new ModelAndView();
+		view.setViewName("sign-up");
+		return view;
+	}
+	
+	
+	//회원가입 (가입처리)
 	@RequestMapping(value="join", method= RequestMethod.POST)
 	public String join(MemberBean bean){
 		
@@ -169,7 +178,6 @@ public class MemberController {
 	@RequestMapping(value="friendinfo", method = RequestMethod.POST)
 	public ModelAndView showFriendinfo(@RequestParam("m_no")String m_no, HttpSession session){
 		String m_no2 = (String)session.getAttribute("mno");
-		
 		ModelAndView view = new ModelAndView();
 		MemberDto dto = daoInter.showMemberDetail(m_no);
 		view.addObject("myinfo", dto);

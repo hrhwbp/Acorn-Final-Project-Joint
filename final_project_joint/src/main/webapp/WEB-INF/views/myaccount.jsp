@@ -854,6 +854,7 @@ function boardDeleteOk(b_no) {
     </section>
 
     <!-- FOOTER -->
+<div>
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -991,33 +992,6 @@ upload.onchange = function (e) {
   };
   reader.readAsDataURL(file);
 };
-/* 게시물 수정 이미지 미리보기 */
-/*  
-var boardFile = document.getElementById('boardFile'),
-	modalimg = document.getElementById('modalimg');
-boardFile.onchange = function (e) {
-  e.preventDefault();
-  var file2 = boardFile.files[0],
-      reader2 = new FileReader();
-  reader2.onload = function (event) {
-	  modalimg.src = event.target.result;
-  };
-  reader2.readAsDataURL(file2);
-}; */
-/* 게시물 쓰기 이미지 미리보기 */
-/* var boardInsertFile = document.getElementById('boardInsertFile'),
-	boardInsertImg = document.getElementById('boardInsertImg');
-boardInsertFile.onchange = function (e) {
-  e.preventDefault();
-  var file3 = boardInsertFile.files[0],
-      reader3 = new FileReader();
-  reader3.onload = function (event) {
-	  boardInsertImg.src = event.target.result;
-  };
-  reader3.readAsDataURL(file3);
-  //$('#insertBtag').text('');
-  $('#boardInsertImg').show();
-}; */
 </script>
 
 </body>

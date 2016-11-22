@@ -114,6 +114,9 @@
 					<li class="dropdown">
 						<a href="login" class="dropdown-toggle" >LOGIN</a>                        
                     </li>
+                    <li class="dropdown">
+                    	<a href="join" class="dropdown-toggle" >JOIN US</a>                        
+                    </li>
 					<%}%>
                   
                     
