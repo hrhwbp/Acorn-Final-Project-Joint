@@ -13,21 +13,14 @@
 <!-- ===============================템플릿 용 설정====================================== -->
 
 <!-- Essential styles -->
-<!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"> 
-    <link rel="stylesheet" href="assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">  -->
-<link rel="stylesheet"
-	href="resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet"
-	href="resources/font-awesome/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet"
-	href="resources/assets/fancybox/jquery.fancybox.css?v=2.1.5"
-	media="screen">
+<link rel="stylesheet" href="resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
+<link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css" type="text/css"> 
+<link rel="stylesheet" href="resources/assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">
 
+<!-- 원본에서 가져온 스크립트 -->
 <!-- Boomerang styles -->
 <!-- <link id="wpStylesheet" type="text/css" href="css/global-style.css" rel="stylesheet" media="screen"> -->
-<link id="wpStylesheet" type="text/css"
-	href="resources/css/global-style-red.css" rel="stylesheet" media="screen">
+<link id="wpStylesheet" type="text/css"	href="resources/css/global-style-red.css" rel="stylesheet" media="screen">
 
 <!-- Favicon -->
 <!-- <link href="images/favicon.png" rel="icon" type="image/png"> -->
@@ -35,42 +28,81 @@
 
 <!-- Assets -->
 <!-- <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="assets/sky-forms/css/sky-forms.css"> -->
+<link rel="stylesheet" href="assets/owl-carousel/owl.theme.css"> -->
+<link rel="stylesheet" href="assets/sky-forms/css/sky-forms.css">
 
-<link rel="stylesheet"
-	href="resources/assets/owl-carousel/owl.carousel.css">
-<link rel="stylesheet"
-	href="resources/assets/owl-carousel/owl.theme.css">
-<link rel="stylesheet"
-	href="resources/assets/sky-forms/css/sky-forms.css">
+
 <!--[if lt IE 9]>
         <link rel="stylesheet" href="assets/sky-forms/css/sky-forms-ie8.css">
     <![endif]-->
 
 <!-- Required JS -->
-<!-- <script src="js/jquery.js"></script>
-    <script src="js/jquery-ui.min.js"></script> -->
-<script src="resources/js/jquery.js"></script>
-<script src="resources/js/jquery-ui.min.js"></script>
+<!-- <script src="resources/js/jquery.js"></script>
+<script src="resources/js/jquery-ui.min.js"></script> -->
 
 <!-- Page scripts -->
 
 <!-- Video JS -->
 <!-- <link href="assets/timeline/timeline.css" rel="stylesheet"> -->
-<link href="resources/assets/timeline/timeline.css" rel="stylesheet">
+<!-- <link href="resources/assets/timeline/timeline.css" rel="stylesheet"> -->
 
 
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+<style type="text/css">
+/* ============아이콘 표시를 위한 import=============== */
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+}
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:300);
+/* ============아이콘 표시를 위한 import 끝ㅇ============== */
+.thumbnail-wrappper {
+    width: 25%; 
+}
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+.thumbnail {
+    position: relative;
+    padding-top: 100%;  /* 1:1 ratio */
+    overflow: hidden;
+}
+
+.thumbnail .centered  {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: translate(50%,50%);
+    -ms-transform: translate(50%,50%);
+    transform: translate(50%,50%);
+}
+
+.thumbnail .centered img {
+    position: absolute;
+    top: 0;
+    left: 0;   
+    max-width: 100%;
+    height: auto;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+.thumbnail img.landscape {
+  width: auto;
+  max-width: none;
+  height: 100%;
+}
+
+} 
+</style>
 
 <!-- ===============================템플릿 용 설정 끝====================================== -->
 
 
 <script type="text/javascript">
 $(document).ready(function() {
+
 	$('#updateSubmit').click(function() {
 		$('#boardUpdatefrm').submit()
 	});
@@ -81,7 +113,7 @@ $(document).ready(function() {
 			$('#passwordErr').modal('show');
 		}
 	});
-	$('#boardInsertBtn').click(function() {
+	$('#boardInsertBtn').click(function() {	
 		$('#boardInsert').modal('show');
 		$('#boardInsertImg').hide();
 	});
@@ -925,14 +957,13 @@ function boardDeleteOk(b_no) {
 </div> <!-- container -->
 <script>
 /* 프로필 수정 이미지 미리보기 */
-var upload = document.getElementById('file'),
- 	image = document.getElementById('image');
-upload.onchange = function (e) {
-  e.preventDefault();
-  var file = upload.files[0],
-      reader = new FileReader();
-  reader.onload = function (event) {
-    image.src = event.target.result;
+var upload = document.getElementById('file'), image = document.getElementById('image');
+	upload.onchange = function (e) {
+	e.preventDefault();
+var file = upload.files[0],
+	reader = new FileReader();
+	reader.onload = function (event) {
+	image.src = event.target.result;
   };
   reader.readAsDataURL(file);
 };
@@ -965,5 +996,5 @@ boardInsertFile.onchange = function (e) {
 </script>
 
 </body>
-<%-- <%@ include file="bottom.jsp" %> --%>
+
 </html>

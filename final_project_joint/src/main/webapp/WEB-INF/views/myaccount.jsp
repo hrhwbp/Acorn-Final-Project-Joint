@@ -377,7 +377,7 @@ function boardDeleteOk(b_no) {
 <%@include file="top.jsp"%>
 <body>
 <!-- =======================================각종 모달======================================= -->
-<!-- 프로필 수정 모달 -->	
+<!-- ============================================================프로필 수정 모달===================================================================== -->	
 	<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 	  <div class="modal-dialog" style="margin: 150px auto;">
 	    <div class="modal-content">
@@ -398,8 +398,8 @@ function boardDeleteOk(b_no) {
 				</div>
 			</div>
 	     </div>
-	      	<div class="modal-body">
-			
+	     
+	      	<div class="modal-body">			
 				<input type="hidden" name="m_no" value="${myinfo.m_no}">
 				<div class="row">
 					<div class="col-md-12">
@@ -486,10 +486,10 @@ function boardDeleteOk(b_no) {
 	    </div>	    
 	  </div>	  	
 	</div>
-	<!-- 프로필 수정 모달  끝-->
-	<!-- 기념일 추가 모달  insertAnni-->
-<%-- 	
-	<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	<!-- ================================================프로필 수정 모달  끝=======================================================-->
+	<!-- =================================================기념일 추가 모달  insertAnni============================================= -->
+
+	<%-- <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 	  <div class="modal-dialog" style="margin: 150px auto;">
 	    <div class="modal-content">
 	     <form action="updateInfo" id="infofrm" method="post" enctype="multipart/form-data">
@@ -516,9 +516,7 @@ function boardDeleteOk(b_no) {
 						<label for="a_date">날짜</label>
 						<input type="text" class="form-control" name="a_date" id="a_date"  required>
 					</div>
-				</div>
-			
-			
+				</div>		
 					
 		
 	    	<div class="modal-footer">	    	
@@ -530,7 +528,7 @@ function boardDeleteOk(b_no) {
 	  </div>	  	
 	</div> --%>
 	
-	<!-- 기념일 추가 모달  insertAnni끝-->
+	<!-- ===================================================기념일 추가 모달  insertAnni끝========================================= -->
 
             
     <!-- MAIN CONTENT -->
@@ -581,8 +579,8 @@ function boardDeleteOk(b_no) {
                                 <li><a href="#tab-2" data-toggle="tab">내 기념일 관리</a></li>
                                 <li><a href="#tab-3" data-toggle="tab">Whishlist</a></li>
                             </ul>
-
-                            <div class="tab-content">
+<!-- ==============================================================내 정보보기 ===================================================================== -->                           
+							<div class="tab-content">
                                 <div class="tab-pane fade in active" id="tab-1">
                                     <div class="tab-body">
                                         <dl class="dl-horizontal style-2">
@@ -615,42 +613,46 @@ function boardDeleteOk(b_no) {
                                  </dl>
                               </div>
                            </div>
+<!-- =============================================================내 정보보기 ====================================================================== -->
 
-                               <!-- ==========================================================내 이벤트 추가 수정탭=================================================================== -->
+<!-- ==========================================================내 이벤트 추가 수정탭 =================================================================== -->
 
-									<div class="tab-pane fade" id="tab-2">
-										<div class="tab-body" style="padding-bottom: 0;">
-											<h3 class="title title-lg">나의 이벤트</h3>
-											<p class="mb-20">내 이벤트를 추가/수정하여 친구들에게 알려주세요!</p>
+							<div class="tab-pane fade" id="tab-2">
+								<div class="tab-body" style="padding-bottom: 0;">
+									<h3 class="title title-lg">나의 이벤트</h3>
+									<p class="mb-20">내 이벤트를 추가/수정하여 친구들에게 알려주세요!</p><a href="#" class="btn btn-xs btn-base btn-icon fa-edit pull-right" data-toggle="modal" data-target="#insertAnni"><span>기념일 추가</span></a>
+		
+									<table
+										class="table table-orders table-bordered table-striped table-responsive no-margin">
+										<tbody>
+											<tr>
+												<th>이벤트 명</th>
+												<th>날자</th>
+												<th>수정/삭제</th>														
+											</tr>
+											<c:forEach var="anni" items="${showAnni}">
+											<c:if test="${anni.a_mno == mno}">
+											<tr>
+												<td><a href="#">${anni.a_detail }</a></td>
+												<td>${anni.a_date }</td>
+												<td><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i> / <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></td>														
+											</tr>
+											</c:if>
+											</c:forEach>
+											<%-- <c:if test="${anni.a_mno != mno}">
+											<tr>
+												<td colspan="3">등록하신 기념일이 없군요. 추가하기를 누르신후 추가해주세요!</td>
+											</tr>
+											</c:if> --%>
+										</tbody>
+									</table>
+									
+									<br>
+								</div>
+							</div>
+<!-- ==========================================================내 이벤트 추가 수정탭 끝=================================================================== -->
 
-											<table
-												class="table table-orders table-bordered table-striped table-responsive no-margin">
-												<tbody>
-													<tr>
-														<th>이벤트 명</th>
-														<th>날자</th>
-														<th>수정/삭제</th>														
-													</tr>
-													<c:forEach var="anni" items="${showAnni}">
-													<c:if test="${anni.a_mno == mno}">
-													<tr>
-														<td><a href="#">${anni.a_detail }</a></td>
-														<td>${anni.a_date }</td>
-														<td><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i> / <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></td>														
-													</tr>
-													</c:if>
-													</c:forEach>
-													<%--<c:otherwise>
-													<tr>
-														<td colspan="3">등록하신 기념일이 없군요. 추가하기를 누르신후 추가해주세요!</td>
-													</tr>
-													</c:otherwise> --%>
-												</tbody>
-											</table>
-											<a href="#" class="btn btn-xs btn-base btn-icon fa-edit pull-right" data-toggle="modal" data-target="#insertAnni"><span>기념일 추가</span></a>
-											<br>
-										</div>
-									</div>
+
 
                                 <div class="tab-pane fade" id="tab-3">
                                     <div class="tab-body">
