@@ -54,6 +54,7 @@ public class ReplyController {
 			data = new HashMap<String, String>();
 			data.put("r_name", dto.getR_name());
 			data.put("r_content",dto.getR_content());
+            data.put("r_mno",dto.getR_mno());
 			dataList.add(data);
 		}
 		Map<String, Object> replyData = new HashMap<String, Object>();

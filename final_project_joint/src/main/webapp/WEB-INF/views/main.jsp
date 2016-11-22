@@ -74,140 +74,151 @@
 var lastbno_save = null;
 $(document).ready(function () {
    $(window).bind("scroll",scrolling);
+   $('form').bind("keypress", function(e) {
+	   if (e.keyCode == 13) {               
+	     e.preventDefault();
+	     return false;
+	   }
+	 });
 });
 
 function scrolling(){ 
-   var documentHeight  = $(document).height() * 2 - 1200;
-   var scrollHeight = $(window).scrollTop()+$(window).height();
-   
-   if(scrollHeight >= documentHeight) {
-      var lastbno = $(".thumbnail:last").attr("data-bno");   
-      if(lastbno_save != lastbno){  
-      lastbno_save = lastbno;
-      $.ajax({ // 스크롤링 
-         
-         type:"get",
-         url:"scroll",
-         dataType:"json",
-         data:{"last_bno":lastbno},
-         success:function(scrollData){
-            /* console.log("실행중") */
-            var str = "";
-            var list = scrollData.datas;
-            $(list).each(function(index,objArr){
-               
-               str += '<div class="row">';
-                 str += '<div class="col-md-12">';
-                 str += '   <div class="thumbnail" data-bno='+this.b_no+' >';
-                   str += '<div class="thumbnail-wrapper1">' +
-                     '<div class="thumbnail1" style="background-color: #000;">' +
-                     '<div class="centered1">';
-                 str += '       <img src='+objArr["b_image"]+' class="landscape1">' +
-                       '</div></div></div>';
-                 
-                 str += '       <div class="caption">';
-                 str += '       <div class="row">';
-                 str += '          <div class="col-md-12">';
-                 str += '         <form action="friendinfo" id="friend'+objArr["b_no"]+'" method="post">';
-               str += '            <input type="hidden" name="m_no" value="'+objArr["b_mno"]+'">';
-               str += '          <h3><a href="javascript:;"  onclick="gofriend('+objArr["b_no"]+')">'+objArr["b_mname"]+'</a></h3></form>';
-                 str += '          <p>'+objArr["b_content"]+'</p>';
-                 str += '          </div>';
-                 str += '       </div>';
-                 //라이크
-                 var should_split = this.like_mname;
-                 var like_view = "";
-                 var n = should_split.split(',');
-                 //console.log("자를 문자열 길이 : " + should_split.length);
-                 //console.log("이름 숫자 길이 :" + n.length);
-                 if (n == 0) {
-                  like_view = "처음 좋아요의 주인공이 되세요";
-               }else if (n > 11){
-                  like_view = n.length + "명 이상 좋아합니다"
-               }else{
-                  for (var i = 0; i < n.length; i++) {
-                     like_view += n[i] + "&nbsp;&nbsp; ";
-                  }
-                  like_view += '님이 좋아합니다';
-               }
-                 
-                 str += '<div class="row">';
-                 str += '   <div class="col-md-12">';
-                 str += '      &nbsp;<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;';
-                 str += '      <span id="showlike'+this.b_no+'">';
-                 str += ''+like_view+'';
-                 str += '      </span>';
-                 str += '   </div>';
-                 str += '</div>';
-               //댓글
-               var reply_Name = this.reply_Name;
-               var reply_Content = this.reply_Content;
-               var reply_Count = this.reply_Count;
-               var reply_name_view = reply_Name.split(',');
-               var reply_content_view = reply_Content.split(',');
-                 str += '<div class="row">';
-               str += '   <div class="col-md-12">';
-               str += '      <div id="showreply'+this.b_no+'">';
-               str += '         <table class="table-condensed small" style="background-color: rgb(245, 245, 245); width: 100%">';
-               if (reply_Count > 5) {
-               str += '            <tr>';
-               str += '               <td><a href="javascript:;" onclick="showReplyMore('+this.b_no+')">show reply all</a></td>';
-               str += '            </tr>';
-               }
-               for (var i in reply_name_view) {
-                  str += '            <tr>';
-                  str += '<td><a href="#">'+ reply_name_view[i]+'</a> '+reply_content_view[i]+'</td>';
-                  str += '            </tr>';
-               }
-               str += '         </table>';
-               str += '      </div>';
-               str += '   </div>';
-               str += '</div>';
-                 //like Yn
-                 str += '<div class="row top_pd">';
-               str += '   <form action="insertReply" method="post" id="reply'+this.b_no+'"';
-               str += '         name="reply">';
-               str += '      <div class="col-md-12">';
-               str += '         <div class="input-group">';
-               str += '            <span class="input-group-addon " id="sizing-addon2">';
-               var likeYnCheck = this.likeYnCheck;
-               if (likeYnCheck >= 1) {
-                  str += '<span class="glyphicon glyphicon-heart" onclick="likecancel('+this.b_no+')" style="color: red" id="likeYN'+this.b_no+'"></span>';
-               }else {
-                  str += '<span class="glyphicon glyphicon-heart" onclick="likesubmit('+this.b_no+')" id="likeYN'+this.b_no+'"></span>';
-               }
-               str += '            </span> <input type="text" class="form-control"';
-               str += '            placeholder="답글달기..." aria-describedby="sizing-addon2"';
-               str += '            name="r_content" id="r_content'+this.b_no+'"> <input';
-               str += '            type="hidden" name="r_bno" value="'+this.b_no+'"> <input';
-               str += '            type="hidden" name="r_mno" value="'+${mno}+'">'; 
-//                                    <!-- 답글 버튼 --> 
-               str += '            <span class="input-group-btn">';
-               str += '            <button class="btn btn-default" type="button"';
-               str += '            id="btn_reply" onclick="replySubmit('+this.b_no+')">답글</button>';
-               str += '         </span>'; 
-            //                        <!-- 답글 버튼 끝 -->  
-               str += '      </div>';
-               str += '   </div>';
-                     //
-               str += '   </form>';
-               str += '</div>';
-                 //
-                 str += '</div>';
-               str += '</div>';
-               str += '</div>';
-               str += '</div>';
-            });
-            $("#scrollingId").append(str)
-            
-         },
-         error:function(){
-            console.log("scroll 이벤트 실패")
-         }
-      });   
+	var documentHeight  = $(document).height() * 2 - 1200;
+	var scrollHeight = $(window).scrollTop()+$(window).height();
+	
+	if(scrollHeight >= documentHeight) {
+		var lastbno = $(".thumbnail:last").attr("data-bno");	
+		if(lastbno_save != lastbno){  
+		lastbno_save = lastbno;
+		$.ajax({ // 스크롤링 
+			
+			type:"get",
+			url:"scroll",
+			dataType:"json",
+			data:{"last_bno":lastbno},
+			success:function(scrollData){
+				/* console.log("실행중") */
+				var str = "";
+				var list = scrollData.datas;
+				$(list).each(function(index,objArr){
+					
+					str += '<div class="row">';
+			        str += '<div class="col-md-12">';
+			        str += '	<div class="thumbnail" data-bno='+this.b_no+' >';
+			       	str += '<div class="thumbnail-wrapper1">' +
+							'<div class="thumbnail1" style="background-color: #000;">' +
+							'<div class="centered1">';
+			        str += '       <img src='+objArr["b_image"]+' class="landscape1">' +
+			        		'</div></div></div>';
+			        
+			        str += '       <div class="caption">';
+			        str += '       <div class="row">';
+			        str += '          <div class="col-md-12">';
+			        str += '			<form action="friendinfo" id="friend'+objArr["b_no"]+'" method="post">';
+					str += '				<input type="hidden" name="m_no" value="'+objArr["b_mno"]+'">';
+					str += '          <h3><a href="javascript:;"  onclick="gofriend('+objArr["b_no"]+')">'+objArr["b_mname"]+'</a></h3></form>';
+			        str += '          <p>'+objArr["b_content"]+'</p>';
+			        str += '          </div>';
+			        str += '       </div>';
+			        //라이크
+			        var should_split = this.like_mname;
+			        var like_view = "";
+			        var n = should_split.split(',');
+			        //console.log("자를 문자열 길이 : " + should_split.length);
+			        //console.log("이름 숫자 길이 :" + n.length);
+			        if (n == 0) {
+						like_view = "처음 좋아요의 주인공이 되세요";
+					}else if (n > 11){
+						like_view = n.length + "명 이상 좋아합니다"
+					}else{
+						for (var i = 0; i < n.length; i++) {
+							like_view += n[i] + "&nbsp;&nbsp; ";
+						}
+						like_view += '님이 좋아합니다';
+					}
+			        
+			        str += '<div class="row">';
+			        str += '	<div class="col-md-12">';
+			        str += '		&nbsp;<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;';
+			        str += '		<span id="showlike'+this.b_no+'">';
+			        str += ''+like_view+'';
+			        str += '		</span>';
+			        str += '	</div>';
+			        str += '</div>';
+					//댓글
+					var reply_Mno = this.reply_Mno;
+					var reply_Name = this.reply_Name;
+					var reply_Content = this.reply_Content;
+					var reply_Count = this.reply_Count;
+					var reply_name_view = reply_Name.split(',');
+					var reply_content_view = reply_Content.split(',');
+                    var reply_Mno_view = reply_Mno.split(',');
+			        str += '<div class="row">';
+					str += '	<div class="col-md-12">';
+					str += '		<div id="showreply'+this.b_no+'">';
+					str += '			<table class="table-condensed small" style="background-color: rgb(245, 245, 245); width: 100%">';
+					if (reply_Count > 5) {
+					str += '				<tr>';
+					str += '					<td><a href="javascript:;" onclick="showReplyMore('+this.b_no+')">show reply all</a></td>';
+					str += '				</tr>';
+					}
+					for (var i in reply_name_view) {
+						str += '				<tr>';
+                        str += '<td><a href="friendinfo?m_no=' + reply_Mno_view[i] + '">'+ reply_name_view[i]+'</a> '+reply_content_view[i]+'</td>';
+						str += '				</tr>';
+					}
+					str += '			</table>';
+					str += '		</div>';
+					str += '	</div>';
+					str += '</div>';
+			        //like Yn
+			        str += '<div class="row top_pd">';
+					str += '	<form action="insertReply" method="post" id="reply'+this.b_no+'"';
+					str += '			name="reply">';
+					str += '		<div class="col-md-12">';
+					str += '			<div class="input-group">';
+					str += '				<span class="input-group-addon " id="sizing-addon2">';
+					var likeYnCheck = this.likeYnCheck;
+					if (likeYnCheck >= 1) {
+						str += '<span class="glyphicon glyphicon-heart" onclick="likecancel('+this.b_no+')" style="color: red" id="likeYN'+this.b_no+'"></span>';
+					}else {
+						str += '<span class="glyphicon glyphicon-heart" onclick="likesubmit('+this.b_no+')" id="likeYN'+this.b_no+'"></span>';
+					}
+					str += '				</span> <input type="text" class="form-control"';
+					str += '				placeholder="답글달기..." aria-describedby="sizing-addon2"';
+					str += '				name="r_content" id="r_content'+this.b_no+'"> <input';
+					str += '				type="hidden" name="r_bno" value="'+this.b_no+'"> <input';
+					str += '				type="hidden" name="r_mno" value="'+${mno}+'">'; 
+//												<!-- 답글 버튼 --> 
+					str += '				<span class="input-group-btn">';
+					str += '				<button class="btn btn-default" type="button"';
+					str += '				id="btn_reply" onclick="replySubmit('+this.b_no+')">답글</button>';
+					str += '			</span>'; 
+				//								<!-- 답글 버튼 끝 -->  
+					str += '		</div>';
+					str += '	</div>';
+							//
+					str += '	</form>';
+					str += '</div>';
+			        //
+			        str += '</div>';
+					str += '</div>';
+					str += '</div>';
+					str += '</div>';
+				});
+				$("#scrollingId").append(str)
+				
+			},
+			error:function(){
+				console.log("scroll 이벤트 실패")
+			}
+		});	
 
       }
    }
+}
+function anniAjax(){
+	alert("dd");
 }
 
    function replySubmit(no){
@@ -298,31 +309,32 @@ function scrolling(){
       });
    }
     function showReplyMore(b_no){
-       $.ajax({
-          type:"post",
-          url:"moreReply",
-          data:{"b_no":b_no},
-          dataType:'json',
-          success:function(replyData){
-             var str = "<table class='table-condensed small' style='background-color: rgb(245, 245, 245); width: 100%'>"
-             var list = replyData.datas;
-             jQuery(list).each(function(index, objArr){
-                str += "<tr>";
-                str += "<td><a href='#'>" + objArr.r_name +"</a>"+ objArr.r_content + "</td>";
-                str += "</tr>";
-             })
-             str += "</table>";
-             jQuery("#showreply"+b_no).html(str);
-             jQuery("#r_content"+b_no).val("");
-          }
-       });
-    }   
+    	$.ajax({
+    		type:"post",
+    		url:"moreReply",
+    		data:{"b_no":b_no},
+    		dataType:'json',
+    		success:function(replyData){
+    			var str = "<table class='table-condensed small' style='background-color: rgb(245, 245, 245); width: 100%'>"
+    			var list = replyData.datas;
+    			jQuery(list).each(function(index, objArr){
+    				str += "<tr>";
+                    str += "<td><a href='friendinfo?m_no=" + objArr.r_mno + "'>" + objArr.r_name +"</a>&nbsp;"+ objArr.r_content + "</td>";
+    				str += "</tr>";
+    			})
+    			str += "</table>";
+    			jQuery("#showreply"+b_no).html(str);
+    			jQuery("#r_content"+b_no).val("");
+    		}
+    	});
+    }	
 
     function gofriend(b_no){
        jQuery("#friend"+b_no).submit();
        
        
     }
+    
    
 </script>
 <style type="text/css">
@@ -493,9 +505,9 @@ function scrolling(){
 				<div class="row">
 					<div class="col-md-12">
 						<div class="thumbnail" data-bno="${list.b_no }">
-							<div class="thumbnail-wrapper1">
-								<div class="thumbnail1" style="background-color: #000;">
-									<div class="centered1">
+							<div class="thumbnail-wrapper1" >
+    							<div class="thumbnail1" style="background-color: #000;">
+    								<div class="centered1">
 										<img alt="" src="${list.b_image}" class="landscape1">
 									</div>
 								</div>
@@ -503,12 +515,9 @@ function scrolling(){
 							<div class="caption">
 								<div class="row">
 									<div class="col-md-12">
-										<form action="friendinfo" id="friend${list.b_no }"
-											method="post">
-											<input type="hidden" name="m_no" value="${list.b_mno }">
-											<h3>
-												<a href="javascript:;" onclick="gofriend(${list.b_no })">${list.b_mname}</a>
-											</h3>
+										<form action="friendinfo" id="friend${list.b_no }" method="post">
+										<input type="hidden" name="m_no" value="${list.b_mno }">
+										<h3><a href="javascript:;"  onclick="gofriend(${list.b_no })">${list.b_mname}</a></h3>
 										</form>
 										<p>${list.b_content}</p>
 									</div>
@@ -518,15 +527,18 @@ function scrolling(){
 										&nbsp;<span class="glyphicon glyphicon-heart"
 											aria-hidden="true"></span>&nbsp;
 										<c:set var="like" value="like${list.b_no}" />
-										<span id="showlike${list.b_no}"> <% List<LikeDto> like = (List<LikeDto>) request.getAttribute((String) pageContext.getAttribute("like"));%>
-											<% if (like.size() == 0) {	%> 
-												처음 좋아요의 주인공이 되세요 
-											<% } else if (like.size() > 11) { %>
-											<%=like.size()%>명이 좋아합니다 
-											<%} else if (like.size() <= 11) { 
-													for (LikeDto dto : like) { %>
-													<%=dto.getL_mname()%>&nbsp; 
-													<% } %>님이 좋아합니다<%	} %>
+										<span id="showlike${list.b_no}"> <%	List<LikeDto> like = (List<LikeDto>) request.getAttribute((String) pageContext.getAttribute("like")); %>
+											<% if (like.size() == 0) {
+											%> 처음 좋아요의 주인공이 되세요 <%
+												} else if (like.size() > 11) {
+											%> <%=like.size()%>명이 좋아합니다 <%
+											 	} else if (like.size() <= 11) {
+ 													for (LikeDto dto : like) {
+ 												%> <%=dto.getL_mname()%>&nbsp;
+											<% }
+											%>님이 좋아합니다<%
+												}
+											%>
 										</span>
 									</div>
 								</div>
@@ -535,55 +547,72 @@ function scrolling(){
 										<div id="showreply${list.b_no}">
 											<c:set var="re" value="reply${list.b_no}" />
 											<c:set var="recount" value="replycount${list.b_no}" />
-											<% List<ReplyDto> reply = (List<ReplyDto>) request.getAttribute((String) pageContext.getAttribute("re")); %>
-											<table class="table-condensed small" style="background-color: rgb(245, 245, 245); width: 100%">
-												<% if ((Integer) request.getAttribute((String) pageContext.getAttribute("recount")) > 5) { %>
+											<%
+												List<ReplyDto> reply = (List<ReplyDto>) request.getAttribute((String) pageContext.getAttribute("re"));
+											%>
+											<table class="table-condensed small"
+												style="background-color: rgb(245, 245, 245); width: 100%">
+												<%
+													if ((Integer) request.getAttribute((String) pageContext.getAttribute("recount")) > 5) {
+												%>
 												<tr>
-													<td><a href="javascript:;"
-														onclick="showReplyMore(${list.b_no })">show reply all</a></td>
+													<td><a href="javascript:;" onclick="showReplyMore(${list.b_no })">show reply all</a></td>
 												</tr>
-												<% } for (ReplyDto dto : reply) { %>
+												<%
+													}
+														for (ReplyDto dto : reply) {
+												%>
 												<tr>
-													<td><a href="#"><%=dto.getR_name()%></a> <%=dto.getR_content()%></td>
+                                                    <td><a href="friendinfo?m_no=<%=dto.getR_mno()%>"><%=dto.getR_name()%></a> <%=dto.getR_content()%></td>
 												</tr>
-												<% } %>
+												<%
+													}
+												%>
 											</table>
 										</div>
 									</div>
 								</div>
 								<div class="row top_pd">
-									<form action="insertReply" method="post"
-										id="reply${list.b_no}" name="reply">
+									<form action="insertReply" method="post" id="reply${list.b_no}"
+										name="reply">
 										<div class="col-md-12">
 											<div class="input-group">
 												<span class="input-group-addon " id="sizing-addon2">
-													<c:set var="likeYN" value="likeYN${list.b_no}" /> 
-													<% int likeYN = (Integer) request.getAttribute((String) pageContext.getAttribute("likeYN")); %> 
-													<% if (likeYN >= 1) { %> 
-													<span class="glyphicon glyphicon-heart" onclick="likecancel(${list.b_no})" style="color: red" id="likeYN${list.b_no }"></span> 
-													<%} else { %> 
-													<span class="glyphicon glyphicon-heart"	onclick="likesubmit(${list.b_no})" id="likeYN${list.b_no }"></span> 
-													<%  } %>
+													<c:set var="likeYN" value="likeYN${list.b_no}" /> <%
+ 													int likeYN = (Integer) request.getAttribute((String) pageContext.getAttribute("likeYN"));
+ 													%>
+													<%
+														if (likeYN >= 1) {
+													%> <span class="glyphicon glyphicon-heart" onclick="likecancel(${list.b_no})" style="color: red" id="likeYN${list.b_no }"></span> <%
+ 													} else {
+ 													%> <span class="glyphicon glyphicon-heart" onclick="likesubmit(${list.b_no})" id="likeYN${list.b_no }"></span>
+													<%
+														}
+													%>
 												</span> <input type="text" class="form-control"
 													placeholder="답글달기..." aria-describedby="sizing-addon2"
-													name="r_content" id="r_content${list.b_no}"> <input
-													type="hidden" name="r_bno" value="${list. b_no}">
-												<input type="hidden" name="r_mno" value="${mno }">
-												<!-- 답글 버튼 -->
+													name="r_content" id="r_content${list.b_no}" onkeydown="javascript:if(event.keyCode==13){replySubmit(${list.b_no})}"> <input
+													type="hidden" name="r_bno" value="${list. b_no}"> <input
+													type="hidden" name="r_mno" value="${mno }"> 
+												<!-- 답글 버튼 --> 
 												<span class="input-group-btn">
 													<button class="btn btn-default" type="button"
 														id="btn_reply" onclick="replySubmit(${list.b_no })">답글</button>
-												</span>
-												<!-- 답글 버튼 끝 -->
-											</div>
+												</span> 
+												<!-- 답글 버튼 끝 -->  
+											 </div>
 										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+										<%-- <div class="col-md-3">
+
+                  <a href="javascript:;" onclick= "replySubmit(${list.b_no })" class="btn btn-default col-md-12" role="button">답글</a>
+                  </div> --%>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </c:forEach>
 		</div>
 		<!-- ==========================TIMELINE 화면에 뿌려주는 게시물 끝============================= -->
 		
