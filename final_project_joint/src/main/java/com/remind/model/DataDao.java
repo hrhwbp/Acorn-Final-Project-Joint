@@ -427,9 +427,9 @@ public class DataDao implements DaoInter {
 	}
 	
 	@Override
-	public boolean deleteAnniversary(AnniversaryBean bean) throws DataAccessException {
+	public boolean deleteAnniversary(String a_no) throws DataAccessException {
 		try {
-			annoInter.deleteAnniversary(bean);
+			annoInter.deleteAnniversary(a_no);
 			return true;
 		} catch (Exception e) {
 			System.out.println("Delete anniversary err");

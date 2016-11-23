@@ -55,4 +55,29 @@ public class AnniversaryController {
 		}
 		return str;
 	}
+	
+	@RequestMapping(value="updateAnni", method = RequestMethod.POST)
+	public String updateAnni(AnniversaryBean bean){
+		boolean b = daoInter.updateAnniversary(bean);
+		String str = "";
+		if(b){
+			str = "redirect:/myaccount";
+		}else{
+			str = "redirect:/error.jsp";
+		}
+		return str;
+	}
+
+	@RequestMapping(value="deleteAnni", method = RequestMethod.POST)
+	public String deleteAnni(@RequestParam("a_no")String a_no){
+		boolean b = daoInter.deleteAnniversary(a_no);
+		String str = "";
+		if(b){
+			str = "redirect:/myaccount";
+		}else{
+			str = "redirect:/error.jsp";
+		}
+		return str;
+	}
+
 }

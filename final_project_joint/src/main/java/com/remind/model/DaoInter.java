@@ -79,7 +79,7 @@ public interface DaoInter {
 	List<AnniversaryDto> showAnniversary(String m_no) throws DataAccessException;
 	List<AnniversaryDto> showAnniversaryPart(String m_no) throws DataAccessException;
 	boolean insertAnniversary(AnniversaryBean bean) throws DataAccessException;
-	boolean deleteAnniversary(AnniversaryBean bean) throws DataAccessException;
+	boolean deleteAnniversary(String a_no) throws DataAccessException;
 	boolean updateAnniversary(AnniversaryBean bean) throws DataAccessException;
 
 

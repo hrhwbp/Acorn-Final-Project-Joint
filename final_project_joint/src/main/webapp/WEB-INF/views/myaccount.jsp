@@ -127,7 +127,7 @@ $(document).ready(function() {
 	});
 	
 	/* $(".date-picker").datepicker(); */
-	$('.date-picker').datepicker({
+	$('#date-picker-2').datepicker({
 	    dateFormat : "yy-mm-dd",
 	    beforeShow: function() {
 	        setTimeout(function(){
@@ -136,24 +136,33 @@ $(document).ready(function() {
 	    },
 	});
 	
-	/* $(".date-picker").datepicker({
-		dateFormat : "yy-mm-dd",
-	    altField: "#msg"
-	}); */
-/* 	$(".date-picker").on("change", function () {
-		$(".date-picker").datepicker({
-		    altFormat: "yyyy-mm-dd"
-		});
-	    var id = $(this).attr("id");
-	    var val = $("label[for='" + id + "']").text();
-	    $("#msg").text(val + " changed");
-	}); */
+	$('#date-picker-3').datepicker({
+	    dateFormat : "yy-mm-dd",
+	    beforeShow: function() {
+	        setTimeout(function(){
+	            $('.ui-datepicker').css('z-index', 99999999999999);
+	        }, 0);
+	    },
+	});
 	
 });
 
-function eventUpdate(a_no,a_detail) {
-	alert(a_no + " " + a_detail);
-}
+	function eventUpdate(a_no,a_detail,a_date) {
+		$('#hiddenA_no').attr('value',a_no);
+		$('#updateDetail').attr('value',a_detail);
+		$('#date-picker-3').attr('value',a_date);
+		$('#updateAnni').modal('show');
+	}
+	
+	function eventDelete(a_no) {
+		$("#eventDelOk").attr('onclick','eventDeleteOk()');
+		$("#deleteA_no").attr('value',a_no);
+		$("#eventDeleteOk").modal('show');
+	}
+	
+	function eventDeleteOk() {
+		$("#deleteAnniFrm").submit();
+	}
 </script>
     
 </head>
@@ -289,7 +298,6 @@ function eventUpdate(a_no,a_detail) {
 	  <div class="modal-dialog modal-sm" style="margin: 250px auto;">
 	    <div class="modal-content">
 	     <form action="insertAnni" id="insertAnnifrm" method="post">
-			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 	      	<div class="modal-body">
 			
 				<input type="hidden" name="a_mno" value="${myinfo.m_no }">
@@ -306,7 +314,7 @@ function eventUpdate(a_no,a_detail) {
 	        		<label for="date-picker-2" class="control-label">날짜</label>
 	        		<div class="controls">
 	          		<div class="input-group">
-	                <input id="date-picker-2" type="text" name="a_date" class="date-picker form-control" required/>
+	                <input id="date-picker-2" type="text" name="a_date" class="date-picker form-control" readonly="readonly" required/>
 	                <label for="date-picker-2" class="input-group-addon btn">
 	                	<span class="glyphicon glyphicon-calendar"></span>
 	                </label>
@@ -317,15 +325,80 @@ function eventUpdate(a_no,a_detail) {
 			    </div>
 			</div>
 	    	<div class="modal-footer">	    	
-	    	<button class="btn btn-primary" id="eventSubmit" type="submit">Save</button>	    	
+	    	<button class="btn btn-primary" id="eventSubmit" type="submit">Save Change</button>	    	
 			</div>
 			</form>
 	    </div>	    
 	  </div>	  	
 	</div> 
 	<!-- 기념일 추가 모달  insertAnni끝-->
+	<!-- 기념일 수정 모달 -->
+		<div class="modal fade bs-example-modal-sm" id="updateAnni" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+	  <div class="modal-dialog modal-sm" style="margin: 250px auto;">
+	    <div class="modal-content">
+	     <form action="updateAnni" id="updateAnnifrm" method="post">
+	      	<div class="modal-body">
+			
+				<input type="hidden" name="a_mno" value="${myinfo.m_no }">
+				<input type="hidden" id="hiddenA_no" name="a_no" value="">
+				<div class="row">
+					<div class="col-md-12">
+						<label for="a_detail">이벤트 이름</label>
+						<input type="text" class="form-control" value="" id="updateDetail" name="a_detail" required>
+					</div>
+				</div>
+				
+			    <div class="row">
+			    <div class="col-md-12">
+				    <div class="control-group">
+	        		<label for="date-picker-3" class="control-label">날짜</label>
+	        		<div class="controls">
+	          		<div class="input-group">
+	                <input id="date-picker-3" type="text" name="a_date" class="date-picker form-control" readonly="readonly" required/>
+	                <label for="date-picker-3" class="input-group-addon btn">
+	                	<span class="glyphicon glyphicon-calendar"></span>
+	                </label>
+		            </div>
+		       		 </div>
+		   		 </div>
+			     	</div>
+			    </div>
+			</div>
+	    	<div class="modal-footer">	    	
+	    	<button class="btn btn-primary" type="submit">Save</button>	    	
+			</div>
+			</form>
+	    </div>	    
+	  </div>	  	
+	</div> 
+	
+    <!--  -->        
+	<!-- 삭제확인 모달 -->
+	<div class="modal fade" id="eventDeleteOk" tabindex="-1" role="dialog" aria-labelledby="">
+	  <div class="modal-dialog modal-sm" style="margin: 350px auto;">
+	    <div class="modal-content">
+	      <div class="row text-center">
+	      	<p style="padding-top: 2%"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;  font-size: 25px;"></span></p>
+	      	<h5>
+	      	<b>정말 삭제 하시겠습니까?</b>
+	      	</h5>
+	      </div>
+	    </div>
+	    
+	     <div class="modal-footer">
+	     	<div class="row text-center">
+			<button type="button" class="btn btn-danger" id="eventDelOk" onclick="boardDeleteOk()">Delete</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	     	</div>
+	      </div>
+	    	<form action="deleteAnni" method="post" id="deleteAnniFrm">
+	    		<input type="hidden" id="deleteA_no" name="a_no" value="">
+	    	</form>
+	  </div>
+	</div>    
+	<!-- 삭제확인 모달 끝 -->    
 
-            
+    
     <!-- MAIN CONTENT -->
         <div class="pg-opt">
         <div class="container">
@@ -429,7 +502,7 @@ function eventUpdate(a_no,a_detail) {
 													<tr>
 														<td><a href="#">${anni.a_detail }</a></td>
 														<td>${anni.a_date }</td>
-														<td><div  class="pull-right"><a href="javascript:eventUpdate(${anni.a_no},${anni.a_detail})"><i class="fa fa-pencil-square-o fa-2x " aria-hidden="true"></i></a>&nbsp;|&nbsp;<a href="javascript:eventDelete(${anni.a_no})"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a></div></td>														
+														<td><div  class="pull-right"><a href="#" onclick="eventUpdate(${anni.a_no},'${anni.a_detail}','${anni.a_date}')"><i class="fa fa-pencil-square-o fa-2x " aria-hidden="true"></i></a>&nbsp;|&nbsp;<a href="javascript:eventDelete(${anni.a_no})"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a></div></td>														
 													</tr>
 													</c:if>
 													</c:forEach>
