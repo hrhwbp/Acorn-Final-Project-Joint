@@ -492,10 +492,28 @@ function boardDeleteOk(b_no) {
 <%@ include file="top.jsp" %>
 
 <body style="background-color: rgba(128, 206, 208, 0.14);">
+		<!-- ==========================현재 페이지 표시줄 MAIN CONTENT============================= -->
+		<div class="pg-opt bg-danger">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<h2>Wall</h2>
+					</div>
+					<div class="col-md-6">
+						<ol class="breadcrumb">
+							<li><a href="action">Home</a></li>							
+							<li class="active">Wall</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ==========================현재 페이지 표시줄 MAIN CONTENT 끝============================= -->
+
 <div class="container">
 <div class="container"  style="padding-top: 2%; padding-bottom: 5%;">
 <div class="row" style="background-color: rgba(255, 247, 252, 0.62); padding-top: 30px; padding-bottom: 30px">
-	<div class="col-md-2 col-md-offset-2" style="height: 165px">	
+	<div class="col-md-2 col-md-offset-2 col-sm-8" style="height: 165px">	
 		<img src="http://wbp.synology.me/profileimg/${myinfo.m_image }" class="img-circle img-responsive" style="height: 100%; width: 100%">
 	</div>
 	<div class="col-md-6" style="padding-top: 1%;">

@@ -105,6 +105,9 @@ function scrolling(){
 					str += '<div class="row">';
 			        str += '<div class="col-md-12">';
 			        str += '	<div class="thumbnail" data-bno='+this.b_no+' >';
+			        str += '			<form action="friendinfo" id="friend'+objArr["b_no"]+'" method="post">';
+					str += '				<input type="hidden" name="m_no" value="'+objArr["b_mno"]+'">';
+					str += '         		<h4>&nbsp;&nbsp;<a href="javascript:;"  onclick="gofriend('+objArr["b_no"]+')">'+objArr["b_mname"]+'</a></h4></form>';
 			       	str += '<div class="thumbnail-wrapper1">' +
 							'<div class="thumbnail1" style="background-color: #000;">' +
 							'<div class="centered1">';
@@ -114,11 +117,9 @@ function scrolling(){
 			        str += '       <div class="caption">';
 			        str += '       <div class="row">';
 			        str += '          <div class="col-md-12">';
-			        str += '			<form action="friendinfo" id="friend'+objArr["b_no"]+'" method="post">';
-					str += '				<input type="hidden" name="m_no" value="'+objArr["b_mno"]+'">';
-					str += '          <h3><a href="javascript:;"  onclick="gofriend('+objArr["b_no"]+')">'+objArr["b_mname"]+'</a></h3></form>';
+			        
 			        str += '          <p>'+objArr["b_content"]+'</p>';
-			        str += '          </div>';
+			        str += '          <br></div>';
 			        str += '       </div>';
 			        //라이크
 			        var should_split = this.like_mname;
@@ -161,11 +162,18 @@ function scrolling(){
 					str += '				<tr>';
 					str += '					<td><a href="javascript:;" onclick="showReplyMore('+this.b_no+')">show reply all</a></td>';
 					str += '				</tr>';
+					}else if(reply_Count == 0){
+					str += '				<tr>';
+					str += '					<td>아직 작성된 댓글이 없습니다.</td>';
+					str += '				</tr>';	
 					}
-					for (var i in reply_name_view) {
-						str += '				<tr>';
-                        str += '<td><a href="friendinfo?m_no=' + reply_Mno_view[i] + '">'+ reply_name_view[i]+'</a> '+reply_content_view[i]+'</td>';
-						str += '				</tr>';
+					
+					if(reply_Count > 0){						
+						for (var i in reply_name_view) {
+							str += '				<tr>';
+	                        str += '<td><a href="friendinfo?m_no=' + reply_Mno_view[i] + '">'+ reply_name_view[i]+'</a> '+reply_content_view[i]+'</td>';
+							str += '				</tr>';
+						}
 					}
 					str += '			</table>';
 					str += '		</div>';
@@ -441,7 +449,7 @@ function anniAjax(){
 		<!-- ================================이벤트일 표시 DIV===================================== -->			
 		
 			<div class="sidebar">
-				<div class="col-md-12 col-sm-0" role="complementray">
+				<div class="col-md-6 col-sm-0 col-md-offset-3" role="complementray">
 					<div class="col">
 						<h4>다가오는 이벤트</h4>						
 							<table>
@@ -497,14 +505,23 @@ function anniAjax(){
 			</div>			
 		
 		<!-- ================================이벤트일 표시 DIV 끝===================================== -->
+<div class="container">
 
 		<!-- ==========================TIMELINE 화면에 뿌려주는 게시물 ============================= -->
-		<div class="container col-md-5 col-md-offset-1 " id="scrollingId"
+		<div class="container col-md-7 col-md-offset-2 " id="scrollingId"
 			style="padding-top: 1%; padding-bottom: 2%">
 			<c:forEach var="list" items="${list }">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="thumbnail" data-bno="${list.b_no }">
+							
+								
+								<form action="friendinfo" id="friend${list.b_no }" method="post">
+								<input type="hidden" name="m_no" value="${list.b_mno }">
+								<h4>&nbsp;&nbsp;<a href="javascript:;"  onclick="gofriend(${list.b_no })">${list.b_mname}</a></h4>
+								</form>
+								
+							
 							<div class="thumbnail-wrapper1" >
     							<div class="thumbnail1" style="background-color: #000;">
     								<div class="centered1">
@@ -515,15 +532,16 @@ function anniAjax(){
 							<div class="caption">
 								<div class="row">
 									<div class="col-md-12">
-										<form action="friendinfo" id="friend${list.b_no }" method="post">
-										<input type="hidden" name="m_no" value="${list.b_mno }">
-										<h3><a href="javascript:;"  onclick="gofriend(${list.b_no })">${list.b_mname}</a></h3>
-										</form>
+										
 										<p>${list.b_content}</p>
 									</div>
 								</div>
+								
+								
+								
 								<div class="row">
 									<div class="col-md-12">
+										<br>
 										&nbsp;<span class="glyphicon glyphicon-heart"
 											aria-hidden="true"></span>&nbsp;
 										<c:set var="like" value="like${list.b_no}" />
@@ -542,6 +560,7 @@ function anniAjax(){
 										</span>
 									</div>
 								</div>
+									
 								<div class="row">
 									<div class="col-md-12">
 										<div id="showreply${list.b_no}">
@@ -559,8 +578,14 @@ function anniAjax(){
 													<td><a href="javascript:;" onclick="showReplyMore(${list.b_no })">show reply all</a></td>
 												</tr>
 												<%
+													}else if((Integer) request.getAttribute((String) pageContext.getAttribute("recount")) == 0){
+												%>
+												<tr>
+													<td>아직 작성된 댓글이 없습니다.</td>
+												</tr>
+												<%			
 													}
-														for (ReplyDto dto : reply) {
+													for (ReplyDto dto : reply) {
 												%>
 												<tr>
                                                     <td><a href="friendinfo?m_no=<%=dto.getR_mno()%>"><%=dto.getR_name()%></a> <%=dto.getR_content()%></td>
@@ -770,7 +795,7 @@ function anniAjax(){
 			</script>
 		</c:if>
 		<!-- ===================================게시물이 없으면 끝==================================  -->
-		
+		</div>
 
 </div>
 
