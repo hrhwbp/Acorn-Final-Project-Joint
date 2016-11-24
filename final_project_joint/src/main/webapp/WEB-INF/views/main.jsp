@@ -74,13 +74,14 @@
 var lastbno_save = null;
 $(document).ready(function () {
    $(window).bind("scroll",scrolling);
-   $('form').bind("keypress", function(e) {
-	   if (e.keyCode == 13) {               
-	     e.preventDefault();
-	     return false;
-	   }
-	 });
+   $(window).keydown(function(event){
+	    if(event.keyCode == 13) {
+	      event.preventDefault();
+	      return false;
+	    }
+	  });
 });
+
 
 function scrolling(){ 
 	var documentHeight  = $(document).height() * 2 - 1200;
@@ -194,7 +195,7 @@ function scrolling(){
 					}
 					str += '				</span> <input type="text" class="form-control"';
 					str += '				placeholder="답글달기..." aria-describedby="sizing-addon2"';
-					str += '				name="r_content" id="r_content'+this.b_no+'"> <input';
+					str += '				name="r_content" id="r_content'+this.b_no+'"  onkeydown="javascript:if(event.keyCode==13){replySubmit('+this.b_no+')}"> <input';
 					str += '				type="hidden" name="r_bno" value="'+this.b_no+'"> <input';
 					str += '				type="hidden" name="r_mno" value="'+${mno}+'">'; 
 //												<!-- 답글 버튼 --> 
@@ -220,7 +221,8 @@ function scrolling(){
 			error:function(){
 				console.log("scroll 이벤트 실패")
 			}
-		});	
+		})
+
 
       }
    }
