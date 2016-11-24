@@ -3,7 +3,6 @@
 <html>
 <head>
 <script type="text/javascript">
-
 	function mywall() {
 		
 		if(<%=session.getAttribute("mno")%>	 == null){
@@ -20,34 +19,6 @@
 		$("#account").submit();
 		}
 	}
-		/* $( document ).ready(function(){
-			$('#friendSearch').typeahead(null,{
-				source: function(query, syncResults, asyncResults) {
-				    $.get('searching?name='+query, function(data) {
-				        asyncResults(data);
-				      });
-				    },
-			    templates: {
-					    empty: [
-					      '<div class="empty-message">',
-					        '친구가 없습니다.',
-					      '</div>'
-					    ].join('\n'),
-					    suggestion: function(data){
-					       html = "<div><img src='http://wbp.synology.me/profileimg/" + data.m_image + "' class='img-circle' style='width:10%;'/>";
-					        html +="<strong>" + data.m_email + "</strong> - " + data.m_name + "</div>";
-					        return html;
-					    },
-					  }
-				})
-				jQuery('#friendSearch').on('typeahead:selected', function (e, datum) {
-					console.log(datum.m_no);
-					 var idx = $('<input type="hidden" value="'+datum.m_no+'" name="m_no">');
-					 $("#gofr").append(idx);
-	    			 $("#gofr").submit(); 
-	    			
-				});
-		}) */
 	
 </script>
 </head>
@@ -97,7 +68,7 @@
 							<input type="hidden" name="m_no" value="<%=session.getAttribute("mno")%>">
 						</form>                       
                     </li>
-                     <li class="dropdown">
+                    <li class="dropdown">
                         <a href="javascript:myAccount()" class="dropdown-toggle" >MY PAGE</a>
                         <form action="myaccount" method="post" id="account">
 							<input type="hidden" name="m_no" value="<%=session.getAttribute("mno")%>">
@@ -108,16 +79,28 @@
                     </li>                   
                     <%if (session.getAttribute("mno") != null) {%>
                     <li class="dropdown">
+                    	<a href="anniversary" class="dropdown-toggle" >EVENTS</a>                        
+                    </li>
+                    <li class="dropdown">
                     	<a href="logout" class="dropdown-toggle" >LOGOUT</a>                        
                     </li>
 					<%} else {%>
 					<li class="dropdown">
+                    	<a href="login" class="dropdown-toggle" >EVENTS</a>                        
+                    </li>
+					<li class="dropdown">
 						<a href="login" class="dropdown-toggle" >LOGIN</a>                        
                     </li>
                     <li class="dropdown">
-                    	<a href="join" class="dropdown-toggle" >JOIN US</a>                        
+                    	<a href="join" class="dropdown-toggle" >JOIN</a>                        
                     </li>
 					<%}%>
+					<li class="dropdown">
+                        <a href="qna" class="dropdown-toggle" >QnA</a>                        
+                    </li>
+					<li class="dropdown">
+                        <a href="snslist" class="dropdown-toggle" >ABOUT US</a>                        
+                    </li>
                   
                     
                     

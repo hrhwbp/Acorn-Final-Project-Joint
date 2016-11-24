@@ -8,32 +8,53 @@
     <meta name="robots" content="index, follow">
     <title>RE:MIND || Happy Gifting Starts Here</title>
 
+<%@ include file="importstop.jsp" %>
     <!-- Essential styles -->
-    <link rel="stylesheet" href="../../controller/resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
+<!--     <link rel="stylesheet" href="../../controller/resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="../../controller/resources/font-awesome/css/font-awesome.min.css" type="text/css"> 
-    <link rel="stylesheet" href="../../controller/resources/assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen"> 
+    <link rel="stylesheet" href="../../controller/resources/assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">  -->
      
     <!-- Boomerang styles -->
-        <link id="wpStylesheet" type="text/css" href="../../controller/resources/css/global-style-red.css" rel="stylesheet" media="screen">
+<!--         <link id="wpStylesheet" type="text/css" href="../../controller/resources/css/global-style-red.css" rel="stylesheet" media="screen"> -->
         
 
     <!-- Favicon -->
-    <link href="../../controller/resources/images/favicon.png" rel="icon" type="image/png">
+<!--     <link href="../../controller/resources/images/favicon.png" rel="icon" type="image/png"> -->
 
     <!-- Assets -->
-    <link rel="stylesheet" href="../../controller/resources/assets/owl-carousel/owl.carousel.css">
+<!--     <link rel="stylesheet" href="../../controller/resources/assets/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="../../controller/resources/assets/owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="../../controller/resources/assets/sky-forms/css/sky-forms.css">    
+    <link rel="stylesheet" href="../../controller/resources/assets/sky-forms/css/sky-forms.css">   -->  
     <!--[if lt IE 9]>
         <link rel="stylesheet" href="../../controller/resources/assets/sky-forms/css/sky-forms-ie8.css">
     <![endif]-->
 
     <!-- Required JS -->
-    <script src="../../controller/resources/js/jquery.js"></script>
-    <script src="../../controller/resources/js/jquery-ui.min.js"></script>
+<!--     <script src="../../controller/resources/js/jquery.js"></script>
+    <script src="../../controller/resources/js/jquery-ui.min.js"></script> -->
 
     <!-- Page scripts -->
-    <link rel="stylesheet" href="../../controller/resources/assets/layerslider/css/layerslider.css" type="text/css">
+    <link rel="stylesheet" href="resources/assets/layerslider/css/layerslider.css" type="text/css">
+
+<script type="text/javascript">
+	function mywall() {
+		
+		if(<%=session.getAttribute("mno")%>	 == null){
+			location.href="login"
+		}else{
+		$("#info").submit();
+		}
+	}
+	
+	function myAccount(){
+		if(<%=session.getAttribute("mno")%>	 == null){
+			location.href="login"
+		}else{
+		$("#account").submit();
+		}
+	}
+</script>
+
 
 </head>
 <body>
@@ -151,25 +172,37 @@
                             </form>
                         </div>
                     </li>
-                    <li class="dropdown dropdown-meganav mega-dropdown-fluid">
+                     <li class="dropdown dropdown-meganav mega-dropdown-fluid">
                         <a href="action" class="dropdown-toggle">Home</a>                        
                     </li>
                     <li class="dropdown">
-                        <a href="snslist" class="dropdown-toggle">TIMELINE</a>                        
+                        <a href="snslist" class="dropdown-toggle" >TIMELINE</a>                        
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" >WISHLIST</a>                        
+                        <a href="javascript:mywall()" class="dropdown-toggle">MY WALL</a>
+                        <form action="mywall" method="post" id="info">
+							<input type="hidden" name="m_no" value="<%=session.getAttribute("mno")%>">
+						</form>                       
                     </li>
+                     <li class="dropdown">
+                        <a href="javascript:myAccount()" class="dropdown-toggle" >MY PAGE</a>
+                        <form action="myaccount" method="post" id="account">
+							<input type="hidden" name="m_no" value="<%=session.getAttribute("mno")%>">
+						</form>                              
+                    </li> 
                     <li class="dropdown">
-                        <a href="myinfo" class="dropdown-toggle">User account</a>                       
+                        <a href="wishlist" class="dropdown-toggle" >WISHLIST</a>                        
                     </li>                   
                     <%if (session.getAttribute("mno") != null) {%>
                     <li class="dropdown">
-                    	<a href="logout" class="dropdown-toggle">LOGOUT</a>                        
+                    	<a href="logout" class="dropdown-toggle" >LOGOUT</a>                        
                     </li>
 					<%} else {%>
 					<li class="dropdown">
-						<a href="login" class="dropdown-toggle">LOGIN</a>                        
+						<a href="login" class="dropdown-toggle" >LOGIN</a>                        
+                    </li>
+                    <li class="dropdown">
+                    	<a href="join" class="dropdown-toggle" >JOIN US</a>                        
                     </li>
 					<%}%>
                     
