@@ -10,33 +10,34 @@
 <meta name="robots" content="index, follow">
 <title>RE:MIND || 로그인</title>
 
+<%@ include file="importstop.jsp" %>
 <!-- Essential styles -->
-<link rel="stylesheet" href="resources/assets/bootstrap/css/bootstrap.min.css"
+<!-- <link rel="stylesheet" href="resources/assets/bootstrap/css/bootstrap.min.css"
 	type="text/css">
 <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css"
 	type="text/css">
 <link rel="stylesheet"
 	href="resources/assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">
 
-<!-- Boomerang styles -->
+Boomerang styles
 <link id="wpStylesheet" type="text/css" href="resources/css/global-style-red.css"
-	rel="stylesheet" media="screen">
+	rel="stylesheet" media="screen"> -->
 
 
 <!-- Favicon -->
-<link href="resources/images/favicon.png" rel="icon" type="image/png">
+<!-- <link href="resources/images/favicon.png" rel="icon" type="image/png"> -->
 
 <!-- Assets -->
-<link rel="stylesheet" href="resources/assets/owl-carousel/owl.carousel.css">
+<!-- <link rel="stylesheet" href="resources/assets/owl-carousel/owl.carousel.css">
 <link rel="stylesheet" href="resources/assets/owl-carousel/owl.theme.css">
-<link rel="stylesheet" href="resources/assets/sky-forms/css/sky-forms.css">
+<link rel="stylesheet" href="resources/assets/sky-forms/css/sky-forms.css"> -->
 <!--[if lt IE 9]>
         <link rel="stylesheet" href="assets/sky-forms/css/sky-forms-ie8.css">
     <![endif]-->
 
 <!-- Required JS -->
-<script src="resources/js/jquery.js"></script>
-<script src="resources/js/jquery-ui.min.js"></script>
+<!-- <script src="resources/js/jquery.js"></script>
+<script src="resources/js/jquery-ui.min.js"></script> -->
 
 <!-- 글라이콘 IMPORT -->
 
@@ -258,30 +259,31 @@
 	<%@ include file="bottom.jsp" %>
 	</div>
 
+<%@ include file="importsbottom.jsp" %>
 	<!-- Essentials -->
-	<script src="resources/js/modernizr.custom.js"></script>
+<!-- 	<script src="resources/js/modernizr.custom.js"></script>
 	<script src="resources/assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="resources/js/jquery.mousewheel-3.0.6.pack.js"></script>
 	<script src="resources/js/jquery.easing.js"></script>
 	<script src="resources/js/jquery.metadata.js"></script>
 	<script src="resources/js/jquery.hoverup.js"></script>
 	<script src="resources/js/jquery.hoverdir.js"></script>
-	<script src="resources/js/jquery.stellar.js"></script>
+	<script src="resources/js/jquery.stellar.js"></script> -->
 
 	<!-- Boomerang mobile nav - Optional  -->
-	<script src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.js"></script>
-	<script src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.autofill.js"></script>
+<!-- 	<script src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.js"></script>
+	<script src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.autofill.js"></script> -->
 
 	<!-- Forms -->
-	<script src="resources/assets/ui-kit/js/jquery.powerful-placeholder.min.js"></script>
+<!-- 	<script src="resources/assets/ui-kit/js/jquery.powerful-placeholder.min.js"></script>
 	<script src="resources/assets/ui-kit/js/cusel.min.js"></script>
 	<script src="resources/assets/sky-forms/js/jquery.form.min.js"></script>
 	<script src="resources/assets/sky-forms/js/jquery.validate.min.js"></script>
 	<script src="resources/assets/sky-forms/js/jquery.maskedinput.min.js"></script>
-	<script src="resources/assets/sky-forms/js/jquery.modal.js"></script>
+	<script src="resources/assets/sky-forms/js/jquery.modal.js"></script> -->
 
 	<!-- Assets -->
-	<script src="resources/assets/hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+<!-- 	<script src="resources/assets/hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
 	<script src="resources/assets/page-scroller/jquery.ui.totop.min.js"></script>
 	<script src="resources/assets/mixitup/jquery.mixitup.js"></script>
 	<script src="resources/assets/mixitup/jquery.mixitup.init.js"></script>
@@ -293,22 +295,22 @@
 	<script src="resources/assets/nouislider/js/jquery.nouislider.min.js"></script>
 	<script src="resources/assets/owl-carousel/owl.carousel.js"></script>
 	<script src="resources/assets/bootstrap/js/tooltip.js"></script>
-	<script src="resources/assets/bootstrap/js/popover.js"></script>
+	<script src="resources/assets/bootstrap/js/popover.js"></script> -->
 
 	<!-- Sripts for individual pages, depending on what plug-ins are used -->
 
 	<!-- Boomerang App JS -->
-	<script src="resources/js/wp.app.js"></script>
+<!-- 	<script src="resources/js/wp.app.js"></script> -->
 	<!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
 <![endif]-->
 
 	<!-- Temp -- You can remove this once you started to work on your project -->
-	<script src="resources/js/jquery.cookie.js"></script>
+<!-- 	<script src="resources/js/jquery.cookie.js"></script>
 	<script src="resources/js/wp.switcher.js"></script>
 	<script type="text/javascript" src="resources/js/wp.ga.js"></script>
-
+ -->
 
 </body>
 </html>

@@ -488,7 +488,7 @@ function anniAjax(){
 										</c:if>
 									</c:forEach>
 									<tr>
-										<td colspan="2"><a href="">기념일 더보기</a></td>
+										<td colspan="2"><a href="anniversary">기념일 더보기</a></td>
 									</tr>
 								</table>
 							<ul>

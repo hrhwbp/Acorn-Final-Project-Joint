@@ -115,6 +115,23 @@ public class MemberController {
 		return searchData;
 			
 	}
+	@RequestMapping(value="searching",method=RequestMethod.GET)
+	@ResponseBody
+	public List<Map<String, String>> search2(@RequestParam("name") String name){
+		System.out.println(name);
+		List<MemberDto> list = daoInter.searchMember(name);
+		List<Map<String, String>> dataList = new ArrayList<Map<String,String>>();
+		Map<String, String> data = null;
+		for(MemberDto s : list){
+			data = new HashMap<String,String>();
+			data.put("m_image",s.getM_image());
+			data.put("m_email", s.getM_email());
+			data.put("m_name", s.getM_name());
+			data.put("m_no", s.getM_no());
+			dataList.add(data);
+		}
+		return dataList;
+	}
 	
 	@RequestMapping(value="out", method= RequestMethod.POST)
 	public String out(@RequestParam("m_no") String m_no){
