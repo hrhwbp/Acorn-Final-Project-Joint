@@ -59,6 +59,7 @@
                     <li class="dropdown dropdown-meganav mega-dropdown-fluid">
                         <a href="action" class="dropdown-toggle">Home</a>                        
                     </li>
+                    
                     <li class="dropdown">
                         <a href="snslist" class="dropdown-toggle" >TIMELINE</a>                        
                     </li>
@@ -76,18 +77,19 @@
                     </li> 
                     <li class="dropdown">
                         <a href="wishlist" class="dropdown-toggle" >WISHLIST</a>                        
-                    </li>                   
-                    <%if (session.getAttribute("mno") != null) {%>
+                    </li>   
                     <li class="dropdown">
                     	<a href="anniversary" class="dropdown-toggle" >EVENTS</a>                        
                     </li>
                     <li class="dropdown">
+                        <a href="qna" class="dropdown-toggle" >QnA</a>                        
+                    </li>	                
+                    <%if (session.getAttribute("mno") != null) {%>
+                    
+                    <li class="dropdown">
                     	<a href="logout" class="dropdown-toggle" >LOGOUT</a>                        
                     </li>
-					<%} else {%>
-					<li class="dropdown">
-                    	<a href="login" class="dropdown-toggle" >EVENTS</a>                        
-                    </li>
+					<%} else {%>					
 					<li class="dropdown">
 						<a href="login" class="dropdown-toggle" >LOGIN</a>                        
                     </li>
@@ -95,25 +97,18 @@
                     	<a href="join" class="dropdown-toggle" >JOIN</a>                        
                     </li>
 					<%}%>
-					<li class="dropdown">
-                        <a href="qna" class="dropdown-toggle" >QnA</a>                        
-                    </li>
-					<li class="dropdown">
-                        <a href="snslist" class="dropdown-toggle" >ABOUT US</a>                        
-                    </li>
+								
                   
-                    
-                    
-                    <li class="dropdown dropdown-aux animate-click" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">
+                    <li class="dropdown dropdown-aux animate-click hidden-xs" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">
                         <a href="#" class="dropdown-form-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
                         <ul class="dropdown-menu dropdown-menu-user animate-wr">
                             <li id="dropdownForm">
                                 <div class="dropdown-form">
                                     <form class="form-horizontal form-light p-15" role="form">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="I want to find ...">
+                                            <input type="text" class="form-control" placeholder="친구찾기 ...">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-base" type="button">Go</button>
+                                                <button class="btn btn-base" type="button">찾기</button>
                                             </span>
                                         </div>
                                     </form>
@@ -164,7 +159,7 @@
                 <a href="action">Home</a>
             </li>
             <li>
-                <a href="#">About us</a>
+                <a href="action#aboutus">About us</a>
             </li>
             <li>
                 <a href="#">Blog</a>
