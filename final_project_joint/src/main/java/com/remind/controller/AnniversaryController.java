@@ -40,8 +40,8 @@ public class AnniversaryController {
 		return dataList;
 	}
 	@RequestMapping(value="anniversary", method = RequestMethod.GET)
-	public String list(){
-	return 	"redirect:/calendar.jsp";
+	public ModelAndView list(){
+	return 	new ModelAndView("calendar");
 	}
 	
 	@RequestMapping(value="insertAnni", method = RequestMethod.POST)
