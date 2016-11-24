@@ -180,7 +180,7 @@
     
     <h5 class="side-section-title">Social media</h5>
     <div class="social-media">
-        <a href="#"><i class="fa fa-facebook facebook"></i></a>
+        <a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook"></i></a>
         <a href="#"><i class="fa fa-google-plus google"></i></a>
         <a href="#"><i class="fa fa-twitter twitter"></i></a>
     </div>
