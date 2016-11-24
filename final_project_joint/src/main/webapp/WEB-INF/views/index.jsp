@@ -302,14 +302,14 @@
     
     <!-- MAIN CONTENT -->
         
-    <section class="slice no-padding">
+    <section class="slice no-padding"  id="aboutus">
         <div class="wp-section">
             <div class="row-fluid">
                 <div class="col-md-4 wp-block no-space arrow-right base no-margin">
                     <div class="wp-block-body">
                         <div class="img-icon">
                             <i class="fa fa-flask"></i>
-                        </div>
+                        </div>                        
                         <h1>Generate ideas</h1>
                         <p class="text-center">
                         Lorem ipsum dolor sit amet, consectetur curabitur pellentesque neque eget diam posuere adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus
