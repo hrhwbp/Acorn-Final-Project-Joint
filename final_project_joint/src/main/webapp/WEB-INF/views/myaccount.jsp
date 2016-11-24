@@ -163,6 +163,23 @@ $(document).ready(function() {
 	function eventDeleteOk() {
 		$("#deleteAnniFrm").submit();
 	}
+	
+	function passwdFunc() {
+		//#password
+		var passwd = $('#password').val();
+		var oldPass = $("#oldPasswd").val();
+		var newPass = $("#newPasswd").val();
+		var newPassCheck = $("#newPasswdCheck").val();
+		if(passwd != oldPass){
+			$('#passwordErr').modal('show');
+		}else if(newPass != newPassCheck){
+			$('#passwordCheckErr').modal('show');			
+		}else{
+			$("#passwdFrm").attr("action","passChange");
+			$("#passwdFrm").submit();
+		}
+		
+	}
 </script>
     
 </head>
@@ -285,6 +302,18 @@ $(document).ready(function() {
 	    <div class="modal-content">
 	      <div class="row text-center">
 	      	비밀번호가 틀립니다.
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- 비밀번호 모달 팝업 끝-->
+
+	<!-- 비밀번호 모달 팝업 -->
+	<div class="modal fade " id="passwordCheckErr" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+	  <div class="modal-dialog modal-sm" style="margin: 350px auto;">
+	    <div class="modal-content">
+	      <div class="row text-center">
+	      	새로운 비밀번호가 서로 맞지않습니다.
 	      </div>
 	    </div>
 	  </div>
@@ -435,8 +464,8 @@ $(document).ready(function() {
                         </div>
                         <ul class="categories mt-20 tabs-framed">
                             <li><a href="#tab-1" data-toggle="tab">내 계정 정보</a></li>
+                            <li><a href="#tab-4" data-toggle="tab">비밀번호 변경</a></li>
                             <li><a href="#tab-2" data-toggle="tab">내 기념일 관리</a></li>
-                            <li><a href="#">My orders</a></li>
                             <li><a href="#tab-3" data-toggle="tab">Wishlist</a></li>
                         </ul>
                     </div>
@@ -462,6 +491,7 @@ $(document).ready(function() {
                                     <hr>
                                     <dt>Email</dt>
                                     <dd>
+                                    	
                                        <span class="pull-left">${myinfo.m_email}</span>
                                     </dd>
                                     <hr>
@@ -523,6 +553,54 @@ $(document).ready(function() {
 											
 										</div>
 									</div>
+                               <!-- ==========================================================내 이벤트 추가 수정탭 끝=================================================================== -->
+                               
+                               
+                               <!-- ==========================================================비밀번호 변경 탭=================================================================== -->
+									<div class="tab-pane fade" id="tab-4">
+										<div class="tab-body" style="padding-bottom: 0;">
+                                           <form action="javascript:passwdFunc()" method="post" id="passwdFrm">
+											<dl class="dl-horizontal style-2">
+                                            <h3 class="title title-lg">비밀번호 변경</h3>
+                                            <p class="mb-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                                            
+                                           <dt>현재 비밀번호</dt>
+		                                    <dd>
+		                                    	<div class="col-md-4">
+			                                       <input type="password" class="form-control col-md-6" id="oldPasswd" required> 
+		                                    	</div>
+		                                    </dd>
+		                                    <hr>
+		                                    <dt>새로운 비밀번호</dt>
+		                                    <dd>
+		                                       <div class="col-md-4">
+			                                       <input type="password" class="form-control col-md-6" id="newPasswd" required> 
+		                                    	</div>
+		                                    </dd>
+		                                    <br>
+		                                    <dt>비밀번호 확인</dt>
+		                                    <dd>
+		                                       <div class="col-md-4">
+			                                       <input type="password" class="form-control col-md-6" id="newPasswdCheck" name="m_password" required>
+			                                       <input type="hidden" name="m_no" value="${myinfo.m_no}"> 
+		                                    	</div>
+		                                    </dd>
+		                              		<hr>
+		                              		<dd>
+											<button class="btn btn-xs btn-base btn-icon fa-edit pull-right" type="submit"><span>수정 완료</span></button>
+	                                    	</dd>
+	                                    	<br>
+		                                 </dl>
+	                                    </form>
+										
+											
+										</div>
+									</div>                               
+                               <!-- ==========================================================비밀번호 변경 탭 끝=================================================================== -->
+                               
+									
+									
+									
 
                                 <div class="tab-pane fade" id="tab-3">
                                     <div class="tab-body">
