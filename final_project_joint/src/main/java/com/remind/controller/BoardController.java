@@ -27,6 +27,7 @@ import com.remind.model.ReplyDto;
 public class BoardController {
 	@Autowired
 	private DaoInter daoInter;
+    private StringBuffer replyMnoBuffer = new StringBuffer();
 	private StringBuffer likeStringBuffer = new StringBuffer();
 	private StringBuffer replyNameBuffer = new StringBuffer();
 	private StringBuffer replyContentBuffer = new StringBuffer();
@@ -150,6 +151,7 @@ public class BoardController {
 			}
 			data.put("like_mname", likeStringBuffer.toString());
 			List<ReplyDto> replyDto = daoInter.showReply(s.getB_no());
+            replyMnoBuffer.delete(0, replyMnoBuffer.length());
 			replyNameBuffer.delete(0, replyNameBuffer.length());
 			replyContentBuffer.delete(0, replyContentBuffer.length());
 			for (int i = 0; i < replyDto.size(); i++) {
@@ -157,6 +159,9 @@ public class BoardController {
 				replyNameBuffer.append(",");
 				replyContentBuffer.append(replyDto.get(i).getR_content());
 				replyContentBuffer.append(",");
+                replyMnoBuffer.append(replyDto.get(i).getR_mno());
+                replyMnoBuffer.append(",");
+
 			}
 			if (replyNameBuffer.length() >= 1) {
 				replyNameBuffer.delete(replyNameBuffer.length()-1, replyNameBuffer.length());
@@ -164,6 +169,11 @@ public class BoardController {
 			if (replyContentBuffer.length() >= 1){
 				replyContentBuffer.delete(replyContentBuffer.length()-1, replyContentBuffer.length());
 			}
+            if (replyMnoBuffer.length() >= 1){
+                replyMnoBuffer.delete(replyMnoBuffer.length()-1, replyMnoBuffer.length());
+            }
+            
+            data.put("reply_Mno", replyMnoBuffer.toString());
 			data.put("reply_Name", replyNameBuffer.toString());
 			data.put("reply_Content", replyContentBuffer.toString());
 			String replyCount = Integer.toString(daoInter.countReply(s.getB_no()));
@@ -276,7 +286,7 @@ public class BoardController {
             } // try - catch
         } // if
 		boolean b = daoInter.write(bean);
-		if(b) return "redirect:/myinfo";
+		if(b) return "redirect:/mywall";
 		else return "redirect:/error.jsp";
 	}
 	@RequestMapping(value="updateBoard", method=RequestMethod.GET)
@@ -311,25 +321,33 @@ public class BoardController {
             bean.setB_image(boardImg);
         }
 		boolean b = daoInter.updateBoard(bean);
-		if(b) return "redirect:/myinfo";
+		if(b) return "redirect:/mywall";
 		else return "redirect:/error.jsp";
 	}
 	
 	@RequestMapping(value="boardDelete", method = RequestMethod.POST)
 	public String deleteSubmit(@RequestParam("b_no") String b_no){
 		boolean b = daoInter.eraseBoard(b_no);
-		if(b) return "redirect:/myinfo";
+		if(b) return "redirect:/mywall";
 		else return "redirect:/error.jsp";
 	}
 	
 	@RequestMapping(value="boardDetail", method = RequestMethod.POST)
 	@ResponseBody
-	public Map<String, Object> boardDetail(@RequestParam("b_no") String b_no){
+    public Map<String, Object> boardDetail(@RequestParam("b_no") String b_no,HttpSession session){
+        String m_no = (String)session.getAttribute("mno");
+        Map<String, Object> map = new HashMap<String, Object>();
 		BoardDto dto = daoInter.showBoardDetail(b_no);
 		LikeDto ldto = daoInter.countLike(b_no);
-		Map<String, Object> map = new HashMap<String, Object>();
+        LikeBean bean = new LikeBean();
+        bean.setL_mno(m_no);
+        bean.setL_bno(b_no);
+        int likeYN = daoInter.likeYN(bean);
+        List<ReplyDto> listReply = daoInter.showReplyMore(b_no);
 		map.put("likeCount", ldto);
 		map.put("detailDto", dto);
+		map.put("reply", listReply);
+        map.put("likeYN", likeYN);
 		return map;
 	}
 	

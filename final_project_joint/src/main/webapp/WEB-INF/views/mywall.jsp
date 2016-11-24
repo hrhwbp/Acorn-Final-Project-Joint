@@ -13,14 +13,16 @@
 <!-- ===============================템플릿 용 설정====================================== -->
 
 <!-- Essential styles -->
+<!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"> 
+    <link rel="stylesheet" href="assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">  -->
 <link rel="stylesheet" href="resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css" type="text/css"> 
+<link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet" href="resources/assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">
 
-<!-- 원본에서 가져온 스크립트 -->
 <!-- Boomerang styles -->
 <!-- <link id="wpStylesheet" type="text/css" href="css/global-style.css" rel="stylesheet" media="screen"> -->
-<link id="wpStylesheet" type="text/css"	href="resources/css/global-style-red.css" rel="stylesheet" media="screen">
+<link id="wpStylesheet" type="text/css" href="resources/css/global-style-red.css" rel="stylesheet" media="screen">
 
 <!-- Favicon -->
 <!-- <link href="images/favicon.png" rel="icon" type="image/png"> -->
@@ -28,28 +30,27 @@
 
 <!-- Assets -->
 <!-- <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
-<link rel="stylesheet" href="assets/owl-carousel/owl.theme.css"> -->
-<link rel="stylesheet" href="assets/sky-forms/css/sky-forms.css">
+    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="assets/sky-forms/css/sky-forms.css"> -->
 
-
+<link rel="stylesheet" href="resources/assets/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="resources/assets/owl-carousel/owl.theme.css">
+<link rel="stylesheet" href="resources/assets/sky-forms/css/sky-forms.css">
 <!--[if lt IE 9]>
         <link rel="stylesheet" href="assets/sky-forms/css/sky-forms-ie8.css">
     <![endif]-->
 
 <!-- Required JS -->
-<!-- <script src="resources/js/jquery.js"></script>
-<script src="resources/js/jquery-ui.min.js"></script> -->
+<!-- <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script> -->
 
 <!-- Page scripts -->
 
 <!-- Video JS -->
 <!-- <link href="assets/timeline/timeline.css" rel="stylesheet"> -->
-<!-- <link href="resources/assets/timeline/timeline.css" rel="stylesheet"> -->
+<link href="resources/assets/timeline/timeline.css" rel="stylesheet">
 
-
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<!-- ===============================템플릿 용 설정 끝====================================== -->
 <style type="text/css">
 /* ============아이콘 표시를 위한 import=============== */
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
@@ -62,7 +63,7 @@
 
 .thumbnail {
     position: relative;
-    padding-top: 100%;  /* 1:1 ratio */
+    padding-top: 75%;  /* 1:1 ratio */
     overflow: hidden;
 }
 
@@ -96,27 +97,22 @@
 
 } 
 </style>
-
-<!-- ===============================템플릿 용 설정 끝====================================== -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="resources/js/jquery.js"></script>
+<script src="resources/js/jquery-ui.min.js"></script> -->
 
 <script type="text/javascript">
 $(document).ready(function() {
-
 	$('#updateSubmit').click(function() {
 		$('#boardUpdatefrm').submit()
 	});
-	$('#infoSubmit').click(function() {
-		if($('#password').val() == $('#m_password').val()){
-			$('#infofrm').submit()
-		}else{
-			$('#passwordErr').modal('show');
-		}
-	});
-	$('#boardInsertBtn').click(function() {	
+	
+	$('#boardInsertBtn').click(function() {
 		$('#boardInsert').modal('show');
 		$('#boardInsertImg').hide();
 	});
+	
 	$('#boardInsertSubmit').click(function() {
 		/* alert(boardInsertFile.files[0]); */
 		if(boardInsertFile.files[0] == undefined){
@@ -163,14 +159,13 @@ function modalToggle(b_no) {
         	 if(reply == ""){
         		 $('#boardReplyModal').append("<div>등록된 댓글이 없습니다.</div>");
         	 }
+        	 
         	 $.each(reply,function(i,ss){
-        		 
         		 var str = "";
-        		
 	        	 str = "<a href='friendinfo?m_no=" + ss.r_mno + "'>" + ss.r_name + "</a>&nbsp;" + ss.r_content + "<br>";
-        		
 	        	 $('#boardReplyModal').append(str);
         	 });
+        	 
         	 if(likeYN == 0){
         	 	$("#likeYN").attr("onclick","likesubmit(" + dto.b_no + ")");        		 
         	 	$("#likeYN").attr("style","cursor:pointer");        		 
@@ -283,13 +278,13 @@ function follower(m_no) {
  				if(ss.f_ms == '2' && m_no == m_no2 ){
  					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' style='background-color: #70c050; color: white;' onclick='cancelFollow("+ ss.f_sno + "," + ss.f_mno +")'>팔로잉</button>";
  				}else if(ss.f_ms == '1' && m_no == m_no2){
- 					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' onclick='upFollow(" + ss.f_mno + "," + ss.f_sno + ")'>팔로우</button>"; 					
+ 					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' style='background-color: rgb(255, 247, 252);' onclick='upFollow(" + ss.f_mno + "," + ss.f_sno + ")'>팔로우</button>"; 					
  				}else if(ss.f_ms == '1' || ss.f_ms == '2'){
  					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' style='background-color: #70c050; color: white;' onclick='cancelFollow("+ ss.f_sno + "," + ss.f_mno +")'>팔로잉</button>";
  				}else if(ss.f_sno == m_no2){
- 					str +=	"<button type='button' class='btn btn-default' style='width:68px'>나</button>";
+ 					str +=	"<button type='button' class='btn btn-default' style='width:68px; background-color: rgb(255, 247, 252);'>나</button>";
  				}else{
- 					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' onclick='upFollow(" + ss.f_mno + "," + ss.f_sno + ")'>팔로우</button>";
+ 					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' style='background-color: rgb(255, 247, 252);' onclick='upFollow(" + ss.f_mno + "," + ss.f_sno + ")'>팔로우</button>";
  				}
  				str += "</div>" +
  						"</div>" +
@@ -339,9 +334,9 @@ function follow(m_no) {
 			if(ss.f_ms == '2' || ss.f_ms == '1'){
 				str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_mno + "' style='background-color: #70c050; color: white;' onclick='cancelFollow("+ ss.f_mno + "," + ss.f_sno +")'>팔로잉</button>";
 			}else if(ss.f_mno == m_no2){
-				str +=	"<button type='button' class='btn btn-default' style='width:68px'>나</button>";	
+				str +=	"<button type='button' class='btn btn-default' style='width:68px; background-color: rgb(255, 247, 252);'>나</button>";	
 			}else{
-				str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_mno + "' onclick='upFollow(" + ss.f_sno + "," + ss.f_mno + ")'>팔로우</button>";
+				str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_mno + "' style='background-color: rgb(255, 247, 252);' onclick='upFollow(" + ss.f_sno + "," + ss.f_mno + ")'>팔로우</button>";
 			}	
 			str +=	"</div>" +
 					"</div>" +
@@ -390,7 +385,7 @@ function cancelFollow(f_mno,f_sno) {
         success : function() {
         	/* 모달용 팔로우 취소 */
         	$("#followBtn"+f_mno).attr('onclick','upFollow('+ f_sno + ',' + f_mno +')');
-        	$("#followBtn"+f_mno).attr('style','background-color: white; color: black;');
+        	$("#followBtn"+f_mno).attr('style','background-color: rgb(255, 247, 252); color: black;');
         	$("#followBtn"+f_mno).text('팔로우');
         },
         error : function(xhr, status, error) {
@@ -491,25 +486,35 @@ function boardDeleteOk(b_no) {
 	$('#deleteFrm').submit();
 }
 </script>
+
 </head>
 
 <%@ include file="top.jsp" %>
 
 <body style="background-color: rgba(128, 206, 208, 0.14);">
+		<!-- ==========================현재 페이지 표시줄 MAIN CONTENT============================= -->
+		<div class="pg-opt bg-danger">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<h2>Wall</h2>
+					</div>
+					<div class="col-md-6">
+						<ol class="breadcrumb">
+							<li><a href="action">Home</a></li>							
+							<li class="active">Wall</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ==========================현재 페이지 표시줄 MAIN CONTENT 끝============================= -->
+
 <div class="container">
 <div class="container"  style="padding-top: 2%; padding-bottom: 5%;">
 <div class="row" style="background-color: rgba(255, 247, 252, 0.62); padding-top: 30px; padding-bottom: 30px">
-	<div class="col-md-2 col-md-offset-2" style="height: 165px">	
-	<c:choose>
-		<c:when test="${mno == myinfo.m_no }">
-		<a style="color: buttontext; border: 0; cursor: pointer; height: 100%; padding: 0; width: 100%;" data-toggle="modal" data-target="#updateInfo">		
-			<img src="http://wbp.synology.me/profileimg/${myinfo.m_image }" class="img-circle img-responsive" style="height: 100%; width: 100%">
-		</a>
-		</c:when>
-		<c:otherwise>
-			<img src="http://wbp.synology.me/profileimg/${myinfo.m_image }" class="img-circle img-responsive" style="height: 100%; width: 100%">
-		</c:otherwise>
-	</c:choose>
+	<div class="col-md-2 col-md-offset-2 col-sm-8" style="height: 165px">	
+		<img src="http://wbp.synology.me/profileimg/${myinfo.m_image }" class="img-circle img-responsive" style="height: 100%; width: 100%">
 	</div>
 	<div class="col-md-6" style="padding-top: 1%;">
 		<div class="row">
@@ -522,7 +527,7 @@ function boardDeleteOk(b_no) {
 			<div class="col-md-3 col-md-offset-1">
 				<c:choose>
 				<c:when test="${mno == myinfo.m_no }">
-				<button type="button" class="btn btn-default col-md-12" data-toggle="modal" data-target="#updateInfo">프로필 변경</button>
+				
 				</c:when>
 				<c:otherwise>
 					<c:choose>
@@ -548,7 +553,7 @@ function boardDeleteOk(b_no) {
 			<div class="col-md-1">
 				<span class="glyphicon glyphicon-option-horizontal" aria-hidden="true" style="size: 100%"></span>
 			</div>
-<%-- 			<c:choose>
+ 			<c:choose>
 			<c:when test="${myinfo.m_introduce == null || myinfo.m_introduce == ''}">
 				<div class="col-md-10">
 					아직 소개말이 없습니다.
@@ -559,7 +564,7 @@ function boardDeleteOk(b_no) {
 					${myinfo.m_introduce}
 				</div>
 			</c:otherwise>
-			</c:choose> --%>
+			</c:choose>
 		</div>
 	</div>
 </div>
@@ -744,10 +749,10 @@ function boardDeleteOk(b_no) {
 	  </div>
 	  	
 	</div>
-	<!-- 게시물 수정 모달 -->
+	<!-- 게시물 수정, 보기 모달 -->
 
 	<div class="modal fade" id="boardDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="">
-	  <div class="modal-dialog" style="margin: 180px auto; width: 55%">
+	  <div class="modal-dialog" style="margin: 180px auto; width: 50%">
 	    <div class="modal-content">
 	     <form id="boardUpdatefrm" action="updateBoard" method="post" enctype="multipart/form-data">
 	      <div class="modal-body">
@@ -756,7 +761,7 @@ function boardDeleteOk(b_no) {
 				<c:choose>
 					<c:when test="${mno == myinfo.m_no }">
 			    		<div class="thumbnail-wrapper" >
-			    			<div class="thumbnail" style="height: 480px; background-color: #000; margin-bottom: 0;">
+			    			<div class="thumbnail" style="height: 450px; background-color: #000; margin-bottom: 0;">
 			        			<div class="centered">
 									<a  onclick="$('#boardFile').click();" style="cursor: pointer">
 									<img alt="Responsive image" id="modalimg" class="landscape" src="" >
@@ -818,7 +823,7 @@ function boardDeleteOk(b_no) {
 				
 				<p class="col-md-2" id="modalLike" style="padding-top: 1%"></p><p id="modalDate" style="padding-top: 1%" class="text-right col-md-2"></p>
 				<div class="col-md-4">
-		     		<div class="" style="background-color: 0; height: 360px; overflow-y: scroll;" id="boardReplyModal">
+		     		<div class="" style="background-color: 0; height: 340px; overflow-y: scroll;" id="boardReplyModal">
 		     		
 		     		</div>
 				</div>
@@ -897,23 +902,11 @@ function boardDeleteOk(b_no) {
 				</div>
 			</div>
 	      </div>
-	      <div class="modal-body" id="followDiv" style="max-height: 400px; overflow-y: scroll;">
+	      <div class="modal-body" id="followDiv" style="max-height: 400px; overflow-y: scroll; ">
 		      
 	      </div>
 	     </form>
 	      
-	    </div>
-	  </div>
-	</div>
-	
-
-	<!-- 비밀번호 모달 팝업 -->
-	<div class="modal fade " id="passwordErr" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
-	  <div class="modal-dialog modal-sm" style="margin: 350px auto;">
-	    <div class="modal-content">
-	      <div class="row text-center">
-	      	비밀번호가 틀립니다.
-	      </div>
 	    </div>
 	  </div>
 	</div>
@@ -952,21 +945,85 @@ function boardDeleteOk(b_no) {
 	    	</form>
 	  </div>
 	</div>
-	
-	
 </div> <!-- container -->
+    <!-- FOOTER -->
+<div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="col">
+                       <h4>Contact us</h4>
+                       <ul>
+                            <li>5th Avenue, New York - United States</li>
+                            <li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567 </li>
+                            <li>Email: <a href="mailto:hello@example.com" title="Email Us">hello@example.com</a></li>
+                            <li>Skype: <a href="skype:my.business?call" title="Skype us">my-business</a></li>
+                            <li>Creating great templates is our passion</li>
+                        </ul>
+                     </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="col">
+                        <h4>Mailing list</h4>
+                        <p>Sign up if you would like to receive occasional treats from us.</p>
+                        <form class="form-horizontal form-light">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Your email address...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-base" type="button">Go!</button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="col col-social-icons">
+                        <h4>Follow us</h4>
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-skype"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-flickr"></i></a>
+                    </div>
+                </div>
+
+                 <div class="col-md-3">
+                    <div class="col">
+                        <h4>About us</h4>
+                        <p class="no-margin">
+                        Boomerang MultiPurpose Template is a multi-solution product made with simplicity in mind so you can benefit as much as possible from it.
+                        <br><br>
+                        <a href="#" class="btn btn-block btn-base btn-icon fa-check"><span>Try it now</span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="row">
+                <div class="col-lg-9 copyright">
+                    2014 Â© Web Pixels. All rights reserved.
+                    <a href="#">Terms and conditions</a>
+                </div>
+                <div class="col-lg-3">
+                    <a href="http://www.webpixels.ro" title="Made with love by Web Pixels" target="_blank" class="">
+                        <img src="resources/images/webpixels-footer-logo.png" alt="Web Pixels - Designing Forward | Logo" class="pull-right">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
 <script>
-/* 프로필 수정 이미지 미리보기 */
-var upload = document.getElementById('file'), image = document.getElementById('image');
-	upload.onchange = function (e) {
-	e.preventDefault();
-var file = upload.files[0],
-	reader = new FileReader();
-	reader.onload = function (event) {
-	image.src = event.target.result;
-  };
-  reader.readAsDataURL(file);
-};
 /* 게시물 수정 이미지 미리보기 */
 var boardFile = document.getElementById('boardFile'),
 	modalimg = document.getElementById('modalimg');
@@ -996,5 +1053,5 @@ boardInsertFile.onchange = function (e) {
 </script>
 
 </body>
-
+<%-- <%@ include file="bottom.jsp" %> --%>
 </html>

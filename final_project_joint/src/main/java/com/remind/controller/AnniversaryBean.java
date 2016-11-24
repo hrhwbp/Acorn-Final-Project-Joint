@@ -1,7 +1,7 @@
 package com.remind.controller;
 
 public class AnniversaryBean {
-	String a_no, a_mno, a_detail, a_date, a_mname, a_dday;
+	String a_no, a_mno, a_detail, a_date, a_mname, a_dday,a_mimage;;
 
 	public String getA_dday() {
 		return a_dday;
@@ -50,5 +50,15 @@ public class AnniversaryBean {
 	public void setA_date(String a_date) {
 		this.a_date = a_date;
 	}
+
+	public String getA_mimage() {
+		return a_mimage;
+	}
+
+	public void setA_mimage(String a_mimage) {
+		this.a_mimage = a_mimage;
+	}
+	
+	
 	
 }

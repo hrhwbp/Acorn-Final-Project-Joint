@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="resources/assets/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="resources/assets/owl-carousel/owl.theme.css">
     <link rel="stylesheet" href="resources/assets/sky-forms/css/sky-forms.css">    
+    
     <!--[if lt IE 9]>
         <link rel="stylesheet" href="resources/assets/sky-forms/css/sky-forms-ie8.css">
     <![endif]-->
@@ -41,6 +42,7 @@
 }
 @import url(http://fonts.googleapis.com/css?family=Titillium+Web:300);
 /* ============아이콘 표시를 위한 import 끝ㅇ============== */
+
 .thumbnail-wrappper {
     width: 25%; 
 }
@@ -92,11 +94,12 @@
 <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
     
-    <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function() {
 	$('#updateSubmit').click(function() {
 		$('#boardUpdatefrm').submit()
 	});
+	
 	$('#infoSubmit').click(function() {
 		if($('#password').val() == $('#m_password').val()){
 			$('#infofrm').submit()
@@ -104,10 +107,12 @@ $(document).ready(function() {
 			$('#passwordErr').modal('show');
 		}
 	});
+	
 	$('#boardInsertBtn').click(function() {
 		$('#boardInsert').modal('show');
 		$('#boardInsertImg').hide();
 	});
+	
 	$('#boardInsertSubmit').click(function() {
 		/* alert(boardInsertFile.files[0]); */
 		if(boardInsertFile.files[0] == undefined){
@@ -119,265 +124,52 @@ $(document).ready(function() {
 			return;
 		}
 		$('#boardInsertfrm').submit();
-	})
-})
-
-/* 내 게시물 자세히 복 */
-function modalToggle(b_no) {
-	/* alert(b_no) 보드 번호 받기. */ 
-	 jQuery.ajax({
-         type:"post",
-         url:"boardDetail",
-         data: {"b_no":b_no},
-         dataType: "json",
-         success : function(data) {
-        	 /* alert(data.detailDto.b_no); */
-        	 var dto = data.detailDto;
-        	 var likeCnt = data.likeCount;
-        	 /* alert(dto.b_image); */
-        	 /* modalContent modalLike modalDate */
-        	 /* document.getElementById("modalimg").src = dto.b_image;  */
-        	 $("#modalimg").attr('src', dto.b_image);
-        	 $('#modalContent').val(dto.b_content);
-        	 $('#modalLike').text('좋아요 ' + likeCnt.l_count);
-        	 $('#modalDate').text(dto.b_date);
-        	 $('#hiddenNo').val(dto.b_no); 
-        	 $('#hiddenImage').val(dto.b_image); 
-        	 $('#hiddenBoardImg').attr('value',dto.b_image);
-        	 $('#boardNo').attr('value', b_no );
-        	 $('#boardDetail').modal('show');
-         },
-         error : function(xhr, status, error) {
-               alert("에러발생 " + error);
-         }
-   });
+	});
 	
-}
-/* 내 팔로워 보기 */
-function follower(m_no) {
-	$('#followHead').text('팔로워');
-	$('#followDiv').text('');
-	 jQuery.ajax({
-         type:"post",
-         url:"showMyFollower",
-         data: {"m_no":m_no},
-         dataType: "json",
-         success : function(data) {
-        	 var list = data.Mylist;
-        	 var m_no = data.m_no;
-        	 var m_no2 = data.m_no2;
-        	 var str = "";
-        	 $.each(list,function(i,ss){
-        		 /* alert(ss.m_email); */
-        		 str += "<div class='row' style='padding-bottom: 1%;'>" +
-        		 		"<div class='col-md-12'>" +
-        		 		"<div class='col-md-2' style='height: 50px'>" +
-        		 		"<img src='http://wbp.synology.me/profileimg/" + ss.m_image + "' alt='Responsive image' class='img-circle img-responsive' style='height: 100%; width: 100%'>" +
-        		 		"</div>" +
-        		 		"<div class='col-md-8'>" +
- 						"<div class='row' style='cursor: default;'>" +
- 						"" + ss.m_name + "" +
-        		 		"</div>" +
- 						"<div class='row'>" +
- 						"<a href='myinfo?m_no=" + ss.f_sno + "'>" + ss.m_email + "</a>" +
- 						"</div>" +
- 						"</div>" +
- 						"<div class='col-md-2' style='padding-top: 1%;'>";
- 				if(ss.f_ms == '2' && m_no == m_no2 ){
- 					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' style='background-color: #70c050; color: white;' onclick='cancelFollow("+ ss.f_sno + "," + ss.f_mno +")'>팔로잉</button>";
- 				}else if(ss.f_ms == '1' && m_no == m_no2){
- 					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' onclick='upFollow(" + ss.f_mno + "," + ss.f_sno + ")'>팔로우</button>"; 					
- 				}else if(ss.f_ms == '1' || ss.f_ms == '2'){
- 					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' style='background-color: #70c050; color: white;' onclick='cancelFollow("+ ss.f_sno + "," + ss.f_mno +")'>팔로잉</button>";
- 				}else if(ss.f_sno == m_no2){
- 					str +=	"<button type='button' class='btn btn-default' style='width:68px'>나</button>";
- 				}else{
- 					str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_sno + "' onclick='upFollow(" + ss.f_mno + "," + ss.f_sno + ")'>팔로우</button>";
- 				}
- 				str += "</div>" +
- 						"</div>" +
- 		      			"</div>";
-        		 
-        	 })        	
-        	 $('#followDiv').append(str);
-        	 /* modalContent modalLike modalDate */
-        	 /* document.getElementById("modalimg").src = dto.b_image;  */
-        	 $('#myFollow').modal('show');
-         },
-         error : function(xhr, status, error) {
-               alert("에러발생 " + error);
-         }
-   });
-}
-
-/* 내 팔로우 상태 보기 */
-function follow(m_no) {
-	$('#followHead').text('팔로잉');
-	$('#followDiv').text('');
-	 jQuery.ajax({
-        type:"post",
-        url:"showIFollow",
-        data: {"m_no":m_no},
-        dataType: "json",
-        success : function(data) {
-       	 var list = data.Mylist;
-       	 var m_no2 = data.m_no2;
-       	 var str = "";
-       	 $.each(list,function(i,ss){
-       		 /* alert(ss.m_email); */
-       		 str += "<div class='row' style='padding-bottom: 1%;'>" +
-       		 		"<div class='col-md-12'>" +
-       		 		"<div class='col-md-2' style='height: 50px'>" +
-       		 		"<img src='http://wbp.synology.me/profileimg/" + ss.m_image + "' alt='Responsive image' class='img-circle img-responsive' style='height: 100%; width: 100%'>" +
-       		 		"</div>" +
-       		 		"<div class='col-md-8'>" +
-					"<div class='row' style='cursor: default;'>" +
-					"" + ss.m_name + "" +
-       		 		"</div>" +
-					"<div class='row'>" +
-					"<a href='myinfo?m_no=" + ss.f_mno + "'>" + ss.m_email + "</a>" +
-					"</div>" +
-					"</div>" +
-					"<div class='col-md-2' style='padding-top: 1%;'>";
-			if(ss.f_ms == '2' || ss.f_ms == '1'){
-				str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_mno + "' style='background-color: #70c050; color: white;' onclick='cancelFollow("+ ss.f_mno + "," + ss.f_sno +")'>팔로잉</button>";
-			}else if(ss.f_mno == m_no2){
-				str +=	"<button type='button' class='btn btn-default' style='width:68px'>나</button>";	
-			}else{
-				str +=	"<button type='button' class='btn btn-default' id='followBtn" + ss.f_mno + "' onclick='upFollow(" + ss.f_sno + "," + ss.f_mno + ")'>팔로우</button>";
-			}	
-			str +=	"</div>" +
-					"</div>" +
-	      			"</div>";
-       		 /* rgb(168,133,239) */
-       	 })        	
-       	 $('#followDiv').append(str);
-       	 /* modalContent modalLike modalDate */
-       	 /* document.getElementById("modalimg").src = dto.b_image;  */
-       	 $('#myFollow').modal('show');
-        },
-        error : function(xhr, status, error) {
-              alert("에러발생 " + error);
-        }
-  });
-}
-
-/* 팔로우 하기 */
-function upFollow(f_mno,f_sno) {
-	/* alert(m_no + " " + f_sno); */
-	var array = {"f_mno":f_mno,"f_sno":f_sno};
-	jQuery.ajax({
-        type:"post",
-        url:"insertFollow",
-        data: array,
-        success : function() {
-        	$("#followBtn"+f_sno).attr('onclick','cancelFollow('+ f_sno + ',' + f_mno +')');
-        	$("#followBtn"+f_sno).attr('style','background-color: #70c050; color: white;');
-        	$("#followBtn"+f_sno).text('팔로잉');
-        },
-        error : function(xhr, status, error) {
-              alert("에러발생 insert" + error + "" + status );
-        }
-	}); 
-}
-
-/*  */
-function up2Follow(m_no,f_sno) {
-	/* alert(m_no + " " + f_sno); */
+	/* $(".date-picker").datepicker(); */
+	$('#date-picker-2').datepicker({
+	    dateFormat : "yy-mm-dd",
+	    beforeShow: function() {
+	        setTimeout(function(){
+	            $('.ui-datepicker').css('z-index', 99999999999999);
+	        }, 0);
+	    },
+	});
 	
-	$("#follow").attr('onclick','cancelFollow('+ m_no + ',' + f_sno +')');
-	$("#follow").attr('style','background-color: #70c050; color: white;');
-	$("#follow").attr('value','팔로잉');
-	var array = {"f_mno":m_no,"f_sno":f_sno};
+	$('#date-picker-3').datepicker({
+	    dateFormat : "yy-mm-dd",
+	    beforeShow: function() {
+	        setTimeout(function(){
+	            $('.ui-datepicker').css('z-index', 99999999999999);
+	        }, 0);
+	    },
+	});
 	
-	jQuery.ajax({
-        type:"post",
-        url:"insertFollow",
-        data: array,
-        success : function() {
-       		alert('성공');
-        },
-        error : function(xhr, status, error) {
-              alert("에러발생 " + error);
-        }
-	}); 
-}
+});
 
-/* 팔로우 취소 */
-function cancelFollow(f_mno,f_sno) {
-	/* alert(f_mno + " " + f_sno); */
-	var array = {"f_mno":f_sno,"f_sno":f_mno};
-	jQuery.ajax({
-        type:"post",
-        url:"followCancel",
-        data: array,
-        success : function() {
-        	$("#followBtn"+f_mno).attr('onclick','upFollow('+ f_sno + ',' + f_mno +')');
-        	$("#followBtn"+f_mno).attr('style','background-color: white; color: black;');
-        	$("#followBtn"+f_mno).text('팔로우');
-        },
-        error : function(xhr, status, error) {
-              alert("에러발생 " + error);
-        }
-	}); 
-	/* $("#followBtn"+f_mno).attr('onclick','upFollow('+ m_no + ',' + f_mno +')');
-	$("#followBtn"+f_mno).attr('style','background-color: white; color: black;'); */
-}
-
-/* 마우스 아웃 hover hide처리  */
-function hoverHide(b_no) {
-	$('#showHover'+b_no).hide();
-}
-
-/* 마우스 오버 hover show 처리. ajax 한번호출. */
-function hoverShow(b_no) {
-	var showh = $("#showHover"+b_no);
-	var tagA = $("#tagA"+b_no);
-	/* tagA.removeAttr('onmouseover'); */
-	
-	showh.attr('style','background-color: rgba(0,0,0,.3); bottom: 0; -webkit-box-pack: center; justify-content: center; right: 0; left: 0;position: absolute; top: 0;');
-	if(tagA.attr('class') == 'hover'){
-		tagA.attr('class','');
-		jQuery.ajax({
-			 type:"post",
-		     url:"rlCount",
-		     data: {'b_no':b_no},
-		     dataType: 'json',
-		     success : function(data) {
-		      	var like = data.likeCount;
-		      	var reply = data.replyCount;
-				var str = "";
-				str += "<ul style='display: flex; font-size: 16px;font-weight: 600; color: #fff; list-style: none; justify-content: center; margin: 0; padding: 0; border: 0; font: inherit; padding-top: 32%;' class='' >" +
-						"<li style='line-height: 19px; padding-left: 20%; font-size: 18px; margin: 0 auto; position: relative; display: table;' class='text-right'><span class='glyphicon glyphicon-heart' aria-hidden='true'></span>&nbsp;&nbsp;" + like + "</li>" +
-						"<li style='line-height: 19px; padding-right: 20%; margin: 0 auto; font-size: 18px; position: relative; display: table;'><span class='glyphicon glyphicon-comment' aria-hidden='true'></span>&nbsp;&nbsp;" + reply +  "</li>" +
-						"</ul>";
-				showh.append(str);
-		     },
-		     error : function(xhr, status, error) {
-		   	    alert("에러발생 " + error);
-		     }
-		});
+	function eventUpdate(a_no,a_detail,a_date) {
+		$('#hiddenA_no').attr('value',a_no);
+		$('#updateDetail').attr('value',a_detail);
+		$('#date-picker-3').attr('value',a_date);
+		$('#updateAnni').modal('show');
 	}
 	
-}
-
-/* 내 게시물 삭제 */
-function boardDelete() {
-	$('#boardDeleteOk').modal('show');
-}
-
-/* 삭제 확인 */
-
-function boardDeleteOk(b_no) {
-	$('#deleteFrm').submit();
-}
+	function eventDelete(a_no) {
+		$("#eventDelOk").attr('onclick','eventDeleteOk()');
+		$("#deleteA_no").attr('value',a_no);
+		$("#eventDeleteOk").modal('show');
+	}
+	
+	function eventDeleteOk() {
+		$("#deleteAnniFrm").submit();
+	}
 </script>
     
 </head>
 <%@include file="top.jsp"%>
 <body>
 <!-- =======================================각종 모달======================================= -->
-<!-- ============================================================프로필 수정 모달===================================================================== -->	
+<!-- 프로필 수정 모달 -->	
 	<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 	  <div class="modal-dialog" style="margin: 150px auto;">
 	    <div class="modal-content">
@@ -398,8 +190,8 @@ function boardDeleteOk(b_no) {
 				</div>
 			</div>
 	     </div>
-	     
-	      	<div class="modal-body">			
+	      	<div class="modal-body">
+			
 				<input type="hidden" name="m_no" value="${myinfo.m_no}">
 				<div class="row">
 					<div class="col-md-12">
@@ -486,51 +278,127 @@ function boardDeleteOk(b_no) {
 	    </div>	    
 	  </div>	  	
 	</div>
-	<!-- ================================================프로필 수정 모달  끝=======================================================-->
-	<!-- =================================================기념일 추가 모달  insertAnni============================================= -->
-
-	<%-- <div class="modal fade" id="addEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
-	  <div class="modal-dialog" style="margin: 150px auto;">
+	<!-- 프로필 수정 모달  끝-->
+	<!-- 비밀번호 모달 팝업 -->
+	<div class="modal fade " id="passwordErr" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+	  <div class="modal-dialog modal-sm" style="margin: 350px auto;">
 	    <div class="modal-content">
-	     <form action="updateInfo" id="infofrm" method="post" enctype="multipart/form-data">
-	      <div class="modal-header">
-	      
-	     
-		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-			<div class="row">
-				<div class="col-md-4 col-md-offset-4 text-center">
-								</div>
-			
-	     </div>
+	      <div class="row text-center">
+	      	비밀번호가 틀립니다.
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- 비밀번호 모달 팝업 끝-->
+	
+	
+	<!-- 기념일 추가 모달  insertAnni-->
+
+	<div class="modal fade bs-example-modal-sm" id="insertAnni" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+	  <div class="modal-dialog modal-sm" style="margin: 250px auto;">
+	    <div class="modal-content">
+	     <form action="insertAnni" id="insertAnnifrm" method="post">
 	      	<div class="modal-body">
 			
-				<input type="hidden" name="m_no" value="${myinfo.m_no}">
+				<input type="hidden" name="a_mno" value="${myinfo.m_no }">
 				<div class="row">
 					<div class="col-md-12">
 						<label for="a_detail">이벤트 이름</label>
 						<input type="text" class="form-control" id="a_detail" name="a_detail" required>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<label for="a_date">날짜</label>
-						<input type="text" class="form-control" name="a_date" id="a_date"  required>
-					</div>
-				</div>		
-					
-		
+				
+			    <div class="row">
+			    <div class="col-md-12">
+				    <div class="control-group">
+	        		<label for="date-picker-2" class="control-label">날짜</label>
+	        		<div class="controls">
+	          		<div class="input-group">
+	                <input id="date-picker-2" type="text" name="a_date" class="date-picker form-control" readonly="readonly" required/>
+	                <label for="date-picker-2" class="input-group-addon btn">
+	                	<span class="glyphicon glyphicon-calendar"></span>
+	                </label>
+		            </div>
+		       		 </div>
+		   		 </div>
+			     	</div>
+			    </div>
+			</div>
 	    	<div class="modal-footer">	    	
-	    	<button class="btn btn-primary" id="eventSubmit" type="button">Save changes</button>	    	
-			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	    	<button class="btn btn-primary" id="eventSubmit" type="submit">Save Change</button>	    	
 			</div>
 			</form>
 	    </div>	    
 	  </div>	  	
-	</div> --%>
+	</div> 
+	<!-- 기념일 추가 모달  insertAnni끝-->
+	<!-- 기념일 수정 모달 -->
+		<div class="modal fade bs-example-modal-sm" id="updateAnni" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+	  <div class="modal-dialog modal-sm" style="margin: 250px auto;">
+	    <div class="modal-content">
+	     <form action="updateAnni" id="updateAnnifrm" method="post">
+	      	<div class="modal-body">
+			
+				<input type="hidden" name="a_mno" value="${myinfo.m_no }">
+				<input type="hidden" id="hiddenA_no" name="a_no" value="">
+				<div class="row">
+					<div class="col-md-12">
+						<label for="a_detail">이벤트 이름</label>
+						<input type="text" class="form-control" value="" id="updateDetail" name="a_detail" required>
+					</div>
+				</div>
+				
+			    <div class="row">
+			    <div class="col-md-12">
+				    <div class="control-group">
+	        		<label for="date-picker-3" class="control-label">날짜</label>
+	        		<div class="controls">
+	          		<div class="input-group">
+	                <input id="date-picker-3" type="text" name="a_date" class="date-picker form-control" readonly="readonly" required/>
+	                <label for="date-picker-3" class="input-group-addon btn">
+	                	<span class="glyphicon glyphicon-calendar"></span>
+	                </label>
+		            </div>
+		       		 </div>
+		   		 </div>
+			     	</div>
+			    </div>
+			</div>
+	    	<div class="modal-footer">	    	
+	    	<button class="btn btn-primary" type="submit">Save</button>	    	
+			</div>
+			</form>
+	    </div>	    
+	  </div>	  	
+	</div> 
 	
-	<!-- ===================================================기념일 추가 모달  insertAnni끝========================================= -->
+    <!--  -->        
+	<!-- 삭제확인 모달 -->
+	<div class="modal fade" id="eventDeleteOk" tabindex="-1" role="dialog" aria-labelledby="">
+	  <div class="modal-dialog modal-sm" style="margin: 350px auto;">
+	    <div class="modal-content">
+	      <div class="row text-center">
+	      	<p style="padding-top: 2%"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="color: red;  font-size: 25px;"></span></p>
+	      	<h5>
+	      	<b>정말 삭제 하시겠습니까?</b>
+	      	</h5>
+	      </div>
+	    </div>
+	    
+	     <div class="modal-footer">
+	     	<div class="row text-center">
+			<button type="button" class="btn btn-danger" id="eventDelOk" onclick="boardDeleteOk()">Delete</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+	     	</div>
+	      </div>
+	    	<form action="deleteAnni" method="post" id="deleteAnniFrm">
+	    		<input type="hidden" id="deleteA_no" name="a_no" value="">
+	    	</form>
+	  </div>
+	</div>    
+	<!-- 삭제확인 모달 끝 -->    
 
-            
+    
     <!-- MAIN CONTENT -->
         <div class="pg-opt">
         <div class="container">
@@ -579,11 +447,11 @@ function boardDeleteOk(b_no) {
                                 <li><a href="#tab-2" data-toggle="tab">내 기념일 관리</a></li>
                                 <li><a href="#tab-3" data-toggle="tab">Whishlist</a></li>
                             </ul>
-<!-- ==============================================================내 정보보기 ===================================================================== -->                           
-							<div class="tab-content">
+
+                            <div class="tab-content">
                                 <div class="tab-pane fade in active" id="tab-1">
                                     <div class="tab-body">
-                                        <dl class="dl-horizontal style-2">
+                                    <dl class="dl-horizontal style-2">
                                             <h3 class="title title-lg">Personal information</h3>
                                             <p class="mb-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
                                             
@@ -613,46 +481,48 @@ function boardDeleteOk(b_no) {
                                  </dl>
                               </div>
                            </div>
-<!-- =============================================================내 정보보기 ====================================================================== -->
 
-<!-- ==========================================================내 이벤트 추가 수정탭 =================================================================== -->
+                               <!-- ==========================================================내 이벤트 추가 수정탭=================================================================== -->
 
-							<div class="tab-pane fade" id="tab-2">
-								<div class="tab-body" style="padding-bottom: 0;">
-									<h3 class="title title-lg">나의 이벤트</h3>
-									<p class="mb-20">내 이벤트를 추가/수정하여 친구들에게 알려주세요!</p><a href="#" class="btn btn-xs btn-base btn-icon fa-edit pull-right" data-toggle="modal" data-target="#insertAnni"><span>기념일 추가</span></a>
-		
-									<table
-										class="table table-orders table-bordered table-striped table-responsive no-margin">
-										<tbody>
-											<tr>
-												<th>이벤트 명</th>
-												<th>날자</th>
-												<th>수정/삭제</th>														
-											</tr>
-											<c:forEach var="anni" items="${showAnni}">
-											<c:if test="${anni.a_mno == mno}">
-											<tr>
-												<td><a href="#">${anni.a_detail }</a></td>
-												<td>${anni.a_date }</td>
-												<td><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i> / <i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></td>														
-											</tr>
-											</c:if>
-											</c:forEach>
-											<%-- <c:if test="${anni.a_mno != mno}">
-											<tr>
-												<td colspan="3">등록하신 기념일이 없군요. 추가하기를 누르신후 추가해주세요!</td>
-											</tr>
-											</c:if> --%>
-										</tbody>
-									</table>
-									
-									<br>
-								</div>
-							</div>
-<!-- ==========================================================내 이벤트 추가 수정탭 끝=================================================================== -->
+									<div class="tab-pane fade" id="tab-2">
+										<div class="tab-body" style="padding-bottom: 0;">
+											<h3 class="title title-lg">나의 이벤트</h3>
+											<p class="mb-20">내 이벤트를 추가/수정하여 친구들에게 알려주세요!</p>
 
-
+											<table
+												class="table table-orders table-bordered table-striped table-responsive no-margin">
+												<tbody>
+													<tr>
+														<th>이벤트 명</th>
+														<th>날짜</th>
+														<th><div  class="pull-right">수정 | 삭제</div></th>														
+													</tr>
+													<c:forEach var="anni" items="${showAnni}">
+													<c:if test="${anni.a_mno == mno}">
+													<tr>
+														<td><a href="#">${anni.a_detail }</a></td>
+														<td>${anni.a_date }</td>
+														<td><div  class="pull-right"><a href="#" onclick="eventUpdate(${anni.a_no},'${anni.a_detail}','${anni.a_date}')"><i class="fa fa-pencil-square-o fa-2x " aria-hidden="true"></i></a>&nbsp;|&nbsp;<a href="javascript:eventDelete(${anni.a_no})"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a></div></td>														
+													</tr>
+													</c:if>
+													</c:forEach>
+													<%--<c:otherwise>
+													<tr>
+														<td colspan="3">등록하신 기념일이 없군요. 추가하기를 누르신후 추가해주세요!</td>
+													</tr>
+													</c:otherwise> --%>
+													<tr>
+														<td colspan="3">
+															<a href="#" class="btn btn-xs btn-base btn-icon fa-edit pull-right" data-toggle="modal" data-target="#insertAnni"><span>기념일 추가</span></a>
+														
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<br>
+											
+										</div>
+									</div>
 
                                 <div class="tab-pane fade" id="tab-3">
                                     <div class="tab-body">
@@ -839,6 +709,7 @@ function boardDeleteOk(b_no) {
     </section>
 
     <!-- FOOTER -->
+<div>
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -963,7 +834,20 @@ function boardDeleteOk(b_no) {
 <script src="resources/js/jquery.cookie.js"></script>
 <script src="resources/js/wp.switcher.js"></script>
 <script type="text/javascript" src="resources/js/wp.ga.js"></script>
-
+<script>
+/* 프로필 수정 이미지 미리보기 */
+var upload = document.getElementById('file'),
+ 	image = document.getElementById('image');
+upload.onchange = function (e) {
+  e.preventDefault();
+  var file = upload.files[0],
+      reader = new FileReader();
+  reader.onload = function (event) {
+    image.src = event.target.result;
+  };
+  reader.readAsDataURL(file);
+};
+</script>
 
 </body>
 </html>

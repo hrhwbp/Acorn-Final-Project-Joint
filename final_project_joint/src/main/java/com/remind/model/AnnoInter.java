@@ -33,7 +33,7 @@ public interface AnnoInter {
    @Select("select * from board where b_no=#{b_no}")
    BoardDto showBoardDetail(String b_no);
 
-   @Delete("delete from board whre b_no=#{b_no}")
+   @Delete("delete from board where b_no=#{b_no}")
    boolean eraseBoard(String b_no);
 
    @Insert("insert into board (b_mno, b_image, b_content, b_like) values (#{b_mno}, #{b_image}, #{b_content}, 0)")
@@ -101,7 +101,7 @@ public interface AnnoInter {
    boolean followUpdate2(String f_no);
    
    // reply
-   @Select("select r_no, r_bno, r_content, r_date, (select m_name from member where m_no = r_mno) r_name from reply where r_bno = #{b_no} limit ${limit},5")
+   @Select("select r_no, r_bno, r_content, r_mno , r_date, (select m_name from member where m_no = r_mno) r_name from reply where r_bno = #{b_no} limit ${limit},5")
    List<ReplyDto> showReply(@Param("b_no") String b_no, @Param("limit")int limit);
    @Select("select count(*) from reply where r_bno = #{b_no}")
    int countreply(String b_no);
@@ -112,7 +112,7 @@ public interface AnnoInter {
    
    @Select("select * from reply where r_no = #{r_no}")
    ReplyDto showReplyDetail(String r_no);
-   @Select("select r_no, r_bno, r_content, r_date, (select m_name from member where m_no = r_mno) r_name from reply where r_bno = #{b_no}")
+   @Select("select r_no, r_bno, r_content, r_mno , r_date, (select m_name from member where m_no = r_mno) r_name from reply where r_bno = #{b_no}")
    List<ReplyDto> showReplyMore(String b_no);
    
    @Insert("insert into reply (r_mno, r_bno, r_content) values(#{r_mno}, #{r_bno},#{r_content})")
@@ -180,18 +180,20 @@ public interface AnnoInter {
    
    @Insert("insert into likeTable (l_bno, l_mno) values(#{l_bno}, #{l_mno})")
    boolean like(LikeBean bean);
-   
+   @Update("update board set b_like=#{b_like} where b_no=#{b_no}")
+   boolean likeupd(@Param("b_no") String b_no, @Param("b_like")String b_like);
    @Delete("delete from likeTable where l_bno = #{l_bno} and l_mno = #{l_mno} ")
    boolean likeCancel(LikeBean bean);
+   
    //Anniversary
-   @Select("SELECT distinct f_mno, a_no, a_mno, a_detail, a_date, (select m_name from member where m_no = a_mno) a_mname,case when date_format(a_date, '%m-%d')>=date_format(curdate(),'%m-%d') then 1 else 2 end as sort, case when date_format(a_date, '%m-%d')>=date_format(curdate(),'%m-%d') then to_days(concat('16-',date_format(a_date, '%m-%d')))-to_days(now()) else to_days(concat('17-',date_format(a_date, '%m-%d')))-to_days(now()) end as a_dday from anniversary left outer join follow on a_mno = f_mno where f_sno = #{m_no} or a_mno = #{m_no} order by sort , date_format(a_date, '%m-%d') asc")
+   @Select("SELECT distinct f_mno, a_no, a_mno, a_detail, a_date,(select m_image from member where m_no = a_mno) a_mimage, (select m_name from member where m_no = a_mno) a_mname,case when date_format(a_date, '%m-%d')>=date_format(curdate(),'%m-%d') then 1 else 2 end as sort, case when date_format(a_date, '%m-%d')>=date_format(curdate(),'%m-%d') then to_days(concat('16-',date_format(a_date, '%m-%d')))-to_days(now()) else to_days(concat('17-',date_format(a_date, '%m-%d')))-to_days(now()) end as a_dday from anniversary left outer join follow on a_mno = f_mno where f_sno = #{m_no} or a_mno = #{m_no} order by sort , date_format(a_date, '%m-%d') asc")
    List<AnniversaryDto> showAnniversary(String m_no);
    @Select("SELECT distinct f_mno, a_no, a_mno, a_detail, a_date, (select m_name from member where m_no = a_mno) a_mname,case when date_format(a_date, '%m-%d')>=date_format(curdate(),'%m-%d') then 1 else 2 end as sort, case when date_format(a_date, '%m-%d')>=date_format(curdate(),'%m-%d') then to_days(concat('16-',date_format(a_date, '%m-%d')))-to_days(now()) else to_days(concat('17-',date_format(a_date, '%m-%d')))-to_days(now()) end as a_dday from anniversary left outer join follow on a_mno = f_mno where f_sno = #{m_no} or a_mno = #{m_no} order by sort , date_format(a_date, '%m-%d') asc limit 0,5")
    List<AnniversaryDto> showAnniversaryPart(String m_no);
    @Insert("insert into anniversary (a_mno, a_date, a_detail) values(#{a_mno}, #{a_date},#{a_detail})")
    boolean insertAnniversary(AnniversaryBean bean);
-   @Delete("delete from anniversary where a_bno = #{a_bno}")
-   boolean deleteAnniversary(AnniversaryBean bean);
-   @Update("update anniversary set a_detail = #{a_detail}, a_date = #{a_date} where a_bno = #{a_bno}")
+   @Delete("delete from anniversary where a_no = #{a_no}")
+   boolean deleteAnniversary(String a_no);
+   @Update("update anniversary set a_detail = #{a_detail}, a_date = #{a_date} where a_no = #{a_no}")
    boolean updateAnniversary(AnniversaryBean bean);
 }   
