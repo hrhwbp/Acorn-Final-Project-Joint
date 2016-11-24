@@ -109,7 +109,7 @@
     
     <h5 class="side-section-title">Social media</h5>
     <div class="social-media">
-        <a href="#"><i class="fa fa-facebook facebook"></i></a>
+        <a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook facebook"></i></a>
         <a href="#"><i class="fa fa-google-plus google"></i></a>
         <a href="#"><i class="fa fa-twitter twitter"></i></a>
     </div>
@@ -520,7 +520,7 @@
                                 <div class="figcaption">                                    
                                     <ul class="social-icons text-right">
                                         <li class="text pull-left">More on:</li>
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="facebook"><a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook"></i></a></li>
                                         <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                         <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
@@ -540,7 +540,7 @@
                                 <div class="figcaption">                                    
                                     <ul class="social-icons text-right">
                                         <li class="text pull-left">More on:</li>
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="facebook"><a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook"></i></a></li>
                                         <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                         <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
@@ -560,7 +560,7 @@
                                 <div class="figcaption">                                    
                                     <ul class="social-icons text-right">
                                         <li class="text pull-left">More on:</li>
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="facebook"><a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook"></i></a></li>
                                         <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                         <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
@@ -580,7 +580,7 @@
                                 <div class="figcaption">                                    
                                     <ul class="social-icons text-right">
                                         <li class="text pull-left">More on:</li>
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="facebook"><a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook"></i></a></li>
                                         <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                         <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
@@ -1079,7 +1079,7 @@
                 <div class="col-md-3">
                     <div class="col col-social-icons">
                         <h4>Follow us</h4>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-google-plus"></i></a>
                         <a href="#"><i class="fa fa-linkedin"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
