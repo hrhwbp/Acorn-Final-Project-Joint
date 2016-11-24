@@ -31,6 +31,8 @@ public interface DaoInter {
 	boolean outMember(String m_no) throws DataAccessException;
 	boolean updateMember(MemberBean bean) throws DataAccessException;
 	MemberDto login(MemberBean bean) throws DataAccessException;
+	int email_join_check(String m_email_check) throws DataAccessException;
+	
 	
 	//follow
 	List<FollowDto> showMyFollower(String m_no) throws DataAccessException;

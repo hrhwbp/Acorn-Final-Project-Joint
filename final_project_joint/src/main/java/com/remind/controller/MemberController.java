@@ -44,30 +44,47 @@ public class MemberController {
 	}
 
 	//회원가입 (페이지로 이동) 11/22 17:28 추가
-	@RequestMapping(value="join", method= RequestMethod.GET)
+	@RequestMapping(value="join", method = RequestMethod.GET)
 	public ModelAndView join(){
 		ModelAndView view = new ModelAndView();
 		view.setViewName("sign-up");
 		return view;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="email_join_check", method = RequestMethod.POST, produces = "application/text; charset=utf8")
+	public String emailjoincheck(@RequestParam("email_join_check") String m_email_check){
+		/*MemberDto dto = daoInter.email_join_check(m_email_check);*/
+		int check = daoInter.email_join_check(m_email_check);
+		//System.out.println(dto.getM_email());
+		/*if (dto.getM_email() != null){*/
+		if (check > 0){
+			return "<p style='color:red;'>이미 가입되어 있는 이메일 입니다!</p>";
+		}else{
+			return "<p style='color:green;'>가입이 가능한 이메일 입니다.</p>";
+		}
+	}
+	
 	
 	//회원가입 (가입처리)
 	@RequestMapping(value="join", method= RequestMethod.POST)
-	public String join(MemberBean bean){
-		
+	public ModelAndView join(MemberBean bean){
 		bean.setM_bdate(bean.getYear()+ "-" + bean.getMonth() + "-" + bean.getDay());
 		boolean b = daoInter.joinMember(bean);
 		if(b){
 			MemberDto dto = daoInter.memberDetail(bean.getM_name());
+			
 			AnniversaryBean bean2 = new AnniversaryBean();
 			bean2.setA_date(bean.getM_bdate());
 			bean2.setA_detail("생일");
 			bean2.setA_mno(dto.getM_no());
 			daoInter.insertAnniversary(bean2);
-			return "redirect:/index.jsp";
+			ModelAndView view = new ModelAndView();
+			
+			return new ModelAndView("sign-in");
+			//return "redirect:/sign-in";
 		}
-		else return "redirect:/error.jsp";
+		else return new ModelAndView("err");
 	}
 	
 	//회원탈퇴

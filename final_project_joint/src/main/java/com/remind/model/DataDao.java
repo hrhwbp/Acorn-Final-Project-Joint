@@ -88,7 +88,6 @@ public class DataDao implements DaoInter {
 	}
 	@Override
 	public MemberDto memberDetail(String m_name) throws DataAccessException {
-
 		return annoInter.memberDetail(m_name);
 	}
 
@@ -101,6 +100,12 @@ public class DataDao implements DaoInter {
 			System.out.println("joinmember err" + e);
 			return false;
 		}
+	}
+	
+	//회원가입시 이메일 조회
+	@Override
+	public int email_join_check(String m_email_check) throws DataAccessException {
+		return annoInter.email_join_check(m_email_check);
 	}
 
 	@Override

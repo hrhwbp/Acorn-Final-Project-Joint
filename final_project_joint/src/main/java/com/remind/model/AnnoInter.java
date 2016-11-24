@@ -57,6 +57,9 @@ public interface AnnoInter {
 	@Select("select * from member where m_name=#{m_name}")
 	MemberDto memberDetail(String m_name);
 	
+	@Select("select count(*) from member where m_email=#{m_email_check}")
+	Integer email_join_check(String m_email_check);
+	
 	@Insert("insert into member (m_name, m_bdate, m_email, m_gender, m_password) values (#{m_name}, #{m_bdate}, #{m_email}, #{m_gender}, #{m_password})")
 	boolean joinMember(MemberBean bean);
 	
