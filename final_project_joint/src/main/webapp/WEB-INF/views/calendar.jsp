@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>calendar</title>
-  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
+<!--   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'> -->
       <link rel="stylesheet" href="resources/css/style.css">
 </head>
-<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<!-- <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script> -->
 <%@ include file="importstop.jsp" %>
 
 <body>
 <%@ include file="top.jsp" %>
   <div class="container theme-showcase">
-  <h1 style="color: #e74c3c">Event Calendar</h1>
+  <h1 style="color: #948a8a">Event Calendar</h1>
 <div id="holder" class="row" ></div>
 </div>
 
@@ -60,11 +60,11 @@
               <td>
                 <span class="btn-group btn-group-lg">
                   {{ if (mode !== 'day') { }}
-                    {{ if (mode === 'month') { }}<button class="js-cal-option btn btn-link" data-mode="year">{{: months[month] }}</button>{{ } }}
+                    {{ if (mode === 'month') { }}<button class="js-cal-option btn btn-link" data-mode="year" style="color:#e24c3c;">{{: months[month] }}</button>{{ } }}
                     {{ if (mode ==='week') { }}
                       <button class="btn btn-link disabled">{{: shortMonths[first.getMonth()] }} {{: first.getDate() }} - {{: shortMonths[last.getMonth()] }} {{: last.getDate() }}</button>
                     {{ } }}
-                    <button class="js-cal-years btn btn-link">{{: year}}</button> 
+                    <button class="js-cal-years btn btn-link" style="color:#e24c3c;">{{: year}}</button> 
                   {{ } else { }}
                     <button class="btn btn-link disabled">{{: date.toDateString() }}</button> 
                   {{ } }}
@@ -161,16 +161,20 @@
           </table>
         </td>
       </tr>
+
     </tbody>
     {{ } }}
+	<thead><tr><td colspan="5"></td><td><div align="center" class="event all-day begin end" title="Extra event" style="height:40px; font-weight: bold;font-size:1.1em">Extra event</div></td><td>
+<div class="event begin end" title="Birthday" align="center" style="height:40px; font-weight: bold;font-size:1.2em">Birthday</div></td></tr></thead>		
   </table>
+
 </script>
 
-
-
-<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script>
-<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<!-- <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script> -->
+<!-- <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script> -->
 <script src="resources/js/calendar.js" charset="utf-8"></script>
+
+
 <%@ include file="importsbottom.jsp" %>
 
 </body>
