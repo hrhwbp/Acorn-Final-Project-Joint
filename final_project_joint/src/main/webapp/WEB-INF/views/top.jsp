@@ -24,6 +24,13 @@
 		$("#account").submit();
 		}
 	}
+	function myWishlist() {
+		if(<%=session.getAttribute("mno")%>	 == null){
+			location.href="login"
+		}else{
+		$("#wishlist").submit();
+		}
+	}
 	
 </script>
 </head>
@@ -81,7 +88,10 @@
 						</form>                              
                     </li> 
                     <li class="dropdown">
-                        <a href="wishlist" class="dropdown-toggle" >WISHLIST</a>                        
+                        <a href="javascript:myWishlist()" class="dropdown-toggle" >WISHLIST</a>
+						<form action="showWishList" method="get" id="wishlist">
+							<input type="hidden" name="w_mno" value="<%=session.getAttribute("mno")%>">
+						</form>                                                
                     </li>   
                     <li class="dropdown">
                     	<a href="anniversary" class="dropdown-toggle" >EVENTS</a>                        

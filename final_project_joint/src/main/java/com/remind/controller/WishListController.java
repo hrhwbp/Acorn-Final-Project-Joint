@@ -186,7 +186,7 @@ public class WishListController {
       modelAndView.addObject("w_mno", w_mno);
       System.out.println("test : " + daoInter.showWishList(w_mno));
       
-      modelAndView.setViewName("../../wishlist");
+      modelAndView.setViewName("wishlist");
       return modelAndView;
    }
    
