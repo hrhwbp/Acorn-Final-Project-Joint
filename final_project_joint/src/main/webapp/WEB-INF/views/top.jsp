@@ -2,6 +2,11 @@
 <!DOCTYPE HTML">
 <html>
 <head>
+
+
+<!-- <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script> -->
+<!-- <script src="//twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script> -->
+
 <script type="text/javascript">
 	function mywall() {
 		

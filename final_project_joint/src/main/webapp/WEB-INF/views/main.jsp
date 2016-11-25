@@ -75,13 +75,14 @@
 var lastbno_save = null;
 $(document).ready(function () {
    $(window).bind("scroll",scrolling);
-   $('form').bind("keypress", function(e) {
-	   if (e.keyCode == 13) {               
-	     e.preventDefault();
-	     return false;
-	   }
-	 });
+   $(window).keydown(function(event){
+	    if(event.keyCode == 13) {
+	      event.preventDefault();
+	      return false;
+	    }
+	  });
 });
+
 
 function scrolling(){ 
 	var documentHeight  = $(document).height() * 2 - 1200;
@@ -195,7 +196,7 @@ function scrolling(){
 					}
 					str += '				</span> <input type="text" class="form-control"';
 					str += '				placeholder="답글달기..." aria-describedby="sizing-addon2"';
-					str += '				name="r_content" id="r_content'+this.b_no+'"> <input';
+					str += '				name="r_content" id="r_content'+this.b_no+'"  onkeydown="javascript:if(event.keyCode==13){replySubmit('+this.b_no+')}"> <input';
 					str += '				type="hidden" name="r_bno" value="'+this.b_no+'"> <input';
 					str += '				type="hidden" name="r_mno" value="'+${mno}+'">'; 
 //												<!-- 답글 버튼 --> 
@@ -221,7 +222,8 @@ function scrolling(){
 			error:function(){
 				console.log("scroll 이벤트 실패")
 			}
-		});	
+		})
+
 
       }
    }
@@ -508,6 +510,38 @@ function anniAjax(){
 <div class="container">
 
 		<!-- ==========================TIMELINE 화면에 뿌려주는 게시물 ============================= -->
+		<c:if test="${fn:length(list) == 0}">
+		<div class="container col-md-7 col-md-offset-2 " id="">
+			<div class="row text-center">
+			<br>
+				<h3>RE:MIND에 오신것을 환영합니다!</h3>
+					<p>
+					리마인드에서는<br>
+					자신만의 개성넘치고 색다른 사진의 게시물과<br>
+					원하는 날짜의 이벤트를 추가하고,<br>
+					내가 가지고싶은 아이템들의 위시리스트를 추가할수있습니다.<br>
+					자신의 팔로워를 늘리고, 친구들과 공유하세요!
+					
+					</p>
+			<br>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<img alt="" src="resources/image/exex.png" style="width: 100%">
+				</div>
+				<div class="col-md-6 text-center">
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				
+					<img alt="" src="resources/image/ex1.png" style="width: 100%">
+				</div>
+			</div>
+		</div>
+		</c:if>
 		<div class="container col-md-7 col-md-offset-2 " id="scrollingId"
 			style="padding-top: 1%; padding-bottom: 2%">
 			<c:forEach var="list" items="${list }">

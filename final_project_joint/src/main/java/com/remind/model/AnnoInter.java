@@ -73,7 +73,8 @@ public interface AnnoInter {
 	@Select("select * from member where m_email = #{m_email} and m_password = #{m_password}")
 	MemberDto login(MemberBean bean);
 
-   
+	@Update("update member set m_password = #{m_password} where m_no = #{m_no}")
+	boolean ChangePass(MemberBean bean);
 
   
    

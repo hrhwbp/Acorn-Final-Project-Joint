@@ -136,6 +136,12 @@ public class DataDao implements DaoInter {
 	}
 
 	@Override
+	public boolean ChangePass(MemberBean bean) throws DataAccessException {
+		return annoInter.ChangePass(bean);
+	}	
+	
+	
+	@Override
 	public List<FollowDto> showMyFollower(String m_no) throws DataAccessException {
 		return annoInter.showMyFollower(m_no);
 	}

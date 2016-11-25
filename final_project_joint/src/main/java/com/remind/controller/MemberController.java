@@ -346,4 +346,12 @@ public class MemberController {
 		return view;
 	}
 	
+	@RequestMapping(value="passChange", method = RequestMethod.POST)
+	public String passChange(MemberBean bean){
+		String str = "";
+		boolean b = daoInter.ChangePass(bean);
+		if(b) str = "redirect:/myaccount";
+		else str = "redirect:/error.jsp";
+		return str;
+	}
 }
