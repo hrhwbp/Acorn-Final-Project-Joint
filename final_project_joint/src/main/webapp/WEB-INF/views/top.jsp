@@ -5,8 +5,8 @@
 <!-- Favicon -->
 <link href="../../controller/resources/images/favicon.png" rel="icon" type="image/png">
 
-<!-- <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script> -->
-<!-- <script src="//twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script> -->
+<script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+<script src="//twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
 
 <script type="text/javascript">
 	function mywall() {
@@ -25,8 +25,93 @@
 		$("#account").submit();
 		}
 	}
-	
+	$( document ).ready(function(){
+		$('#friendSearch').typeahead(null,{
+			source: function(query, syncResults, asyncResults) {
+			    $.get('searching?name='+query, function(data) {
+			        asyncResults(data);
+			      });
+			    },
+		    templates: {
+				    empty: [
+				      '<div class="empty-message">',
+				        '친구가 없습니다.',
+				      '</div>'
+				    ].join('\n'),
+				    suggestion: function(data){
+				       html = "<div><img src='http://wbp.synology.me/profileimg/" + data.m_image + "' class='img-circle' style='width:10%;'/>";
+				        html +="<strong>" + data.m_email + "</strong> - " + data.m_name + "</div>";
+				        return html;
+				    },
+				  }
+			})
+			jQuery('#friendSearch').on('typeahead:selected', function (e, datum) {
+				$('#friendSearch').val(datum.m_name); 
+				 var idx = $('<input type="hidden" value="'+datum.m_no+'" name="m_no">');
+				 $("#gofr").append(idx);
+    			 $("#gofr").submit(); 
+    			
+			});
+		
+			$('#friendSearch').bind('typeahead:cursorchange', function(ev, suggestion) {
+				$('#friendSearch').val(suggestion.m_name); 
+			});
+			
+			
+	}) 
 </script>
+<style type="text/css">
+.tt-query, /* UPDATE: newer versions use tt-input instead of tt-query */
+.tt-hint {
+    width: 100%;
+    height: 30px;
+    padding: 8px 12px;
+    font-size: 24px;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.tt-query { /* UPDATE: newer versions use tt-input instead of tt-query */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.tt-hint {
+    color: #999;
+}
+
+.tt-menu { /* UPDATE: newer versions use tt-menu instead of tt-dropdown-menu */
+    width: 422px;
+    margin-top: 12px;
+    padding: 8px 0;
+    background-color: #f2dede;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+/* .tt-menu.img-circle{
+	width:5%;
+} */
+
+.tt-suggestion {
+    padding: 3px 20px;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
+    color: #fff;
+    background-color: #0097cf;
+
+}
+
+.tt-suggestion p {
+    margin: 0;
+}
+
+</style>
 </head>
 <body>
 <div id="divHeaderWrapper">
@@ -46,6 +131,8 @@
                     <img src="resources/images/boomerang-logo-black.png" alt="RE:MIND || Happy Gifting Starts Here!">
                 </a>
             </div>
+            <form id="gofr" action="friendinfo" method="post">
+				</form>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden-md hidden-lg">
@@ -108,7 +195,7 @@
                     </li> -->
 					<%}%>
 					<li class="form-group dropdown dropdown-meganav mega-dropdown-fluid">                   
-						<a href="#" class="dropdown-toggle"><i class="icon-append fa fa-search"></i><input type="search" name="search" required autofocus required=required></a> 					
+						<a href="#" class="dropdown-toggle"><i class="icon-append fa fa-search"></i><input type="search" name="friendSearch" id="friendSearch" required sautofocu required=required placeholder="친구찾기"></a> 					
 					</li>			
                   
                     <!-- <li class="dropdown dropdown-aux animate-click hidden-xs" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">
