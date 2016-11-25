@@ -2,7 +2,8 @@
 <!DOCTYPE HTML">
 <html>
 <head>
-
+<!-- Favicon -->
+<link href="../../controller/resources/images/favicon.png" rel="icon" type="image/png">
 
 <!-- <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script> -->
 <!-- <script src="//twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script> -->
