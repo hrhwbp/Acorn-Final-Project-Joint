@@ -547,7 +547,7 @@ function boardDeleteOk(b_no) {
 			<button type="button" class="btn btn-link col-md-3" style="color: black; background-color:#e4d3c4;" disabled="disabled"><b>게시물  ${fn:length(board)}개</b></button> 
 			<button type="button" class="btn btn-link col-md-3" style="background-color: rgba(229, 212, 200, 0.63)" onclick="follower(${myinfo.m_no})"><b>팔로워 ${fn:length(mylist)}</b></button>
 			<button type="button" class="btn btn-link col-md-3" style="background-color: rgba(229, 212, 200, 0.63);" onclick="follow(${myinfo.m_no})"><b>팔로우 ${fn:length(ilist)}</b></button>
-			<button type="button" class="btn btn-link col-md-3" style="background-color: rgba(229, 212, 200, 0.63);"><b>위시리스트</b></button>
+			<a href="showWishList?w_mno=${myinfo.m_no}"><button type="button" class="btn btn-link col-md-3" style="background-color: rgba(229, 212, 200, 0.63);"><b>위시리스트</b></button></a>
 		</div>
 		<div class="row" style="padding-top: 2%">
 			<div class="col-md-1">
@@ -792,7 +792,7 @@ function boardDeleteOk(b_no) {
 				    <div class="input-group">
 				      <input name="b_content" id="modalContent" type="text" class="form-control" value="">
 				      <div class="input-group-btn">
-				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-option-vertical"></span></button>
+				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
 				        <ul class="dropdown-menu dropdown-menu-right" role="menu">
 				          <li><a href="#" id="updateSubmit">수정내역 저장</a></li>
 				          <!-- <li class="divider"></li> -->
