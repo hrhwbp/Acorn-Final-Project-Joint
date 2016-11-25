@@ -11,8 +11,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>RE:MIND [RE:MIND]</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <title>RE:MIND || TIMELINE</title>
@@ -593,7 +591,7 @@ function anniAjax(){
 								
 								<form action="friendinfo" id="friend${list.b_no }" method="post">
 								<input type="hidden" name="m_no" value="${list.b_mno }">
-								<h4>&nbsp;&nbsp;<a href="javascript:;"  onclick="gofriend(${list.b_no })">${list.b_mname}</a></h4>
+								<h4>&nbsp;&nbsp;<a href="javascript:"  onclick="gofriend(${list.b_no })">${list.b_mname}</a></h4>
 								</form>
 								
 							

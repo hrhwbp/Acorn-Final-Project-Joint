@@ -248,7 +248,7 @@ background-color: rgba(255, 255, 255, 0.2);
 												</label>
 											</section>
 											<section class="select col-xs-3">
-												<label class="select"> <select name="gender" class="select col-xs-4">
+												<label class="select"> <select name="m_gender" class="select col-xs-4">
 														<option value="">성별</option>
 														<option value="1">남자</option>
 														<option value="2">여자</option>
@@ -260,16 +260,16 @@ background-color: rgba(255, 255, 255, 0.2);
 										
 										<div class="row">
 											<section class="col-xs-12">
-												<label class="textarea"> <textarea rows="3"
-														name="m_introduce" placeholder="나의 대한 간단한 소개"></textarea>
+												<label class="textarea"> 
+													<textarea rows="3" name="m_introduce" placeholder="나의 대한 간단한 소개"></textarea>
 												</label>
 											</section>
 										</div>
 										<section>
 											<div class="row">
 												<div class="col-md-8">
-													<label class="checkbox"> <input type="checkbox"
-														id="btnAgree" required="required"> <i></i> 사용자 <a href="#">이용약관</a>에 대하여 모두 동의합니다.
+													<label class="checkbox"> 
+														<input type="checkbox" id="btnAgree" required="required"><i></i>사용자 <a href="#">이용약관</a>에 대하여 모두 동의합니다.
 													</label>
 												</div>
 												<div class="col-md-4">
