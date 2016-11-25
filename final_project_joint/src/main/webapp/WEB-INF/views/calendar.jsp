@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>calendar</title>
+  <title>RE:MIND || EVENTS</title>
 <!--   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'> -->
       <link rel="stylesheet" href="resources/css/style.css">
@@ -13,8 +13,25 @@
 
 <body>
 <%@ include file="top.jsp" %>
-  <div class="container theme-showcase">
-  <h1 style="color: #948a8a">Event Calendar</h1>
+ 		<!-- ==========================현재 페이지 표시줄 MAIN CONTENT============================= -->
+	<div class="pg-opt bg-danger">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h2>Event Calendar</h2>
+				</div>
+				<div class="col-md-6">
+					<ol class="breadcrumb">
+						<li><a href="action">Home</a></li>							
+						<li class="active">Event Calendar</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ==========================현재 페이지 표시줄 MAIN CONTENT 끝============================= -->
+ <div class="container theme-showcase">
+<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2"></div>
 <div id="holder" class="row" ></div>
 </div>
 
@@ -164,8 +181,8 @@
 
     </tbody>
     {{ } }}
-	<thead><tr><td colspan="5"></td><td><div align="center" class="event all-day begin end" title="Extra event" style="height:40px; font-weight: bold;font-size:1.1em">Extra event</div></td><td>
-<div class="event begin end" title="Birthday" align="center" style="height:40px; font-weight: bold;font-size:1.2em">Birthday</div></td></tr></thead>		
+	<thead><tr><td colspan="5"></td><td><div align="center" class="event all-day begin end" title="Extra event" style="height:40px; font-weight: bold;font-size:1.1em">각종 이벤트</div></td><td>
+<div class="event begin end" title="Birthday" align="center" style="height:40px; font-weight: bold;font-size:1.2em">생일</div></td></tr></thead>		
   </table>
 
 </script>
