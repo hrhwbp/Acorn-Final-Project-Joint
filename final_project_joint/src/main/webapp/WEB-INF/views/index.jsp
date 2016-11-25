@@ -308,9 +308,9 @@
                 <div class="col-md-4 wp-block no-space arrow-right base no-margin">
                     <div class="wp-block-body">
                         <div class="img-icon">
-                            <i class="fa fa-flask"></i>
+                            <i class="fa fa-birthday-cake"></i>
                         </div>                        
-                        <h1>Generate ideas</h1>
+                        <h1>Event is Coming!!</h1>
                         <p class="text-center">
                         Lorem ipsum dolor sit amet, consectetur curabitur pellentesque neque eget diam posuere adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus
                         </p>
@@ -319,9 +319,9 @@
                 <div class="col-md-4 wp-block no-space arrow-right light no-margin">
                     <div class="wp-block-body">
                         <div class="img-icon">
-                            <i class="fa fa-flask"></i>
+                            <i class="fa fa-group"></i>
                         </div>
-                        <h1>Design and concept</h1>
+                        <h1>Tell your Friends</h1>
                         <p class="text-center">
                         Lorem ipsum dolor sit amet, consectetur urabitur pellentesque neque eget diam posuere adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus.
                         </p>
@@ -330,9 +330,9 @@
                 <div class="col-md-4 wp-block no-space dark no-margin">
                     <div class="wp-block-body">
                         <div class="img-icon">
-                            <i class="fa fa-flask"></i>
+                            <i class="fa fa-gift"></i>
                         </div>
-                        <h1>Launch and monitor</h1>
+                        <h1>Get a wonderful gifts</h1>
                         <p class="text-center">
                         Lorem ipsum dolor sit amet, consectetur urabitur pellentesque neque eget diam posuere adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus.
                         </p>
@@ -399,10 +399,10 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="wp-block hero white no-margin">
                             <div class="thmb-img">
-                                <i class="fa fa-lightbulb-o"></i>
+                                <i class="fa fa-birthday-cake"></i>
                             </div>
                             
-                            <h2>Generating ideas</h2>
+                            <h2>선물</h2>
                             <p class="text-center">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum. </p>
                         </div>
                     </div>
@@ -410,7 +410,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="wp-block hero white no-margin">
                             <div class="thmb-img">
-                                <i class="fa fa-keyboard-o"></i>
+                                <i class="fa fa-list-ul"></i>
                             </div>
                             
                             <h2>Prototype model</h2>
@@ -421,7 +421,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="wp-block hero white no-margin">
                             <div class="thmb-img">
-                                <i class="fa fa-code"></i>
+                                <i class="fa fa-group"></i>
                             </div>
                             
                             <h2>Design and Code</h2>
@@ -432,7 +432,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="wp-block hero white no-margin">
                             <div class="thmb-img">
-                                <i class="fa fa-rocket"></i>
+                                <i class="fa fa-gift"></i>
                             </div>
                             
                             <h2>Launching and Monitoring</h2>
@@ -516,7 +516,7 @@
                     <div class="col-md-3">
                         <div class="wp-block inverse">
                             <div class="figure">
-                                <img alt="" src="../../controller/resources/images/prv/team/team-corporate-5.jpg" class="img-responsive">
+                                <img alt="" src="../../controller/resources/images/team/baejs.jpg" class="img-responsive">
                                 <div class="figcaption">                                    
                                     <ul class="social-icons text-right">
                                         <li class="text pull-left">More on:</li>
@@ -526,9 +526,9 @@
                                     </ul>
                                 </div>
                             </div>
-                            <h2>Meredith Grey<small>CEO</small></h2>
+                            <h2>Bae, JinSeop<small>JangIn ("The Master")</small></h2>
                             <p>
-                            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus.
+                            The Shuim Project Group chief technical officer, so called "장인".
                             </p>
                         </div>
                     </div>
@@ -536,19 +536,19 @@
                     <div class="col-md-3">
                         <div class="wp-block inverse">
                             <div class="figure">
-                                <img alt="" src="../../controller/resources/images/prv/team/team-corporate-3.jpg" class="img-responsive">
+                                <img alt="" src="../../controller/resources/images/team/choiyw.jpg" class="img-responsive">
                                 <div class="figcaption">                                    
                                     <ul class="social-icons text-right">
                                         <li class="text pull-left">More on:</li>
-                                        <li class="facebook"><a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="facebook"><a target="blank" href="https://www.facebook.com/profile.php?id=100003077162512"><i class="fa fa-facebook"></i></a></li>
                                         <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                         <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <h2>John Doe<small>Product Manager</small></h2>
+                            <h2>Choi, YoungWook<small>Chief Builder</small></h2>
                             <p>
-                            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus.
+                            The Shuim Project Group web page building officer.
                             </p>
                         </div>
                     </div>
@@ -556,7 +556,7 @@
                     <div class="col-md-3">
                         <div class="wp-block inverse">
                             <div class="figure">
-                                <img alt="" src="../../controller/resources/images/prv/team/team-corporate-1.jpg" class="img-responsive">
+                                <img alt="" src="../../controller/resources/images/team/parkbh.jpg" class="img-responsive">
                                 <div class="figcaption">                                    
                                     <ul class="social-icons text-right">
                                         <li class="text pull-left">More on:</li>
@@ -566,9 +566,9 @@
                                     </ul>
                                 </div>
                             </div>
-                            <h2>Derek Shepard<small>Web Developer</small></h2>
+                            <h2>Park, BaeHeum<small>Team Leader</small></h2>
                             <p>
-                            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus.
+                            The Shuim Project Group team leader.
                             </p>
                         </div>
                     </div>
@@ -576,19 +576,19 @@
                     <div class="col-md-3">
                         <div class="wp-block inverse">
                             <div class="figure">
-                                <img alt="" src="../../controller/resources/images/prv/team/team-corporate-2.jpg" class="img-responsive">
+                                <img alt="" src="../../controller/resources/images/team/simjy.jpg" class="img-responsive">
                                 <div class="figcaption">                                    
                                     <ul class="social-icons text-right">
                                         <li class="text pull-left">More on:</li>
-                                        <li class="facebook"><a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook"></i></a></li>
+                                        <li class="facebook"><a target="blank" href="https://www.facebook.com/sim.jinyoung"><i class="fa fa-facebook"></i></a></li>
                                         <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
                                         <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <h2>Mark Sloan<small>Team Builder</small></h2>
+                            <h2>Sim, JinYoung<small>Chairperson</small></h2>
                             <p>
-                            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus.
+                            Chair Person of the Shuim Project Group.
                             </p>
                         </div>
                     </div>
@@ -646,245 +646,7 @@
             </div>
         </div>
     </section>
-
-
-    <section class="slice relative bg-white bb animate-hover-slide">
-        <div class="wp-section">
-            <div class="container">
-                <div class="section-title-wr">
-                    <h3 class="section-title left"><span>Our portfolio</span></h3>
-                </div>
-                
-                <div id="carouselWork" class="carousel carousel-3 slide animate-hover-slide">
-                    <div class="carousel-nav">
-                        <a data-slide="prev" class="left" href="#carouselWork"><i class="fa fa-angle-left"></i></a>
-                        <a data-slide="next" class="right" href="#carouselWork"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                    
-                    <!-- Wrapper for slides -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="wp-block inverse">
-                                        <div class="figure">
-                                            <img alt="" src="../../controller/resources/images/prv/wk-img-1.jpg" class="img-responsive">
-                                            <div class="figcaption bg-base"></div>
-                                            <div class="figcaption-btn">
-                                                <a href="../../controller/resources/images/prv/wk-img-1.jpg" class="btn btn-xs btn-b-white theater"><i class="fa fa-plus-circle"></i> Zoom</a>
-                                                <a href="#" class="btn btn-xs btn-b-white"><i class="fa fa-link"></i> View</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-9">
-                                                <h2 class="text-left">Bootstrap template</h2>
-                                                <small>Brand creation</small>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <div class="like-button">
-                                                    <span class="button liked">
-                                                        <i class="fa fa-heart"></i>
-                                                    </span>
-                                                    <span class="count"><small>123</small></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="wp-block inverse">
-                                        <div class="figure">
-                                            <img alt="" src="../../controller/resources/images/prv/wk-img-2.jpg" class="img-responsive">
-                                            <div class="figcaption bg-base"></div>
-                                            <div class="figcaption-btn">
-                                                <a href="../../controller/resources/images/prv/wk-img-2.jpg" class="btn btn-xs btn-b-white theater"><i class="fa fa-plus-circle"></i> Zoom</a>
-                                                <a href="#" class="btn btn-xs btn-b-white"><i class="fa fa-link"></i> View</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-9">
-                                                <h2>Bootstrap template</h2>
-                                                <small>Brand creation</small>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <div class="like-button">
-                                                    <span class="button">
-                                                        <i class="fa fa-heart"></i>
-                                                    </span>
-                                                    <span class="count"><small>123</small></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="wp-block inverse">
-                                        <div class="figure">
-                                            <img alt="" src="../../controller/resources/images/prv/wk-img-3.jpg" class="img-responsive">
-                                            <div class="figcaption bg-base"></div>
-                                            <div class="figcaption-btn">
-                                                <a href="../../controller/resources/images/prv/wk-img-3.jpg" class="btn btn-xs btn-b-white theater"><i class="fa fa-plus-circle"></i> Zoom</a>
-                                                <a href="#" class="btn btn-xs btn-b-white"><i class="fa fa-link"></i> View</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-9">
-                                                <h2>Bootstrap template</h2>
-                                                <small>Brand creation</small>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <div class="like-button">
-                                                    <span class="button liked">
-                                                        <i class="fa fa-heart"></i>
-                                                    </span>
-                                                    <span class="count"><small>123</small></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="wp-block inverse">
-                                        <div class="figure">
-                                            <img alt="" src="../../controller/resources/images/prv/wk-img-4.jpg" class="img-responsive">
-                                            <div class="figcaption bg-base"></div>
-                                            <div class="figcaption-btn">
-                                                <a href="../../controller/resources/images/prv/wk-img-4.jpg" class="btn btn-xs btn-b-white theater"><i class="fa fa-plus-circle"></i> Zoom</a>
-                                                <a href="#" class="btn btn-xs btn-b-white"><i class="fa fa-link"></i> View</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-9">
-                                                <h2>Bootstrap template</h2>
-                                                <small>Brand creation</small>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <div class="like-button">
-                                                    <span class="button">
-                                                        <i class="fa fa-heart"></i>
-                                                    </span>
-                                                    <span class="count"><small>123</small></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="wp-block inverse">
-                                        <div class="figure">
-                                            <img alt="" src="../../controller/resources/images/prv/wk-img-5.jpg" class="img-responsive">
-                                            <div class="figcaption bg-base"></div>
-                                            <div class="figcaption-btn">
-                                                <a href="../../controller/resources/images/prv/wk-img-5.jpg" class="btn btn-xs btn-b-white theater"><i class="fa fa-plus-circle"></i> Zoom</a>
-                                                <a href="#" class="btn btn-xs btn-b-white"><i class="fa fa-link"></i> View</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-9">
-                                                <h2>Bootstrap template</h2>
-                                                <small>Brand creation</small>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <div class="like-button">
-                                                    <span class="button">
-                                                        <i class="fa fa-heart"></i>
-                                                    </span>
-                                                    <span class="count"><small>123</small></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="wp-block inverse">
-                                        <div class="figure">
-                                            <img alt="" src="../../controller/resources/images/prv/wk-img-6.jpg" class="img-responsive">
-                                            <div class="figcaption bg-base"></div>
-                                            <div class="figcaption-btn">
-                                                <a href="../../controller/resources/images/prv/wk-img-6.jpg" class="btn btn-xs btn-b-white theater"><i class="fa fa-plus-circle"></i> Zoom</a>
-                                                <a href="#" class="btn btn-xs btn-b-white"><i class="fa fa-link"></i> View</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-9">
-                                                <h2>Bootstrap template</h2>
-                                                <small>Brand creation</small>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <div class="like-button">
-                                                    <span class="button">
-                                                        <i class="fa fa-heart"></i>
-                                                    </span>
-                                                    <span class="count"><small>123</small></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="wp-block inverse">
-                                        <div class="figure">
-                                            <img alt="" src="../../controller/resources/images/prv/wk-img-7.jpg" class="img-responsive">
-                                            <div class="figcaption bg-base"></div>
-                                            <div class="figcaption-btn">
-                                                <a href="../../controller/resources/images/prv/wk-img-7.jpg" class="btn btn-xs btn-b-white theater"><i class="fa fa-plus-circle"></i> Zoom</a>
-                                                <a href="#" class="btn btn-xs btn-b-white"><i class="fa fa-link"></i> View</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-9">
-                                                <h2>Bootstrap template</h2>
-                                                <small>Brand creation</small>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <div class="like-button">
-                                                    <span class="button">
-                                                        <i class="fa fa-heart"></i>
-                                                    </span>
-                                                    <span class="count"><small>123</small></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="wp-block inverse">
-                                        <div class="figure">
-                                            <img alt="" src="../../controller/resources/images/prv/wk-img-8.jpg" class="img-responsive">
-                                            <div class="figcaption bg-base"></div>
-                                            <div class="figcaption-btn">
-                                                <a href="../../controller/resources/images/prv/wk-img-8.jpg" class="btn btn-xs btn-b-white theater"><i class="fa fa-plus-circle"></i> Zoom</a>
-                                                <a href="#" class="btn btn-xs btn-b-white"><i class="fa fa-link"></i> View</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-9">
-                                                <h2>Bootstrap template</h2>
-                                                <small>Brand creation</small>
-                                            </div>
-                                            <div class="col-xs-3">
-                                                <div class="like-button">
-                                                    <span class="button">
-                                                        <i class="fa fa-heart"></i>
-                                                    </span>
-                                                    <span class="count"><small>123</small></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>  
-            </div>
-        </div>
-    </section>
+    
 
     <section class="slice light-gray">
         <div class="wp-section">
@@ -995,33 +757,33 @@
         <div class="wp-section">
             <div class="container">
                 <div class="section-title-wr">
-                    <h3 class="section-title left"><span>Our partners</span></h3>
+                    <h3 class="section-title left"><span>쇼핑몰 제휴사</span></h3>
                 </div>
                 <div class="row">
                     <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="client">
-                            <a href="#">
+                            <a href="www.11st.co.kr">
                                 <img src="../../controller/resources/images/clients/client-1.png" alt="">
                             </a>
                         </div>
                     </div>
                      <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="client">
-                            <a href="#">
+                            <a href="www.ssg.com">
                                 <img src="../../controller/resources/images/clients/client-2.png" alt="">
                             </a>
                         </div>
                     </div>
                      <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="client">
-                            <a href="#">
+                            <a href="www.ebay.com">
                                 <img src="../../controller/resources/images/clients/client-3.png" alt="">
                             </a>
                         </div>
                     </div>
                      <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="client">
-                            <a href="#">
+                            <a href="www.auction.co.kr">
                                 <img src="../../controller/resources/images/clients/client-4.png" alt="">
                             </a>
                         </div>
@@ -1029,7 +791,7 @@
                      <div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="client">
                             <a href="#">
-                                <img src="../../controller/resources/images/clients/client-7.png" alt="">
+                                <img src="../../controller/resources/images/clients/client-5.png" alt="">
                             </a>
                         </div>
                     </div>
