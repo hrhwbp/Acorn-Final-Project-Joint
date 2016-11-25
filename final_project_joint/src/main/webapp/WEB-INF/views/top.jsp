@@ -195,7 +195,8 @@
                     </li> -->
 					<%}%>
 					<li class="form-group dropdown dropdown-meganav mega-dropdown-fluid">                   
-						<a href="#" class="dropdown-toggle"><i class="icon-append fa fa-search"></i><input type="search" name="friendSearch" id="friendSearch" required sautofocu required=required placeholder="친구찾기"></a> 					
+						<i class="icon-append fa fa-search"></i>
+						<input type="search" name="friendSearch" id="friendSearch" required sautofocu required=required placeholder="친구찾기">					
 					</li>			
                   
                     <!-- <li class="dropdown dropdown-aux animate-click hidden-xs" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">
