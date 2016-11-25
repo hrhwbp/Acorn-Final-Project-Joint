@@ -455,7 +455,7 @@ function anniAjax(){
     float: right;
     position: fixed;
     right : 0px;
-    width: 40%;
+    width: 35%;
     padding-top: 1%;
 }
 </style>
@@ -489,7 +489,7 @@ function anniAjax(){
 		<!-- ================================이벤트일 표시 DIV===================================== -->			
 		
 			<div class="sidebar">
-				<div class="col-md-6 col-sm-0 col-md-offset-3" role="complementray">
+				<div class="col-lg-6 col-md-0 col-lg-offset-3" role="complementray">
 					<div class="col">
 						<h4>다가오는 이벤트</h4>						
 							<table>
