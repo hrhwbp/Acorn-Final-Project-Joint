@@ -750,14 +750,14 @@ function wgopen(wg_no, wg_detail){
                   <button type="button" class="close" data-dismiss="modal">
                      <span aria-hidden="true">×</span><span class="sr-only">Close</span>
                   </button>
-                  <h4 class="modal-title" id="myModalLabel">현재 선택된 소망 리스트를 삭제하시겠습니까?</h4>
+                  <h4 class="modal-title" id="myModalLabel">선택하신 소원 리스트를 삭제하시겠습니까?</h4>
                </div>
                <!-- <div class="modal-body">
                <div class="input-group">
                      현재 선택된 소망 리스트를 삭제하시겠습니까? 
                 </div>/input-group
                </div> -->
-               <div class="modal-footer">
+               <div class="modal-body text-right">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">취소</button>
                   <button type="button" class="btn btn-danger" id="btn_deleteConfirm">삭제하기</button>
                </div>
