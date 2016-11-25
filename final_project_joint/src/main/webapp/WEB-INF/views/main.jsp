@@ -11,44 +11,44 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ReMind : [RE:AD MIND]</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <title>RE:MIND || TIMELINE</title>
+
+<%@ include file="importstop.jsp" %>
 
 <!-- Essential styles -->
 <!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"> 
     <link rel="stylesheet" href="assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">  -->
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
 <link rel="stylesheet"
 	href="resources/font-awesome/css/font-awesome.min.css" type="text/css">
 <link rel="stylesheet"
 	href="resources/assets/fancybox/jquery.fancybox.css?v=2.1.5"
-	media="screen">
+	media="screen"> -->
 
 <!-- Boomerang styles -->
 <!-- <link id="wpStylesheet" type="text/css" href="css/global-style.css" rel="stylesheet" media="screen"> -->
-<link id="wpStylesheet" type="text/css"
-	href="resources/css/global-style-red.css" rel="stylesheet" media="screen">
+<!-- <link id="wpStylesheet" type="text/css"
+	href="resources/css/global-style-red.css" rel="stylesheet" media="screen"> -->
 
 <!-- Favicon -->
 <!-- <link href="images/favicon.png" rel="icon" type="image/png"> -->
-<link href="resources/images/favicon.png" rel="icon" type="image/png">
+<!-- <link href="resources/images/favicon.png" rel="icon" type="image/png"> -->
 
 <!-- Assets -->
 <!-- <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
     <link rel="stylesheet" href="assets/sky-forms/css/sky-forms.css"> -->
 
-<link rel="stylesheet"
+<!-- <link rel="stylesheet"
 	href="resources/assets/owl-carousel/owl.carousel.css">
 <link rel="stylesheet"
 	href="resources/assets/owl-carousel/owl.theme.css">
 <link rel="stylesheet"
-	href="resources/assets/sky-forms/css/sky-forms.css">
+	href="resources/assets/sky-forms/css/sky-forms.css"> -->
 <!--[if lt IE 9]>
         <link rel="stylesheet" href="assets/sky-forms/css/sky-forms-ie8.css">
     <![endif]-->
@@ -56,20 +56,36 @@
 <!-- Required JS -->
 <!-- <script src="js/jquery.js"></script>
     <script src="js/jquery-ui.min.js"></script> -->
-<script src="resources/js/jquery.js"></script>
-<script src="resources/js/jquery-ui.min.js"></script>
+<!-- <script src="resources/js/jquery.js"></script>
+<script src="resources/js/jquery-ui.min.js"></script> -->
 
 <!-- Page scripts -->
 
 <!-- Video JS -->
 <!-- <link href="assets/timeline/timeline.css" rel="stylesheet"> -->
-<link href="resources/assets/timeline/timeline.css" rel="stylesheet">
+<!-- <link href="resources/assets/timeline/timeline.css" rel="stylesheet"> -->
 
 
 
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<style type="text/css">
+.loader{
+  margin: 0 0 2em;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+svg path,
+svg rect{
+  fill: #e74c3c;
+}
+
+</style>
 <script type="text/javascript">
 var lastbno_save = null;
 $(document).ready(function () {
@@ -96,6 +112,30 @@ function scrolling(){
 			url:"scroll",
 			dataType:"json",
 			data:{"last_bno":lastbno},
+			beforeSend:function(){
+				loadingbar='	<div class="loader loader--style8" title="7">'
+				loadingbar+='<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'+
+				'width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">'+
+				'<rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">'+
+				'<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />'+
+				'</rect>'+
+				'<rect x="8" y="10" width="4" height="10" fill="#333"  opacity="0.2">'+
+				'<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />'+
+				'</rect>'+
+				'<rect x="16" y="10" width="4" height="10" fill="#333"  opacity="0.2">'+
+			    '<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
+				'</rect>'+
+				'</svg>'+
+				'</div>'
+				$("#loading").html(loadingbar);
+				
+			},
 			success:function(scrollData){
 				/* console.log("실행중") */
 				var str = "";
@@ -420,9 +460,8 @@ function anniAjax(){
 }
 </style>
 </head>
-<%@include file="common.jsp"%>
+<%-- <%@include file="common.jsp"%> --%>
 <%@include file="top.jsp"%>
-
 
 <body style="background-color: white">
 	<div class="body-wrap">
@@ -551,7 +590,7 @@ function anniAjax(){
 								
 								<form action="friendinfo" id="friend${list.b_no }" method="post">
 								<input type="hidden" name="m_no" value="${list.b_mno }">
-								<h4>&nbsp;&nbsp;<a href="javascript:;"  onclick="gofriend(${list.b_no })">${list.b_mname}</a></h4>
+								<h4>&nbsp;&nbsp;<a href="javascript:"  onclick="gofriend(${list.b_no })">${list.b_mname}</a></h4>
 								</form>
 								
 							
@@ -673,7 +712,8 @@ function anniAjax(){
          </c:forEach>
 		</div>
 		<!-- ==========================TIMELINE 화면에 뿌려주는 게시물 끝============================= -->
-		
+		<div class="container col-md-7 col-md-offset-2 " id="loading">
+		</div>
 		
 
 		<!-- ================================이벤트일 표시 DIV===================================== -->
@@ -834,35 +874,32 @@ function anniAjax(){
 
 
 	
-<%-- <%@include file="bottom.jsp"%> --%>
+	<%@include file="importsbottom.jsp"%>
+	
 	<!-- Essentials -->
-	<script src="resources/js/modernizr.custom.js"></script>
+	<!-- <script src="resources/js/modernizr.custom.js"></script>
 	<script src="resources/assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="resources/js/jquery.mousewheel-3.0.6.pack.js"></script>
 	<script src="resources/js/jquery.easing.js"></script>
 	<script src="resources/js/jquery.metadata.js"></script>
 	<script src="resources/js/jquery.hoverup.js"></script>
 	<script src="resources/js/jquery.hoverdir.js"></script>
-	<script src="resources/js/jquery.stellar.js"></script>
+	<script src="resources/js/jquery.stellar.js"></script> -->
 
 	<!-- Boomerang mobile nav - Optional  -->
-	<script
-		src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.js"></script>
-	<script
-		src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.autofill.js"></script>
+	<!-- <script src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.js"></script>
+	<script src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.autofill.js"></script> -->
 
 	<!-- Forms -->
-	<script
-		src="resources/assets/ui-kit/js/jquery.powerful-placeholder.min.js"></script>
+	<!-- <script src="resources/assets/ui-kit/js/jquery.powerful-placeholder.min.js"></script>
 	<script src="resources/assets/ui-kit/js/cusel.min.js"></script>
 	<script src="resources/assets/sky-forms/js/jquery.form.min.js"></script>
 	<script src="resources/assets/sky-forms/js/jquery.validate.min.js"></script>
 	<script src="resources/assets/sky-forms/js/jquery.maskedinput.min.js"></script>
-	<script src="resources/assets/sky-forms/js/jquery.modal.js"></script>
+	<script src="resources/assets/sky-forms/js/jquery.modal.js"></script> -->
 
 	<!-- Assets -->
-	<script
-		src="resources/assets/hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+	<!-- <script src="resources/assets/hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
 	<script src="resources/assets/page-scroller/jquery.ui.totop.min.js"></script>
 	<script src="resources/assets/mixitup/jquery.mixitup.js"></script>
 	<script src="resources/assets/mixitup/jquery.mixitup.init.js"></script>
@@ -874,12 +911,12 @@ function anniAjax(){
 	<script src="resources/assets/nouislider/js/jquery.nouislider.min.js"></script>
 	<script src="resources/assets/owl-carousel/owl.carousel.js"></script>
 	<script src="resources/assets/bootstrap/js/tooltip.js"></script>
-	<script src="resources/assets/bootstrap/js/popover.js"></script>
+	<script src="resources/assets/bootstrap/js/popover.js"></script> -->
 
 	<!-- Sripts for individual pages, depending on what plug-ins are used -->
 
 	<!-- Boomerang App JS -->
-	<script src="resources/js/wp.app.js"></script>
+	<!-- <script src="resources/js/wp.app.js"></script> -->
 	<!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
