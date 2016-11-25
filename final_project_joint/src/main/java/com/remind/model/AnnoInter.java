@@ -22,7 +22,8 @@ public interface AnnoInter {
    // sns board
 //   @Select("select b_no, b_image, b_content, b_date, b_like, (select m_name from member where m_no = b_mno) b_mname from board where b_mno = (select f_mno from follow where f_sno=#{m_no}) or b_mno = #{m_no}")
 //   List<BoardDto> showBoard(String m_no);
-   @Select("select distinct b_no, b_mno, b_image, b_content, b_date, b_like, (select m_name from member where m_no = b_mno) b_mname from board left outer join follow on b_mno = f_sno where b_mno = any(select f_mno from follow where f_sno = #{m_no}) or b_mno = #{m_no}  order by b_no desc limit 0,3")
+   
+	@Select("select distinct b_no, b_mno, b_image, b_content, b_date, b_like, (select m_name from member where m_no = b_mno) b_mname from board left outer join follow on b_mno = f_sno where b_mno = any(select f_mno from follow where f_sno = #{m_no}) or b_mno = #{m_no}  order by b_no desc limit 0,3")
    List<BoardDto> showBoard(String m_no);
    @Select("select distinct b_no, b_mno, b_image, b_content, b_date, b_like, (select m_name from member where m_no = b_mno) b_mname from board  left outer join follow on b_mno = f_sno where (b_mno = any(select f_mno from follow where f_sno = #{m_no}) or b_mno = #{m_no} )and b_no < #{last_b_no} order by b_no desc limit 0,3")
    List<BoardDto> scrollingBoard(ScrollBean bean);
@@ -45,7 +46,7 @@ public interface AnnoInter {
 
 	
 	
-	// member
+	// member=================================================================================
 	@Select("select * from board where b_mno = #{b_mno} order by b_no desc")
 	List<BoardDto> showMyMain(String b_mno);
 	@Select("select * from member where m_name like #{name} or m_email like #{name}")
@@ -60,7 +61,7 @@ public interface AnnoInter {
 	@Select("select count(*) from member where m_email=#{m_email_check}")
 	Integer email_join_check(String m_email_check);
 	
-	@Insert("insert into member (m_name, m_bdate, m_email, m_gender, m_password) values (#{m_name}, #{m_bdate}, #{m_email}, #{m_gender}, #{m_password})")
+	@Insert("insert into member (m_name, m_bdate, m_email, m_gender, m_password, m_introduce) values (#{m_name}, #{m_bdate}, #{m_email}, #{m_gender}, #{m_password}, #{m_introduce})")
 	boolean joinMember(MemberBean bean);
 	
 	@Delete("delete from member where m_no = #{m_no}")

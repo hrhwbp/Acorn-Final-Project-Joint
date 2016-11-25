@@ -2,11 +2,7 @@
 <!DOCTYPE HTML">
 <html>
 <head>
-<script
-	src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
-<script src="//twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
 <script type="text/javascript">
-
 	function mywall() {
 		
 		if(<%=session.getAttribute("mno")%>	 == null){
@@ -23,88 +19,8 @@
 		$("#account").submit();
 		}
 	}
-	 $( document ).ready(function(){
-		$('#friendSearch').typeahead(null,{
-			source: function(query, syncResults, asyncResults) {
-			    $.get('searching?name='+query, function(data) {
-			        asyncResults(data);
-			      });
-			    },
-		    templates: {
-				    empty: [
-				      '<div class="empty-message">',
-				        '친구가 없습니다.',
-				      '</div>'
-				    ].join('\n'),
-				    suggestion: function(data){
-				       html = "<div><img src='http://wbp.synology.me/profileimg/" + data.m_image + "' class='img-circle' style='width:10%;'/>";
-				        html +="<strong>" + data.m_email + "</strong> - " + data.m_name + "</div>";
-				        return html;
-				    },
-				  }
-			})
-			jQuery('#friendSearch').on('typeahead:selected', function (e, datum) {
-				console.log(datum.m_no);
-				 var idx = $('<input type="hidden" value="'+datum.m_no+'" name="m_no">');
-				 $("#gofr").append(idx);
-    			 $("#gofr").submit(); 
-    			
-			});
-	}) 
 	
 </script>
-<style type="text/css">
-.tt-query, /* UPDATE: newer versions use tt-input instead of tt-query */
-.tt-hint {
-    width: 100%;
-    height: 30px;
-    padding: 8px 12px;
-    font-size: 24px;
-    line-height: 30px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    outline: none;
-}
-
-.tt-query { /* UPDATE: newer versions use tt-input instead of tt-query */
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-}
-
-.tt-hint {
-    color: #999;
-}
-
-.tt-menu { /* UPDATE: newer versions use tt-menu instead of tt-dropdown-menu */
-    width: 422px;
-    margin-top: 12px;
-    padding: 8px 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0,0,0,.2);
-}
-/* .tt-menu.img-circle{
-	width:5%;
-} */
-
-.tt-suggestion {
-    padding: 3px 20px;
-    font-size: 18px;
-    line-height: 24px;
-}
-
-.tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
-    color: #fff;
-    background-color: #0097cf;
-
-}
-
-.tt-suggestion p {
-    margin: 0;
-}
-
-</style>
 </head>
 <body>
 <div id="divHeaderWrapper">
@@ -128,7 +44,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden-md hidden-lg">
                         <div class="bg-light-gray">
-                            <!-- <form class="form-horizontal form-light p-15" role="form">
+                            <form class="form-horizontal form-light p-15" role="form">
                                 <div class="input-group input-group-lg">
                                     <input type="text" class="form-control" placeholder="I want to find ...">
                                     <span class="input-group-btn">
@@ -137,7 +53,7 @@
                                         </button>
                                     </span>
                                 </div>
-                            </form> -->
+                            </form>
                         </div>
                     </li>
                     <li class="dropdown dropdown-meganav mega-dropdown-fluid">
@@ -153,7 +69,7 @@
 							<input type="hidden" name="m_no" value="<%=session.getAttribute("mno")%>">
 						</form>                       
                     </li>
-                     <li class="dropdown">
+                    <li class="dropdown">
                         <a href="javascript:myAccount()" class="dropdown-toggle" >MY PAGE</a>
                         <form action="myaccount" method="post" id="account">
 							<input type="hidden" name="m_no" value="<%=session.getAttribute("mno")%>">
@@ -161,20 +77,9 @@
                     </li> 
                     <li class="dropdown">
                         <a href="wishlist" class="dropdown-toggle" >WISHLIST</a>                        
-
-                    </li>                   
-                    <%if (session.getAttribute("mno") != null) {%>
-                    <!-- <li class="dropdown" style="z-index:500;">
-                    	
-                    	<div class="ui-widget" style="display:inline;">
-                        <i class="fa fa-search"></i><input type="text" id="friendSearch" name="friendSearch" placeholder="search" data-provide="typeahead">
-                        </div>
-                        
-                    </li> -->
-<!-- =====================================================================삭제 대상================================================================ -->
-                <%--     <li class="dropdown">
-                    <br>
-                    	<i class="fa fa-search"></i><input type="text" id="friendSearch" name="friendSearch" placeholder="search" data-provide="typeahead">   
+                    </li>   
+                    <li class="dropdown">
+                    	<a href="anniversary" class="dropdown-toggle" >EVENTS</a>                        
                     </li>
                     <li class="dropdown">
                         <a href="qna" class="dropdown-toggle" >QnA</a>                        
@@ -183,19 +88,15 @@
                     
                     <li class="dropdown">
                     	<a href="logout" class="dropdown-toggle" >LOGOUT</a>                        
-                    </li> --%>
-<!-- =====================================================================삭제 대상 끝================================================================ -->
+                    </li>
 					<%} else {%>					
-
 					<li class="dropdown">
 						<a href="login" class="dropdown-toggle" >LOGIN</a>                        
                     </li>
                     <li class="dropdown">
-                    	<a href="join" class="dropdown-toggle" >JOIN US</a>                        
+                    	<a href="join" class="dropdown-toggle" >JOIN</a>                        
                     </li>
-                    
 					<%}%>
-<<<<<<< HEAD
 								
                   
                     <li class="dropdown dropdown-aux animate-click hidden-xs" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">
@@ -215,12 +116,6 @@
                             </li>
                         </ul>
                     </li>
-=======
-                  
-                    
-                    
-                    
->>>>>>> 5f68e18a5bfbe7551396c0d4151a4b75bf5574b6
                     <li class="dropdown-aux">
                         <a href="#" id="cmdAsideMenu" class="dropdown-toggle dropdown-form-toggle" title="Open slidebar">
                             <i class="fa fa-outdent"></i>
@@ -239,11 +134,8 @@
             <span class="input-group-btn">
                 <button id="btnHideMobileNav" class="btn btn-close" type="button" title="Hide sidebar"><i class="fa fa-times"></i></button>
             </span>
-            
         </div>
     </form>
-    <form id="gofr" action="friendinfo" method="post">
-				</form>
     <div id="dl-menu" class="dl-menuwrapper">
         <ul class="dl-menu"></ul>
     </div>
