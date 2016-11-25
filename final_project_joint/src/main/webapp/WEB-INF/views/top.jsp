@@ -61,6 +61,10 @@
                             </form>
                         </div>
                     </li>
+                    
+                    
+                    
+                    
                     <li class="dropdown dropdown-meganav mega-dropdown-fluid">
                         <a href="action" class="dropdown-toggle">Home</a>                        
                     </li>
@@ -98,13 +102,15 @@
 					<li class="dropdown">
 						<a href="login" class="dropdown-toggle" >LOGIN</a>                        
                     </li>
-                    <li class="dropdown">
+                    <!-- <li class="dropdown">
                     	<a href="join" class="dropdown-toggle" >JOIN</a>                        
-                    </li>
+                    </li> -->
 					<%}%>
-								
+					<li class="form-group dropdown dropdown-meganav mega-dropdown-fluid">                   
+						<a href="#" class="dropdown-toggle"><i class="icon-append fa fa-search"></i><input type="search" name="search" required autofocus required=required></a> 					
+					</li>			
                   
-                    <li class="dropdown dropdown-aux animate-click hidden-xs" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">
+                    <!-- <li class="dropdown dropdown-aux animate-click hidden-xs" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">
                         <a href="#" class="dropdown-form-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
                         <ul class="dropdown-menu dropdown-menu-user animate-wr">
                             <li id="dropdownForm">
@@ -120,7 +126,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="dropdown-aux">
                         <a href="#" id="cmdAsideMenu" class="dropdown-toggle dropdown-form-toggle" title="Open slidebar">
                             <i class="fa fa-outdent"></i>
