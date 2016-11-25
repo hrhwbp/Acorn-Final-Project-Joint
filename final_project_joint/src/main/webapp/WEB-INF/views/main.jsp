@@ -71,6 +71,23 @@
 
 
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+<style type="text/css">
+.loader{
+  margin: 0 0 2em;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}
+svg path,
+svg rect{
+  fill: #e74c3c;
+}
+
+</style>
 <script type="text/javascript">
 var lastbno_save = null;
 $(document).ready(function () {
@@ -98,6 +115,30 @@ function scrolling(){
 			url:"scroll",
 			dataType:"json",
 			data:{"last_bno":lastbno},
+			beforeSend:function(){
+				loadingbar='	<div class="loader loader--style8" title="7">'
+				loadingbar+='<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'+
+				'width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">'+
+				'<rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">'+
+				'<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />'+
+				'</rect>'+
+				'<rect x="8" y="10" width="4" height="10" fill="#333"  opacity="0.2">'+
+				'<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />'+
+				'</rect>'+
+				'<rect x="16" y="10" width="4" height="10" fill="#333"  opacity="0.2">'+
+			    '<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
+				'</rect>'+
+				'</svg>'+
+				'</div>'
+				$("#loading").html(loadingbar);
+				
+			},
 			success:function(scrollData){
 				/* console.log("실행중") */
 				var str = "";
@@ -674,7 +715,8 @@ function anniAjax(){
          </c:forEach>
 		</div>
 		<!-- ==========================TIMELINE 화면에 뿌려주는 게시물 끝============================= -->
-		
+		<div class="container col-md-7 col-md-offset-2 " id="loading">
+		</div>
 		
 
 		<!-- ================================이벤트일 표시 DIV===================================== -->
