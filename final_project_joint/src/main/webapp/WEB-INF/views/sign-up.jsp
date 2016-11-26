@@ -6,7 +6,7 @@
 <html>
 <head>
 <%@ include file="importstop.jsp"%>
-<title>RE:MIND || 가입하기</title>
+<title>RE:MIND || 회원가입</title>
 <meta charset="utf-8">
 <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
@@ -269,7 +269,7 @@ background-color: rgba(255, 255, 255, 0.2);
 											<div class="row">
 												<div class="col-md-8">
 													<label class="checkbox"> 
-														<input type="checkbox" id="btnAgree" required="required"><i></i>사용자 <a href="#">이용약관</a>에 대하여 모두 동의합니다.
+														<input type="checkbox" id="btnAgree" required="required"><i></i> 사용자 <a href="#">이용약관</a>에 대하여 모두 동의합니다.
 													</label>
 												</div>
 												<div class="col-md-4">
@@ -285,7 +285,7 @@ background-color: rgba(255, 255, 255, 0.2);
 								</form>
 							</div>
 							<div class="form-footer">
-								<p>
+								<p style="text-align: center;">
 									이미 계정이 있으신가요? <a href="sign-in">그럼 이곳을 클릭하여 로그인하세요.</a>
 								</p>
 							</div>
@@ -295,141 +295,8 @@ background-color: rgba(255, 255, 255, 0.2);
 			</div>
 		</div>
 	</section>
-
-	<!-- FOOTER -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="col">
-						<h4>Contact us</h4>
-						<ul>
-							<li>5th Avenue, New York - United States</li>
-							<li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567</li>
-							<li>Email: <a href="mailto:hello@example.com"
-								title="Email Us">hello@example.com</a></li>
-							<li>Skype: <a href="skype:my.business?call" title="Skype us">my-business</a></li>
-							<li>Creating great templates is our passion</li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-md-3">
-					<div class="col">
-						<h4>Mailing list</h4>
-						<p>Sign up if you would like to receive occasional treats from
-							us.</p>
-						<form class="form-horizontal form-light">
-							<div class="input-group">
-								<input type="text" class="form-control"
-									placeholder="Your email address..."> <span
-									class="input-group-btn">
-									<button class="btn btn-base" type="button">Go!</button>
-								</span>
-							</div>
-						</form>
-					</div>
-				</div>
-
-				<div class="col-md-3">
-					<div class="col col-social-icons">
-						<h4>Follow us</h4>
-						<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-							class="fa fa-google-plus"></i></a> <a href="#"><i
-							class="fa fa-linkedin"></i></a> <a href="#"><i
-							class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-skype"></i></a>
-						<a href="#"><i class="fa fa-pinterest"></i></a> <a href="#"><i
-							class="fa fa-youtube-play"></i></a> <a href="#"><i
-							class="fa fa-flickr"></i></a>
-					</div>
-				</div>
-
-				<div class="col-md-3">
-					<div class="col">
-						<h4>About us</h4>
-						<p class="no-margin">
-							Boomerang MultiPurpose Template is a multi-solution product made
-							with simplicity in mind so you can benefit as much as possible
-							from it. <br> <br> <a href="#"
-								class="btn btn-block btn-base btn-icon fa-check"><span>Try
-									it now</span></a>
-						</p>
-					</div>
-				</div>
-			</div>
-
-			<hr>
-
-			<div class="row">
-				<div class="col-lg-9 copyright">
-					2014 © Web Pixels. All rights reserved. <a href="#">Terms and
-						conditions</a>
-				</div>
-				<div class="col-lg-3">
-					<a href="http://www.webpixels.ro"
-						title="Made with love by Web Pixels" target="_blank" class="">
-						<img src="resources/images/webpixels-footer-logo.png"
-						alt="Web Pixels - Designing Forward | Logo" class="pull-right">
-					</a>
-				</div>
-			</div>
-		</div>
-	</footer>
-	</div>
-
-	<%@ include file="importsbottom.jsp"%>
-	<!-- ============================================================================= -->
-	<!-- Essentials -->
-	<!-- <script src="js/modernizr.custom.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery.mousewheel-3.0.6.pack.js"></script>
-<script src="js/jquery.easing.js"></script>
-<script src="js/jquery.metadata.js"></script>
-<script src="js/jquery.hoverup.js"></script>
-<script src="js/jquery.hoverdir.js"></script>
-<script src="js/jquery.stellar.js"></script> -->
-
-	<!-- Boomerang mobile nav - Optional  -->
-	<!-- <script src="assets/responsive-mobile-nav/js/jquery.dlmenu.js"></script>
-<script src="assets/responsive-mobile-nav/js/jquery.dlmenu.autofill.js"></script> -->
-
-	<!-- Forms -->
-	<!-- <script src="assets/ui-kit/js/jquery.powerful-placeholder.min.js"></script> 
-<script src="assets/ui-kit/js/cusel.min.js"></script>
-<script src="assets/sky-forms/js/jquery.form.min.js"></script>
-<script src="assets/sky-forms/js/jquery.validate.min.js"></script>
-<script src="assets/sky-forms/js/jquery.maskedinput.min.js"></script>
-<script src="assets/sky-forms/js/jquery.modal.js"></script> -->
-
-	<!-- Assets -->
-	<!-- <script src="assets/hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-<script src="assets/page-scroller/jquery.ui.totop.min.js"></script>
-<script src="assets/mixitup/jquery.mixitup.js"></script>
-<script src="assets/mixitup/jquery.mixitup.init.js"></script>
-<script src="assets/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
-<script src="assets/waypoints/waypoints.min.js"></script>
-<script src="assets/milestone-counter/jquery.countTo.js"></script>
-<script src="assets/easy-pie-chart/js/jquery.easypiechart.js"></script>
-<script src="assets/social-buttons/js/rrssb.min.js"></script>
-<script src="assets/nouislider/js/jquery.nouislider.min.js"></script>
-<script src="assets/owl-carousel/owl.carousel.js"></script>
-<script src="assets/bootstrap/js/tooltip.js"></script>
-<script src="assets/bootstrap/js/popover.js"></script> -->
-
-	<!-- Sripts for individual pages, depending on what plug-ins are used -->
-
-	<!-- Boomerang App JS -->
-	<!-- <script src="js/wp.app.js"></script> -->
-	<!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-<![endif]-->
-
-	<!-- Temp -- You can remove this once you started to work on your project -->
-	<!-- <script src="js/jquery.cookie.js"></script>
-<script src="js/wp.switcher.js"></script>
-<script type="text/javascript" src="js/wp.ga.js"></script>
-===================================================================================== -->
+<%@ include file="footer.jsp" %>	
+<%@ include file="importsbottom.jsp"%>
 
 </body>
 </html>

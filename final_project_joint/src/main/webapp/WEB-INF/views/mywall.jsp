@@ -547,7 +547,7 @@ function boardDeleteOk(b_no) {
 			<button type="button" class="btn btn-link col-md-3" style="color: black; background-color:#e4d3c4;" disabled="disabled"><b>게시물  ${fn:length(board)}개</b></button> 
 			<button type="button" class="btn btn-link col-md-3" style="background-color: rgba(229, 212, 200, 0.63)" onclick="follower(${myinfo.m_no})"><b>팔로워 ${fn:length(mylist)}</b></button>
 			<button type="button" class="btn btn-link col-md-3" style="background-color: rgba(229, 212, 200, 0.63);" onclick="follow(${myinfo.m_no})"><b>팔로우 ${fn:length(ilist)}</b></button>
-			<button type="button" class="btn btn-link col-md-3" style="background-color: rgba(229, 212, 200, 0.63);"><b>위시리스트</b></button>
+			<a href="showWishList?w_mno=${myinfo.m_no}"><button type="button" class="btn btn-link col-md-3" style="background-color: rgba(229, 212, 200, 0.63);"><b>위시리스트</b></button></a>
 		</div>
 		<div class="row" style="padding-top: 2%">
 			<div class="col-md-1">
@@ -792,7 +792,7 @@ function boardDeleteOk(b_no) {
 				    <div class="input-group">
 				      <input name="b_content" id="modalContent" type="text" class="form-control" value="">
 				      <div class="input-group-btn">
-				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-option-vertical"></span></button>
+				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
 				        <ul class="dropdown-menu dropdown-menu-right" role="menu">
 				          <li><a href="#" id="updateSubmit">수정내역 저장</a></li>
 				          <!-- <li class="divider"></li> -->
@@ -946,81 +946,7 @@ function boardDeleteOk(b_no) {
 	  </div>
 	</div>
 </div> <!-- container -->
-    <!-- FOOTER -->
-<div>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="col">
-                       <h4>Contact us</h4>
-                       <ul>
-                            <li>5th Avenue, New York - United States</li>
-                            <li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567 </li>
-                            <li>Email: <a href="mailto:hello@example.com" title="Email Us">hello@example.com</a></li>
-                            <li>Skype: <a href="skype:my.business?call" title="Skype us">my-business</a></li>
-                            <li>Creating great templates is our passion</li>
-                        </ul>
-                     </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="col">
-                        <h4>Mailing list</h4>
-                        <p>Sign up if you would like to receive occasional treats from us.</p>
-                        <form class="form-horizontal form-light">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Your email address...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-base" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="col col-social-icons">
-                        <h4>Follow us</h4>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-flickr"></i></a>
-                    </div>
-                </div>
-
-                 <div class="col-md-3">
-                    <div class="col">
-                        <h4>About us</h4>
-                        <p class="no-margin">
-                        Boomerang MultiPurpose Template is a multi-solution product made with simplicity in mind so you can benefit as much as possible from it.
-                        <br><br>
-                        <a href="#" class="btn btn-block btn-base btn-icon fa-check"><span>Try it now</span></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <hr>
-            
-            <div class="row">
-                <div class="col-lg-9 copyright">
-                    2014 Â© Web Pixels. All rights reserved.
-                    <a href="#">Terms and conditions</a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="http://www.webpixels.ro" title="Made with love by Web Pixels" target="_blank" class="">
-                        <img src="resources/images/webpixels-footer-logo.png" alt="Web Pixels - Designing Forward | Logo" class="pull-right">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
+<%@ include file="footer.jsp" %>	
 
 
 <script>
@@ -1053,5 +979,4 @@ boardInsertFile.onchange = function (e) {
 </script>
 
 </body>
-<%-- <%@ include file="bottom.jsp" %> --%>
 </html>

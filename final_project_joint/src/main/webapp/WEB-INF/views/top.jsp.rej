@@ -1,0 +1,36 @@
+diff a/final_project_joint/src/main/webapp/WEB-INF/views/top.jsp b/final_project_joint/src/main/webapp/WEB-INF/views/top.jsp	(rejected hunks)
+@@ -23,6 +23,34 @@
+ 		$("#account").submit();
+ 		}
+ 	}
++	 $( document ).ready(function(){
++		$('#friendSearch').typeahead(null,{
++			source: function(query, syncResults, asyncResults) {
++			    $.get('searching?name='+query, function(data) {
++			        asyncResults(data);
++			      });
++			    },
++		    templates: {
++				    empty: [
++				      '<div class="empty-message">',
++				        '친구가 없습니다.',
++				      '</div>'
++				    ].join('\n'),
++				    suggestion: function(data){
++				       html = "<div><img src='http://wbp.synology.me/profileimg/" + data.m_image + "' class='img-circle' style='width:10%;'/>";
++				        html +="<strong>" + data.m_email + "</strong> - " + data.m_name + "</div>";
++				        return html;
++				    },
++				  }
++			})
++			jQuery('#friendSearch').on('typeahead:selected', function (e, datum) {
++				console.log(datum.m_no);
++				 var idx = $('<input type="hidden" value="'+datum.m_no+'" name="m_no">');
++				 $("#gofr").append(idx);
++    			 $("#gofr").submit(); 
++    			
++			});
++	}) 
+ 	
+ </script>
+ <style type="text/css">
