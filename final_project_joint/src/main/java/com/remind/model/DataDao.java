@@ -47,6 +47,11 @@ public class DataDao implements DaoInter {
 		}
 
 	}
+	@Override
+	public String selectlastNo(String m_no) {
+		// TODO Auto-generated method stub
+		return annoInter.selectlastNo(m_no);
+	}
 
 	@Override
 	public boolean write(BoardBean bean) throws DataAccessException {

@@ -21,7 +21,7 @@ public interface DaoInter {
 	boolean eraseBoard(String b_no1) throws DataAccessException;
 	boolean write(BoardBean bean) throws DataAccessException;
 	boolean updateBoard(BoardBean bean) throws DataAccessException;
-	
+	String selectlastNo(String m_no) throws DataAccessException;
 	//member
 	List<BoardDto> showMyMain(String b_mno) throws DataAccessException;
 	List<MemberDto> searchMember(String m_name) throws DataAccessException;

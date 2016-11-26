@@ -117,6 +117,7 @@ public class BoardController {
 		}
 		model.addObject("list", list);
 		model.addObject("anniversary",anniversary);
+		model.addObject("lastno",daoInter.selectlastNo(m_no));
 		model.setViewName("main");
 		return model;
 	}

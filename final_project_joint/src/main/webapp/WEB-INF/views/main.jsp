@@ -107,12 +107,15 @@ function scrolling(){
 		if(lastbno_save != lastbno){  
 		lastbno_save = lastbno;
 		$.ajax({ // 스크롤링 
-			
 			type:"get",
 			url:"scroll",
 			dataType:"json",
 			data:{"last_bno":lastbno},
 			beforeSend:function(){
+				<c:set value="${lastno}" var="lastno"/>
+				console.log(lastbno)
+				console.log(${lastno})
+				if(lastbno != ${lastno}){
 				loadingbar='	<div class="loader loader--style8" title="7">'
 				loadingbar+='<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'+
 				'width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">'+
@@ -134,10 +137,12 @@ function scrolling(){
 				'</svg>'+
 				'</div>'
 				$("#loading").html(loadingbar);
-				
+				}else{
+					$("#loading").html("");
+				}
 			},
 			success:function(scrollData){
-				/* console.log("실행중") */
+				
 				var str = "";
 				var list = scrollData.datas;
 				$(list).each(function(index,objArr){
