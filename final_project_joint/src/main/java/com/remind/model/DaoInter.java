@@ -22,7 +22,7 @@ public interface DaoInter {
 	boolean eraseBoard(String b_no1) throws DataAccessException;
 	boolean write(BoardBean bean) throws DataAccessException;
 	boolean updateBoard(BoardBean bean) throws DataAccessException;
-	
+	String selectlastNo(String m_no) throws DataAccessException;
 	//member
 	List<BoardDto> showMyMain(String b_mno) throws DataAccessException;
 	List<MemberDto> searchMember(String m_name) throws DataAccessException;
@@ -34,8 +34,7 @@ public interface DaoInter {
 	MemberDto login(MemberBean bean) throws DataAccessException;
 	int email_join_check(String m_email_check) throws DataAccessException;
 	boolean ChangePass(MemberBean bean) throws DataAccessException;
-	
-	
+		
 	//follow
 	List<FollowDto> showMyFollower(String m_no) throws DataAccessException;
 	List<FollowDto> showIFollow(String m_no) throws DataAccessException;
@@ -62,7 +61,6 @@ public interface DaoInter {
 	boolean updateWishlist(WishlistBean bean) throws DataAccessException;
 	boolean updateLockStatus(WishlistBean bean) throws DataAccessException;
 	
-
 	//Wishlist Group
 	List<WishlistDto> showEachWishList(String g_num) throws DataAccessException;
 	List<WishlistDto> showWishGroup(String wg_mno) throws DataAccessException;	
@@ -70,7 +68,6 @@ public interface DaoInter {
 	boolean deleteWishGroup(String wg_no) throws DataAccessException;
 	boolean updateWishGroup(WishlistBean bean) throws DataAccessException;
 	WishlistDto showWishAGroup(String wg_no) throws DataAccessException;
-
 	
 	//like
 	List<LikeDto> showLike(String m_no) throws DataAccessException;
@@ -93,13 +90,13 @@ public interface DaoInter {
 	List<BoardDto> showBoardA() throws DataAccessException;
 	List<BoardDto> showPBoard(String m_no) throws DataAccessException;
 	List<WishlistDto> eventListA() throws DataAccessException;
-	
+		
 	String wishlistCnt() throws DataAccessException;
 	String memberCnt() throws DataAccessException;
 	String boardCnt() throws DataAccessException;
-	
 	ParserDto articleAdmin() throws DataAccessException;
-	
+	ParserDto stockAdmin() throws DataAccessException;	
 	AdminDto showAdmin(String ad_no) throws DataAccessException;
 	boolean AdminUpdate(AdminBean bean) throws DataAccessException;
+
 }

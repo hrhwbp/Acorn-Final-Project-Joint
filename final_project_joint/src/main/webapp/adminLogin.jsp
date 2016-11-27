@@ -35,20 +35,12 @@ pbfooter {
 	position: relative;
 }	
 </style>
-<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-
 <!-- Google Fonts call. Font Used Open Sans & Raleway -->
 <link href="http://fonts.googleapis.com/css?family=Raleway:400,300" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-
 <!-- Jquery Validate Script -->
 <script type="text/javascript" src="resources/admin/js/jquery.validate.js"></script>
 
-<!-- Jquery Validate Script - Validation Fields -->
 <script type="text/javascript">
 $.validator.setDefaults({
 	submitHandler : function() {

@@ -176,9 +176,10 @@ public class AdminController {
 		String name = daoInter.articleAdmin().getName().replaceAll("'", "");
 		modelAndView.addObject("articleName", name);
 		modelAndView.addObject("articleUrl", daoInter.articleAdmin().getUrl());
-		/*String stock = daoInter.stockStatus().getName().replaceAll(",", "");
-		System.out.println(stock + " 주가확인~~~");
-		modelAndView.addObject("stock", stock);*/
+		
+		String stock = daoInter.stockAdmin().getPrice().replaceAll(",", "");
+		System.out.println(stock + " 여기도 주가 확인");
+		modelAndView.addObject("stock", stock.replace(" ", ""));
 		
 		modelAndView.setViewName("../../admin");
 		return modelAndView;
@@ -232,6 +233,14 @@ public class AdminController {
 		AdminDto dto = daoInter.showAdmin(ad_no);
 		//System.out.println(dto.getAd_name() + " 확인 모달 " + dto.getAd_password());
 		return dto;
+	}
+	
+	//프로젝트 팀 보기 페이지 이동
+	@RequestMapping(value="ourteam")
+	public ModelAndView ourTeam(){
+		ModelAndView view = new ModelAndView();
+		view.setViewName("ourteam");
+		return view;
 	}
 	
 }

@@ -417,6 +417,7 @@ function wgopen(wg_no, wg_detail){
 </head>
 
 
+
 <body>
 
 	<div class="container col-md-10 col-md-offset-1">

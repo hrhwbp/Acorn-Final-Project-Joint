@@ -209,27 +209,42 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 //*** 시계      
 
 //차트 ***
-function stockChart(name, url){
+function stockChart(name, url, stock){
+	
+	/*
 	function generateNumber(min, max) {
 		min = typeof min !== 'undefined' ? min : 1;
 		max = typeof max !== 'undefined' ? max : 100;
 		return Math.floor((Math.random() * max) + min);
 	}
+	*/
 	
-	
-	
+	/*
 	var chart,
 		categories = ['Categorie 1', 'Categorie 2', 'Categorie 3', 'Categorie 4', 'Categorie 5','Categorie 6', 'Categorie 7', 'Categorie 8', 'Categorie 9', 'Categorie 10', 'Categorie 11', 'Categorie 12', 'Categorie 13', 'Categorie 14', 'Categorie 15', 'Categorie 16', 'Categorie 17', 'Categorie 18', 'Categorie 19','Categorie 20', 'Categorie 21','Categorie 22', 'Categorie 23', 'Categorie 24', 'Categorie 25', 'Categorie 26', 'Categorie 27', 'Categorie 28', 'Categorie 29', 'Categorie 30'],
 		serie1 = [13, 13, 46, 61, 23, 12, 24, 16, 14, 12, 12, 24, 19, 13, 11, 11, 14, 11, 11, 11, 11, 13, 22, 10, 18, 15, 24, 31, 19, 10],
 		serie2 = [52, 41, 58, 63, 55, 46, 45, 41, 38, 54, 50, 39, 48, 70, 63, 60, 58, 63, 83, 89, 83, 79, 83, 100, 104, 108, 52, 46, 83, 89],
 		$aapls;
-	//categories=[], serie1 = [], serie2 = [],
-	/* var i = 0;
+	*/
+	
+	//alert(stock);
+	
+	var chart,
+		categories= [], 
+		serie1=[0, 0, 0, 0, 0, 0, 0], 
+		serie2=[0, 0, 0, 0, 0, 0, 0], 
+		$aapls;
+	
+	var i=0;
 	setInterval(function(){
-		categories += 'Categorie '+ i; 
-		serie1 += stock; 
+		//alert(stock);
+		//categories[i] = 'Categorie '+ (i+1).toString();
+		//alert(categories[i]);
+		serie1[7+i] = stock;
+		serie2[7+i] = stock;
 		
-	}, 6000); */
+		i++;
+	}, 5000);
 	
 	$(document).ready(function() {
 		chart = new Highcharts.Chart({
@@ -297,13 +312,20 @@ function stockChart(name, url){
 		});
 		
 		setInterval(function(){
+			/*
 			chart.series[0].addPoint(generateNumber(), true, true);
 			chart.series[1].addPoint(generateNumber(50, 150), true, true);
 			new stockStatus(serie1[0]);
+			*/
 			
-			/* new stockStatus2(stock);
-			alert(stock + "되라"); */
-		}, 1000);
+			
+			chart.series[0].addPoint(serie1[6+i],true, true);//차트에 주식가격 입력
+			chart.series[1].addPoint(serie2[6+i],true, true);
+			new stockStatus2(serie1[6+i]);
+			//alert(serie1[0]);
+			//alert(stockprice + "되라");
+			
+		}, 5000);
 		
 		setInterval(function() {
 			$('.info-aapl span').each(function(index, elem) {
@@ -312,45 +334,57 @@ function stockChart(name, url){
 				});
 			});
 	
-		}, 3000);
+		}, 5000);
 		
-		setInterval(function(){
+		setInterval(function(){		//네이버에서 경제기사 가져오기...
 			new articleUpdate(name, url);
-		}, 6000);
+		}, 5000);
 		
 	});
 }
 
-/* var prenum = 0;
+var prenum = 0;
 function stockStatus2(stock){
-	alert(stock);
-	if(prenum < stock){
+	//alert(stock);
+	
+	if(stock == prenum){
+		var dif = 0;
+		$("div #stockstatus").html(
+				'<p><img src="resources/admin/images/up.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'	
+		);
+		
+		$("div #totcost").html(
+				'<i class="graph-arrow"></i><span class="graph-info-big" id="totcost">' + stock + '원</span>'	
+		);
+		
+	}else if(prenum < stock){
 		var dif = stock-prenum;
-		var stat = defprice + stock;
-		//alert(stat);
+		//var stat = defprice + stock;
+		
 		$("div #stockstatus").html(
 			'<p><img src="resources/admin/images/up.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'		
 		);
 		$("div #totcost").html(
-				'<i class="graph-arrow"></i><span class="graph-info-big" id="totcost">'+ stat +'원</span>'	
+				'<i class="graph-arrow"></i><span class="graph-info-big" id="totcost">'+ stock +'원</span>'	
 		);
 		
 	}else if(prenum > stock){
 		var dif = prenum-stock;
-		var stat = defprice + stock;
+		//var stat = defprice + stock;
 		
 		$("div #stockstatus").html(
 			'<p><img src="resources/admin/images/down.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'		
 		);
 		$("div #totcost").html(
-			'<i class="graph-arrow"></i><span class="graph-info-big" id="totcost">'+ stat +'원</span>'	
+			'<i class="graph-arrow"></i><span class="graph-info-big" id="totcost">'+ stock +'원</span>'	
 		);
 	}
 	prenum=stock;	
-} */
+}
 
 
 //***주식 현황
+/*
 var prenum = 0;
 var defprice = 35030;
 function stockStatus(num){
@@ -379,6 +413,7 @@ function stockStatus(num){
 	}
 	prenum=num;	
 }
+*/
 
 //Article Update
 function articleUpdate(name, url){
@@ -419,7 +454,7 @@ function updateSubmit(){
 
 </script>    
 </head>
-<body onload="printClock(), chart1(${man},${woman}), chart2(), stockChart('${articleName}','${articleUrl}')">
+<body onload="printClock(), chart1(${man},${woman}), chart2(), stockChart('${articleName}','${articleUrl}', ${stock})">
 	<c:if test="${updateCheck == 1}">
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -436,7 +471,7 @@ function updateSubmit(){
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"><img src="resources/admin/images/logo30.png" alt=""> RE:MIND</a>
+				<a class="navbar-brand" href="MainAdmin"><img src="resources/admin/images/logo30.png" alt=""> RE:MIND</a>
 			</div> 
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -453,7 +488,6 @@ function updateSubmit(){
 						<li><a href="adminLogin.jsp"><i class="icon-lock icon-white"></i> Login</a></li>
 						<li><a href="adminLogin.jsp"><i class="icon-user icon-white"></i> User</a></li>
 					<%} %>
-					<li><a href="index.jsp"><i class="icon-user icon-white"></i> User</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
@@ -509,7 +543,7 @@ function updateSubmit(){
 				<div class="half-unit">
 					<dtitle>주가 현황</dtitle><hr>
 					<div class="cont" id="stockstatus">
-						<p><img src="resources/admin/images/up.png" alt="" style="width: 40px; height: 40px;"><bold></bold></p>
+						<p><img src="resources/admin/images/up.png" alt="" style="width: 40px; height: 40px;"><bold></bold> | 0</p>
 					</div>
 				</div>
 			</div>

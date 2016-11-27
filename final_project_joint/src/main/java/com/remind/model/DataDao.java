@@ -52,6 +52,11 @@ public class DataDao implements DaoInter {
 		}
 
 	}
+	@Override
+	public String selectlastNo(String m_no) {
+		// TODO Auto-generated method stub
+		return annoInter.selectlastNo(m_no);
+	}
 
 	@Override
 	public boolean write(BoardBean bean) throws DataAccessException {
@@ -552,6 +557,29 @@ public class DataDao implements DaoInter {
 		         
 			}catch (Exception e) {
 				System.out.println("articleAdmin : Error " + e);
+			}
+			return dto;
+		}
+		
+		@Override
+		public ParserDto stockAdmin() throws DataAccessException {
+			ParserDto dto = new ParserDto();
+			try {
+		         Document doc = Jsoup.connect("https://www.google.com/finance?q=KOSDAQ%3A035720&ei=mIo6WIHWDcWY0ATJ6L2oAw").get();
+		         Elements stock = doc.select("[class*=pr] [id*=ref]");
+		         
+		         Element stockprice = null;
+		         
+		         if(stock.size() > 0){
+		             //System.out.println(article.get(0).text() + "~~~!~!~!");
+		        	 stockprice = stock.get(0);
+		        	 dto.setPrice(stockprice.text());
+		        	 dto.setUrl("https://www.google.com/finance?q=KOSDAQ%3A035720&ei=mIo6WIHWDcWY0ATJ6L2oAw");
+		        	 System.out.println(dto.getPrice() + " " + dto.getUrl() + " 주가확인~~~~!!");
+		          }
+
+			}catch (Exception e) {
+				System.out.println("stockAdmin : Error " + e);
 			}
 			return dto;
 		}
