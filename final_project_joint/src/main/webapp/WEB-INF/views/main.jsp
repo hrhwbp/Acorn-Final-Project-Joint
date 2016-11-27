@@ -86,7 +86,7 @@ svg rect{
 }
 
 </style>
-<script type="text/javascript"  ></script>
+<script src="/resources/js/main.js" ></script>
 <!-- <script type="text/javascript">
 var lastbno_save = null;
 $(document).ready(function () {

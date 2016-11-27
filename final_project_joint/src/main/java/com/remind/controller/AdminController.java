@@ -31,15 +31,23 @@ public class AdminController {
 	@Autowired
 	private DaoInter daoInter;
 	
-	@RequestMapping(value="loginPage", method = RequestMethod.GET)
+	/*@RequestMapping(value="loginPage", method = RequestMethod.GET)
 	public String LoginPage(){                                 
 		return "redirect:/adminLogin.jsp";
+	}*/
+	
+	@RequestMapping(value="loginPage", method = RequestMethod.GET)
+	public ModelAndView LoginPage(){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("adminLogin.jsp");
+		
+		return model;
 	}
 	
 	@RequestMapping(value="AdminLogin", method = RequestMethod.POST)
 	@ResponseBody
 	public String AdminLogin(AdminBean bean, HttpSession session){                                 
-		AdminDto dto = daoInter.AdminLogin(bean);
+		AdminDto dto = daoInter.AdminLogin(bean);				
 		String adminlogin = "";
 		if(dto != null){
 			System.out.println(dto.getAd_no() + " 세션좀 확인하자");
