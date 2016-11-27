@@ -146,11 +146,11 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html"><img src="resources/image/REMINDLOGO.png" style="height: 15px; width: 60px" alt=""> RE:MIND ADMIN</a>
+			<a class="navbar-brand" href="MainAdmin"><img src="resources/images/boomerang-logo-white.png" style="height: 15px; width: 60px" alt=""> RE:MIND ADMIN</a>
 		</div> 
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="admin.jsp"><i class="icon-home icon-white"></i> Home</a></li>              
+				<li><a href="MainAdmin"><i class="icon-home icon-white"></i> Home</a></li>              
 				<li class="active"><a href="showAdminTable"><i class="icon-th icon-white"></i> Tables</a></li>
 				<%if (session.getAttribute("adno") != ""){ %>
 					<li><a href="adminLogout"><i class="icon-lock icon-white"></i> Logout</a></li>
@@ -330,7 +330,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 col-lg-12">
-				<p><img src="resources/image/REMINDLOGO.png" alt=""></p>
+				<p><img src="resources/images/boomerang-logo-white.png" alt=""></p>
 				<p>Blocks Dashboard Theme - Crafted With Love - Copyright By Sim 2016</p>
 			</div>
 			</div><!-- /row -->
