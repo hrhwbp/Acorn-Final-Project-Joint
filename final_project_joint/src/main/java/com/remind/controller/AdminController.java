@@ -168,9 +168,10 @@ public class AdminController {
 		String name = daoInter.articleAdmin().getName().replaceAll("'", "");
 		modelAndView.addObject("articleName", name);
 		modelAndView.addObject("articleUrl", daoInter.articleAdmin().getUrl());
-		/*String stock = daoInter.stockStatus().getName().replaceAll(",", "");
-		System.out.println(stock + " 주가확인~~~");
-		modelAndView.addObject("stock", stock);*/
+		
+		String stock = daoInter.stockAdmin().getPrice().replaceAll(",", "");
+		System.out.println(stock + " 여기도 주가 확인");
+		modelAndView.addObject("stock", stock.replace(" ", ""));
 		
 		modelAndView.setViewName("../../admin");
 		return modelAndView;

@@ -87,19 +87,24 @@ public interface DaoInter {
 	boolean updateAnniversary(AnniversaryBean bean) throws DataAccessException;
 
 	//Admin
-		AdminDto AdminLogin(AdminBean bean) throws DataAccessException;
+	AdminDto AdminLogin(AdminBean bean) throws DataAccessException;
 
-		List<MemberDto> showMemberA() throws DataAccessException;
-		List<BoardDto> showBoardA() throws DataAccessException;
-		List<BoardDto> showPBoard(String m_no) throws DataAccessException;
-		List<WishlistDto> eventListA() throws DataAccessException;
+	List<MemberDto> showMemberA() throws DataAccessException;
+	List<BoardDto> showBoardA() throws DataAccessException;
+	List<BoardDto> showPBoard(String m_no) throws DataAccessException;
+	List<WishlistDto> eventListA() throws DataAccessException;
 		
-		String wishlistCnt() throws DataAccessException;
-		String memberCnt() throws DataAccessException;
-		String boardCnt() throws DataAccessException;
+	String wishlistCnt() throws DataAccessException;
+	String memberCnt() throws DataAccessException;
+	String boardCnt() throws DataAccessException;
 		
-		ParserDto articleAdmin() throws DataAccessException;
+	ParserDto articleAdmin() throws DataAccessException;
+	ParserDto stockAdmin() throws DataAccessException;
+	
+	AdminDto showAdmin(String ad_no) throws DataAccessException;
+	boolean AdminUpdate(AdminBean bean) throws DataAccessException;
 		
-		AdminDto showAdmin(String ad_no) throws DataAccessException;
-		boolean AdminUpdate(AdminBean bean) throws DataAccessException;
+		
+		
+		
 }
