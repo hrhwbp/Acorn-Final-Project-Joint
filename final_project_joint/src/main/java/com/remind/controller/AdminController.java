@@ -226,4 +226,12 @@ public class AdminController {
 		return dto;
 	}
 	
+	//프로젝트 팀 보기 페이지 이동
+	@RequestMapping(value="ourteam")
+	public ModelAndView ourTeam(){
+		ModelAndView view = new ModelAndView();
+		view.setViewName("ourteam");
+		return view;
+	}
+	
 }

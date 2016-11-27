@@ -9,32 +9,9 @@
     <title>RE:MIND || Happy Gifting Starts Here</title>
 
 <%@ include file="importstop.jsp" %>
-    <!-- Essential styles -->
-<!--     <link rel="stylesheet" href="../../controller/resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="../../controller/resources/font-awesome/css/font-awesome.min.css" type="text/css"> 
-    <link rel="stylesheet" href="../../controller/resources/assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">  -->
-     
-    <!-- Boomerang styles -->
-<!--         <link id="wpStylesheet" type="text/css" href="../../controller/resources/css/global-style-red.css" rel="stylesheet" media="screen"> -->
-        
-
-    <!-- Favicon -->
-<!--     <link href="../../controller/resources/images/favicon.png" rel="icon" type="image/png"> -->
-
-    <!-- Assets -->
-<!--     <link rel="stylesheet" href="../../controller/resources/assets/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="../../controller/resources/assets/owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="../../controller/resources/assets/sky-forms/css/sky-forms.css">   -->  
-    <!--[if lt IE 9]>
-        <link rel="stylesheet" href="../../controller/resources/assets/sky-forms/css/sky-forms-ie8.css">
-    <![endif]-->
-
-    <!-- Required JS -->
-<!--     <script src="../../controller/resources/js/jquery.js"></script>
-    <script src="../../controller/resources/js/jquery-ui.min.js"></script> -->
-
-    <!-- Page scripts -->
-    <link rel="stylesheet" href="resources/assets/layerslider/css/layerslider.css" type="text/css">
+ 
+<!-- Page scripts -->
+<link rel="stylesheet" href="resources/assets/layerslider/css/layerslider.css" type="text/css">
 
 <script type="text/javascript">
 	function mywall() {
@@ -208,7 +185,7 @@
                     
                     
                     
-                    <li class="dropdown dropdown-aux animate-click hidden-xs" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">
+                    <!-- <li class="dropdown dropdown-aux animate-click hidden-xs" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">
                         <a href="#" class="dropdown-form-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
                         <ul class="dropdown-menu dropdown-menu-user animate-wr">
                             <li id="dropdownForm">
@@ -224,7 +201,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="dropdown-aux hidden-xs">
                         <a href="#" id="cmdAsideMenu" class="dropdown-toggle dropdown-form-toggle" title="Open sidebar">
                             <i class="fa fa-outdent"></i>
@@ -256,7 +233,7 @@
             </h3>
 
             <h3 class="ls-l title-xs c-white text-uppercase text-center strong" style="width: 100%; top: 82%; left:0;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:1500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
-                Start the tour
+                <!-- Start the tour -->
             </h3>
         </div>
         
@@ -267,7 +244,7 @@
             
             <!-- Left Text -->
             <h3 class="ls-l title text-normal" style="width:600px; top:35%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
-                The secret of getting ahead is <span class="strong-600">getting</span> <span class="strong-600 c-base">started</span></strong>
+                <strong><span class="strong-600 c-base">선물하는 즐거움/선물받는 즐거움</span><span class="strong-600">getting</span> <span class="strong-600 c-base">started</span></strong>
             </h3>
 
             <p class="ls-l text-standard" style="width:500px; top:50%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:1000;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
@@ -312,7 +289,9 @@
                         </div>                        
                         <h1>Event is Coming!!</h1>
                         <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur curabitur pellentesque neque eget diam posuere adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus
+                       	 내가 소중히 여기는 이벤트가 다가오나요? 아니면 가족, 친구의 기념일들이 다가오나요? 
+                       	 RE:MIND의 페이지에서 당신의 이벤트와 가족, 친구들의 기념일을 확인해보세요!
+                       	 다가오는 모든 이벤트, 기념일들을 한눈에 파악할 수 있습니다.
                         </p>
                     </div>
                 </div>
@@ -321,9 +300,12 @@
                         <div class="img-icon">
                             <i class="fa fa-group"></i>
                         </div>
-                        <h1>Tell your Friends</h1>
+                        <h1>Add to a List / Look at a list</h1>
                         <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur urabitur pellentesque neque eget diam posuere adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus.
+                        	나의 이벤트가 다가온다면 이벤트에 맞추어 선물받고 싶은 목록을 작성해보세요.
+                        	내가 받고싶은 선물을 등록한다면 친구들은 당신이 원하는 선물을 고르기 훨씬 쉬울꺼예요.<br>
+                        	친구의 이벤트라면 친구가 등록해 놓은 소원목록을 찾아보세요.
+                        	친구가 받고싶어하는 선물을 한눈에 보고 내가 주고 싶은 선물을 먼쩌 찜해보세요! 
                         </p>
                     </div>
                 </div>
@@ -334,7 +316,8 @@
                         </div>
                         <h1>Get a wonderful gifts</h1>
                         <p class="text-center">
-                        Lorem ipsum dolor sit amet, consectetur urabitur pellentesque neque eget diam posuere adipiscing elit. Curabitur pellentesque neque eget diam posuere porta. Quisque ut nulla at nunc vehicula lacinia. Proin adipiscing porta tellus.
+                        	이제는 선물을 받을 차례군요. 기대하세요! 누가 어떤 선물을 나에게 줄지 ^^<br>
+                        	당신이 선물을 줄 차례라면 당신은 친구가 가장 원하는 선물을 친구가 좋아할지 고민없이 당당하게 줄 수 있습니다.
                         </p>
                     </div>
                 </div>
@@ -342,7 +325,68 @@
         </div>
     </section>
 
-    <section class="slice white bb">
+    
+    
+    <!-- ========================================쇼핑몰 제휴사================================================ -->
+    <section class="slice bg-white">
+        <div class="wp-section">
+            <div class="container">
+                <div class="section-title-wr">
+                    <h3 class="section-title left"><span>Our Partners</span></h3>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="client">
+                            <a href="www.11st.co.kr">
+                                <img src="../../controller/resources/images/clients/client-1.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                     <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="client">
+                            <a href="www.ssg.com">
+                                <img src="../../controller/resources/images/clients/client-2.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                     <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="client">
+                            <a href="www.ebay.com">
+                                <img src="../../controller/resources/images/clients/client-3.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                     <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="client">
+                            <a href="www.auction.co.kr">
+                                <img src="../../controller/resources/images/clients/client-4.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                     <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="client">
+                            <a href="#">
+                                <img src="../../controller/resources/images/clients/client-5.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                     <div class="col-md-2 col-sm-4 col-xs-6">
+                        <div class="client">
+                            <a href="#">
+                                <img src="../../controller/resources/images/clients/client-6.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================================쇼핑몰 제휴사 끝================================================ --> 
+    
+    
+    
+    
+    <!-- <section class="slice white bb">
         <div class="wp-section">
             <div class="container">
                 <div class="row">
@@ -387,9 +431,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="slice light-gray bb">
+    <!-- <section class="slice light-gray bb">
         <div class="wp-section">
             <div class="container">
                 <div class="section-title-wr">
@@ -443,11 +487,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     
-    <section id="companyCarousel" class="carousel carousel-2 slide bg-white bb" data-ride="carousel">
+   <!--  <section id="companyCarousel" class="carousel carousel-2 slide bg-white bb" data-ride="carousel">
         <div class="container relative">
-            <!-- Indicators -->
+            Indicators
             <ol class="carousel-indicators">
                 <li data-target="#companyCarousel" data-slide-to="0" class="active"></li>
                 <li data-target="#companyCarousel" data-slide-to="1"></li>
@@ -485,9 +529,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="slice p-15 bg-base">
+    <!-- <section class="slice p-15 bg-base">
         <div class="cta-wr">
             <div class="container">
                 <div class="row">
@@ -504,13 +548,13 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="slice bg-white bb animate-hover-slide-3">
+    <!-- <section class="slice bg-white bb animate-hover-slide-3">
         <div class="wp-section">
             <div class="container">
                 <div class="section-title-wr">
-                    <h3 class="section-title left"><span>Our team</span></h3>
+                    <h3 class="section-title left"><span><a href="ourteam">Our team</a></span></h3>
                 </div>
                 <div class="row">   
                     <div class="col-md-3">
@@ -595,9 +639,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section class="prlx-bg inset-shadow-1" data-stellar-ratio="2" style="min-height: 450px; padding: 50px 0; background-image: url(../../controller/resources/images/backgrounds/full-bg-3.jpg); background-position: 0 -100px;">
+<!--     <section class="prlx-bg inset-shadow-1" data-stellar-ratio="2" style="min-height: 450px; padding: 50px 0; background-image: url(../../controller/resources/images/backgrounds/full-bg-3.jpg); background-position: 0 -100px;">
         <div class="mask mask-2"></div>
             <div class="container">
                 <div class="row">
@@ -645,9 +689,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     
-
+<!-- 
     <section class="slice light-gray">
         <div class="wp-section">
             <div class="container">
@@ -750,136 +794,13 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <!-- CLIENTS -->
-    <section class="slice bg-white">
-        <div class="wp-section">
-            <div class="container">
-                <div class="section-title-wr">
-                    <h3 class="section-title left"><span>쇼핑몰 제휴사</span></h3>
-                </div>
-                <div class="row">
-                    <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="client">
-                            <a href="www.11st.co.kr">
-                                <img src="../../controller/resources/images/clients/client-1.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                     <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="client">
-                            <a href="www.ssg.com">
-                                <img src="../../controller/resources/images/clients/client-2.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                     <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="client">
-                            <a href="www.ebay.com">
-                                <img src="../../controller/resources/images/clients/client-3.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                     <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="client">
-                            <a href="www.auction.co.kr">
-                                <img src="../../controller/resources/images/clients/client-4.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                     <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="client">
-                            <a href="#">
-                                <img src="../../controller/resources/images/clients/client-5.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                     <div class="col-md-2 col-sm-4 col-xs-6">
-                        <div class="client">
-                            <a href="#">
-                                <img src="../../controller/resources/images/clients/client-6.png" alt="">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="col">
-                       <h4>Contact us</h4>
-                       <ul>
-                            <li>5th Avenue, New York - United States</li>
-                            <li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567 </li>
-                            <li>Email: <a href="mailto:hello@example.com" title="Email Us">hello@example.com</a></li>
-                            <li>Skype: <a href="skype:my.business?call" title="Skype us">my-business</a></li>
-                            <li>Creating great templates is our passion</li>
-                        </ul>
-                     </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="col">
-                        <h4>Mailing list</h4>
-                        <p>Sign up if you would like to receive occasional treats from us.</p>
-                        <form class="form-horizontal form-light">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Your email address...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-base" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="col col-social-icons">
-                        <h4>Follow us</h4>
-                        <a target="blank" href="https://www.facebook.com/remindwishlist/"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-flickr"></i></a>
-                    </div>
-                </div>
+    
+    
+<%@ include file="footer.jsp" %>
 
-                 <div class="col-md-3">
-                    <div class="col">
-                        <h4>About us</h4>
-                        <p class="no-margin">
-                        Boomerang MultiPurpose Template is a multi-solution product made with simplicity in mind so you can benefit as much as possible from it.
-                        <br><br>
-                        <a href="#" class="btn btn-block btn-base btn-icon fa-check"><span>Try it now</span></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <hr>
-            
-            <div class="row">
-                <div class="col-lg-9 copyright">
-                    2014 © Web Pixels. All rights reserved.
-                    <a href="#">Terms and conditions</a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="http://www.webpixels.ro" title="Made with love by Web Pixels" target="_blank" class="">
-                        <img src="../../controller/resources/images/webpixels-footer-logo.png" alt="Web Pixels - Designing Forward | Logo" class="pull-right">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
+
 
 <!-- Essentials -->
 <script src="../../controller/resources/js/modernizr.custom.js"></script>

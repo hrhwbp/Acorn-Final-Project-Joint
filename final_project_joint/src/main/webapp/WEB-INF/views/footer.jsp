@@ -7,43 +7,37 @@
 					<div class="col">
 						<h4>Contact us</h4>
 						<ul>
-							<li>5th Avenue, New York - United States</li>
-							<li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567</li>
-							<li>Email: <a href="mailto:hello@example.com"
-								title="Email Us">hello@example.com</a></li>
-							<li>Skype: <a href="skype:my.business?call" title="Skype us">my-business</a></li>
-							<li>Creating great templates is our passion</li>
+							<li>SaeKyeong Bldg. 3F, Teheran-ro 1Gil 10</li>
+							<li>Phone: +82 2 538 3642  | Fax: +82 2 538 3654</li>
+							<li>Email: <a href="suli3159@naver.com"
+								title="Email Us">master@remind.com</a></li>							
+							<li>Happy Gifting Starts Here!</li>
 						</ul>
 					</div>
 				</div>
 
 				<div class="col-md-3">
 					<div class="col">
-						<h4>Mailing list</h4>
-						<p>Sign up if you would like to receive occasional treats from
-							us.</p>
-						<form class="form-horizontal form-light">
-							<div class="input-group">
-								<input type="text" class="form-control"
-									placeholder="Your email address..."> <span
-									class="input-group-btn">
-									<button class="btn btn-base" type="button">Go!</button>
-								</span>
-							</div>
-						</form>
+						<a href="ourteam"><h4>Our Team</h4></a>
+						<p>This project is part of the SHUIM Group Project team.
+						Developing a web application based on Spring Framework MVC, MySQL, CSS, jQuery, and Bootstrap. 
+						Find detail about this wonderful team for this project.</p>
+						
 					</div>
 				</div>
 
 				<div class="col-md-3">
 					<div class="col col-social-icons">
 						<h4>Follow us</h4>
-						<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-							class="fa fa-google-plus"></i></a> <a href="#"><i
-							class="fa fa-linkedin"></i></a> <a href="#"><i
-							class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-skype"></i></a>
-						<a href="#"><i class="fa fa-pinterest"></i></a> <a href="#"><i
-							class="fa fa-youtube-play"></i></a> <a href="#"><i
-							class="fa fa-flickr"></i></a>
+						<a href="https://www.facebook.com/remindwishlist/" target="blank">
+							<i class="fa fa-facebook"></i></a> 
+						<a href="#"><i class="fa fa-google-plus"></i></a> 
+						<a href="#"><i class="fa fa-linkedin"></i></a> 
+						<a href="#"><i class="fa fa-twitter"></i></a> 
+						<a href="#"><i class="fa fa-skype"></i></a>
+						<a href="#"><i class="fa fa-pinterest"></i></a> 
+						<a href="#"><i class="fa fa-youtube-play"></i></a> 
+						<a href="#"><i class="fa fa-flickr"></i></a>
 					</div>
 				</div>
 
@@ -51,10 +45,11 @@
 					<div class="col">
 						<h4>About us</h4>
 						<p class="no-margin">
-							Boomerang MultiPurpose Template is a multi-solution product made
-							with simplicity in mind so you can benefit as much as possible
-							from it. <br> <br> <a href="#"
-								class="btn btn-block btn-base btn-icon fa-check"><span>Try
+							RE:MIND is a platform to share your gift ideas with your
+							family, friends and other to ease your burden on giving and/or 
+							receiving gifts.
+							<br> <br> <a href="#"
+								class="btn btn-block btn-base btn-icon fa-check"><span>Start
 									it now</span></a>
 						</p>
 					</div>
@@ -65,11 +60,11 @@
 
 			<div class="row">
 				<div class="col-lg-9 copyright">
-					2014 © Web Pixels. All rights reserved. <a href="#">Terms and
+					2016 © RE:MIND part of the SHUIM Project Group. All rights reserved. <a href="#">Terms and
 						conditions</a>
 				</div>
 				<div class="col-lg-3">
-					<a href="http://www.webpixels.ro"
+					<a href="admin"
 						title="Made with love by Web Pixels" target="_blank" class="">
 						<img src="resources/images/webpixels-footer-logo.png"
 						alt="Web Pixels - Designing Forward | Logo" class="pull-right">

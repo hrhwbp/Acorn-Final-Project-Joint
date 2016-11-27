@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ReMind : [RE:AD MIND]</title>
+<title>ReMind || 소원목록</title>
  
     <link href="resources/css/rotating-card.css" rel="stylesheet" />
     <link rel="stylesheet" href="resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
@@ -427,7 +427,7 @@ function wgopen(wg_no, wg_detail){
 
 <body>
 
-   <div class="container col-md-8 col-md-offset-2">
+   <div class="container col-md-10 col-md-offset-1">
       <div class="row">
          <div class="col-md-10 col-md-offset-1">
             <div class="thumbnail">

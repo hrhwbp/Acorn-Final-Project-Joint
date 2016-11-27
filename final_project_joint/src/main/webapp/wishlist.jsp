@@ -406,7 +406,7 @@ function wgopen(wg_no, wg_detail){
 </style>
 </head>
 
-<%@ include file="top.jsp"%>
+
 <%@ include file="sidebar.jsp"%>
 <body>
 
