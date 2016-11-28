@@ -64,7 +64,7 @@
 						conditions</a>
 				</div>
 				<div class="col-lg-3">
-					<a href="admin"
+					<a href="loginPage"
 						title="Made with love by Web Pixels" target="_blank" class="">
 						<img src="resources/images/webpixels-footer-logo.png"
 						alt="Web Pixels - Designing Forward | Logo" class="pull-right">

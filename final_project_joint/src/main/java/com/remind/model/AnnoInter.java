@@ -210,7 +210,7 @@ public interface AnnoInter {
    @Select("select * from board where b_mno=#{b_mno}")
    List<BoardDto> showPBoard(String m_no);
    
-   @Select("select w_mno, m_name, m_email, w_pname,w_price, w_image, w_addr, w_detail FROM wishlist left join member on m_no=w_mno ORDER BY RAND() LIMIT 4")
+   @Select("select w_mno, m_name, m_email, w_pname,w_price, w_image, w_addr, w_detail, w_lock FROM wishlist left join member on m_no=w_mno ORDER BY RAND() LIMIT 4")
    List<WishlistDto> eventListA();
    
    //Admin Main Page
@@ -228,6 +228,9 @@ public interface AnnoInter {
    
    @Select("select * from admin where ad_no = #{ad_no}")
    AdminDto showAdmin(String ad_no);
+   
+   /*@Update("update wishlist set w_lock=#{w_lock}, w_like=#{w_like} where w_no=#{w_no}")
+   boolean updateLockA(WishlistBean bean);*/
    
    @Update("update admin set ad_name=#{ad_name}, ad_password= #{ad_password} where ad_no= #{ad_no}")
    boolean AdminUpdate(AdminBean bean);

@@ -575,7 +575,7 @@ public class DataDao implements DaoInter {
 		        	 stockprice = stock.get(0);
 		        	 dto.setPrice(stockprice.text().substring(0, 6));		//가격에서 .00 자르기
 		        	 dto.setUrl("https://www.google.com/finance?q=KOSDAQ%3A035720&ei=mIo6WIHWDcWY0ATJ6L2oAw");
-		        	 System.out.println(dto.getPrice() + " " + dto.getUrl() + " 주가확인~~~~!!");
+		        	 //System.out.println(dto.getPrice() + " " + dto.getUrl() + " 주가확인~~~~!!");
 		          }
 
 			}catch (Exception e) {
@@ -583,6 +583,12 @@ public class DataDao implements DaoInter {
 			}
 			return dto;
 		}
+		
+		/*@Override
+		public boolean updateLockA(WishlistBean bean) throws DataAccessException {
+			// TODO Auto-generated method stub
+			return annoInter.updateLockA(bean);
+		}*/
 		
 		@Override
 		public boolean AdminUpdate(AdminBean bean) throws DataAccessException {

@@ -43,16 +43,16 @@ $(document).ready(function () {
 });
 
 //선물 이벤트 관련 이메일 전송
-function send() {
+function send(anum, wno) {
 	var to = $("#compose-to").val();
 	var subject = $("#compose-subject").val();
 	var message = $("#compose-message").val();
-	//alert(aa + " " + jj + " " + hhh);
-		
+	
+	
 	$.ajax({
 		type:"post",
 		url:"send",
-		data: {"receiver":to,"subject":subject,"content":message},
+		data: {"receiver":to,"subject":subject,"content":message,"w_lock":anum, "w_no":wno},
 		dataType: "json",
 		success: function(boardData){
 			if(boardData.suc == true){
@@ -137,7 +137,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 </head>
 <body>
   
-<!-- NAVIGATION MENU -->
+<!-- TOP MENU -->
 <div class="navbar-nav navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -159,58 +159,14 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 				<%} %>	
 				<li><a href="index.jsp"><i class="icon-user icon-white"></i> User</a></li>
 			</ul>
-		</div><!--/.nav-collapse -->
+		</div>
 	</div>
 </div>
 
 <div class="container">
-<!-- CONTENT -->
 	<div class="row">
 		<div class="col-sm-12 col-lg-12">
-		
-			<!-- 첫번째 Table -->
-			<%-- <h4><strong>User Table</strong></h4>
-				<table class="display">
-					<thead>
-						<tr>
-							<th>사용자 번호</th>
-							<th>성명</th>
-							<th>E-mail</th>
-							<th>성별</th>
-							<th>비밀번호</th>
-							<th>강퇴</th>
-						</tr>
-					</thead>
-					
-					<tbody>
-						<cc:forEach var="Member" items="${showMem}">
-							<form action="adminmemberout">
-								<input type="hidden" name="m_no" value="${Member.m_no}">
-								<tr class="odd">
-									<td>${Member.m_no }</td>
-									<td><a style="cursor: pointer;" onclick="showUserBoard('${Member.m_no}')">${Member.m_name}</a></td>
-									<td>${Member.m_email }</td>
-									<cc:choose>
-										<cc:when test="${Member.m_gender == 1}">
-											<td>남</td>
-										</cc:when>
-										<cc:when test="${Member.m_gender == 2}">
-											<td>여</td>
-										</cc:when>
-									</cc:choose>
-									<td>${Member.m_password}</td>
-									<%if (session.getAttribute("adno") != ""){ %>
-									<td><button type="submit">강퇴</button></td>
-									<%}%>
-								</tr>
-							</form>
-						</cc:forEach>
-					</tbody>
-					
-				</table>
-				<br> --%>
-			<!--/END 첫번째 Table-->
-			
+			<!--첫번째 테이블  -->
 			<h4><strong>Member Table</strong></h4>
 			<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="example">
 					<thead>
@@ -314,14 +270,15 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 									<a href="#compose-modal" data-toggle="modal" id="compose-button" class="hosting-button" onclick="sendingEmail('${random.m_email}','${random.m_name}','${random.w_pname}')">Compose</a>
 								</li>
 							</ul>
-						</div><!--/ column-->
-					</div><!--/ Table Style-->
-				</div><!--/ Hosting Table-->	
-			</div><!-- /span3 -->
+						</div>
+					</div>
+				</div>	
+			</div>
+			<%-- <cc:set var="w_noA" value="${random.w_no}"/> --%>
 		</cc:forEach>
 		
-	</div><!-- /row -->
-</div><!-- /container -->
+	</div><!-- row END-->
+</div><!-- container END-->
 <br>
 
 <!-- Footer -->	
@@ -333,9 +290,9 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 				<p><img src="resources/images/boomerang-logo-white.png" alt=""></p>
 				<p>Blocks Dashboard Theme - Crafted With Love - Copyright By Sim 2016</p>
 			</div>
-			</div><!-- /row -->
-	</div><!-- /container -->		
-</div><!-- /footerwrap -->
+			</div><!-- row END-->
+	</div><!-- container END-->		
+</div><!-- footerwrap END-->
 
 
 <!--Email Modal-->
@@ -364,14 +321,14 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" id="send-button" class="btn btn-primary" onclick="send()">Send</button>
+					<button type="button" id="send-button" class="btn btn-primary" onclick="send('3', '${w_noA}','999')">Send</button>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
 
-<!--메일전송 확인 모달  -->
+<!--메일전송 확인 MODAL -->
 <div class="modal fade" id="mailcheck" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">

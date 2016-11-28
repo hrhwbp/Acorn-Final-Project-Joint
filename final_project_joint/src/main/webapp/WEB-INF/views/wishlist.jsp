@@ -619,6 +619,7 @@ function wgopen(wg_no, wg_detail){
                                                                                     <img id="i_lock${lock}" src="resources/image/Lock-Lock-icon.png" style="width: 35px; height: 30px" >
                                                                                  </a>
                                                                               </c:when>
+                                                                              
                                                                            </c:choose>
                                                                            </c:when>
                                                                            <c:when test="${mno != userwg_mno}"><!--남의 물품을 보는 경우  -->
@@ -639,6 +640,8 @@ function wgopen(wg_no, wg_detail){
                                                                                     <img id="i_lock${lock}" src="resources/image/Lock-Unlock-icon.png" style="width: 35px; height: 30px">
                                                                                  </a>
                                                                               </c:when>
+                                                                              
+                                                                              
                                                                               </c:choose>
                                                                            </c:when>
                                                                         </c:choose>
