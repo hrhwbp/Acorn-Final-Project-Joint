@@ -112,12 +112,12 @@ background-color: rgba(255, 255, 255, 0.2);
 	<div class="modal fade " id="terms" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
 	  <div class="modal-dialog modal-sm" style="margin: 10% auto; width: 70%">
 	    <div class="modal-content">
-	      <div class="row text-left" style="color:black; font-weight: bold;">
+	      <div class="row text-left" style="color:black; font-weight: bold; padding: 20px;">
 	      	<p>제 1 조 (목적)</p>
-<br>이 약관은 리마인드 주식회사 ("회사")가 제공하는 네이버 및 네이버 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
+<br>이 약관은 리마인드 주식회사 ("회사")가 제공하는 리마인드 및 리마인드 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
 <br><br>제 2 조 (정의)
 <br>이 약관에서 사용하는 용어의 정의는 다음과 같습니다.
-<br>①"서비스"라 함은 구현되는 단말기(PC, TV, 휴대형단말기 등의 각종 유무선 장치를 포함)와 상관없이 "회원"이 이용할 수 있는 네이버 및 네이버 관련 제반 서비스를 의미합니다.
+<br>①"서비스"라 함은 구현되는 단말기(PC, TV, 휴대형단말기 등의 각종 유무선 장치를 포함)와 상관없이 "회원"이 이용할 수 있는 리마인드 및 리마인드 관련 제반 서비스를 의미합니다.
 <br>②"회원"이라 함은 회사의 "서비스"에 접속하여 이 약관에 따라 "회사"와 이용계약을 체결하고 "회사"가 제공하는 "서비스"를 이용하는 고객을 말합니다.
 <br>③"아이디(ID)"라 함은 "회원"의 식별과 "서비스" 이용을 위하여 "회원"이 정하고 "회사"가 승인하는 문자와 숫자의 조합을 의미합니다.
 <br>④"비밀번호"라 함은 "회원"이 부여 받은 "아이디와 일치되는 "회원"임을 확인하고 비밀보호를 위해 "회원" 자신이 정한 문자 또는 숫자의 조합을 의미합니다.
