@@ -59,6 +59,16 @@
 			
 			
 	}) 
+
+	function myWishlist() {
+		if(<%=session.getAttribute("mno")%>	 == null){
+			location.href="login"
+		}else{
+		$("#wishlist").submit();
+		}
+	}
+	
+
 </script>
 <style type="text/css">
 .tt-query, /* UPDATE: newer versions use tt-input instead of tt-query */
@@ -173,7 +183,10 @@
 						</form>                              
                     </li> 
                     <li class="dropdown">
-                        <a href="wishlist" class="dropdown-toggle" >WISHLIST</a>                        
+                        <a href="javascript:myWishlist()" class="dropdown-toggle" >WISHLIST</a>
+						<form action="showWishList" method="get" id="wishlist">
+							<input type="hidden" name="w_mno" value="<%=session.getAttribute("mno")%>">
+						</form>                                                
                     </li>   
                     <li class="dropdown">
                     	<a href="anniversary" class="dropdown-toggle" >EVENTS</a>                        
@@ -195,7 +208,8 @@
                     </li> -->
 					<%}%>
 					<li class="form-group dropdown dropdown-meganav mega-dropdown-fluid">                   
-						<a href="#" class="dropdown-toggle"><i class="icon-append fa fa-search"></i><input type="search" name="friendSearch" id="friendSearch" required sautofocu required=required placeholder="친구찾기"></a> 					
+						<i class="icon-append fa fa-search"></i>
+						<input type="search" name="friendSearch" id="friendSearch" required sautofocu required=required placeholder="친구찾기">					
 					</li>			
                   
                     <!-- <li class="dropdown dropdown-aux animate-click hidden-xs" data-animate-in="animated bounceInUp" data-animate-out="animated fadeOutDown" style="z-index:500;">

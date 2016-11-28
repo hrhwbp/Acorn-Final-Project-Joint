@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.dao.DataAccessException;
 
+import com.remind.controller.AdminBean;
 import com.remind.controller.AnniversaryBean;
 import com.remind.controller.BoardBean;
 import com.remind.controller.FollowBean;
@@ -27,10 +28,10 @@ public interface AnnoInter {
    List<BoardDto> showBoard(String m_no);
    @Select("select distinct b_no, b_mno, b_image, b_content, b_date, b_like, (select m_name from member where m_no = b_mno) b_mname from board  left outer join follow on b_mno = f_sno where (b_mno = any(select f_mno from follow where f_sno = #{m_no}) or b_mno = #{m_no} )and b_no < #{last_b_no} order by b_no desc limit 0,3")
    List<BoardDto> scrollingBoard(ScrollBean bean);
-   
    @Select("select max(b_no)+1 from board")
    String selectMaxNo();
-   
+   @Select("select min(b_no) from board left outer join follow on b_mno = f_sno where b_mno = any(select f_mno from follow where f_sno = #{m_no}) or b_mno = #{m_no}")
+   String selectlastNo(String m_no);
    @Select("select * from board where b_no=#{b_no}")
    BoardDto showBoardDetail(String b_no);
 
@@ -198,4 +199,51 @@ public interface AnnoInter {
    boolean deleteAnniversary(String a_no);
    @Update("update anniversary set a_detail = #{a_detail}, a_date = #{a_date} where a_no = #{a_no}")
    boolean updateAnniversary(AnniversaryBean bean);
+   
+   //Admin Table Page
+   @Select("select * from member")
+   List<MemberDto> showMemberA();
+   
+   @Select("select * from board")
+   List<BoardDto> showBoardA();
+   
+   @Select("select * from board where b_mno=#{b_mno}")
+   List<BoardDto> showPBoard(String m_no);
+   
+   @Select("select w_mno, m_name, m_email, w_pname,w_price, w_image, w_addr, w_detail FROM wishlist left join member on m_no=w_mno ORDER BY RAND() LIMIT 4")
+   List<WishlistDto> eventListA();
+   
+   //Admin Main Page
+   @Select("select count(*) wishcnt from wishlist")
+   String wishlistCnt();
+   
+   @Select("select count(*) membercnt from member")
+   String memberCnt();
+   
+   @Select("select count(*) boardcnt from board")
+   String boardCnt();
+   
+   @Select("select ad_no from admin where ad_name=#{ad_name} and ad_password=#{ad_password}")
+   AdminDto AdminLogin(AdminBean bean);
+   
+   @Select("select * from admin where ad_no = #{ad_no}")
+   AdminDto showAdmin(String ad_no);
+   
+   @Update("update admin set ad_name=#{ad_name}, ad_password= #{ad_password} where ad_no= #{ad_no}")
+   boolean AdminUpdate(AdminBean bean);
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 }   

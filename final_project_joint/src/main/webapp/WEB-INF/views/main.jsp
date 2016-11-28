@@ -17,57 +17,6 @@
 
 <%@ include file="importstop.jsp" %>
 
-<!-- Essential styles -->
-<!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"> 
-    <link rel="stylesheet" href="assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">  -->
-<!-- <link rel="stylesheet"
-	href="resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet"
-	href="resources/font-awesome/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet"
-	href="resources/assets/fancybox/jquery.fancybox.css?v=2.1.5"
-	media="screen"> -->
-
-<!-- Boomerang styles -->
-<!-- <link id="wpStylesheet" type="text/css" href="css/global-style.css" rel="stylesheet" media="screen"> -->
-<!-- <link id="wpStylesheet" type="text/css"
-	href="resources/css/global-style-red.css" rel="stylesheet" media="screen"> -->
-
-<!-- Favicon -->
-<!-- <link href="images/favicon.png" rel="icon" type="image/png"> -->
-<!-- <link href="resources/images/favicon.png" rel="icon" type="image/png"> -->
-
-<!-- Assets -->
-<!-- <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="assets/sky-forms/css/sky-forms.css"> -->
-
-<!-- <link rel="stylesheet"
-	href="resources/assets/owl-carousel/owl.carousel.css">
-<link rel="stylesheet"
-	href="resources/assets/owl-carousel/owl.theme.css">
-<link rel="stylesheet"
-	href="resources/assets/sky-forms/css/sky-forms.css"> -->
-<!--[if lt IE 9]>
-        <link rel="stylesheet" href="assets/sky-forms/css/sky-forms-ie8.css">
-    <![endif]-->
-
-<!-- Required JS -->
-<!-- <script src="js/jquery.js"></script>
-    <script src="js/jquery-ui.min.js"></script> -->
-<!-- <script src="resources/js/jquery.js"></script>
-<script src="resources/js/jquery-ui.min.js"></script> -->
-
-<!-- Page scripts -->
-
-<!-- Video JS -->
-<!-- <link href="assets/timeline/timeline.css" rel="stylesheet"> -->
-<!-- <link href="resources/assets/timeline/timeline.css" rel="stylesheet"> -->
-
-
-
-
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 <style type="text/css">
 .loader{
@@ -84,9 +33,10 @@ svg path,
 svg rect{
   fill: #e74c3c;
 }
-
 </style>
+
 <script type="text/javascript">
+
 var lastbno_save = null;
 $(document).ready(function () {
    $(window).bind("scroll",scrolling);
@@ -107,12 +57,15 @@ function scrolling(){
 		if(lastbno_save != lastbno){  
 		lastbno_save = lastbno;
 		$.ajax({ // 스크롤링 
-			
 			type:"get",
 			url:"scroll",
 			dataType:"json",
 			data:{"last_bno":lastbno},
 			beforeSend:function(){
+				<c:set value="${lastno}" var="lastno"/>
+				console.log(lastbno)
+				console.log(${lastno})
+				if(lastbno != ${lastno}){
 				loadingbar='	<div class="loader loader--style8" title="7">'
 				loadingbar+='<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'+
 				'width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">'+
@@ -134,10 +87,12 @@ function scrolling(){
 				'</svg>'+
 				'</div>'
 				$("#loading").html(loadingbar);
-				
+				}else{
+					$("#loading").html("");
+				}
 			},
 			success:function(scrollData){
-				/* console.log("실행중") */
+				
 				var str = "";
 				var list = scrollData.datas;
 				$(list).each(function(index,objArr){
@@ -382,10 +337,9 @@ function anniAjax(){
        jQuery("#friend"+b_no).submit();
        
        
-    }
-    
-   
+    }   
 </script>
+
 <style type="text/css">
 .follower_post {
 	position: relative;
@@ -460,13 +414,12 @@ function anniAjax(){
 }
 </style>
 </head>
-<%-- <%@include file="common.jsp"%> --%>
+
 <%@include file="top.jsp"%>
 
 <body style="background-color: white">
 	<div class="body-wrap">
-		<!-- <div style="padding-top: 2%"> -->
-			<!--Top menubar와의 거리 2% -->
+
 
 		<!-- ==========================현재 페이지 표시줄 MAIN CONTENT============================= -->
 		<div class="pg-opt bg-danger">
@@ -772,94 +725,6 @@ function anniAjax(){
 	
 		<!-- ================================이벤트일 표시 DIV 끝===================================== -->
 		
-		
-		
-		<!-- ================================이벤트일 표시 새로운 DIV ================================== -->
-		<!-- 
-		<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="col">
-							<h4>Contact us</h4>
-							<ul>
-								<li>5th Avenue, New York - United States</li>
-								<li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567</li>
-								<li>Email: <a href="mailto:hello@example.com"
-									title="Email Us">hello@example.com</a></li>
-								<li>Skype: <a href="skype:my.business?call"
-									title="Skype us">my-business</a></li>
-								<li>Creating great templates is our passion</li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="col">
-							<h4>Mailing list</h4>
-							<p>Sign up if you would like to receive occasional treats
-								from us.</p>
-							<form class="form-horizontal form-light">
-								<div class="input-group">
-									<input type="text" class="form-control"
-										placeholder="Your email address..."> <span
-										class="input-group-btn">
-										<button class="btn btn-base" type="button">Go!</button>
-									</span>
-								</div>
-							</form>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="col col-social-icons">
-							<h4>Follow us</h4>
-							<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-								class="fa fa-google-plus"></i></a> <a href="#"><i
-								class="fa fa-linkedin"></i></a> <a href="#"><i
-								class="fa fa-twitter"></i></a> <a href="#"><i
-								class="fa fa-skype"></i></a> <a href="#"><i
-								class="fa fa-pinterest"></i></a> <a href="#"><i
-								class="fa fa-youtube-play"></i></a> <a href="#"><i
-								class="fa fa-flickr"></i></a>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="col">
-							<h4>About us</h4>
-							<p class="no-margin">
-								Boomerang MultiPurpose Template is a multi-solution product made
-								with simplicity in mind so you can benefit as much as possible
-								from it. <br>
-								<br> <a href="#"
-									class="btn btn-block btn-base btn-icon fa-check"><span>Try
-										it now</span></a>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<hr>
-
-				<div class="row">
-					<div class="col-lg-9 copyright">
-						2014 © Web Pixels. All rights reserved. <a href="#">Terms and
-							conditions</a>
-					</div>
-					<div class="col-lg-3">
-						<a href="http://www.webpixels.ro"
-							title="Made with love by Web Pixels" target="_blank" class="">
-							<img src="resources/images/webpixels-footer-logo.png"
-							alt="Web Pixels - Designing Forward | Logo" class="pull-right">
-						</a>
-					</div>
-				</div>
-			</div> -->
-		
-		<!-- ================================이벤트일 표시 새로운 DIV 끝================================= -->
-		
-				
-
 		<!-- ===================================게시물이 없으면====================================  -->
 		<c:set var="listSizeTest" value="${fn:length(list)}" />
 		<c:if test="${listSizeTest == 0}">
@@ -869,61 +734,8 @@ function anniAjax(){
 		</c:if>
 		<!-- ===================================게시물이 없으면 끝==================================  -->
 		</div>
-
 </div>
-
-
-	
+	<%@ include file="footer.jsp" %>	
 	<%@include file="importsbottom.jsp"%>
-	
-	<!-- Essentials -->
-	<!-- <script src="resources/js/modernizr.custom.js"></script>
-	<script src="resources/assets/bootstrap/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.mousewheel-3.0.6.pack.js"></script>
-	<script src="resources/js/jquery.easing.js"></script>
-	<script src="resources/js/jquery.metadata.js"></script>
-	<script src="resources/js/jquery.hoverup.js"></script>
-	<script src="resources/js/jquery.hoverdir.js"></script>
-	<script src="resources/js/jquery.stellar.js"></script> -->
-
-	<!-- Boomerang mobile nav - Optional  -->
-	<!-- <script src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.js"></script>
-	<script src="resources/assets/responsive-mobile-nav/js/jquery.dlmenu.autofill.js"></script> -->
-
-	<!-- Forms -->
-	<!-- <script src="resources/assets/ui-kit/js/jquery.powerful-placeholder.min.js"></script>
-	<script src="resources/assets/ui-kit/js/cusel.min.js"></script>
-	<script src="resources/assets/sky-forms/js/jquery.form.min.js"></script>
-	<script src="resources/assets/sky-forms/js/jquery.validate.min.js"></script>
-	<script src="resources/assets/sky-forms/js/jquery.maskedinput.min.js"></script>
-	<script src="resources/assets/sky-forms/js/jquery.modal.js"></script> -->
-
-	<!-- Assets -->
-	<!-- <script src="resources/assets/hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-	<script src="resources/assets/page-scroller/jquery.ui.totop.min.js"></script>
-	<script src="resources/assets/mixitup/jquery.mixitup.js"></script>
-	<script src="resources/assets/mixitup/jquery.mixitup.init.js"></script>
-	<script src="resources/assets/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
-	<script src="resources/assets/waypoints/waypoints.min.js"></script>
-	<script src="resources/assets/milestone-counter/jquery.countTo.js"></script>
-	<script src="resources/assets/easy-pie-chart/js/jquery.easypiechart.js"></script>
-	<script src="resources/assets/social-buttons/js/rrssb.min.js"></script>
-	<script src="resources/assets/nouislider/js/jquery.nouislider.min.js"></script>
-	<script src="resources/assets/owl-carousel/owl.carousel.js"></script>
-	<script src="resources/assets/bootstrap/js/tooltip.js"></script>
-	<script src="resources/assets/bootstrap/js/popover.js"></script> -->
-
-	<!-- Sripts for individual pages, depending on what plug-ins are used -->
-
-	<!-- Boomerang App JS -->
-	<!-- <script src="resources/js/wp.app.js"></script> -->
-	<!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-<![endif]-->
-
-
-
 </body>
-
 </html>
