@@ -600,5 +600,17 @@ public class DataDao implements DaoInter {
 		public AdminDto showAdmin(String ad_no) throws DataAccessException {
 			// TODO Auto-generated method stub
 			return annoInter.showAdmin(ad_no);
-		}	
+		}
+
+		@Override
+		public int lostPass(String m_email) throws DataAccessException {
+			// TODO Auto-generated method stub
+			return annoInter.lostPass(m_email);
+		}
+		
+		@Override
+		public MemberBean lostPassMember(String m_email) throws DataAccessException {
+			// TODO Auto-generated method stub
+			return annoInter.lostPassMemeber(m_email);
+		}
 }

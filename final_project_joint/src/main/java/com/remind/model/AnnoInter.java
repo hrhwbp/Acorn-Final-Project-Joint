@@ -76,6 +76,12 @@ public interface AnnoInter {
 
 	@Update("update member set m_password = #{m_password} where m_no = #{m_no}")
 	boolean ChangePass(MemberBean bean);
+	
+	@Select("select count(*) from member where m_email=#{m_email}")
+	Integer lostPass(String m_email);
+	
+	@Select("select m_no from member where m_email=#{m_email}")
+	MemberBean lostPassMemeber(String m_email);
 
   
    

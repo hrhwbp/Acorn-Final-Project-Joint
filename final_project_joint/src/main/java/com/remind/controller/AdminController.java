@@ -20,7 +20,7 @@ import org.w3c.dom.ls.LSInput;
 import com.remind.model.AdminDto;
 import com.remind.model.BoardDto;
 import com.remind.model.DaoInter;
-import com.remind.model.Email;
+import com.remind.model.EmailDto;
 import com.remind.model.EmailSender;
 import com.remind.model.MemberDto;
 import com.remind.model.ParserDto;
@@ -126,7 +126,7 @@ public class AdminController {
 			@RequestParam("content")String content) throws Exception{
 		
 		
-		Email email = new Email();
+		EmailDto email = new EmailDto();
 		email.setReceiver(receiver);
 		email.setSubject(subject);
 		email.setContent(content);

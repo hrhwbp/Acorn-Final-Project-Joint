@@ -34,6 +34,8 @@ public interface DaoInter {
 	MemberDto login(MemberBean bean) throws DataAccessException;
 	int email_join_check(String m_email_check) throws DataAccessException;
 	boolean ChangePass(MemberBean bean) throws DataAccessException;
+	int lostPass(String m_email) throws DataAccessException;
+	MemberBean lostPassMember(String m_email) throws DataAccessException;
 		
 	//follow
 	List<FollowDto> showMyFollower(String m_no) throws DataAccessException;
