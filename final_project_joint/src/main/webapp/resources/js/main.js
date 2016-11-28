@@ -147,7 +147,8 @@ function scrolling(){
 					str += '				placeholder="답글달기..." aria-describedby="sizing-addon2"';
                     str += '                name="r_content" id="r_content'+this.b_no+'"  onkeydown="javascript:if(event.keyCode==13){replySubmit('+this.b_no+')}"> <input';
 					str += '				type="hidden" name="r_bno" value="'+this.b_no+'"> <input';
-					str += '				type="hidden" name="r_mno" value="'+ ${mno}+'">'; 
+//					str += '				type="hidden" name="r_mno" value="'+ ${mno} +'">'; 
+					str += '				type="hidden" name="r_mno" value="' + ${mno} +'">'; 
 
 //												<!-- 답글 버튼 --> 
 					str += '				<span class="input-group-btn">';
