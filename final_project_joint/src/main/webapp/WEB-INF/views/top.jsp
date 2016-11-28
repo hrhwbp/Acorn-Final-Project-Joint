@@ -127,7 +127,7 @@
 <div id="divHeaderWrapper">
             <header class="header-standard-2">     
     <!-- MAIN NAV -->
-    <div class="navbar navbar-wp navbar-arrow mega-nav" role="navigation">
+    <div class="navbar navbar-wp navbar-arrow mega-nav" role="navigation" style="margin-bottom: 0px;">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle navbar-toggle-aside-menu">

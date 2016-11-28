@@ -809,7 +809,7 @@ function boardDeleteOk(b_no) {
 				    <div class="input-group">
 				      <input name="b_content" id="modalContent" type="text" class="form-control" value="" readonly="readonly">
 				      <div class="input-group-btn">
-				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-option-vertical"></span></button>
+				        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></button>
 				        <ul class="dropdown-menu dropdown-menu-right" role="menu">
 				          <li><a href="#">게시물 신고하기</a></li>
 				        </ul>

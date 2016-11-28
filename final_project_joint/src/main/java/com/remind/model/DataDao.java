@@ -594,6 +594,5 @@ public class DataDao implements DaoInter {
 		public AdminDto showAdmin(String ad_no) throws DataAccessException {
 			// TODO Auto-generated method stub
 			return annoInter.showAdmin(ad_no);
-		}
-	
+		}	
 }
