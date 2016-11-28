@@ -149,7 +149,7 @@ public class MemberController {
 	}	
 	
 	@RequestMapping(value="updateInfo", method = RequestMethod.POST)
-	public String updateSubmit(MemberBean bean,@RequestParam("hiddenName")String imgName){
+	public String updateSubmit(MemberBean bean,@RequestParam("hiddenName") String imgName){
 		System.out.println(imgName);
 		MultipartFile uploadfile = bean.getFileUp();
 		System.out.println(uploadfile);
@@ -347,11 +347,16 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="passChange", method = RequestMethod.POST)
-	public String passChange(MemberBean bean){
-		String str = "";
+	public ModelAndView passChange(MemberBean bean){
+		ModelAndView view = new ModelAndView();
 		boolean b = daoInter.ChangePass(bean);
-		if(b) str = "redirect:/myaccount";
-		else str = "redirect:/error.jsp";
-		return str;
+		String str = "success";
+		if(b){
+			view.addObject("suc", b);
+			view.setViewName("redirect:/myaccount") ;
+		}else{
+			view.setViewName("redirect:/error.jsp");
+		}
+		return view;
 	}
 }

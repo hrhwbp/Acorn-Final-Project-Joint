@@ -177,16 +177,21 @@ function adminLogout(){
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">
-					<img src="resources/admin/images/logo30.png" alt=""> RE:MIND
+				<a class="navbar-brand" href="index.jsp">
+					<img src="resources/images/boomerang-logo-white.png" style="width: 60px; height: 15px;" alt=""> RE:MIND
 				</a>
 			</div>
 			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li>
-						<a href="index.jsp"><i class="icon-user icon-white"></i>User</a>
-					</li>
-				</ul>
+			<ul class="nav navbar-nav">
+			<%if (session.getAttribute("adno") == null){ %>
+				<li><a href="index.jsp"><i class="icon-user icon-white"></i>User</a></li>
+			<%}else{%>
+				<li class="active"><a href="MainAdmin"><i class="icon-home icon-white"></i> Home</a></li>                            
+				<li><a href="showAdminTable"><i class="icon-th icon-white"></i> Tables</a></li>
+				<li><a href="adminLogout"><i class="icon-lock icon-white"></i> Logout</a></li>
+				<li><a href="index.jsp"><i class="icon-user icon-white"></i> User</a></li>
+			<%} %>
+			</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>
@@ -196,7 +201,7 @@ function adminLogout(){
 			<div class="col-lg-offset-4 col-lg-4" style="margin-top: 100px">
 				<div class="block-unit"
 					style="text-align: center; padding: 8px 8px 8px 8px;">
-					<img src="resources/admin/images/face80x80.jpg" alt="" class="img-circle"><br><br>
+					<img src="resources/images/team/simjy.jpg" style="widows: 100px; height: 100px" alt="" class="img-circle"><br><br>
 					<%if (session.getAttribute("adno") == null){ %>
 					<form class="cmxform" id="signupForm">
 						<fieldset>

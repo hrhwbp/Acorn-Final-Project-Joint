@@ -85,7 +85,6 @@ public interface DaoInter {
 
 	//Admin
 	AdminDto AdminLogin(AdminBean bean) throws DataAccessException;
-
 	List<MemberDto> showMemberA() throws DataAccessException;
 	List<BoardDto> showBoardA() throws DataAccessException;
 	List<BoardDto> showPBoard(String m_no) throws DataAccessException;
@@ -98,4 +97,7 @@ public interface DaoInter {
 	ParserDto stockAdmin() throws DataAccessException;	
 	AdminDto showAdmin(String ad_no) throws DataAccessException;
 	boolean AdminUpdate(AdminBean bean) throws DataAccessException;
+
+	/*boolean updateLockA(WishlistBean bean) throws DataAccessException;*/
+
 }
