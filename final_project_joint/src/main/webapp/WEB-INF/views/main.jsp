@@ -47,6 +47,23 @@ $(document).ready(function () {
 	   }
 	 });
 });
+$( document ).ajaxComplete(function() {
+	$('form').bind("keypress", function(e) {
+		   if (e.keyCode == 13) {               
+		     e.preventDefault();
+		     return false;
+		   }
+		 });
+});
+$(document).ready(function () {
+	   $(window).bind("scroll",scrolling);
+	   $('form').bind("keypress", function(e) {
+		   if (e.keyCode == 13) {               
+		     e.preventDefault();
+		     return false;
+		   }
+		 });
+	});
 
 function scrolling(){ 
 	var documentHeight  = $(document).height() * 2 - 1200;
@@ -85,7 +102,7 @@ function scrolling(){
 				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
 				'</rect>'+
 				'</svg>'+
-				'</div>'
+				'</div>';
 				$("#loading").html(loadingbar);
 				}else{
 					$("#loading").html("");

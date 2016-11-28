@@ -1,15 +1,16 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html >
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>RE:MIND || EVENTS</title>
+<meta charset="UTF-8">
+<title>RE:MIND || EVENTS</title>
 <link rel="stylesheet" href="resources/css/style.css">
 </head>
-<%@ include file="importstop.jsp" %>
+<%@ include file="importstop.jsp"%>
 
 <body>
-<%@ include file="top.jsp" %>
- 		<!-- ==========================현재 페이지 표시줄 MAIN CONTENT============================= -->
+	<%@ include file="top.jsp"%>
+	<!-- ==========================íì¬ íì´ì§ íìì¤ MAIN CONTENT============================= -->
 	<div class="pg-opt bg-danger">
 		<div class="container">
 			<div class="row">
@@ -18,20 +19,20 @@
 				</div>
 				<div class="col-md-6">
 					<ol class="breadcrumb">
-						<li><a href="action">Home</a></li>							
+						<li><a href="action">Home</a></li>
 						<li class="active">Event Calendar</li>
 					</ol>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- ==========================현재 페이지 표시줄 MAIN CONTENT 끝============================= -->
- <div class="container theme-showcase">
-<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2"></div>
-<div id="holder" class="row" ></div>
-</div>
+	<!-- ==========================íì¬ íì´ì§ íìì¤ MAIN CONTENT ë============================= -->
+	<div class="container theme-showcase">
+		<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2"></div>
+		<div id="holder" class="row"></div>
+	</div>
 
-<script type="text/tmpl" id="tmpl">
+	<script type="text/tmpl" id="tmpl" charset="utf-8">
   {{ 
   var date = date || new Date(),
       month = date.getMonth(), 
@@ -177,15 +178,15 @@
 
     </tbody>
     {{ } }}
-	<thead><tr><td colspan="5"></td><td><div align="center" class="event all-day begin end" title="Extra event" style="height:40px; font-weight: bold;font-size:1.1em">각종 이벤트</div></td><td>
+	<thead><tr><td colspan="5"></td><td><div align="center" class="event all-day begin end" title="Extra event" style="height:40px; font-weight: bold;font-size:1.1em">그밖의 날들</div></td><td>
 <div class="event begin end" title="Birthday" align="center" style="height:40px; font-weight: bold;font-size:1.2em">생일</div></td></tr></thead>		
   </table>
 
 </script>
-<script src="resources/js/calendar.js" charset="utf-8"></script>
+	<script src="resources/js/calendar.js" charset="utf-8"></script>
 
-<%@ include file="footer.jsp" %>	
-<%@ include file="importsbottom.jsp" %>
+	<%@ include file="footer.jsp"%>
+	<%@ include file="importsbottom.jsp"%>
 
 </body>
 </html>

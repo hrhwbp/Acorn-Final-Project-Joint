@@ -33,7 +33,7 @@
 	 $("#showlogin").hide()
 	 $("#showjoin").show()
 	 } */
-
+	
 		function logsubmit() {
 				/* alert("login try") */
 				$.ajax({			
@@ -53,7 +53,7 @@
 				}
 			}); 	
 		}
-	 
+	
 </script>
 <!-- =============================================원글에서 가져온 로그인용 스크립트 끝========================================================== -->
 </head>
@@ -112,7 +112,7 @@
 												<div class="form-group">
 													<label class="label">Password</label> <label class="input">
 														<i class="icon-append fa fa-lock"></i> <input
-														type="password" name="m_password" required=required>
+														type="password" id="m_password" name="m_password" required=required onkeydown="if (event.keyCode==13){ logsubmit();event.returnValue=false}">
 													</label>
 													<p style="text-align: right;">비밀번호를 잊으셨나요?<a href="#"> 비밀번호 찾기</a></p>
 												</div>
@@ -127,7 +127,7 @@
 
 											<section>
 												<button class="btn btn-base btn-icon btn-icon-right btn-sign-in pull-right"
-													type="button" onclick="logsubmit()">
+													type="button" id="submitbutton" onclick="logsubmit()">
 													<span>로그인 하기</span>
 												</button>												
 											</section>
