@@ -189,6 +189,7 @@ $().ready(function() {
    $('[rel="tooltip"]').tooltip();
 });
 
+/* ==========================  카드 뒤집기  ============================ */
 function rotateCard(btn) {
    var $card = $(btn).closest('.card-container');
    console.log($card);
@@ -198,7 +199,8 @@ function rotateCard(btn) {
       $card.addClass('hover');
    }
 }
-   
+
+
 (function(i, s, o, g, r, a, m) {
    i['GoogleAnalyticsObject'] = r;
    i[r] = i[r] || function() {
@@ -213,6 +215,7 @@ function rotateCard(btn) {
 (window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 ga('create', 'UA-46172202-4', 'auto');
 ga('send', 'pageview');
+/* ==========================  카드 뒤집기  ============================ */
 
 /* Insert부분  */
 function insert(mno, g_num){
