@@ -17,57 +17,6 @@
 
 <%@ include file="importstop.jsp" %>
 
-<!-- Essential styles -->
-<!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"> 
-    <link rel="stylesheet" href="assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">  -->
-<!-- <link rel="stylesheet"
-	href="resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet"
-	href="resources/font-awesome/css/font-awesome.min.css" type="text/css">
-<link rel="stylesheet"
-	href="resources/assets/fancybox/jquery.fancybox.css?v=2.1.5"
-	media="screen"> -->
-
-<!-- Boomerang styles -->
-<!-- <link id="wpStylesheet" type="text/css" href="css/global-style.css" rel="stylesheet" media="screen"> -->
-<!-- <link id="wpStylesheet" type="text/css"
-	href="resources/css/global-style-red.css" rel="stylesheet" media="screen"> -->
-
-<!-- Favicon -->
-<!-- <link href="images/favicon.png" rel="icon" type="image/png"> -->
-<!-- <link href="resources/images/favicon.png" rel="icon" type="image/png"> -->
-
-<!-- Assets -->
-<!-- <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="assets/sky-forms/css/sky-forms.css"> -->
-
-<!-- <link rel="stylesheet"
-	href="resources/assets/owl-carousel/owl.carousel.css">
-<link rel="stylesheet"
-	href="resources/assets/owl-carousel/owl.theme.css">
-<link rel="stylesheet"
-	href="resources/assets/sky-forms/css/sky-forms.css"> -->
-<!--[if lt IE 9]>
-        <link rel="stylesheet" href="assets/sky-forms/css/sky-forms-ie8.css">
-    <![endif]-->
-
-<!-- Required JS -->
-<!-- <script src="js/jquery.js"></script>
-    <script src="js/jquery-ui.min.js"></script> -->
-<!-- <script src="resources/js/jquery.js"></script>
-<script src="resources/js/jquery-ui.min.js"></script> -->
-
-<!-- Page scripts -->
-
-<!-- Video JS -->
-<!-- <link href="assets/timeline/timeline.css" rel="stylesheet"> -->
-<!-- <link href="resources/assets/timeline/timeline.css" rel="stylesheet"> -->
-
-
-
-
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 <style type="text/css">
 .loader{
@@ -84,10 +33,10 @@ svg path,
 svg rect{
   fill: #e74c3c;
 }
-
 </style>
-<script type="text/javascript"  ></script>
-<!-- <script type="text/javascript">
+
+<script type="text/javascript">
+
 var lastbno_save = null;
 $(document).ready(function () {
    $(window).bind("scroll",scrolling);
@@ -388,10 +337,9 @@ function anniAjax(){
        jQuery("#friend"+b_no).submit();
        
        
-    }
-    
-   
-</script> -->
+    }   
+</script>
+
 <style type="text/css">
 .follower_post {
 	position: relative;
@@ -466,13 +414,12 @@ function anniAjax(){
 }
 </style>
 </head>
-<%-- <%@include file="common.jsp"%> --%>
+
 <%@include file="top.jsp"%>
 
 <body style="background-color: white">
 	<div class="body-wrap">
-		<!-- <div style="padding-top: 2%"> -->
-			<!--Top menubar와의 거리 2% -->
+
 
 		<!-- ==========================현재 페이지 표시줄 MAIN CONTENT============================= -->
 		<div class="pg-opt bg-danger">
@@ -778,94 +725,6 @@ function anniAjax(){
 	
 		<!-- ================================이벤트일 표시 DIV 끝===================================== -->
 		
-		
-		
-		<!-- ================================이벤트일 표시 새로운 DIV ================================== -->
-		<!-- 
-		<div class="container">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="col">
-							<h4>Contact us</h4>
-							<ul>
-								<li>5th Avenue, New York - United States</li>
-								<li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567</li>
-								<li>Email: <a href="mailto:hello@example.com"
-									title="Email Us">hello@example.com</a></li>
-								<li>Skype: <a href="skype:my.business?call"
-									title="Skype us">my-business</a></li>
-								<li>Creating great templates is our passion</li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="col">
-							<h4>Mailing list</h4>
-							<p>Sign up if you would like to receive occasional treats
-								from us.</p>
-							<form class="form-horizontal form-light">
-								<div class="input-group">
-									<input type="text" class="form-control"
-										placeholder="Your email address..."> <span
-										class="input-group-btn">
-										<button class="btn btn-base" type="button">Go!</button>
-									</span>
-								</div>
-							</form>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="col col-social-icons">
-							<h4>Follow us</h4>
-							<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-								class="fa fa-google-plus"></i></a> <a href="#"><i
-								class="fa fa-linkedin"></i></a> <a href="#"><i
-								class="fa fa-twitter"></i></a> <a href="#"><i
-								class="fa fa-skype"></i></a> <a href="#"><i
-								class="fa fa-pinterest"></i></a> <a href="#"><i
-								class="fa fa-youtube-play"></i></a> <a href="#"><i
-								class="fa fa-flickr"></i></a>
-						</div>
-					</div>
-
-					<div class="col-md-3">
-						<div class="col">
-							<h4>About us</h4>
-							<p class="no-margin">
-								Boomerang MultiPurpose Template is a multi-solution product made
-								with simplicity in mind so you can benefit as much as possible
-								from it. <br>
-								<br> <a href="#"
-									class="btn btn-block btn-base btn-icon fa-check"><span>Try
-										it now</span></a>
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<hr>
-
-				<div class="row">
-					<div class="col-lg-9 copyright">
-						2014 © Web Pixels. All rights reserved. <a href="#">Terms and
-							conditions</a>
-					</div>
-					<div class="col-lg-3">
-						<a href="http://www.webpixels.ro"
-							title="Made with love by Web Pixels" target="_blank" class="">
-							<img src="resources/images/webpixels-footer-logo.png"
-							alt="Web Pixels - Designing Forward | Logo" class="pull-right">
-						</a>
-					</div>
-				</div>
-			</div> -->
-		
-		<!-- ================================이벤트일 표시 새로운 DIV 끝================================= -->
-		
-				
-
 		<!-- ===================================게시물이 없으면====================================  -->
 		<c:set var="listSizeTest" value="${fn:length(list)}" />
 		<c:if test="${listSizeTest == 0}">

@@ -88,7 +88,6 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 </style>
 </head>
 
-<%@ include file="top.jsp" %>
 <body>
 
 <div class="container col-md-8 col-md-offset-2">
@@ -257,5 +256,5 @@ language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 </div>
 
 </body>
-<%@ include file="bottom.jsp" %>
+
 </html>
