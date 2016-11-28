@@ -502,13 +502,7 @@ function anniAjax(){
 									</tr>
 								</table>
 							<ul>
-							<li>5th Avenue, New York - United States</li>
-							<li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567</li>
-							<li>Email: <a href="mailto:hello@example.com"
-								title="Email Us">hello@example.com</a></li>
-							<li>Skype: <a href="skype:my.business?call"
-								title="Skype us">my-business</a></li>
-							<li>Creating great templates is our passion</li>
+							
 						</ul>
 					</div>
 				</div>

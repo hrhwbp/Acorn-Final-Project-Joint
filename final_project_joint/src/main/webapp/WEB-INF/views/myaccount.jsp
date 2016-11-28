@@ -73,8 +73,10 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-
-
+	if(${param.suc == true}){
+		$("#passwordOk").modal('show');
+	};
+	
 	$('#updateSubmit').click(function() {
 		$('#boardUpdatefrm').submit()		
 	});
@@ -124,8 +126,6 @@ $(document).ready(function() {
 	    },
 	});
 	
-	
-	
 });
 
 	function eventUpdate(a_no,a_detail,a_date) {
@@ -164,7 +164,8 @@ $(document).ready(function() {
 			$('#newPasswd').focus();
 		} else{
 			$("#passwdFrm").attr("action","passChange");
-			$("#passwdFrm").submit();		
+			$("#passwdFrm").submit();
+			
 		}		
 	}
 </script>
@@ -174,6 +175,12 @@ $(document).ready(function() {
 <body>
 <!-- =======================================각종 모달======================================= -->
 <!-- 프로필 수정 모달 -->	
+<c:if test="${suc.str != 'success'}">
+<script type="text/javascript">
+
+</script>
+</c:if>
+
 	<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 	  <div class="modal-dialog" style="margin: 150px auto;">
 	    <div class="modal-content">
@@ -305,8 +312,17 @@ $(document).ready(function() {
 	    </div>
 	  </div>
 	</div>
+
+	<div class="modal" id="passwordOk" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
+	  <div class="modal-dialog modal-sm" style="margin: 350px auto;">
+	    <div class="modal-content">
+	      <div class="modal-body text-center">
+	      	<b style="color: green;">비밀번호가 변경되었습니다!</b>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<!-- 비밀번호 모달 팝업 끝-->
-	
 	
 	<!-- 기념일 추가 모달  insertAnni-->
 

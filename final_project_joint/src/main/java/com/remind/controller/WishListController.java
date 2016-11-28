@@ -72,6 +72,7 @@ public class WishListController {
       return insertedData;
    }
    
+   //물품 입력
    @RequestMapping(value="insertWishList", method = RequestMethod.POST)
    public String insertWishListsubmit(WishlistBean bean){
       //System.out.println(bean.w_mno + " @@ " + bean.w_pname + " ## " + bean.w_addr + " $$ " + bean.w_lock + " %% " + bean.w_image + " @@ " + bean.g_num + " ## " + bean.wg_detail);
@@ -83,6 +84,7 @@ public class WishListController {
          return "redirect:/error.jsp";
    }
    
+   //물품 수정
    @RequestMapping(value="updateWishList", method = RequestMethod.POST)
    public String updateWishListsubmit(WishlistBean bean){
       System.out.println(bean.getW_pname() + " @@" + bean.getW_mno() + " @@@" + bean.getW_no());
@@ -93,6 +95,7 @@ public class WishListController {
          return "redirect:/error.jsp";
    }
    
+   //자물쇠
    @RequestMapping(value="updatelock", method = RequestMethod.POST)
    @ResponseBody
    public Map<String, Object> updateLockStatus(WishlistBean bean){
@@ -125,6 +128,7 @@ public class WishListController {
       
    }
    
+   //상품 삭제
    @RequestMapping(value="deleteWishList", method = RequestMethod.GET)
    public String deleteWishListsubmit(WishlistBean bean){
       boolean b = daoInter.deleteWishlist(bean.getW_no());
@@ -134,48 +138,7 @@ public class WishListController {
          return "redirect:/error.jsp";
       }
    }
-   
-   
 
-   /*//Wishlist 추가
-   @RequestMapping(value="insertWishList", method = RequestMethod.GET)
-   public String insertWishList(@RequestParam("w_mno")String w_mno){      
-      return "insertWishList?w_mno="+w_mno;         
-   }*/
-   
-   /*@RequestMapping(value="insertWishList", method = RequestMethod.POST)
-   public String insertWishListsubmit(WishlistBean bean){
-      boolean b = daoInter.writeWishlist(bean);
-      if(b)
-         return "showWishList?w_mno=" +bean.getW_mno();
-      else
-         return "redirect:/error.jsp";
-   }*/
-      
-   /*//Wishlist 변경
-   @RequestMapping(value="updateWishList", method = RequestMethod.GET)
-   public String updateWishList(@RequestParam("w_mno")String w_mno){
-      return "insertWishList?w_mno="+w_mno;
-      
-   }*/
-/*   @RequestMapping(value="updateWishList", method = RequestMethod.POST)
-   public String updateWishListsubmit(WishlistBean bean){
-      boolean b = daoInter.updateWishlist(bean);
-      if(b)
-         return "showWishList?w_mno=" + bean.getW_mno();
-      else
-         return "redirect:/error.jsp";
-   }*/
-      
-   /*//Wishlist 물품삭제
-   @RequestMapping(value="deleteWishList", method = RequestMethod.GET)
-   public String deleteWishListsubmit(@RequestParam("w_mno")String w_mno){
-      boolean b = daoInter.deleteWishlist(w_mno);
-      if(b)
-         return "showWishList?w_mno=" +w_mno;
-      else
-         return "redirect:/error.jsp";
-   }*/
    
    //Wishlist 보기
    @RequestMapping(value="showWishList", method = RequestMethod.GET)
@@ -199,7 +162,20 @@ public class WishListController {
       if(b)
          return "redirect:/showWishList?w_mno=" + bean.getW_mno();  //"showWishList?w_mno=" + bean.getW_mno();
       else
-         return   "redirect:/error.jsp";      
+         return "redirect:/error.jsp";      
+   }
+   
+   //WishList Group 삭제
+   @RequestMapping(value="deleteWishGroup", method = RequestMethod.POST)
+   public String deleteWishGroup(@RequestParam("wg_no") String wg_no, @RequestParam("w_mno") String w_mno){   
+	  System.out.println(wg_no + " " + w_mno + " 위시그룹 지우기");
+	   
+      boolean b = daoInter.deleteWishGroup(wg_no);
+      
+      if(b)
+         return "redirect:/showWishList?w_mno=" + w_mno;
+      else
+         return "redirect:/error.jsp";      
    }
    
    //Wishlist Group 업데이트

@@ -39,10 +39,6 @@
 <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 
-
-<!-- <script src="resources/js/jquery-1.10.2.js" type="text/javascript"></script>
-<script src="resources/js/bootstrap.min.js" type="text/javascript"></script> -->
-
 <script type="text/javascript">
 /*WishList Group관련 Jquery!!!!!!!!!!!!!!!*/
 $(document).ready(function(){
@@ -114,6 +110,9 @@ $(document).ready(function(){
       }
    });
    
+  
+   
+   
    /*WishList 상품관련 Jquery~~~~~~~~~~~~~*/
    //insert후 카드 나열
    $("#reset").click(function(){                  //insert card reset시키기
@@ -160,12 +159,20 @@ function groupEdit(wg_no){
    $('#edit'+wg_no).modal();
    //$('#edit'+wg_no).modal('hide')
 }
-   
+
+/*Wish Group delete  */
 function groupDelete(wg_no){
-   //alert("Delete");
     $('#delete').modal();
+    $("#wgdel").val(wg_no)
 }
-   
+
+function delWgroup(){
+	 document.wishGroupdel.action = "deleteWishGroup";
+     document.wishGroupdel.method = "post";
+     document.wishGroupdel.submit();
+}
+/*Wish Group delete  */
+
 function changeWgrp(wg_no, wg_detail){
    $('#edit'+wg_no).modal('hide')
    jQuery.ajax({
@@ -359,6 +366,8 @@ function wgopen(wg_no, wg_detail){
 }
 /*open된 어코디언 다시열시 작업 끝 */
 
+
+
  
 /*WishList 상품관련 Jquery~~~~~~~~~~~~~*/   
 </script>
@@ -426,14 +435,30 @@ function wgopen(wg_no, wg_detail){
 
 
 <body>
+<!-- MAIN CONTENT -->
+    <div class="pg-opt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Wishlist</h2>
+                </div>
+                <div class="col-md-6">
+                    <ol class="breadcrumb">
+                        <li><a href="action">Home</a></li>                        
+                        <li class="active">Wishlist</li>
+                    </ol>
+                </div>
+            </div>
+        </div> 
+    </div>
 
    <div class="container col-md-10 col-md-offset-1">
       <div class="row">
-         <div class="col-md-10 col-md-offset-1">
-            <div class="thumbnail">
+         <div class="col-md-8 col-md-offset-2">
+            <div class="thumbnail" style="margin-top: 5%;">
                <div class="list-group">
-                  <a class="list-group-item list-group-item-action active">
-                     <h2 class="list-group-item-heading">나의 소원 목록</h2>
+                  <a class="list-group-item list-group-item-action active" style="#e95e50">
+                     <h2 class="list-group-item-heading" style="text-align: center;"><i class="fa fa-gift" aria-hidden="true"></i>나의 소원 목록</h2>
                   </a>
                </div>
                <!-- ------------------------------소원목록 어코디언------------------------------------- -->
@@ -663,9 +688,9 @@ function wgopen(wg_no, wg_detail){
                                                       </div> -->
                                                          <div class="content">
                                                             <div class="main">
-                                                               <h3 class="name">여기서 추가가 가능합니다</h3>
-                                                               <p class="profession">Product Manager</p>
-                                                               <p class="text-center col-md-8-offset-2">URL을 붙여넣으면 자동으로 정보가 입력됩니다</p>
+                                                               <h3 class="name">클릭하여 새로운 상품추가</h3>
+                                                               <p class="profession"></p>
+                                                               <p class="text-center col-md-8-offset-2">상품주소를 붙여넣으면 자동으로 정보가 입력됩니다</p>
                                                             </div>
                                                             <div class="footer">
                                                                <!-- <div class="rating"> -->
@@ -742,6 +767,7 @@ function wgopen(wg_no, wg_detail){
 
       </c:forEach>
       <!-- --------수정 모달 팝업 끝-------- -->
+      
       <!-- --------삭제 모달 팝업-------- -->
       <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
          <div class="modal-dialog">
@@ -750,16 +776,20 @@ function wgopen(wg_no, wg_detail){
                   <button type="button" class="close" data-dismiss="modal">
                      <span aria-hidden="true">×</span><span class="sr-only">Close</span>
                   </button>
-                  <h4 class="modal-title" id="myModalLabel">선택하신 소원 리스트를 삭제하시겠습니까?</h4>
+                  <h4 class="modal-title" id="myModalLabel">선택하신 소원 리스트를 삭제하시겠습니까?${wg_mno}</h4>
                </div>
                <!-- <div class="modal-body">
                <div class="input-group">
                      현재 선택된 소망 리스트를 삭제하시겠습니까? 
                 </div>/input-group
                </div> -->
+				<form name="wishGroupdel">
+				<input type="hidden" name="wg_no" id="wgdel" value="">
+				<input type="hidden" name="w_mno" id="" value="${w_mno}">
+				</form>
                <div class="modal-body text-right">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">취소</button>
-                  <button type="button" class="btn btn-danger" id="btn_deleteConfirm">삭제하기</button>
+                  <button type="submit" class="btn btn-danger" id="btn_deleteConfirm" onclick="delWgroup()">삭제하기</button>
                </div>
             </div>
          </div>
@@ -776,35 +806,35 @@ function wgopen(wg_no, wg_detail){
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                </button>
-               <h4 class="modal-title" id="insertModalLabel">수정</h4>
+               <h4 class="modal-title" id="insertModalLabel">새 상품 추가</h4>
             </div>
             <div class="modal-body">
                <form action="insertWishList" method="post">
-                  <label class="form-control-label">URL:</label>
+                  <label class="form-control-label">소원상품 URL:</label>
                   <div class="form-group1 sss">
-                     <input type="text" class="form-control" placeholder="URL" id="itemUrl" name="w_addr" style="width: 480px"> 
-                     <input type="button" value="Fetch" class="form-control" id="btnfetch" style="width: 60px">
+                     <input type="text" class="form-control" placeholder="URL" id="itemUrl" name="w_addr" style="width: 70%"> 
+                     <input type="button" value="상품정보가져오기" class="form-control" id="btnfetch" style="width: 30%; background-color:#f2dede; font-weight: bold; ">
                   </div>
                   <div class="row">
                      <div class="col-md-7">
                         <div class="form-group2">
-                           <label class="form-control-label">Item Name:</label> 
-                           <input type="text" class="form-control" placeholder="Item Name" id="itemName" name="w_pname">
+                           <label class="form-control-label">상품명:</label> 
+                           <input type="text" class="form-control" placeholder="상품이름" id="itemName" name="w_pname">
                         </div>
                         <div class="form-group3">
-                           <label class="form-control-label">Item Price:</label> 
-                           <input type="text" class="form-control" placeholder="price" id="itemPrice" name="w_price">
+                           <label class="form-control-label">상품가격:</label> 
+                           <input type="text" class="form-control" placeholder="가격정보" id="itemPrice" name="w_price">
                         </div>
                      </div>
                      <div class="col-md-5">
                         <div class="form-group4">
-                           <img id="itemImage" class="img-responsive" alt="Responsive image"> 
+                           <img id="itemImage" class="img-responsive" alt="상품이미지는 자동으로 들어옵니다."> 
                            <input type="hidden" id="submitImage" name="w_image">
                         </div>
                      </div>
                   </div>
                   <div class="form-group5">
-                     <label for="message-text" class="form-control-label">Write Your Item Detail:</label>
+                     <label for="message-text" class="form-control-label">소원상품에 관한 상세메모:</label>
                      <textarea class="form-control" id="itemDetail" name="w_detail"></textarea>
                      <input type="hidden" id="itemMno" name="w_mno"> 
                      <input type="hidden" id="itemGnum" name="g_num">
@@ -813,8 +843,8 @@ function wgopen(wg_no, wg_detail){
                      
                   </div>
                   <div class="modal-footer">
-                     <button type="submit" class="btn btn-primary" id="insertconfirm">Insert</button>
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                     <button type="submit" class="btn btn-danger" id="insertconfirm">추가</button>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                   </div>
                </form>
             </div>
@@ -869,12 +899,24 @@ function wgopen(wg_no, wg_detail){
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                </button>
-               <h4 class="modal-title" id="deleteModalLabel">삭제?</h4>
+               <h4 class="modal-title" id="deleteModalLabel">삭제 ㄱㄱ?</h4>
             </div>
             <div class="modal-body">
                <form action="deleteWishList" method="get">
                   <div class="form-group9">
                      <input type="hidden" id="itemNo" name="w_no"> 
                      <input type="hidden" id="itemMno" name="w_mno">
-                  </div></form></div></div></div></div></body></html>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="submit" class="btn btn-primary" id="deleteconfirm">Confirm</button>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
                   
