@@ -31,15 +31,23 @@ public class AdminController {
 	@Autowired
 	private DaoInter daoInter;
 	
-	@RequestMapping(value="loginPage", method = RequestMethod.GET)
+	/*@RequestMapping(value="loginPage", method = RequestMethod.GET)
 	public String LoginPage(){                                 
 		return "redirect:/adminLogin.jsp";
+	}*/
+	
+	@RequestMapping(value="loginPage", method = RequestMethod.GET)
+	public ModelAndView LoginPage(){
+		ModelAndView model = new ModelAndView();
+		model.setViewName("adminLogin.jsp");
+		
+		return model;
 	}
 	
 	@RequestMapping(value="AdminLogin", method = RequestMethod.POST)
 	@ResponseBody
 	public String AdminLogin(AdminBean bean, HttpSession session){                                 
-		AdminDto dto = daoInter.AdminLogin(bean);
+		AdminDto dto = daoInter.AdminLogin(bean);				
 		String adminlogin = "";
 		if(dto != null){
 			System.out.println(dto.getAd_no() + " 세션좀 확인하자");
@@ -168,9 +176,10 @@ public class AdminController {
 		String name = daoInter.articleAdmin().getName().replaceAll("'", "");
 		modelAndView.addObject("articleName", name);
 		modelAndView.addObject("articleUrl", daoInter.articleAdmin().getUrl());
-		/*String stock = daoInter.stockStatus().getName().replaceAll(",", "");
-		System.out.println(stock + " 주가확인~~~");
-		modelAndView.addObject("stock", stock);*/
+		
+		String stock = daoInter.stockAdmin().getPrice().replaceAll(",", "");
+		System.out.println(stock + " 여기도 주가 확인");
+		modelAndView.addObject("stock", stock.replace(" ", ""));
 		
 		modelAndView.setViewName("../../admin");
 		return modelAndView;
@@ -224,6 +233,14 @@ public class AdminController {
 		AdminDto dto = daoInter.showAdmin(ad_no);
 		//System.out.println(dto.getAd_name() + " 확인 모달 " + dto.getAd_password());
 		return dto;
+	}
+	
+	//프로젝트 팀 보기 페이지 이동
+	@RequestMapping(value="ourteam")
+	public ModelAndView ourTeam(){
+		ModelAndView view = new ModelAndView();
+		view.setViewName("ourteam");
+		return view;
 	}
 	
 }

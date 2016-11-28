@@ -8,34 +8,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title>Boomerang 2 - MultiPurpose Template</title>
-
-    <!-- Essential styles -->
-    <link rel="stylesheet" href="resources/assets/bootstrap/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="resources/font-awesome/css/font-awesome.min.css" type="text/css"> 
-    <link rel="stylesheet" href="resources/assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen"> 
-     
-    <!-- Boomerang styles -->
-        <link id="wpStylesheet" type="text/css" href="resources/css/global-style-red.css" rel="stylesheet" media="screen">
-        
-
-    <!-- Favicon -->
-    <link href="resources/images/favicon.png" rel="icon" type="image/png">
-
-    <!-- Assets -->
-    <link rel="stylesheet" href="resources/assets/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="resources/assets/owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="resources/assets/sky-forms/css/sky-forms.css">    
+    <title>RE:MIND || 나의 정보</title>
     
-    <!--[if lt IE 9]>
-        <link rel="stylesheet" href="resources/assets/sky-forms/css/sky-forms-ie8.css">
-    <![endif]-->
+<%@ include file="importstop.jsp" %>
 
-    <!-- Required JS -->
-    <script src="resources/js/jquery.js"></script>
-    <script src="resources/js/jquery-ui.min.js"></script>
-
-	<!-- ===============================해당 페이지용 스타일================================================ -->
+ 
+<!-- ===============================해당 페이지용 스타일================================================ -->
 <style type="text/css">
 /* ============아이콘 표시를 위한 import=============== */
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
@@ -90,14 +68,15 @@
 </style>	
 
     <!-- ===============================해당 페이지용 스크립트================================================ -->
-    
-<!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+
     
 <script type="text/javascript">
+
 $(document).ready(function() {
+
+
 	$('#updateSubmit').click(function() {
-		$('#boardUpdatefrm').submit()
+		$('#boardUpdatefrm').submit()		
 	});
 	
 	$('#infoSubmit').click(function() {
@@ -145,6 +124,8 @@ $(document).ready(function() {
 	    },
 	});
 	
+	
+	
 });
 
 	function eventUpdate(a_no,a_detail,a_date) {
@@ -164,21 +145,27 @@ $(document).ready(function() {
 		$("#deleteAnniFrm").submit();
 	}
 	
+		
+	//비밀번호  변경요청후  검사 및 전송
 	function passwdFunc() {
 		//#password
 		var passwd = $('#password').val();
 		var oldPass = $("#oldPasswd").val();
 		var newPass = $("#newPasswd").val();
 		var newPassCheck = $("#newPasswdCheck").val();
+		
 		if(passwd != oldPass){
 			$('#passwordErr').modal('show');
+			$("#oldPasswd").val('');
+			$("#oldPasswd").focus();			
 		}else if(newPass != newPassCheck){
-			$('#passwordCheckErr').modal('show');			
-		}else{
+			$('#passwordCheckErr').modal('show');
+			$('#newPasswd').val('');$('#newPasswdCheck').val('');
+			$('#newPasswd').focus();
+		} else{
 			$("#passwdFrm").attr("action","passChange");
-			$("#passwdFrm").submit();
-		}
-		
+			$("#passwdFrm").submit();		
+		}		
 	}
 </script>
     
@@ -300,8 +287,8 @@ $(document).ready(function() {
 	<div class="modal fade " id="passwordErr" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
 	  <div class="modal-dialog modal-sm" style="margin: 350px auto;">
 	    <div class="modal-content">
-	      <div class="row text-center">
-	      	비밀번호가 틀립니다.
+	      <div class="row text-center" style="color:red; font-weight: bold;">
+	      	현재 비밀번호를 다시 입력해주세요.
 	      </div>
 	    </div>
 	  </div>
@@ -312,7 +299,7 @@ $(document).ready(function() {
 	<div class="modal fade " id="passwordCheckErr" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" >
 	  <div class="modal-dialog modal-sm" style="margin: 350px auto;">
 	    <div class="modal-content">
-	      <div class="row text-center">
+	      <div class="row text-center" style="color:red; font-weight: bold;">
 	      	새로운 비밀번호가 서로 맞지않습니다.
 	      </div>
 	    </div>
@@ -437,7 +424,7 @@ $(document).ready(function() {
                 </div>
                 <div class="col-md-6">
                     <ol class="breadcrumb">
-                        <li><a href="#">Home</a></li>                       
+                        <li><a href="action">Home</a></li>                       
                         <li class="active">User account</li>
                     </ol>
                 </div>
@@ -466,7 +453,7 @@ $(document).ready(function() {
                             <li><a href="#tab-1" data-toggle="tab">내 계정 정보</a></li>
                             <li><a href="#tab-4" data-toggle="tab">비밀번호 변경</a></li>
                             <li><a href="#tab-2" data-toggle="tab">내 기념일 관리</a></li>
-                            <li><a href="#tab-3" data-toggle="tab">Wishlist</a></li>
+                            <!-- <li><a href="#tab-3" data-toggle="tab">Wishlist</a></li> -->
                         </ul>
                     </div>
                     <div class="col-md-9">                     
@@ -474,7 +461,8 @@ $(document).ready(function() {
                             <ul class="tabs clearfix">
                                 <li class="active"><a href="#tab-1" data-toggle="tab">내 정보보기</a></li>
                                 <li><a href="#tab-2" data-toggle="tab">내 기념일 관리</a></li>
-                                <li><a href="#tab-3" data-toggle="tab">Whishlist</a></li>
+                                <!-- <li><a href="#tab-3" data-toggle="tab">Whishlist</a></li> -->
+                                <li><a href="#tab-4" data-toggle="tab">비밀번호 변경</a></li>
                             </ul>
 
                             <div class="tab-content">
@@ -562,7 +550,7 @@ $(document).ready(function() {
                                            <form action="javascript:passwdFunc()" method="post" id="passwdFrm">
 											<dl class="dl-horizontal style-2">
                                             <h3 class="title title-lg">비밀번호 변경</h3>
-                                            <p class="mb-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                                            <p class="mb-20">비밀번호를 변경하실 때에는 현재 비밀번호를 입력하시고 아래에 새로운 비밀번호를 넣어주세요.</p>
                                             
                                            <dt>현재 비밀번호</dt>
 		                                    <dd>
@@ -602,13 +590,13 @@ $(document).ready(function() {
 									
 									
 
-                                <div class="tab-pane fade" id="tab-3">
+                                <!-- <div class="tab-pane fade" id="tab-3">
                                     <div class="tab-body">
                                         <h3 class="title title-lg">My wishlist</h3>
                                         <p class="mb-20">Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
 
                                         <div class="row">
-                                            <!-- Product list -->
+                                            Product list
                                             <div class="col-md-4">
                                                 <div class="wp-block product">
                                                     <figure>
@@ -664,7 +652,7 @@ $(document).ready(function() {
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <!-- Product list -->
+                                            Product list
                                             <div class="col-md-4">
                                                 <div class="wp-block product">
                                                     <figure>
@@ -720,7 +708,7 @@ $(document).ready(function() {
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <!-- Product list -->
+                                            Product list
                                             <div class="col-md-4">
                                                 <div class="wp-block product">
                                                     <figure>
@@ -776,7 +764,7 @@ $(document).ready(function() {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -788,78 +776,7 @@ $(document).ready(function() {
 
     <!-- FOOTER -->
 <div>
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="col">
-                       <h4>Contact us</h4>
-                       <ul>
-                            <li>5th Avenue, New York - United States</li>
-                            <li>Phone: +10 724 1234 567 | Fax: +10 724 1234 567 </li>
-                            <li>Email: <a href="mailto:hello@example.com" title="Email Us">hello@example.com</a></li>
-                            <li>Skype: <a href="skype:my.business?call" title="Skype us">my-business</a></li>
-                            <li>Creating great templates is our passion</li>
-                        </ul>
-                     </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="col">
-                        <h4>Mailing list</h4>
-                        <p>Sign up if you would like to receive occasional treats from us.</p>
-                        <form class="form-horizontal form-light">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Your email address...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-base" type="button">Go!</button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <div class="col col-social-icons">
-                        <h4>Follow us</h4>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-skype"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-flickr"></i></a>
-                    </div>
-                </div>
-
-                 <div class="col-md-3">
-                    <div class="col">
-                        <h4>About us</h4>
-                        <p class="no-margin">
-                        Boomerang MultiPurpose Template is a multi-solution product made with simplicity in mind so you can benefit as much as possible from it.
-                        <br><br>
-                        <a href="#" class="btn btn-block btn-base btn-icon fa-check"><span>Try it now</span></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <hr>
-            
-            <div class="row">
-                <div class="col-lg-9 copyright">
-                    2014 Â© Web Pixels. All rights reserved.
-                    <a href="#">Terms and conditions</a>
-                </div>
-                <div class="col-lg-3">
-                    <a href="http://www.webpixels.ro" title="Made with love by Web Pixels" target="_blank" class="">
-                        <img src="resources/images/webpixels-footer-logo.png" alt="Web Pixels - Designing Forward | Logo" class="pull-right">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
+<%@ include file="footer.jsp" %>
 </div>
 
 <!-- Essentials -->

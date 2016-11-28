@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RE:MIND [READ MIND]</title>
-<%@include file="common.jsp"%>
+<%-- <%@include file="common.jsp"%> --%>
 
 <script type="text/javascript">
    $(document).ready(function() {
@@ -144,6 +144,6 @@ if (session.getAttribute("mno") != null){
       </div>
    </div>
    
-   <%@include file="bottom.jsp"%>
+<%--    <%@include file="bottom.jsp"%> --%>
 </body>
 </html>
