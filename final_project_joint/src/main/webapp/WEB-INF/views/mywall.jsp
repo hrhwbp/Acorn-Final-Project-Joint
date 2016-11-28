@@ -565,8 +565,7 @@ function boardDeleteOk(b_no) {
 				</c:choose>
 			</div>		
 		</div>
-		</div>
-		
+		</div>		
 		<div class="row"> <!-- 자신의 게시물과 팔로워 팔로우 수를 표시 -->			
 			<button type="button" class="btn btn-link col-md-3" style="color: black; background-color:#e4d3c4;" disabled="disabled"><b>게시물  ${fn:length(board)}개</b></button> 
 			<button type="button" class="btn btn-link col-md-3" style="background-color: rgba(229, 212, 200, 0.63)" onclick="follower(${myinfo.m_no})"><b>팔로워 ${fn:length(mylist)}</b></button>
@@ -597,7 +596,7 @@ function boardDeleteOk(b_no) {
 <c:if test="${mno == myinfo.m_no }"> 
 <div class="row" style="padding-bottom: 2%; background-color: rgba(255, 247, 252, 0.62);">
 	<div class="col-md-10 col-md-offset-1">
-			<button type="button" id="boardInsertBtn" class="btn btn-link col-md-12" style="background-color: rgba(224, 208, 194, 0.58); border-radius: 20px;"><h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;게시물 추가하기</h4></button>
+			<button type="button" id="boardInsertBtn" class="btn btn-link col-md-12" style="color:#9d8386;background-color: rgba(224, 208, 194, 0.58); border-radius: 20px;"><h4><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;&nbsp;게시물 추가하기</h4></button>
 	</div>
 </div>
 </c:if>

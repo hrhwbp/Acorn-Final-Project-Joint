@@ -573,7 +573,7 @@ public class DataDao implements DaoInter {
 		         if(stock.size() > 0){
 		             //System.out.println(article.get(0).text() + "~~~!~!~!");
 		        	 stockprice = stock.get(0);
-		        	 dto.setPrice(stockprice.text());
+		        	 dto.setPrice(stockprice.text().substring(0, 6));		//가격에서 .00 자르기
 		        	 dto.setUrl("https://www.google.com/finance?q=KOSDAQ%3A035720&ei=mIo6WIHWDcWY0ATJ6L2oAw");
 		        	 System.out.println(dto.getPrice() + " " + dto.getUrl() + " 주가확인~~~~!!");
 		          }

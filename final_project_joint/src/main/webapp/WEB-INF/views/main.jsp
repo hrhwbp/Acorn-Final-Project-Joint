@@ -47,7 +47,25 @@ $(document).ready(function () {
 	   }
 	 });
 });
-/* 마지막 게시물 번호  */
+
+$( document ).ajaxComplete(function() {
+	$('form').bind("keypress", function(e) {
+		   if (e.keyCode == 13) {               
+		     e.preventDefault();
+		     return false;
+		   }
+		 });
+});
+$(document).ready(function () {
+	   $(window).bind("scroll",scrolling);
+	   $('form').bind("keypress", function(e) {
+		   if (e.keyCode == 13) {               
+		     e.preventDefault();
+		     return false;
+		   }
+		 });
+	});
+
 
 /* 스크롤 할때마다 다음 게시물 불러오기 */
 function scrolling(){ 
@@ -87,7 +105,7 @@ function scrolling(){
 				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
 				'</rect>'+
 				'</svg>'+
-				'</div>'
+				'</div>';
 				$("#loading").html(loadingbar);
 				}else{
 					$("#loading").html("");
