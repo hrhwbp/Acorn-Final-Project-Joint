@@ -36,7 +36,7 @@ svg rect{
 </style>
 
 <script type="text/javascript">
-
+/* 마지막 게시물 번호  */
 var lastbno_save = null;
 $(document).ready(function () {
    $(window).bind("scroll",scrolling);
@@ -47,6 +47,7 @@ $(document).ready(function () {
 	   }
 	 });
 });
+
 $( document ).ajaxComplete(function() {
 	$('form').bind("keypress", function(e) {
 		   if (e.keyCode == 13) {               
@@ -65,6 +66,8 @@ $(document).ready(function () {
 		 });
 	});
 
+
+/* 스크롤 할때마다 다음 게시물 불러오기 */
 function scrolling(){ 
 	var documentHeight  = $(document).height() * 2 - 1200;
 	var scrollHeight = $(window).scrollTop()+$(window).height();
@@ -238,10 +241,13 @@ function scrolling(){
       }
    }
 }
+
+/* 스크롤 할때마다 다음 게시물 불러오기 */
 function anniAjax(){
 	alert("dd");
 }
-
+	
+	/* 댓글 달기 */
    function replySubmit(no){
 
       if($( "#r_content"+no ).val() == ""){
@@ -249,7 +255,7 @@ function anniAjax(){
          return;
       }else{
       
-      
+      /* 새로운 댓글 추가 하고 댓글들 새로 가져오기 */
       $.ajax({
          type:"post",
          url:"insertReply",
@@ -275,9 +281,12 @@ function anniAjax(){
       });
       }
    }
-      
+	/* 댓글 달기 */
 
+	/*-------------------  게시글 좋아요 표시   -------------------*/
    function likesubmit(b_no){
+		
+		/* 게시글 번호와 현재 로그인 한 자신의 세션값을 가져와 처리 */
          jQuery.ajax({
          type:"post",
          url:"insertLike",
@@ -296,13 +305,18 @@ function anniAjax(){
                      }) 
                      str += "님이 좋아합니다";
                    }
+            /* 게시글 좋아요 클릭후 스타일과 클릭이벤트 변경 */
             jQuery("#showlike"+b_no).html(str);
             jQuery("#likeYN"+b_no).attr({style:'color: red'});
             jQuery("#likeYN"+b_no).attr({onclick:'likecancel('+b_no+')'})
       }
     })
    }
+	/*-------------------  게시글 좋아요 표시   -------------------*/
+	
+	/*-------------------  게시글 좋아요 취소  -------------------*/
    function likecancel(b_no){
+	/* 게시글 번호와 현재 로그인 한 자신의 세션값을 가져와 처리 */
          jQuery.ajax({
          type:"post",
          url:"cancelLike",
@@ -323,12 +337,16 @@ function anniAjax(){
                      })
                      str += "님이 좋아합니다";
                    }
+            /* 좋아요 취소후 스타일과 클릭이벤트 변경 */
             jQuery("#showlike"+b_no).html(str);
             jQuery("#likeYN"+b_no).removeAttr("style");
             jQuery("#likeYN"+b_no).attr({onclick:'likesubmit('+b_no+')'})
          }
       });
    }
+	/*-------------------  게시글 좋아요 취소  -------------------*/
+	
+	/*-------------------  댓글이 많은 게시를의 댓글 더보기를 클릭하면 발생하는 function  -------------------*/
     function showReplyMore(b_no){
     	$.ajax({
     		type:"post",
@@ -338,6 +356,7 @@ function anniAjax(){
     		success:function(replyData){
     			var str = "<table class='table-condensed small' style='background-color: rgb(245, 245, 245); width: 100%'>"
     			var list = replyData.datas;
+    			/* 댓글작성자 이름으로 작성자의 My wall로 갈수 있음 */
     			jQuery(list).each(function(index, objArr){
     				str += "<tr>";
                     str += "<td><a href='friendinfo?m_no=" + objArr.r_mno + "'>" + objArr.r_name +"</a>&nbsp;"+ objArr.r_content + "</td>";
@@ -349,12 +368,15 @@ function anniAjax(){
     		}
     	});
     }	
-
+	/*-------------------  댓글이 많은 게시를의 댓글 더보기를 클릭하면 발생하는 function  -------------------*/
+	
+	
+	/*-------------------  게시글 상단의 게시물 작성자 이름으로 작성자의 정보보기  -------------------*/
     function gofriend(b_no){
-       jQuery("#friend"+b_no).submit();
-       
-       
+       jQuery("#friend"+b_no).submit();   
     }   
+	/*-------------------  게시글 상단의 게시물 작성자 이름으로 작성자의 정보보기  -------------------*/
+    
 </script>
 
 <style type="text/css">
@@ -512,6 +534,8 @@ function anniAjax(){
 <div class="container">
 
 		<!-- ==========================TIMELINE 화면에 뿌려주는 게시물 ============================= -->
+		
+		<!-- ========================== 자신과 팔로우의 게시물이 전혀 없을때 대체 글 ============================= -->		
 		<c:if test="${fn:length(list) == 0}">
 		<div class="container col-md-7 col-md-offset-2 " id="">
 			<div class="row text-center">
@@ -544,6 +568,9 @@ function anniAjax(){
 			</div>
 		</div>
 		</c:if>
+		<!-- ========================== 자신과 팔로우의 게시물이 전혀 없을때 대체 글 ============================= -->		
+		<!-- ========================== Timeline 게시물  ============================= -->				
+
 		<div class="container col-md-7 col-md-offset-2 " id="scrollingId"
 			style="padding-top: 1%; padding-bottom: 2%">
 			<c:forEach var="list" items="${list }">
@@ -675,9 +702,13 @@ function anniAjax(){
             </div>
          </c:forEach>
 		</div>
+		<!-- ========================== Timeline 게시물  ============================= -->				
 		<!-- ==========================TIMELINE 화면에 뿌려주는 게시물 끝============================= -->
+		
+		<!-- ========================== 스크롤링시 로딩  ============================= -->				
 		<div class="container col-md-7 col-md-offset-2 " id="loading">
 		</div>
+		<!-- ========================== 스크롤링시 로딩  ============================= -->				
 		
 
 		<!-- ================================이벤트일 표시 DIV===================================== -->

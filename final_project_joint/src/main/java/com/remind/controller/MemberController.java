@@ -149,7 +149,7 @@ public class MemberController {
 	}	
 	
 	@RequestMapping(value="updateInfo", method = RequestMethod.POST)
-	public String updateSubmit(MemberBean bean,@RequestParam("hiddenName")String imgName){
+	public String updateSubmit(MemberBean bean,@RequestParam("hiddenName") String imgName){
 		System.out.println(imgName);
 		MultipartFile uploadfile = bean.getFileUp();
 		System.out.println(uploadfile);
