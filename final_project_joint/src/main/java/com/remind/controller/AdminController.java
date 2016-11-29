@@ -100,8 +100,9 @@ public class AdminController {
 	}
 	
 	//Member 강퇴
-	@RequestMapping(value="adminmemberout", method = RequestMethod.GET)
+	@RequestMapping(value="adminmemberout", method = RequestMethod.POST)
 	public ModelAndView memberDrop(@RequestParam("m_no") String m_no){
+		System.out.println(m_no + " 강퇴용");
 		boolean b = daoInter.outMember(m_no);
 		if(b){
 			ModelAndView modelAndView = new ModelAndView();
@@ -137,37 +138,21 @@ public class AdminController {
 		return boardData;
 	}
 	
-	/* //자물쇠
-	   @RequestMapping(value="updatelock", method = RequestMethod.POST)
-	   @ResponseBody
-	   public Map<String, Object> updateLockStatus(WishlistBean bean){
-	      
-	      boolean b = daoInter.updateLockStatus(bean);
-	      System.out.println(bean.getW_lock() + " @@ " + bean.getW_no() + " $$ " + bean.getW_mno());
-	      if(b){
-	         List<Map<String, String>> insertedList = new ArrayList<Map<String, String>>();
-	         Map<String, String> sData = null;
-	      
-	         List<WishlistDto> list = daoInter.showInsertedList(bean.getW_no());
-	         for(WishlistDto s:list){
-	            sData = new HashMap<String, String>();
-	            System.out.println(s.getW_lock() + " %% ");
-	            sData.put("w_lock", s.getW_lock());
-	            sData.put("w_mno", s.getW_mno());
-	            sData.put("w_like", s.getW_like());
-	            insertedList.add(sData);
-	         }
-	      
-	         Map<String, Object> insertedData = new HashMap<String, Object>();
-	         insertedData.put("insertedList", insertedList);
-	         return insertedData;
-	      }else{
-	         System.out.println("에러당 ");
-	         return null;
-	      }*/
 	
+	//admin Table 출력
+	@RequestMapping(value="AdminBoardDetail", method = RequestMethod.POST)
+	@ResponseBody
+	public BoardDto AdminBoardDetail(@RequestParam("b_no") String b_no){                                 
+		BoardDto dto = daoInter.showBoardDetail(b_no);
+		return dto;
+		}
 	
-	
+	@RequestMapping(value="AdminBoardDelete", method = RequestMethod.POST)
+	public String deleteSubmit(@RequestParam("b_no") String b_no){
+		boolean b = daoInter.eraseBoard(b_no);
+		if(b) return "redirect:/adminTable.jsp";
+		else return "redirect:/error.jsp";
+	}
 	
 	//MainAdmin Page
 	@RequestMapping(value="MainAdmin")

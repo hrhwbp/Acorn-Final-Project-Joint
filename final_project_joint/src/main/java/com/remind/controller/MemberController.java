@@ -393,6 +393,7 @@ public class MemberController {
 			email.setReceiver(m_email);
 			email.setSubject(subject);
 			email.setContent(content);
+			boolean b = emailSender.sendEmail(email);
 		}	
 		view.setViewName("sign-in");		
 		return view;
