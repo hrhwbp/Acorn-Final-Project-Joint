@@ -200,6 +200,7 @@ $().ready(function() {
    $('[rel="tooltip"]').tooltip();
 });
 
+/* ==========================  카드 뒤집기  ============================ */
 function rotateCard(btn) {
    var $card = $(btn).closest('.card-container');
    console.log($card);
@@ -209,7 +210,8 @@ function rotateCard(btn) {
       $card.addClass('hover');
    }
 }
-   
+
+
 (function(i, s, o, g, r, a, m) {
    i['GoogleAnalyticsObject'] = r;
    i[r] = i[r] || function() {
@@ -224,6 +226,7 @@ function rotateCard(btn) {
 (window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 ga('create', 'UA-46172202-4', 'auto');
 ga('send', 'pageview');
+/* ==========================  카드 뒤집기  ============================ */
 
 /* Insert부분  */
 function insert(mno, g_num){
@@ -619,6 +622,7 @@ function wgopen(wg_no, wg_detail){
                                                                                     <img id="i_lock${lock}" src="resources/image/Lock-Lock-icon.png" style="width: 35px; height: 30px" >
                                                                                  </a>
                                                                               </c:when>
+                                                                              
                                                                            </c:choose>
                                                                            </c:when>
                                                                            <c:when test="${mno != userwg_mno}"><!--남의 물품을 보는 경우  -->
@@ -639,6 +643,8 @@ function wgopen(wg_no, wg_detail){
                                                                                     <img id="i_lock${lock}" src="resources/image/Lock-Unlock-icon.png" style="width: 35px; height: 30px">
                                                                                  </a>
                                                                               </c:when>
+                                                                              
+                                                                              
                                                                               </c:choose>
                                                                            </c:when>
                                                                         </c:choose>

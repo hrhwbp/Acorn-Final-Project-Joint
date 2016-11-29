@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
+
     <title>RE:MIND || 개발자팀</title>
+
     
 <%@ include file="importstop.jsp" %>
 </head>
@@ -22,7 +24,7 @@
 
             
     <!-- MAIN CONTENT -->
-    <div class="pg-opt">
+    	<div class="pg-opt">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -49,6 +51,7 @@
                 		<div class="row">
                 			<div class="col-md-7">
                 				<h4 class="title title-md c-light-gray">"장인"개발자</h4>
+
                 			</div>
                 			<div class="col-md-5">
                 				<div class="social-media social-media-sm text-right">
@@ -91,7 +94,7 @@
                 	<div class="col-md-6">
                 		<div class="row">
                 			<div class="col-md-7">
-                				<h4 class="title title-md c-light-gray">"열심"개발자</h4>                				
+                				<h4 class="title title-md c-light-gray">"열심"개발자</h4> 
                 			</div>
                 			<div class="col-md-5">
                 				<div class="social-media social-media-sm text-right">
@@ -155,6 +158,7 @@
                 			실질적 개발보다는 기획을 통한 애플리케이션의 구현과 큰 그림을 그리고, UI/UX의 개선을 통한 사용자 환경 개선과 
                 			심미적 요소를 고려하는 개발자보다는 디자이너/기획에 가까운 개발자. 프로젝트 개발 초기에 방향성에 있어 주춤했지만,
                 			마지막까지 애플리케이션의 전체적 조화를 위해 미세조정을 담당하였다. 그 또한 이번 프로젝트를 마지막으로 취업을 통한 개발을 희망하고 있다.   
+
                 		</p>
                 		<div class="progress progress-lg">
                             <div class="progress-bar progress-bar-base" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
@@ -228,97 +232,7 @@
         </div>
     </section>
 
-    <!-- <section class="slice light-gray bb animate-hover-slide-2">
-        <div class="wp-section">
-            <div class="container">
-                <div class="section-title-wr">
-                    <h3 class="section-title left"><span>Our team</span></h3>
-                </div>
-                <div class="owl-carousel owl-carousel-4 no-padding">
-                    <div class="item">
-                        <div class="wp-block inverse">
-                            <div class="figure">
-                                <img alt="" src="../../controller/resources/images/team/simjy.jpg" class="img-responsive">
-                                <div class="figcaption">
-                                    <h2>Derek Shepherd<small>CEO</small></h2>
-                                    
-                                    <ul class="social-icons text-center">
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wp-block inverse">
-                            <div class="figure">
-                                <img alt="" src="../../controller/resources/images/team/simjy.jpg" class="img-responsive">
-                                <div class="figcaption">
-                                    <h2>Teddy Altman<small>Product Manager</small></h2>
-                                    
-                                    <ul class="social-icons text-center">
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wp-block inverse">
-                            <div class="figure">
-                                <img alt="" src="../../controller/resources/images/team/simjy.jpg" class="img-responsive">
-                                <div class="figcaption">
-                                    <h2>Richard Webber<small>Web Developer</small></h2>
-                                    
-                                    <ul class="social-icons text-center">
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wp-block inverse">
-                            <div class="figure">
-                                <img alt="" src="../../controller/resources/images/team/simjy.jpg" class="img-responsive">
-                                <div class="figcaption">
-                                    <h2>Mark Sloan<small>UX Designer</small></h2>
-                                    
-                                    <ul class="social-icons text-center">
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="wp-block inverse">
-                            <div class="figure">
-                                <img alt="" src="../../controller/resources/images/team/simjy.jpg" class="img-responsive">
-                                <div class="figcaption">
-                                    <h2>Teddy Altman<small>Team Builder</small></h2>
-                                    
-                                    <ul class="social-icons text-center">
-                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>   -->
+  
 
 
     <!-- FOOTER -->

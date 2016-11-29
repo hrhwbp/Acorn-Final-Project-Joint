@@ -21,6 +21,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.remind.model.AnniversaryDto;
 import com.remind.model.BoardDto;
 import com.remind.model.DaoInter;
+import com.remind.model.EmailDto;
+import com.remind.model.EmailSender;
 import com.remind.model.FollowDto;
 
 import com.remind.model.MemberDto;
@@ -51,6 +53,7 @@ public class MemberController {
 		return view;
 	}
 	
+	//회원가입시 이메일 중복 체크
 	@ResponseBody
 	@RequestMapping(value="email_join_check", method = RequestMethod.POST, produces = "application/text; charset=utf8")
 	public String emailjoincheck(@RequestParam("email_join_check") String m_email_check){
@@ -115,6 +118,8 @@ public class MemberController {
 		return searchData;
 			
 	}
+	
+	//친구검색
 	@RequestMapping(value="searching",method=RequestMethod.GET)
 	@ResponseBody
 	public List<Map<String, String>> search2(@RequestParam("name") String name){
@@ -136,12 +141,11 @@ public class MemberController {
 	@RequestMapping(value="out", method= RequestMethod.POST)
 	public String out(@RequestParam("m_no") String m_no){
 		boolean b = daoInter.outMember(m_no);
-		if(b)
-			return "redirect:/index.jsp";
+		if(b) return "redirect:/index.jsp";
 		else return "redirect:/error.jsp";
 	}
-	//내 정보 업데이트
 	
+	//내 정보 업데이트
 	@RequestMapping(value="updateInfo", method=RequestMethod.GET)
 	public ModelAndView updateMember(@RequestParam("m_no") String m_no){
 		MemberDto dto = daoInter.showMemberDetail(m_no);
@@ -150,7 +154,6 @@ public class MemberController {
 	
 	@RequestMapping(value="updateInfo", method = RequestMethod.POST)
 	public String updateSubmit(MemberBean bean,@RequestParam("hiddenName") String imgName){
-		
 		System.out.println(imgName);
 		MultipartFile uploadfile = bean.getFileUp();
 		System.out.println(uploadfile);
@@ -347,6 +350,7 @@ public class MemberController {
 		return view;
 	}
 	
+	//비밀번호 변경(정상적인 변경)
 	@RequestMapping(value="passChange", method = RequestMethod.POST)
 	public ModelAndView passChange(MemberBean bean){
 		ModelAndView view = new ModelAndView();
@@ -360,4 +364,42 @@ public class MemberController {
 		}
 		return view;
 	}
+	
+	
+	//비밀번호 분실 Email보내기 
+	@Autowired
+	private EmailSender emailSender;
+	
+	@RequestMapping(value="sendPassChange", method=RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView submit(@RequestParam("m_email")String m_email) throws Exception{
+		ModelAndView view = new ModelAndView();
+		m_email = m_email.trim();		
+		int check = daoInter.lostPass(m_email);
+		
+		
+		if (check > 0){
+			String subject ="RE:MIND에서 분실하신 비밀번호 재설정";
+			String pass = String.valueOf((Math.floor(Math.random()*1000000)));
+			String content = "<html><p>사용하실 임시 비밀번호는 " + pass + "입니다.</p><br>"
+					+ "<a href='http://localhost:8080/controller/login'>이곳을</a>눌러 로그인하십시오.</html>";
+			
+			MemberBean bean = daoInter.lostPassMember(m_email);
+			//String m_no = bean.getM_no();
+			bean.setM_password(pass);
+			daoInter.ChangePass(bean);
+			
+			EmailDto email = new EmailDto();
+			email.setReceiver(m_email);
+			email.setSubject(subject);
+			email.setContent(content);
+		}	
+		view.setViewName("sign-in");		
+		return view;
+		
+	}
 }
+
+
+
+

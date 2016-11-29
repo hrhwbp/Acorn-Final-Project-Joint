@@ -192,7 +192,7 @@
                     	<a href="anniversary" class="dropdown-toggle" >EVENTS</a>                        
                     </li>
                     <li class="dropdown">
-                        <a href="qna" class="dropdown-toggle" >QnA</a>                        
+                        <a href="faq" class="dropdown-toggle" >FAQ</a>                        
                     </li>	                
                     <%if (session.getAttribute("mno") != null) {%>
                     

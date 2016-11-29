@@ -11,6 +11,8 @@
 
     <!-- Page scripts -->
 <script type="text/javascript">
+	
+	//이메일, 비밀번호 검증을 위한 식
 	$(document).ready(function() {
 		//$('#btnJoin').attr("disabled", "disabled");
 		$("#m_email").bind('input', function() {
@@ -29,6 +31,7 @@
 		//$('#btnJoin').click(make_regist_json());
 	});
 
+	// 비밀번호 일치 검증식============================================================================
 	function password_check() {
 		$("#passwordCheck").empty();
 		if ($("#m_password").val() == $("#m_password_check").val()) { // 비밀번호와 확인내용이 같은지 확인
@@ -49,6 +52,7 @@
 		}
 	}
 
+	// 이메일 검증식============================================================================
 	function email_check() {
 		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		var m_email = $("#m_email").val();
@@ -83,16 +87,15 @@
 	}
 	
 	
-	function terms(){
-		
+	function terms(){		
 	$('#terms').modal('show');
 	}
 	
 	function submit(){
-		alert("yeah!");
-		/* $("#btnJoin").click(function(){
+		//alert("yeah!");
+		$("#btnJoin").click(function(){
 		$("#frmRegister").attr({action:'join', method:'post'}).submit();
-	}); */
+	}); 
 	}
 	
 </script>
@@ -322,7 +325,7 @@ background-color: rgba(255, 255, 255, 0.2);
 							</div>
 							<div class="form-footer">
 								<p style="text-align: center;">
-									이미 계정이 있으신가요? <a href="sign-in">그럼 이곳을 클릭하여 로그인하세요.</a>
+									이미 계정이 있으신가요? <a href="login">그럼 이곳을 클릭하여 로그인하세요.</a>
 								</p>
 							</div>
 						</div>

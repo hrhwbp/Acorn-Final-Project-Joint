@@ -73,14 +73,13 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
+	/*===================  비밀번호 변경시 변경 완료 모달 =====================*/
 	if(${param.suc == true}){
 		$("#passwordOk").modal('show');
 	};
+	/*===================  비밀번호 변경시 변경 완료 모달 =====================*/
 	
-	$('#updateSubmit').click(function() {
-		$('#boardUpdatefrm').submit()		
-	});
-	
+	/*===================  프로필 수정 비밀번호 검사  =====================*/
 	$('#infoSubmit').click(function() {
 		if($('#password').val() == $('#m_password').val()){
 			
@@ -90,25 +89,10 @@ $(document).ready(function() {
 			$('#passwordErr').modal('show');
 		}
 	});
+	/*===================  프로필 수정 비밀번호 검사  =====================*/
 	
-	$('#boardInsertBtn').click(function() {
-		$('#boardInsert').modal('show');
-		$('#boardInsertImg').hide();
-	});
 	
-	$('#boardInsertSubmit').click(function() {
-		/* alert(boardInsertFile.files[0]); */
-		if(boardInsertFile.files[0] == undefined){
-			$('#boardInsertErr').modal('show');
-			return;
-		}else if($('#modalInsertContent').val() == ''){
-			$('#modalInsertContent').attr('placeholder','내용을 입력 해주세요!!');
-			$('#modalInsertContent').focus();
-			return;
-		}
-		$('#boardInsertfrm').submit();
-	});
-	
+	/*===================  내 이벤트 date-picker 설정  =====================*/
 	/* $(".date-picker").datepicker(); */
 	$('#date-picker-2').datepicker({
 	    dateFormat : "yy-mm-dd",
@@ -127,28 +111,34 @@ $(document).ready(function() {
 	        }, 0);
 	    },
 	});
-	
+	/*===================  내 이벤트 date-picker 설정  =====================*/
 });
-
+	
+	/*===================  이벤트 수정  =====================*/
 	function eventUpdate(a_no,a_detail,a_date) {
 		$('#hiddenA_no').attr('value',a_no);
 		$('#updateDetail').attr('value',a_detail);
 		$('#date-picker-3').attr('value',a_date);
 		$('#updateAnni').modal('show');
 	}
+	/*===================  이벤트 수정  =====================*/
 	
+	/*===================  이벤트 삭제  =====================*/
 	function eventDelete(a_no) {
 		$("#eventDelOk").attr('onclick','eventDeleteOk()');
 		$("#deleteA_no").attr('value',a_no);
 		$("#eventDeleteOk").modal('show');
 	}
+	/*===================  이벤트 삭제  =====================*/
 	
+	/*===================  이벤트 삭제확인  =====================*/
 	function eventDeleteOk() {
 		$("#deleteAnniFrm").submit();
 	}
+	/*===================  이벤트 삭제확인  =====================*/
 	
-		
-	//비밀번호  변경요청후  검사 및 전송
+	/*===================  비밀번호  변경요청후  검사 및 전송  =====================*/
+	
 	function passwdFunc() {
 		//#password
 		var passwd = $('#password').val();
@@ -170,6 +160,7 @@ $(document).ready(function() {
 			
 		}		
 	}
+	/*===================  비밀번호  변경요청후  검사 및 전송  =====================*/
 </script>
     
 </head>
@@ -177,12 +168,6 @@ $(document).ready(function() {
 <body>
 <!-- =======================================각종 모달======================================= -->
 <!-- 프로필 수정 모달 -->	
-<c:if test="${suc.str != 'success'}">
-<script type="text/javascript">
-
-</script>
-</c:if>
-
 	<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 	  <div class="modal-dialog" style="margin: 150px auto;">
 	    <div class="modal-content">
@@ -198,8 +183,8 @@ $(document).ready(function() {
 					<img id="image" src="http://wbp.synology.me/profileimg/${myinfo.m_image}" alt="Responsive image" class="img-circle img-responsive" style="height: 100%; width: 100%">
 					</a>
 	      			<input type="file" id="file"  name="fileUp" class="sr-only">
-	      			<input type="hidden" name="hiddenName" id="hiddenName" value="${myinfo.m_image}"> 
-	      			
+	      			<input type="hidden" name="hiddenName" value="${myinfo.m_image}" > 
+
 				</div>
 				</div>
 			</div>

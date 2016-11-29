@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.ls.LSInput;
 
 import com.remind.model.AdminDto;
 import com.remind.model.BoardDto;
 import com.remind.model.DaoInter;
-import com.remind.model.Email;
+import com.remind.model.EmailDto;
 import com.remind.model.EmailSender;
 import com.remind.model.MemberDto;
 import com.remind.model.ParserDto;
@@ -31,26 +32,21 @@ public class AdminController {
 	@Autowired
 	private DaoInter daoInter;
 	
-	/*@RequestMapping(value="loginPage", method = RequestMethod.GET)
-	public String LoginPage(){                                 
-		return "redirect:/adminLogin.jsp";
-	}*/
-	
 	@RequestMapping(value="loginPage", method = RequestMethod.GET)
 	public ModelAndView LoginPage(){
 		ModelAndView model = new ModelAndView();
-		model.setViewName("adminLogin.jsp");
+		model.setViewName("adminLogin");
 		
 		return model;
 	}
 	
+	//세션
 	@RequestMapping(value="AdminLogin", method = RequestMethod.POST)
 	@ResponseBody
 	public String AdminLogin(AdminBean bean, HttpSession session){                                 
 		AdminDto dto = daoInter.AdminLogin(bean);				
 		String adminlogin = "";
 		if(dto != null){
-			System.out.println(dto.getAd_no() + " 세션좀 확인하자");
 			session.setAttribute("adno", dto.getAd_no());
 			adminlogin="success";
 			System.out.println(adminlogin);
@@ -65,7 +61,7 @@ public class AdminController {
 	@RequestMapping(value="adminLogout", method = RequestMethod.GET)
 	public String logoutConfirm(HttpSession session){		
 		session.removeAttribute("adno");		
-		return "redirect:/adminLogin.jsp";
+		return "adminLogin";
 	}
 	
 	//admin Table 출력
@@ -75,11 +71,11 @@ public class AdminController {
 		modelAndView.addObject("showMem",daoInter.showMemberA()); 
 		modelAndView.addObject("showBoard", daoInter.showBoardA());
 		modelAndView.addObject("randomList", daoInter.eventListA());
-		modelAndView.setViewName("../../adminTable");
+		modelAndView.setViewName("adminTable");
 		return modelAndView;
 	}
 	
-	//Member 이름 클릭시 게시판 출력
+	//Member 이름 클릭시 게시판 출력 (사용 안함)
 	@RequestMapping(value="showPartBoard", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> showPartB(@RequestParam("m_no") String m_no){
@@ -112,7 +108,7 @@ public class AdminController {
 			modelAndView.addObject("showMem",daoInter.showMemberA()); 
 			modelAndView.addObject("showBoard", daoInter.showBoardA());
 			modelAndView.addObject("randomList", daoInter.eventListA());
-			modelAndView.setViewName("../../adminTable");
+			modelAndView.setViewName("adminTable");
 			return modelAndView;
 		}else{
 			return null;
@@ -129,22 +125,49 @@ public class AdminController {
 			@RequestParam("subject")String subject, 
 			@RequestParam("content")String content) throws Exception{
 		
-		Email email = new Email();
+		
+		EmailDto email = new EmailDto();
 		email.setReceiver(receiver);
 		email.setSubject(subject);
 		email.setContent(content);
 		boolean b = emailSender.sendEmail(email);
 		
-		//System.out.println(b);
 		Map<String, Object> boardData = new HashMap<String, Object>();
 		boardData.put("suc", b);
 		return boardData;
 	}
 	
-	/*@ModelAttribute
-	public ParserBean urlBean(){
-		return new ParserBean();
-	}*/
+	/* //자물쇠
+	   @RequestMapping(value="updatelock", method = RequestMethod.POST)
+	   @ResponseBody
+	   public Map<String, Object> updateLockStatus(WishlistBean bean){
+	      
+	      boolean b = daoInter.updateLockStatus(bean);
+	      System.out.println(bean.getW_lock() + " @@ " + bean.getW_no() + " $$ " + bean.getW_mno());
+	      if(b){
+	         List<Map<String, String>> insertedList = new ArrayList<Map<String, String>>();
+	         Map<String, String> sData = null;
+	      
+	         List<WishlistDto> list = daoInter.showInsertedList(bean.getW_no());
+	         for(WishlistDto s:list){
+	            sData = new HashMap<String, String>();
+	            System.out.println(s.getW_lock() + " %% ");
+	            sData.put("w_lock", s.getW_lock());
+	            sData.put("w_mno", s.getW_mno());
+	            sData.put("w_like", s.getW_like());
+	            insertedList.add(sData);
+	         }
+	      
+	         Map<String, Object> insertedData = new HashMap<String, Object>();
+	         insertedData.put("insertedList", insertedList);
+	         return insertedData;
+	      }else{
+	         System.out.println("에러당 ");
+	         return null;
+	      }*/
+	
+	
+	
 	
 	//MainAdmin Page
 	@RequestMapping(value="MainAdmin")
@@ -178,16 +201,15 @@ public class AdminController {
 		modelAndView.addObject("articleUrl", daoInter.articleAdmin().getUrl());
 		
 		String stock = daoInter.stockAdmin().getPrice().replaceAll(",", "");
-		System.out.println(stock + " 여기도 주가 확인");
+		//System.out.println(stock + " 여기도 주가 확인");
 		modelAndView.addObject("stock", stock.replace(" ", ""));
 		
-		modelAndView.setViewName("../../admin");
+		modelAndView.setViewName("admin");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value="updateAdmin", method = RequestMethod.POST)
 	public ModelAndView AdminUpdate(AdminBean bean){
-		//System.out.println(bean.getAd_name() + " 확인 " + bean.getAd_password() + " 세션확인" + bean.getAd_no());
 		
 		boolean b = daoInter.AdminUpdate(bean);
 		if(b){
@@ -199,6 +221,7 @@ public class AdminController {
 			    boardlist.add(s.getM_gender());
 			}
 			
+			//남, 여 비율
 			int m = 0,w = 0;
 			for (int i = 0; i < boardlist.size(); i++) {
 				if(Integer.parseInt((String)boardlist.get(i)) == 1){
@@ -215,11 +238,17 @@ public class AdminController {
 			modelAndView.addObject("memcnt", daoInter.memberCnt());
 			modelAndView.addObject("boardcnt", daoInter.boardCnt());
 			
+			//뉴스
 			String name = daoInter.articleAdmin().getName().replaceAll("'", "");
 			modelAndView.addObject("articleName", name);
 			modelAndView.addObject("articleUrl", daoInter.articleAdmin().getUrl());
+			
+			//주식가격 
+			String stock = daoInter.stockAdmin().getPrice().replaceAll(",", "");
+			modelAndView.addObject("stock", stock.replace(" ", ""));
+			
 			modelAndView.addObject("updateCheck", 1);
-			modelAndView.setViewName("../../admin");
+			modelAndView.setViewName("admin");
 			
 			return modelAndView;
 		}else{
@@ -242,5 +271,19 @@ public class AdminController {
 		view.setViewName("ourteam");
 		return view;
 	}
+	
+	//주식가격 
+	@RequestMapping(value="stockchages")		
+	@ResponseBody
+	public Map<String, Object> stockchanges(){
+		Map<String, Object> list = new HashMap<String, Object>();
+		String str = daoInter.stockAdmin().getPrice().replaceAll(",", "");
+		
+		list.put("stocks", str);
+		//System.out.println(str + " 여기도 주가 확인");
+		return list;
+	}
+	
+	
 	
 }

@@ -48,9 +48,9 @@
 							RE:MIND is a platform to share your gift ideas with your
 							family, friends and other to ease your burden on giving and/or 
 							receiving gifts.
-							<br> <br> <a href="#"
+							<br> <br> <!-- <a href="#"
 								class="btn btn-block btn-base btn-icon fa-check"><span>Start
-									it now</span></a>
+									it now</span></a> -->
 						</p>
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 						conditions</a>
 				</div>
 				<div class="col-lg-3">
-					<a href="admin"
+					<a href="loginPage"
 						title="Made with love by Web Pixels" target="_blank" class="">
 						<img src="resources/images/webpixels-footer-logo.png"
 						alt="Web Pixels - Designing Forward | Logo" class="pull-right">

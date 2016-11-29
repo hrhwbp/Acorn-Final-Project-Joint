@@ -1,6 +1,6 @@
 package com.remind.model;
 
-public class Email {
+public class EmailDto {
 	private String subject;
 	private String content;
 	private String receiver;		

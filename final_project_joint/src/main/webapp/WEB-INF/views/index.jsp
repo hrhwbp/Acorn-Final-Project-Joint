@@ -14,8 +14,7 @@
 <link rel="stylesheet" href="resources/assets/layerslider/css/layerslider.css" type="text/css">
 
 <script type="text/javascript">
-	function mywall() {
-		
+	function mywall() {		
 		if(<%=session.getAttribute("mno")%>	 == null){
 			location.href="login"
 		}else{
@@ -28,6 +27,14 @@
 			location.href="login"
 		}else{
 		$("#account").submit();
+		}
+	}
+	
+	function myWishlist() {
+		if(<%=session.getAttribute("mno")%>	 == null){
+			location.href="login"
+		}else{
+		$("#wishlist").submit();
 		}
 	}
 </script>
@@ -94,13 +101,13 @@
     <h5 class="side-section-title">Contact information</h5>
     <div class="contact-info">
         <h5>Address</h5>
-        <p>5th Avenue, New York - United States</p>
+        <p>SaeKyeong Bldg. 3F, Teheran-ro 1Gil 10</p>
         
         <h5>Email</h5>
-        <p>hello@webpixels.ro</p>
+        <p>master@remind.com</p>
         
         <h5>Phone</h5>
-        <p>+10 724 1234 567</p>
+        <p>+82 2 538 3642</p>
     </div>
 </section>
 
@@ -168,8 +175,17 @@
 						</form>                              
                     </li> 
                     <li class="dropdown">
-                        <a href="wishlist" class="dropdown-toggle" >WISHLIST</a>                        
-                    </li>                   
+                        <a href="javascript:myWishlist()" class="dropdown-toggle" >WISHLIST</a>
+						<form action="showWishList" method="get" id="wishlist">
+							<input type="hidden" name="w_mno" value="<%=session.getAttribute("mno")%>">
+						</form>                                                
+                    </li>   
+                    <li class="dropdown">
+                        <a href="anniversary" class="dropdown-toggle" >EVENTS</a>                        
+                    </li>
+                    <li class="dropdown">
+                        <a href="faq" class="dropdown-toggle" >FAQ</a>                        
+                    </li>   
                     <%if (session.getAttribute("mno") != null) {%>
                     <li class="dropdown">
                     	<a href="logout" class="dropdown-toggle" >LOGOUT</a>                        
@@ -243,14 +259,11 @@
             <img src="../../controller/resources/images/ladyopenbox.jpg" class="ls-bg" style="width: 100%;" alt="Slide background"/>
             
             <!-- Left Text -->
-            <h3 class="ls-l title text-normal" style="width:600px; top:35%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
-                <strong><span class="strong-600 c-base">선물하는 즐거움/선물받는 즐거움</span><span class="strong-600">getting</span> <span class="strong-600 c-base">started</span></strong>
+            <h3 class="ls-l title text-normal" style="width:600px; top:35%; left:200px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
+                <strong><span class="strong-600">선물하는 즐거움과</span><br><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="strong-600 c-base">선물받는 즐거움</span></strong>
             </h3>
-
-            <p class="ls-l text-standard" style="width:500px; top:50%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1000;delayin:1000;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;">
-            Boomerang is ready to be part of your project. Let's get started
-            </p>
-            <a href="https://wrapbootstrap.com/theme/boomerang-multipurpose-template-WB021609D" class="btn btn-base btn-lg ls-l" style="top:60%; left:80px;" data-ls="offsetxin:0;offsetyin:250;durationin:1500;delayin:1500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;" target="_blank">
+            
+            <a href="https://wrapbootstrap.com/theme/boomerang-multipurpose-template-WB021609D" class="btn btn-base btn-lg ls-l" style="top:30%; left:280px;" data-ls="offsetxin:0;offsetyin:250;durationin:1500;delayin:1500;offsetxout:0;offsetyout:-8;easingout:easeInOutQuart;scalexout:1.2;scaleyout:1.2;" target="_blank">
                 <span>Learn more</span>
             </a>
         </div>

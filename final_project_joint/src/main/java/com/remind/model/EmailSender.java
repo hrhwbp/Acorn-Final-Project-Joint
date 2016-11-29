@@ -13,7 +13,7 @@ public class EmailSender {
 	@Autowired	
 	private JavaMailSender mailSender;
 	
-	public boolean sendEmail(Email email) throws Exception{
+	public boolean sendEmail(EmailDto email) throws Exception{
 		try {
 			MimeMessage msg = mailSender.createMimeMessage(); 	
 			msg.setSubject(email.getSubject());					

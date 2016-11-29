@@ -55,15 +55,9 @@ body {
 
 //첫번째 차트
 function chart1(man, woman) {
-	
 	var tot = man + woman;
-	//alert(man + " " + woman);
-	//alert(tot);
-	
 	var w = Math.floor(woman/tot*100);
 	var m =  Math.floor(man/tot*100);
-	//alert(w + " " + m);
-	//int m =man, w=woman;
 	var nn = 20;
 	info = new Highcharts.Chart({
 		chart: {
@@ -128,8 +122,8 @@ function chart2() {
 			name: 'SiteInfo',
 			innerSize: '65%',
 			data: [
-				{ name: 'Used', y: 80.0, color: '#fa1d2d' },
-				{ name: 'Rest', y: 20.0, color: '#3d3d3d' }
+				{ name: '이정도면 충분한거 같은데...', y: 80.0, color: '#fa1d2d' },
+				{ name: '뭔가 넣을게 없다...', y: 20.0, color: '#3d3d3d' }
 			],
 			dataLabels: {
 				enabled: false,
@@ -140,8 +134,8 @@ function chart2() {
 	});
 	
 }
-
-    $(document).ready(function () {
+	
+   /*  $(document).ready(function () {
         $("#btn-blog-next").click(function () {
             $('#blogCarousel').carousel('next')
         });
@@ -155,7 +149,7 @@ function chart2() {
         $("#btn-client-prev").click(function () {
             $('#clientCarousel').carousel('prev')
         });
-    });
+    }); */
 
     $(window).load(function () {
         $('.flexslider').flexslider({
@@ -172,7 +166,7 @@ function chart2() {
     
 //시계 ***   
 function printClock(){
-	//alert(man + " 시계에서 확인" + woman);
+	
 	var clock;            							
 	var currentDate = new Date();                   // 현재시간
 	var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
@@ -210,14 +204,12 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 
 //차트 ***
 function stockChart(name, url, stock){
-	
-	/*
-	function generateNumber(min, max) {
+	/* function generateNumber(min, max) {
 		min = typeof min !== 'undefined' ? min : 1;
-		max = typeof max !== 'undefined' ? max : 100;
-		return Math.floor((Math.random() * max) + min);
-	}
-	*/
+		max = typeof max !== 'undefined' ? max : 100000;
+		return Math.floor((5 * max) + min);
+	} */
+
 	
 	/*
 	var chart,
@@ -227,26 +219,21 @@ function stockChart(name, url, stock){
 		$aapls;
 	*/
 	
-	//alert(stock);
-	
 	var chart,
-		categories= [], 
-		serie1=[0, 0, 0, 0, 0, 0, 0], 
-		serie2=[0, 0, 0, 0, 0, 0, 0], 
+		categories= ['Categorie 1', 'Categorie 2', 'Categorie 3','Categorie 4', 'Categorie 5'], 
+		serie1=[21,35,54,29,18], 
+		serie2=[21,35,54,29,18], 
 		$aapls;
 	
+	//창을 불러올때 주식가격 출력
 	var i=0;
-	setInterval(function(){
-		//alert(stock);
-		//categories[i] = 'Categorie '+ (i+1).toString();
-		//alert(categories[i]);
-		serie1[7+i] = stock;
-		serie2[7+i] = stock;
-		
-		i++;
-	}, 5000);
+	categories[i+5] = 'Categorie '+ (i+6).toString();
+	serie1[i+5] = stock;
+	serie2[i+5] = stock;
+	new stockStatus2(serie1[i+5]);
 	
-	$(document).ready(function() {
+	//차트
+	$(document).ready(function() {					
 		chart = new Highcharts.Chart({
 			chart: {
 			renderTo: 'importantchart',
@@ -311,28 +298,54 @@ function stockChart(name, url, stock){
 			}
 		});
 		
-		setInterval(function(){
-			/*
+		/* setInterval(function(){
+			
 			chart.series[0].addPoint(generateNumber(), true, true);
 			chart.series[1].addPoint(generateNumber(50, 150), true, true);
 			new stockStatus(serie1[0]);
-			*/
 			
-			
-			chart.series[0].addPoint(serie1[6+i],true, true);//차트에 주식가격 입력
-			chart.series[1].addPoint(serie2[6+i],true, true);
-			new stockStatus2(serie1[6+i]);
-			//alert(serie1[0]);
-			//alert(stockprice + "되라");
-			
-		}, 5000);
+		}, 5000); */
 		
+		setInterval(function(){	
+			$.ajax({
+				type:"get",
+				url:"stockchages",
+				data: {},
+				dataType: "json",
+				success: function(list){
+					//alert(list.stocks);
+					//categories[i+6] = 'Categorie '+ (i+7).toString();
+					serie1[i+6] = list.stocks;
+					serie2[i+6] = list.stocks;
+					
+					chart.series[0].addPoint(serie1[5], true, true);			//주식가격 차트에 출력
+					chart.series[1].addPoint(serie2[5], true, true);			//주식가격 차트에 출력
+					new stockStatus2(serie1[i+6]);
+					
+					/* alert(list.stocks + " 생 " + serie1[i+1] + " "  + serie1[i+2] + " "  + serie1[i+3] + " " +
+						serie1[i+4] + " "  + serie1[i+5] + " " + serie1[i+6] + " "  
+					); */
+					
+					i++;//5초마다 주식가격 가져오기	
+				},
+				error: function(){
+					alert("에러 발생");
+				}
+			});
+		}, 5000);
+
 		setInterval(function() {
+			/* $('.info-aapl span').each(function(index, elem) {
+				$(elem).animate({
+					height: generateNumber(1, 10)
+				});
+			}); */
 			$('.info-aapl span').each(function(index, elem) {
 				$(elem).animate({
-					height: generateNumber(1, 40)
+					height: generateNumber(1, 10000)
 				});
 			});
+			
 	
 		}, 5000);
 		
@@ -343,14 +356,14 @@ function stockChart(name, url, stock){
 	});
 }
 
+
 var prenum = 0;
 function stockStatus2(stock){
-	//alert(stock);
 	
 	if(stock == prenum){
 		var dif = 0;
 		$("div #stockstatus").html(
-				'<p><img src="resources/admin/images/up.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'	
+				'<p><img src="resources/admin/images/minus-sign.jpg" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'	
 		);
 		
 		$("div #totcost").html(
@@ -417,7 +430,7 @@ function stockStatus(num){
 
 //Article Update
 function articleUpdate(name, url){
-	//alert(name + " 검사 " + url)
+	
 	$("#url2").html("<a target='blank' href='" + url + "'>" + name + "</a>");
 }
 
@@ -471,7 +484,7 @@ function updateSubmit(){
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="MainAdmin"><img src="resources/admin/images/logo30.png" alt=""> RE:MIND</a>
+				<a class="navbar-brand" href="MainAdmin"><img src="resources/images/boomerang-logo-white.png" style="widows: 60px; height: 15px;" alt=""> RE:MIND</a>
 			</div> 
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -500,9 +513,9 @@ function updateSubmit(){
 				<div class="dash-unit">
 	      			<dtitle>User Profile</dtitle><hr>
 					<div class="thumbnail">
-						<img src="resources/admin/images/face80x80.jpg" alt="Marcel Newman" class="img-circle">
+						<img src="resources/images/team/simjy.jpg" style="width: 100px; height: 100px" alt="Marcel Newman" class="img-circle">
 					</div><!-- /thumbnail -->
-					<h1>Create by Sim <%=session.getAttribute("adno")%></h1>
+					<h1>Create by Sim</h1>
 					<h3>Seoul, Korea</h3><br>
 					<div class="info-user">
 						<span aria-hidden="true" class="li_user fs1"></span>
@@ -548,13 +561,12 @@ function updateSubmit(){
 				</div>
 			</div>
 			
-		</div><!-- /row -->
+		</div>
       
       
-		<!-- SECOND ROW OF BLOCKS -->     
+	
 		<div class="row">
 			<div class="col-sm-3 col-lg-3">
-			<!-- MAIL BLOCK -->
 			<div class="dash-unit">
 				<dtitle>Co-Founders</dtitle><hr>
 					<div class="framemail">
@@ -562,21 +574,27 @@ function updateSubmit(){
 							<ul class="mail">
 								<li>
 									<i class="unread"></i>
-									<img class="avatar" src="resources/admin/images/photo01.jpeg" alt="avatar">
+									<img class="avatar" src="resources/images/team/choiyw.jpg" alt="avatar">
 									<p class="sender">나</p>
-									<p class="message"><strong>힘들어!!</strong>여따가 뭐 넣지??</p>
-									<div class="actions">
-										<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/undo.png" alt="reply"></a>
-										<a><img src="http://png-1.findicons.com/files//icons/2232/wireframe_mono/16/star_fav.png" alt="favourite"></a>
-										<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/tag.png" alt="label"></a>
-										<a><img src="http://png-4.findicons.com/files//icons/2232/wireframe_mono/16/trash.png" alt="delete"></a>
-									</div>
+									<p class="message"><strong>힘들어!!</strong> 여따가 뭐 넣지??</p>
+								</li>
+								<li>
+									<i class="unread"></i>
+									<img class="avatar" src="resources/images/team/parkbh.jpg" alt="avatar">
+									<p class="sender">형</p>
+									<p class="message"><strong>나도 힘들어!!</strong> 여따가 뭐 넣지??</p>
+								</li>
+								<li>
+									<i class="unread"></i>
+									<img class="avatar" src="resources/images/team/baejs.jpg" alt="avatar">
+									<p class="sender">DJ배</p>
+									<p class="message"><strong>지하철 너무 더워</strong> 여따가 뭐 넣지??</p>
 								</li>
 							</ul>
 						</div>
 					</div>
-				</div><!-- /dash-unit -->
-			</div><!-- /span3 -->
+				</div>
+			</div>
 
 			  
 			<div class="col-sm-3 col-lg-3">
@@ -621,9 +639,8 @@ function updateSubmit(){
 				</div>
 			</div>  
         
-		</div><!-- /row -->
-      
-	</div> <!-- /container -->
+		</div>
+	</div> 
 	
 	
 	
@@ -633,13 +650,13 @@ function updateSubmit(){
       	<div class="container">
       		<div class="row">
       			<div class="col-sm-12 col-lg-12">
-      			<p><img src="resources/admin/images/logo.png" alt=""></p>
+      			<p><img src="resources/images/boomerang-logo-white.png" alt=""></p>
       			<p>RE:MIDN - Created With Love - Inspired by SIM</p>
       			</div>
 
-      		</div><!-- /row -->
-      	</div><!-- /container -->		
-	</div><!-- /footerwrap -->
+      		</div>
+      	</div>	
+	</div>
        
      <!--Admin 수정모달 팝업 BEGINNING-->
    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
@@ -672,7 +689,8 @@ function updateSubmit(){
       </div>
    </div>
    <!-- Admin 수정모달 팝업 END-->  
-       
+       	
+    <!--Admin 수정 확인모달  -->
    <div class="modal fade" id="updateConfirm" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
          <div class="modal-content">
