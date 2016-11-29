@@ -71,7 +71,7 @@ public class AdminController {
 		modelAndView.addObject("showMem",daoInter.showMemberA()); 
 		modelAndView.addObject("showBoard", daoInter.showBoardA());
 		modelAndView.addObject("randomList", daoInter.eventListA());
-		modelAndView.setViewName("adminTable");
+		modelAndView.setViewName("admin");			//Table
 		return modelAndView;
 	}
 	
@@ -109,7 +109,7 @@ public class AdminController {
 			modelAndView.addObject("showMem",daoInter.showMemberA()); 
 			modelAndView.addObject("showBoard", daoInter.showBoardA());
 			modelAndView.addObject("randomList", daoInter.eventListA());
-			modelAndView.setViewName("adminTable");
+			modelAndView.setViewName("admin");		//Table
 			return modelAndView;
 		}else{
 			return null;
@@ -156,7 +156,7 @@ public class AdminController {
 			modelAndView.addObject("showMem",daoInter.showMemberA()); 
 			modelAndView.addObject("showBoard", daoInter.showBoardA());
 			modelAndView.addObject("randomList", daoInter.eventListA());
-			modelAndView.setViewName("adminTable");
+			modelAndView.setViewName("admin");		//table
 			return modelAndView;
 		}else{
 			return null;
