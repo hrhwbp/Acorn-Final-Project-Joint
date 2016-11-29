@@ -11,19 +11,16 @@
 <!-- Le styles -->
 <link rel="stylesheet" type="text/css" href="resources/admin/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="resources/admin/css/adminTable.css" />
+
 <!-- DATA TABLE CSS -->
 <link href="resources/admin/css/table.css" rel="stylesheet">
 
-<script type="text/javascript" src="resources/admin/js/jquery.js"></script>
+<!-- <script type="text/javascript" src="resources/admin/js/jquery.js"></script> -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>    
 <script type="text/javascript" src="resources/admin/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/admin/js/admin.js"></script>
-<script type="text/javascript" src="resources/admin/js/jqueryadminTable.js"></script>
+<!-- <script type="text/javascript" src="resources/admin/js/jqueryadminTable.js"></script> -->
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->     
 <!-- Google Fonts call. Font Used Open Sans -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
 <!-- DataTables Initialization -->
@@ -133,6 +130,11 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
     "sWrapper": "dataTables_wrapper form-inline"
 } );
 
+function outmember(){
+	document.adminGroupForm.action = "adminmemberout";
+    document.adminGroupForm.method = "post";
+    document.adminGroupForm.submit();
+}
 </script>
 </head>
 <body>
@@ -183,29 +185,29 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 					
 					<tbody>
 						<cc:forEach var="Member" items="${showMem}">
-							<form action="adminmemberout">
-								<input type="hidden" name="m_no" value="${Member.m_no}">
 									<tr class="odd gradeC">
-									<td style="display:none;"></td>
-									<td>${Member.m_no }</td>
-									<td>${Member.m_name}</td>
-									<td>${Member.m_email}</td>
-									<cc:choose>
-										<cc:when test="${Member.m_gender == 1}">
-											<td>남</td>
-										</cc:when>
-										<cc:when test="${Member.m_gender == 2}">
-											<td>여</td>
-										</cc:when>
-									</cc:choose>
-									<td>${Member.m_password}</td>
-									<td>
-									<%if (session.getAttribute("adno") != ""){ %>
-									<button type="submit" class="btn btn-default" style="width:100%">강퇴</button>
-									<%}%>
-									</td>
-								</tr>
-							</form>
+										<td style="display:none;"></td>
+										<td>${Member.m_no }</td>
+										<td>${Member.m_name}</td>
+										<td>${Member.m_email}</td>
+										<cc:choose>
+											<cc:when test="${Member.m_gender == 1}">
+												<td>남</td>
+											</cc:when>
+											<cc:when test="${Member.m_gender == 2}">
+												<td>여</td>
+											</cc:when>
+										</cc:choose>
+										<td>${Member.m_password}</td>
+										<td>
+										<%if (session.getAttribute("adno") != ""){ %>
+										<form action="adminmemberout" method="post" name="adminGroupForm">
+											<input type="hidden" name="m_no" value="${Member.m_no}">
+											<button type="submit" class="btn btn-default" style="width:100%" >강퇴</button>
+										</form>
+										<%}%>
+										</td>
+									</tr>
 						</cc:forEach>
 					</tbody>
 					
