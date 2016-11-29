@@ -31,7 +31,6 @@
 body {
 	padding-top: 60px;
 }
-
 </style>
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function () {
@@ -106,12 +105,25 @@ function showUserBoard(m_no){
 	});
 }
 
-/* function dropOut(m_no){
-	alert(m_no)
-	document.adminGroup.action="out";
-	document.adminGroup.method="post";
-	document.adminGroup.submit();
-} */
+function detailM(b_no){				//Board 상세보기
+	$.ajax({
+		type:"post",
+		url:"AdminBoardDetail",
+		data: {"b_no":b_no},
+		dataType: "json",
+		success: function(dto){
+			//DetailImage DetailDate DetailContent
+			$("#DetailImage").attr("src", dto.b_image);
+			$("#DetailDate").html(dto.b_date);
+			$("#DetailContent").val(dto.b_content);
+			$("#DetailModal").modal();
+		},
+		error: function(){
+			alert("에러 발생");
+		}
+	});
+}
+
 
 function sendingEmail(m_email, m_name, w_pname){
 	$("#compose-to").val(m_email);
@@ -185,29 +197,29 @@ function outmember(){
 					
 					<tbody>
 						<cc:forEach var="Member" items="${showMem}">
-									<tr class="odd gradeC">
-										<td style="display:none;"></td>
-										<td>${Member.m_no }</td>
-										<td>${Member.m_name}</td>
-										<td>${Member.m_email}</td>
-										<cc:choose>
-											<cc:when test="${Member.m_gender == 1}">
-												<td>남</td>
-											</cc:when>
-											<cc:when test="${Member.m_gender == 2}">
-												<td>여</td>
-											</cc:when>
-										</cc:choose>
-										<td>${Member.m_password}</td>
-										<td>
-										<%if (session.getAttribute("adno") != ""){ %>
-										<form action="adminmemberout" method="post" name="adminGroupForm">
-											<input type="hidden" name="m_no" value="${Member.m_no}">
-											<button type="submit" class="btn btn-default" style="width:100%" >강퇴</button>
-										</form>
-										<%}%>
-										</td>
-									</tr>
+							<tr class="odd gradeC">
+								<td style="display:none;"></td>
+								<td>${Member.m_no }</td>
+								<td>${Member.m_name}</td>
+								<td>${Member.m_email}</td>
+								<cc:choose>
+									<cc:when test="${Member.m_gender == 1}">
+										<td>남</td>
+									</cc:when>
+									<cc:when test="${Member.m_gender == 2}">
+										<td>여</td>
+									</cc:when>
+								</cc:choose>
+								<td>${Member.m_password}</td>
+								<td>
+									<%if (session.getAttribute("adno") != ""){ %>
+									<form action="adminmemberout" method="post" name="adminGroupForm">
+										<input type="hidden" name="m_no" value="${Member.m_no}">
+										<button type="submit" class="btn btn-default" style="width:100%" >강퇴</button>
+									</form>
+									<%}%>
+								</td>
+							</tr>
 						</cc:forEach>
 					</tbody>
 					
@@ -218,9 +230,10 @@ function outmember(){
 			<!--두번째 Table -->
 			<h4><strong>Board Table</strong></h4>
 			<div id="boardlist">
-				<table class="display" id="dt1">
+				<table class="display" id="dt1" border="1">
 					<thead>
 						<tr>
+							<th style="display:none;"></th>
 							<th>Board No</th>
 							<th>Content</th>
 							<th>Upload Date</th>
@@ -231,12 +244,13 @@ function outmember(){
 					
 					<tbody>
 						<cc:forEach var="Board" items="${showBoard}">
-							<tr class="odd gradeC">
+							<tr class="">
+								<td style="display:none;"></td>
 								<td class="center">${Board.b_no}</td>
 								<td>${Board.b_content}</td>
 								<td>${Board.b_date}</td>
 								<td class="center">${Board.b_like}</td>
-								<td><img src="${Board.b_image}" style="height: 50px; width: 50px;"></td>
+								<td><a href="javascript:void(0)" onclick="detailM('${Board.b_no}')"><img src="${Board.b_image}" style="height: 50px; width: 50px;"></a></td>
 							</tr>
 						</cc:forEach>
 					</tbody>
@@ -348,6 +362,41 @@ function outmember(){
 		</div>
 	</div>
 </div>
+
+<!-- Detail 모달 팝업 BEGINNING-->
+<div class="modal fade" id="DetailModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="updateModalLabel">Detail</h4>
+			</div>
+			<div class="modal-body">
+				<form action="AdminBoardDelete" method="post">
+					<div class="form-group6">
+						<label class="form-control-label">Board Image</label> 
+						<img id="DetailImage" class="img-responsive">
+					</div><br>
+					<div class="form-group6">
+						<label class="form-control-label">Update Date : </label> 
+						<span id="DetailDate"></span>
+					</div><br>
+					<div class="form-group7">
+						<label for="message-text" class="form-control-label">Board Content : </label>
+						<textarea class="form-control" id="DetailContent" name="b_detail" readonly="readonly"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary" id="delBoardA">Delete</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+   <!-- 수정모달 팝업 END-->
 
 </body>
 </html>

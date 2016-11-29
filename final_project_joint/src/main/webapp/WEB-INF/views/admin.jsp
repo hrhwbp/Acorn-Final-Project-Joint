@@ -97,7 +97,7 @@ function chart1(man, woman) {
 }
 
 // 두번째 차트(넣을게 없다...)
-function chart2() {
+/* function chart2() {
 	info = new Highcharts.Chart({
 		chart: {
 			renderTo: 'space',
@@ -133,7 +133,7 @@ function chart2() {
 		}]
 	});
 	
-}
+} */
 	
    /*  $(document).ready(function () {
         $("#btn-blog-next").click(function () {
@@ -166,11 +166,10 @@ function chart2() {
     
 //시계 ***   
 function printClock(){
-	
 	var clock;            							
 	var currentDate = new Date();                   // 현재시간
 	var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
-	var amPm = 'AM'; // 초기값 AM
+	var amPm = 'AM'; 								// 초기값 AM
 	var currentHours = addZeros(currentDate.getHours(),2); 
 	var currentMinute = addZeros(currentDate.getMinutes() ,2);
 	var currentSeconds =  addZeros(currentDate.getSeconds(),2);
@@ -299,11 +298,9 @@ function stockChart(name, url, stock){
 		});
 		
 		/* setInterval(function(){
-			
 			chart.series[0].addPoint(generateNumber(), true, true);
 			chart.series[1].addPoint(generateNumber(50, 150), true, true);
 			new stockStatus(serie1[0]);
-			
 		}, 5000); */
 		
 		setInterval(function(){					//5초마다 주식값 가져오기
@@ -313,7 +310,6 @@ function stockChart(name, url, stock){
 				data: {},
 				dataType: "json",
 				success: function(list){
-					
 					serie1[i+6] = list.stocks;
 					serie2[i+6] = list.stocks;
 					
@@ -330,7 +326,6 @@ function stockChart(name, url, stock){
 		}, 5000);
 
 		setInterval(function() {
-
 			$('.info-aapl span').each(function(index, elem) {
 				$(elem).animate({
 					height: generateNumber(1, 40)
@@ -338,9 +333,9 @@ function stockChart(name, url, stock){
 			});
 		}, 5000);
 		
-		setInterval(function(){		//네이버에서 경제기사 가져오기...
+		setInterval(function(){				//네이버에서 경제기사 가져오기...
 			new articleUpdate(name, url);
-		}, 5000);
+		}, 300000);
 		
 	});
 }
@@ -354,26 +349,19 @@ function stockStatus2(stock){
 		$("div #stockstatus").html(
 				'<p><img src="resources/admin/images/up.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'	
 		);
-		
 		$("div #totcost").html(
 				'<i class="graph-arrow"></i><span class="graph-info-big" id="totcost">' + stock + '원</span>'	
 		);
-		
 	}else if(prenum < stock){
 		var dif = stock-prenum;
-		//var stat = defprice + stock;
-		
 		$("div #stockstatus").html(
 			'<p><img src="resources/admin/images/up.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'		
 		);
 		$("div #totcost").html(
 				'<i class="graph-arrow"></i><span class="graph-info-big" id="totcost">'+ stock +'원</span>'	
 		);
-		
 	}else if(prenum > stock){
 		var dif = prenum-stock;
-		//var stat = defprice + stock;
-		
 		$("div #stockstatus").html(
 			'<p><img src="resources/admin/images/down.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'		
 		);
@@ -383,39 +371,6 @@ function stockStatus2(stock){
 	}
 	prenum=stock;	
 }
-
-
-//***주식 현황
-/*
-var prenum = 0;
-var defprice = 35030;
-function stockStatus(num){
-	
-	if(prenum < num){
-		var dif = num-prenum;
-		var stat = defprice + num;
-		//alert(stat);
-		$("div #stockstatus").html(
-			'<p><img src="resources/admin/images/up.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'		
-		);
-		$("div #totcost").html(
-				'<i class="graph-arrow"></i><span class="graph-info-big" id="totcost">'+ stat +'원</span>'	
-		);
-
-	}else if(prenum > num){
-		var dif = prenum-num;
-		var stat = defprice + num;
-		
-		$("div #stockstatus").html(
-			'<p><img src="resources/admin/images/down.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'		
-		);
-		$("div #totcost").html(
-			'<i class="graph-arrow"></i><span class="graph-info-big" id="totcost">'+ stat +'원</span>'	
-		);
-	}
-	prenum=num;	
-}
-*/
 
 //Article Update
 function articleUpdate(name, url){
@@ -431,7 +386,6 @@ function adminUpdate(adno){
 		data: {"ad_no":adno},
 		dataType: "json",
 		success: function(dto){
-			//alert(dto.ad_Name + " " + dto.ad_password);
 			
 			$("#AdminName").val(dto.ad_name);
 			$("#AdminPasswd").val(dto.ad_password);	
@@ -455,7 +409,7 @@ function updateSubmit(){
 
 </script>    
 </head>
-<body onload="printClock(), chart1(${man},${woman}), chart2(), stockChart('${articleName}','${articleUrl}', ${stock})">
+<body onload="printClock(), chart1(${man},${woman}), stockChart('${articleName}','${articleUrl}', ${stock})">
 	<c:if test="${updateCheck == 1}">
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -476,6 +430,7 @@ function updateSubmit(){
 			</div> 
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
+					<!--세션 값으로 TOP Menu 설정  -->
 					<%if(session.getAttribute("adno") != "" || session.getAttribute("adno") != null){ %>
 						<li class="active"><a href="MainAdmin"><i class="icon-home icon-white"></i> Home</a></li>                            
 						<li><a href="showAdminTable"><i class="icon-th icon-white"></i> Tables</a></li>
@@ -501,7 +456,7 @@ function updateSubmit(){
 					<div class="thumbnail">
 						<img src="resources/images/team/simjy.jpg" style="width: 100px; height: 100px" alt="Marcel Newman" class="img-circle">
 					</div>
-					<h1>Create by Sim</h1>
+					<h4>'신'이 모든 이들과 함께할 수 없기에 '어머니'를 주셨다</h4>
 					<h3>Seoul, Korea</h3><br>
 					<div class="info-user">
 						<span aria-hidden="true" class="li_user fs1"></span>
@@ -519,15 +474,37 @@ function updateSubmit(){
 					<h2>성별 비율</h2>
 				</div>
 			</div>
-
-			<!-- DONUT CHART BLOCK -->
+			
 			<div class="col-sm-3 col-lg-3">
 				<div class="dash-unit">
-					<dtitle>CHAET2</dtitle><hr>
-					<div id="space"></div>
-					<h2>그냥 차트</h2>
+					<dtitle>Co-Founders</dtitle><hr>
+						<div class="framemail">
+							<div class="window">
+								<ul class="mail">
+									<li>
+										<i class="unread"></i>
+										<img class="avatar" src="resources/images/team/choiyw.jpg" alt="avatar">
+										<p class="sender">나</p>
+										<p class="message"><strong>힘들어!!</strong></p>
+									</li>
+									<li>
+										<i class="unread"></i>
+										<img class="avatar" src="resources/images/team/parkbh.jpg" alt="avatar">
+										<p class="sender">형</p>
+										<p class="message"><strong>!!</strong></p>
+									</li>
+									<li>
+										<i class="unread"></i>
+										<img class="avatar" src="resources/images/team/baejs.jpg" alt="avatar">
+										<p class="sender">DJ배</p>
+										<p class="message"><strong>지하철 너무 더워</strong></p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
+			
         
         	<!-- CLOCK  -->
 			<div class="col-sm-3 col-lg-3">
@@ -553,37 +530,6 @@ function updateSubmit(){
 	
 		<div class="row">
 			<div class="col-sm-3 col-lg-3">
-			<div class="dash-unit">
-				<dtitle>Co-Founders</dtitle><hr>
-					<div class="framemail">
-						<div class="window">
-							<ul class="mail">
-								<li>
-									<i class="unread"></i>
-									<img class="avatar" src="resources/images/team/choiyw.jpg" alt="avatar">
-									<p class="sender">나</p>
-									<p class="message"><strong>힘들어!!</strong> 여따가 뭐 넣지??</p>
-								</li>
-								<li>
-									<i class="unread"></i>
-									<img class="avatar" src="resources/images/team/parkbh.jpg" alt="avatar">
-									<p class="sender">형</p>
-									<p class="message"><strong>나도 힘들어!!</strong> 여따가 뭐 넣지??</p>
-								</li>
-								<li>
-									<i class="unread"></i>
-									<img class="avatar" src="resources/images/team/baejs.jpg" alt="avatar">
-									<p class="sender">DJ배</p>
-									<p class="message"><strong>지하철 너무 더워</strong> 여따가 뭐 넣지??</p>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			  
-			<div class="col-sm-3 col-lg-3">
 				<div class="dash-unit">
 					<dtitle>Other Information</dtitle><hr>
 					<div class="section-graph">
@@ -605,7 +551,7 @@ function updateSubmit(){
 						<p><bold>${wishcnt}</bold> | <ok>아이템수</ok></p><br>
 						<p><bold>${memcnt}</bold> | 회원수</p><br>
 						<p><bold>${boardcnt}</bold> | <bad>게시물수</bad></p><br>
-						<p><img src="resources/admin/images/up-small.png" alt=""> 12% Compared Last Month</p>
+						<p><img src="resources/admin/images/up-small.png" alt="">Total Item List</p>
 					</div>
 				</div>
 			</div>
@@ -620,17 +566,14 @@ function updateSubmit(){
 					<div class="text">
 						<p><b>Article Update:</b><p>
 						<p id="url2"></p>
-						<p><grey>Last Update: 5 second ago.</grey></p>
+						<p><grey>Last Update: 5 min ago.</grey></p>
 					</div>
 				</div>
 			</div>  
-        
 		</div>
+		
 	</div><br><br><br><br><br><br> 
-	
-	
-	
-	
+
 	<div id="footerwrap">
       	<footer class="clearfix"></footer>
       	<div class="container">
@@ -644,36 +587,36 @@ function updateSubmit(){
       	</div>	
 	</div>
        
-     <!--Admin 수정모달 팝업 BEGINNING-->
-   <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-               </button>
-               <h4 class="modal-title" id="updateModalLabel">수정</h4>
-            </div>
-            <div class="modal-body">
-               <form name="wishGroupForm">
-                  <div class="form-group6">
-                     <label class="form-control-label">Admin Name:</label> 
-                     <input type="hidden" id="AdminNo" name="ad_no" value="<%=session.getAttribute("adno")%>">
-                     <input type="text" class="form-control" id="AdminName" name="ad_name">
-                  </div>
-                  <div class="form-group7">
-                     <label class="form-control-label">Admin Password:</label> 
-                     <input type="text" class="form-control" id="AdminPasswd" name="ad_password">
-                  </div>
-                  <div class="modal-footer">
-                     <button onclick="updateSubmit()" class="btn btn-primary" id="updateconfirm">Confirm</button>
-                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  </div>
-               </form>
-            </div>
-         </div>
-      </div>
-   </div>
+	<!--Admin 수정모달 팝업 BEGINNING-->
+	<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="updateModalLabel">수정</h4>
+				</div>
+				<div class="modal-body">
+					<form name="wishGroupForm">
+						<div class="form-group6">
+							<label class="form-control-label">Admin Name:</label> 
+							<input type="hidden" id="AdminNo" name="ad_no" value="<%=session.getAttribute("adno")%>">
+							<input type="text" class="form-control" id="AdminName" name="ad_name">
+						</div>
+						<div class="form-group7">
+							<label class="form-control-label">Admin Password:</label> 
+							<input type="text" class="form-control" id="AdminPasswd" name="ad_password">
+						</div>
+							<div class="modal-footer">
+							<button onclick="updateSubmit()" class="btn btn-primary" id="updateconfirm">Confirm</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
    <!-- Admin 수정모달 팝업 END-->  
        	
     <!--Admin 수정 확인모달  -->
@@ -694,7 +637,5 @@ function updateSubmit(){
       </div>
    </div>    
        
-       
-       
-   
-</body></html>
+</body>
+</html>
