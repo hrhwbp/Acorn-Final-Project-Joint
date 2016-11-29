@@ -96,7 +96,7 @@ function chart1(man, woman) {
 	
 }
 
-// 두번째 차트
+// 두번째 차트(넣을게 없다...)
 function chart2() {
 	info = new Highcharts.Chart({
 		chart: {
@@ -175,7 +175,7 @@ function printClock(){
 	var currentMinute = addZeros(currentDate.getMinutes() ,2);
 	var currentSeconds =  addZeros(currentDate.getSeconds(),2);
 	        
-	if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
+	if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 뺀다
 		amPm = 'PM';
 		currentHours = addZeros(currentHours - 12,2);
 	}
@@ -190,7 +190,7 @@ function printClock(){
 	setTimeout("printClock()",1000);         	// 1초마다 printClock() 함수 호출
 }
 
-function addZeros(num, digit) { // 자릿수 맞춰주기
+function addZeros(num, digit) { 	// 자릿수 맞춰주기
 	var zero = '';
 	num = num.toString();
 	if (num.length < digit) {
@@ -221,8 +221,8 @@ function stockChart(name, url, stock){
 	
 	var chart,
 		categories= ['Categorie 1', 'Categorie 2', 'Categorie 3','Categorie 4', 'Categorie 5'], 
-		serie1=[21,35,54,29,18], 
-		serie2=[21,35,54,29,18], 
+		serie1=[43000,49000,52000,60000,63000], 
+		serie2=[43000,49000,52000,60000,63000], 
 		$aapls;
 	
 	//창을 불러올때 주식가격 출력
@@ -306,27 +306,22 @@ function stockChart(name, url, stock){
 			
 		}, 5000); */
 		
-		setInterval(function(){	
+		setInterval(function(){					//5초마다 주식값 가져오기
 			$.ajax({
 				type:"get",
 				url:"stockchages",
 				data: {},
 				dataType: "json",
 				success: function(list){
-					//alert(list.stocks);
-					//categories[i+6] = 'Categorie '+ (i+7).toString();
+					
 					serie1[i+6] = list.stocks;
 					serie2[i+6] = list.stocks;
 					
 					chart.series[0].addPoint(serie1[5], true, true);			//주식가격 차트에 출력
 					chart.series[1].addPoint(serie2[5], true, true);			//주식가격 차트에 출력
 					new stockStatus2(serie1[i+6]);
-					
-					/* alert(list.stocks + " 생 " + serie1[i+1] + " "  + serie1[i+2] + " "  + serie1[i+3] + " " +
-						serie1[i+4] + " "  + serie1[i+5] + " " + serie1[i+6] + " "  
-					); */
-					
-					i++;//5초마다 주식가격 가져오기	
+
+					i++;
 				},
 				error: function(){
 					alert("에러 발생");
@@ -335,18 +330,12 @@ function stockChart(name, url, stock){
 		}, 5000);
 
 		setInterval(function() {
-			/* $('.info-aapl span').each(function(index, elem) {
-				$(elem).animate({
-					height: generateNumber(1, 10)
-				});
-			}); */
+
 			$('.info-aapl span').each(function(index, elem) {
 				$(elem).animate({
-					height: generateNumber(1, 10000)
+					height: generateNumber(1, 40)
 				});
 			});
-			
-	
 		}, 5000);
 		
 		setInterval(function(){		//네이버에서 경제기사 가져오기...
@@ -363,7 +352,7 @@ function stockStatus2(stock){
 	if(stock == prenum){
 		var dif = 0;
 		$("div #stockstatus").html(
-				'<p><img src="resources/admin/images/minus-sign.jpg" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'	
+				'<p><img src="resources/admin/images/up.png" alt="" style="width: 40px; height: 40px;"><bold>Up</bold> | ' + dif + '.</p>'	
 		);
 		
 		$("div #totcost").html(
@@ -442,11 +431,10 @@ function adminUpdate(adno){
 		data: {"ad_no":adno},
 		dataType: "json",
 		success: function(dto){
-			alert(dto.ad_Name + " " + dto.ad_password);
+			//alert(dto.ad_Name + " " + dto.ad_password);
 			
 			$("#AdminName").val(dto.ad_name);
 			$("#AdminPasswd").val(dto.ad_password);	
-			
 			$("#updateModal").modal();
 		},
 		error: function(){
@@ -488,8 +476,6 @@ function updateSubmit(){
 			</div> 
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<!-- <li class="active"><a href="MainAdmin"><i class="icon-home icon-white"></i> Home</a></li>                            
-					<li><a href="showAdminTable"><i class="icon-th icon-white"></i> Tables</a></li> -->
 					<%if(session.getAttribute("adno") != "" || session.getAttribute("adno") != null){ %>
 						<li class="active"><a href="MainAdmin"><i class="icon-home icon-white"></i> Home</a></li>                            
 						<li><a href="showAdminTable"><i class="icon-th icon-white"></i> Tables</a></li>
@@ -502,7 +488,7 @@ function updateSubmit(){
 						<li><a href="adminLogin.jsp"><i class="icon-user icon-white"></i> User</a></li>
 					<%} %>
 				</ul>
-			</div><!--/.nav-collapse -->
+			</div>
 		</div>
 	</div>
 
@@ -514,7 +500,7 @@ function updateSubmit(){
 	      			<dtitle>User Profile</dtitle><hr>
 					<div class="thumbnail">
 						<img src="resources/images/team/simjy.jpg" style="width: 100px; height: 100px" alt="Marcel Newman" class="img-circle">
-					</div><!-- /thumbnail -->
+					</div>
 					<h1>Create by Sim</h1>
 					<h3>Seoul, Korea</h3><br>
 					<div class="info-user">
@@ -528,7 +514,7 @@ function updateSubmit(){
 			<!-- DONUT CHART BLOCK -->
 			<div class="col-sm-3 col-lg-3">
 				<div class="dash-unit">
-					<dtitle>Site Bandwidth</dtitle><hr>
+					<dtitle>CHART1</dtitle><hr>
 					<div id="load"></div>
 					<h2>성별 비율</h2>
 				</div>
@@ -537,13 +523,13 @@ function updateSubmit(){
 			<!-- DONUT CHART BLOCK -->
 			<div class="col-sm-3 col-lg-3">
 				<div class="dash-unit">
-					<dtitle>Disk Space</dtitle><hr>
+					<dtitle>CHAET2</dtitle><hr>
 					<div id="space"></div>
-					<h2>65%</h2>
+					<h2>그냥 차트</h2>
 				</div>
 			</div>
         
-        
+        	<!-- CLOCK  -->
 			<div class="col-sm-3 col-lg-3">
 				<div class="half-unit">
 					<dtitle>현재시간</dtitle><hr>
@@ -611,7 +597,7 @@ function updateSubmit(){
 				</div>
 			</div>
 
-			    
+			 <!-- ITEM STATUS -->
 			<div class="col-sm-3 col-lg-3">
 				<div class="dash-unit">
 					<dtitle>Member & Board & Wishlist</dtitle><hr>
@@ -634,13 +620,13 @@ function updateSubmit(){
 					<div class="text">
 						<p><b>Article Update:</b><p>
 						<p id="url2"></p>
-						<p><grey>Last Update: 5 minutes ago.</grey></p>
+						<p><grey>Last Update: 5 second ago.</grey></p>
 					</div>
 				</div>
 			</div>  
         
 		</div>
-	</div> 
+	</div><br><br><br><br><br><br> 
 	
 	
 	
@@ -651,7 +637,7 @@ function updateSubmit(){
       		<div class="row">
       			<div class="col-sm-12 col-lg-12">
       			<p><img src="resources/images/boomerang-logo-white.png" alt=""></p>
-      			<p>RE:MIDN - Created With Love - Inspired by SIM</p>
+      			<p>RE:MIND - Created With Love - Inspired by SIM</p>
       			</div>
 
       		</div>
