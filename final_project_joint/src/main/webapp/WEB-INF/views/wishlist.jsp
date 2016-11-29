@@ -131,6 +131,30 @@ $(document).ready(function(){
          url:"urltest",
          data: {"url":$("#itemUrl").val()},
          dataType: "json",
+         beforeSend:function(){
+				loadingbar='	<div class="loader loader--style8" title="7">'
+				loadingbar+='<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"'+
+				'width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">'+
+				'<rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">'+
+				'<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />'+
+				'</rect>'+
+				'<rect x="8" y="10" width="4" height="10" fill="#333"  opacity="0.2">'+
+				'<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />'+
+				'</rect>'+
+				'<rect x="16" y="10" width="4" height="10" fill="#333"  opacity="0.2">'+
+			    '<animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
+				'<animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />'+
+				'</rect>'+
+				'</svg>'+
+				'</div>';
+				$("#loadingbar").html(loadingbar);
+				
+			},
          success: function(productData){
             var w_pname, w_price, w_image, insimg, url ;
                   
@@ -141,7 +165,7 @@ $(document).ready(function(){
                w_image= objArr["image"];
                url = objArr["url"];
             });
-                  
+            $("#loadingbar").html('');
             $("#insertModal #itemName").val(w_pname);
             $("#insertModal #itemPrice").val(w_price);
             $("#insertModal #itemImage").attr("src", w_image);
@@ -819,7 +843,9 @@ function wgopen(wg_no, wg_detail){
                   <label class="form-control-label">소원상품 URL:</label>
                   <div class="form-group1 sss">
                      <input type="text" class="form-control" placeholder="URL" id="itemUrl" name="w_addr" style="width: 70%"> 
+                     <div id="loading">
                      <input type="button" value="상품정보가져오기" class="form-control" id="btnfetch" style="width: 30%; background-color:#f2dede; font-weight: bold; ">
+                     </div>
                   </div>
                   <div class="row">
                      <div class="col-md-7">
@@ -837,6 +863,7 @@ function wgopen(wg_no, wg_detail){
                            <img id="itemImage" class="img-responsive" alt="상품이미지는 자동으로 들어옵니다."> 
                            <input type="hidden" id="submitImage" name="w_image">
                         </div>
+                        <div id="loadingbar"></div>
                      </div>
                   </div>
                   <div class="form-group5">
