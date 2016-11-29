@@ -425,8 +425,8 @@ function wgopen(wg_no, wg_detail){
 			<div class="col-md-12">
 				<div class="thumbnail">
 					<div class="list-group">
-						<a class="list-group-item list-group-item-action active">
-							<h2 class="list-group-item-heading">나의 소원 목록</h2>
+						<a class="list-group-item list-group-item-action active" style="background-color: rgba(224, 208, 194, 0.58); color: #9d8386;">
+							<h2 class="list-group-item-heading" >나의 소원 목록</h2>
 						</a>
 					</div>
 					<!-- ------------------------------소원목록 어코디언------------------------------------- -->

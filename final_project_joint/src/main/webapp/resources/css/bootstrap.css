@@ -5592,9 +5592,9 @@ a.list-group-item.active,
 a.list-group-item.active:hover,
 a.list-group-item.active:focus {
   z-index: 2;
-  color: #ffffff;
-  background-color: #428bca;
-  border-color: #428bca;
+  color:#9d8386;
+  background-color: rgba(224, 208, 194, 0.58);;
+  border-color: rgba(224, 208, 194, 0.58);;
 }
 
 a.list-group-item.active .list-group-item-heading,
