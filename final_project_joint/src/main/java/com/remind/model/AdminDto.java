@@ -1,8 +1,7 @@
 package com.remind.model;
 
 public class AdminDto {
-	private String ad_no, ad_name, ad_password;
-
+	private String ad_no, ad_name, ad_password, ad_msg;
 	
 	public String getAd_no() {
 		return ad_no;
@@ -27,6 +26,13 @@ public class AdminDto {
 	public void setAd_password(String ad_password) {
 		this.ad_password = ad_password;
 	}
-	
+
+	public String getAd_msg() {
+		return ad_msg;
+	}
+
+	public void setAd_msg(String ad_msg) {
+		this.ad_msg = ad_msg;
+	}
 
 }

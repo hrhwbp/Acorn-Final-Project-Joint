@@ -95,11 +95,11 @@ public interface DaoInter {
 	String wishlistCnt() throws DataAccessException;
 	String memberCnt() throws DataAccessException;
 	String boardCnt() throws DataAccessException;
+	List<AdminDto> AdminMsg() throws DataAccessException;	
+	boolean AdminMsgUpdate(AdminBean bean) throws DataAccessException;
 	ParserDto articleAdmin() throws DataAccessException;
 	ParserDto stockAdmin() throws DataAccessException;	
 	AdminDto showAdmin(String ad_no) throws DataAccessException;
 	boolean AdminUpdate(AdminBean bean) throws DataAccessException;
-
-	/*boolean updateLockA(WishlistBean bean) throws DataAccessException;*/
 
 }

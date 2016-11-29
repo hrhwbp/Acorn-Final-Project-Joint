@@ -597,6 +597,17 @@ public class DataDao implements DaoInter {
 		}
 		
 		@Override
+		public List<AdminDto> AdminMsg() throws DataAccessException {
+			// TODO Auto-generated method stub
+			return annoInter.AdminMsg();
+		}
+		
+		@Override
+		public boolean AdminMsgUpdate(AdminBean bean) throws DataAccessException {
+			return annoInter.AdminMsgUpdate(bean);
+		}
+		
+		@Override
 		public AdminDto showAdmin(String ad_no) throws DataAccessException {
 			// TODO Auto-generated method stub
 			return annoInter.showAdmin(ad_no);

@@ -232,11 +232,14 @@ public interface AnnoInter {
    @Select("select ad_no from admin where ad_name=#{ad_name} and ad_password=#{ad_password}")
    AdminDto AdminLogin(AdminBean bean);
    
+   @Select("select * from admin")
+   List<AdminDto> AdminMsg();
+   
    @Select("select * from admin where ad_no = #{ad_no}")
    AdminDto showAdmin(String ad_no);
    
-   /*@Update("update wishlist set w_lock=#{w_lock}, w_like=#{w_like} where w_no=#{w_no}")
-   boolean updateLockA(WishlistBean bean);*/
+   @Update("update admin set ad_msg=#{ad_msg} where ad_no= #{ad_no}")
+   boolean AdminMsgUpdate(AdminBean bean);
    
    @Update("update admin set ad_name=#{ad_name}, ad_password= #{ad_password} where ad_no= #{ad_no}")
    boolean AdminUpdate(AdminBean bean);

@@ -148,10 +148,19 @@ public class AdminController {
 		}
 	
 	@RequestMapping(value="AdminBoardDelete", method = RequestMethod.POST)
-	public String deleteSubmit(@RequestParam("b_no") String b_no){
+	public ModelAndView deleteSubmit(@RequestParam("b_no") String b_no){
+		
 		boolean b = daoInter.eraseBoard(b_no);
-		if(b) return "redirect:/adminTable.jsp";
-		else return "redirect:/error.jsp";
+		if(b){
+			ModelAndView modelAndView = new ModelAndView();
+			modelAndView.addObject("showMem",daoInter.showMemberA()); 
+			modelAndView.addObject("showBoard", daoInter.showBoardA());
+			modelAndView.addObject("randomList", daoInter.eventListA());
+			modelAndView.setViewName("adminTable");
+			return modelAndView;
+		}else{
+			return null;
+		}
 	}
 	
 	//MainAdmin Page
@@ -180,13 +189,15 @@ public class AdminController {
 		modelAndView.addObject("wishcnt",daoInter.wishlistCnt()); 
 		modelAndView.addObject("memcnt", daoInter.memberCnt());
 		modelAndView.addObject("boardcnt", daoInter.boardCnt());
+		modelAndView.addObject("adminMsg", daoInter.AdminMsg());
 		
+		//뉴스
 		String name = daoInter.articleAdmin().getName().replaceAll("'", "");
 		modelAndView.addObject("articleName", name);
 		modelAndView.addObject("articleUrl", daoInter.articleAdmin().getUrl());
 		
+		//주식가격 
 		String stock = daoInter.stockAdmin().getPrice().replaceAll(",", "");
-		//System.out.println(stock + " 여기도 주가 확인");
 		modelAndView.addObject("stock", stock.replace(" ", ""));
 		
 		modelAndView.setViewName("admin");
@@ -222,6 +233,7 @@ public class AdminController {
 			modelAndView.addObject("wishcnt",daoInter.wishlistCnt()); 
 			modelAndView.addObject("memcnt", daoInter.memberCnt());
 			modelAndView.addObject("boardcnt", daoInter.boardCnt());
+			modelAndView.addObject("adminMsg", daoInter.AdminMsg());
 			
 			//뉴스
 			String name = daoInter.articleAdmin().getName().replaceAll("'", "");
@@ -245,8 +257,54 @@ public class AdminController {
 	@ResponseBody
 	public AdminDto showAdmin(@RequestParam("ad_no") String ad_no){
 		AdminDto dto = daoInter.showAdmin(ad_no);
-		//System.out.println(dto.getAd_name() + " 확인 모달 " + dto.getAd_password());
 		return dto;
+	}
+	
+	@RequestMapping(value="updateMsg", method = RequestMethod.POST)
+	public ModelAndView AdMsgUpdate(AdminBean bean){
+		boolean b = daoInter.AdminMsgUpdate(bean);
+		if(b){
+			ModelAndView modelAndView = new ModelAndView();
+			List boardlist = new ArrayList();
+			List<MemberDto> list = daoInter.showMemberA();
+			for(MemberDto s:list){
+			    boardlist.add(s.getM_gender());
+			}
+			
+			//남, 여 비율
+			int m = 0,w = 0;
+			for (int i = 0; i < boardlist.size(); i++) {
+				if(Integer.parseInt((String)boardlist.get(i)) == 1){
+					m += 1;
+				}else{
+					w += 1;
+				}
+			}
+			
+			modelAndView.addObject("woman", w);
+			modelAndView.addObject("man", m);
+			modelAndView.addObject("showMem");
+			modelAndView.addObject("wishcnt",daoInter.wishlistCnt()); 
+			modelAndView.addObject("memcnt", daoInter.memberCnt());
+			modelAndView.addObject("boardcnt", daoInter.boardCnt());
+			modelAndView.addObject("adminMsg", daoInter.AdminMsg());
+			
+			//뉴스
+			String name = daoInter.articleAdmin().getName().replaceAll("'", "");
+			modelAndView.addObject("articleName", name);
+			modelAndView.addObject("articleUrl", daoInter.articleAdmin().getUrl());
+			
+			//주식가격 
+			String stock = daoInter.stockAdmin().getPrice().replaceAll(",", "");
+			modelAndView.addObject("stock", stock.replace(" ", ""));
+			
+			modelAndView.addObject("MsgUpdateChk", 1);
+			modelAndView.setViewName("admin");
+			
+			return modelAndView;
+		}else{
+			return null;
+		}
 	}
 	
 	//프로젝트 팀 보기 페이지 이동

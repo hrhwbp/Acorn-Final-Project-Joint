@@ -113,6 +113,7 @@ function detailM(b_no){				//Board 상세보기
 		dataType: "json",
 		success: function(dto){
 			//DetailImage DetailDate DetailContent
+			$("#boardNumber").val(b_no);
 			$("#DetailImage").attr("src", dto.b_image);
 			$("#DetailDate").html(dto.b_date);
 			$("#DetailContent").val(dto.b_content);
@@ -378,6 +379,7 @@ function outmember(){
 					<div class="form-group6">
 						<label class="form-control-label">Board Image</label> 
 						<img id="DetailImage" class="img-responsive">
+						<input type="hidden" name="b_no" id="boardNumber">
 					</div><br>
 					<div class="form-group6">
 						<label class="form-control-label">Update Date : </label> 

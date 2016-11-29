@@ -392,11 +392,32 @@ function adminUpdate(adno){
 			$("#updateModal").modal();
 		},
 		error: function(){
-			
 			alert("에러 발생");
 		}
 	});
 	
+}
+
+function updateMsg(adno,ad_no){
+	$.ajax({
+		type:"post",
+		url:"selectAdmin",
+		data: {"ad_no":ad_no},
+		dataType: "json",
+		success: function(dto){
+			if(adno != ad_no){
+				$("#MsgDetail").attr("readonly", "readonly");
+			}else if(adno == ad_no){
+				$("#MsgDetail").removeAttr("readonly");
+			}
+			$("#AdNameMsg").html(dto.ad_name);
+			$("#MsgDetail").val(dto.ad_msg);
+			$("#MsgUpdateModal").modal();
+		},
+		error: function(){
+			alert("에러 발생");
+		}
+	});
 }
 
 function updateSubmit(){
@@ -456,10 +477,9 @@ function updateSubmit(){
 					<div class="thumbnail">
 						<img src="resources/images/team/simjy.jpg" style="width: 100px; height: 100px" alt="Marcel Newman" class="img-circle">
 					</div>
-					<h4>'신'이 모든 이들과 함께할 수 없기에 '어머니'를 주셨다</h4>
+					<h1>Copy Right by Sim</h1>
 					<h3>Seoul, Korea</h3><br>
 					<div class="info-user">
-						<span aria-hidden="true" class="li_user fs1"></span>
 						<a href="javascript:void(0)" onclick="adminUpdate('<%=session.getAttribute("adno")%>')"><span aria-hidden="true" class="li_settings fs1"></span></a>
 						<a target="blank" href="https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/?tab%3Dwm&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1#identifier"><span aria-hidden="true" class="li_mail fs1"></span></a>
 					</div>
@@ -481,24 +501,27 @@ function updateSubmit(){
 						<div class="framemail">
 							<div class="window">
 								<ul class="mail">
-									<li>
-										<i class="unread"></i>
-										<img class="avatar" src="resources/images/team/choiyw.jpg" alt="avatar">
-										<p class="sender">나</p>
-										<p class="message"><strong>힘들어!!</strong></p>
-									</li>
-									<li>
-										<i class="unread"></i>
-										<img class="avatar" src="resources/images/team/parkbh.jpg" alt="avatar">
-										<p class="sender">형</p>
-										<p class="message"><strong>!!</strong></p>
-									</li>
-									<li>
-										<i class="unread"></i>
-										<img class="avatar" src="resources/images/team/baejs.jpg" alt="avatar">
-										<p class="sender">DJ배</p>
-										<p class="message"><strong>지하철 너무 더워</strong></p>
-									</li>
+									<c:forEach var="ad" items="${adminMsg}">
+										<li onclick="updateMsg('<%=session.getAttribute("adno")%>', '${ad.ad_no}')">
+											<i class="unread"></i>
+											<c:choose>
+												<c:when test="${ad.ad_no == 1}">
+													<img class="avatar" src="resources/images/team/parkbh.jpg" alt="avatar">
+												</c:when>
+												<c:when test="${ad.ad_no == 2}">
+													<img class="avatar" src="resources/images/team/simjy.jpg" alt="avatar">
+												</c:when>
+												<c:when test="${ad.ad_no == 3}">
+													<img class="avatar" src="resources/images/team/baejs.jpg" alt="avatar">
+												</c:when>
+												<c:when test="${ad.ad_no == 4}">
+													<img class="avatar" src="resources/images/team/choiyw.jpg" alt="avatar">
+												</c:when>
+											</c:choose>
+											<p class="sender">${ad.ad_name}</p>
+											<p class="message"><strong>${ad.ad_msg}</strong></p>
+										</li>
+									</c:forEach>
 								</ul>
 							</div>
 						</div>
@@ -617,9 +640,42 @@ function updateSubmit(){
 			</div>
 		</div>
 	</div>
-   <!-- Admin 수정모달 팝업 END-->  
+   <!-- Admin 수정모달 팝업 END-->
+   
+   <!--Admin 메세지모달-->
+	<div class="modal fade" id="MsgUpdateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="updateModalLabel">수정</h4>
+				</div>
+				<div class="modal-body">
+					<form action="updateMsg" method="post" name="MsgUpdateForm">
+						<div class="form-group6">
+							<label class="form-control-label">Admin Name:</label> 
+							<span class="form-control" id="AdNameMsg"></span>
+						</div>
+						<div class="form-group7">
+							<label class="form-control-label">Admin Message:</label>
+							<textarea class="form-control" id="MsgDetail" name="ad_msg"></textarea>
+							<input type="hidden" name="ad_no" value="<%=session.getAttribute("adno")%>"> 
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary" id="updateconfirm">명령내리기</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+   
+     
        	
-    <!--Admin 수정 확인모달  -->
+   <!--Admin 수정 확인모달  -->
    <div class="modal fade" id="updateConfirm" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
          <div class="modal-content">
