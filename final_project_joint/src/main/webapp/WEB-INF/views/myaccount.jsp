@@ -83,6 +83,8 @@ $(document).ready(function() {
 	
 	$('#infoSubmit').click(function() {
 		if($('#password').val() == $('#m_password').val()){
+			
+					
 			$('#infofrm').submit()
 		}else{
 			$('#passwordErr').modal('show');
@@ -196,7 +198,8 @@ $(document).ready(function() {
 					<img id="image" src="http://wbp.synology.me/profileimg/${myinfo.m_image}" alt="Responsive image" class="img-circle img-responsive" style="height: 100%; width: 100%">
 					</a>
 	      			<input type="file" id="file"  name="fileUp" class="sr-only">
-	      			<input type="hidden" name="hiddenName" value="${myinfo.m_image}"> 
+	      			<input type="hidden" name="hiddenName" id="hiddenName" value="${myinfo.m_image}"> 
+	      			
 				</div>
 				</div>
 			</div>
