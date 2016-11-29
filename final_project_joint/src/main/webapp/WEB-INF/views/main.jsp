@@ -54,7 +54,7 @@ $( document ).ajaxComplete(function() {
 		     e.preventDefault();
 		     return false;
 		   }
-		 });
+		 }); 
 });
 $(document).ready(function () {
 	   $(window).bind("scroll",scrolling);

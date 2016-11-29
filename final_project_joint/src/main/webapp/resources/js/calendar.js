@@ -94,7 +94,7 @@ $.extend(Date.prototype, {
       time = data.start.toTimeString();
       if (time && data.end) { time = time + ' - ' + data.end.toTimeString(); }
       $t.data('popover',true);
-      $t.popover({content: '<p><strong>' + time + '</strong></p>'+data.text, html: true, placement: 'auto left'}).popover('toggle');
+      $t.popover({content: '<strong>' + time + '</strong>'+data.text, html: true, placement: 'auto left'}).popover('toggle');
       return false;
     });
     function dayAddEvent(index, event) {
@@ -267,15 +267,25 @@ $.ajax({
 			  if(objArr.A_detail =="생일"){
     			  for (var int = 2010; int < 2200; int++) {
     				  data.push({ title: objArr.A_mname, start: new Date(int,month,days,0,0), end:  new Date(int,month,days,0,0), allDay: false,
-                		  text:'<div style="height:50px; float:left"><a href="showWishList?w_mno='+objArr.A_mno+'">'+ 
-                			  '<img style="height:100%;" class="img-circle img-responsive" src="http://wbp.synology.me/profileimg/'+objArr.A_mimage+'"></a></div><div>'
-                			  +'님의 '+objArr.A_detail+'</div>'   })
+                		  text:'<div class="row" style="float:left; padding-bottom:2%" >' +
+			      		  			'<div class="col-md-4" style="height:50px;">' +
+			      		  				'<a href="showWishList?w_mno='+objArr.A_mno+'">' + '<img class="img-circle img-responsive" style="height:100%; width:100%"  src="http://wbp.synology.me/profileimg/'+objArr.A_mimage+'"></a>'+ 
+						  			'</div>' +
+				    		  		'<div class="col-md-8">'+
+				    		  			'님의 '+objArr.A_detail+
+				    		  		'</div>'+
+						  		'</div><br><div></div>'})
 				}
     		  }else{
     			data.push({ title: objArr.A_mname, start: new Date(year,month,days,0,0), end: new Date(year,month,days,0,0), allDay: true,
-        		  text: '<div class="row" style=" float:left" ><a href="showWishList?w_mno='+objArr.A_mno+'">'+
-        		  '<img class="img-circle img-responsive"  src="http://wbp.synology.me/profileimg/'+objArr.A_mimage+'"></a><div>'+
-        		  '님의 '+objArr.A_detail+'</div></div>'   })
+        		  text: '<div class="row" style="float:left; padding-bottom:2%" >' +
+        		  			'<div class="col-md-4" style="height:50px;">' +
+        		  				'<a href="showWishList?w_mno='+objArr.A_mno+'">' + '<img class="img-circle img-responsive" style="height:100%; width:100%"  src="http://wbp.synology.me/profileimg/'+objArr.A_mimage+'"></a>'+ 
+        		  			'</div>' +
+	        		  		'<div class="col-md-8">'+
+	        		  			'님의 '+objArr.A_detail+
+	        		  		'</div>'+
+        		  		'</div><br><div></div>'})
     		  }})
  },
 });
