@@ -335,7 +335,7 @@ function stockChart(name, url, stock){
 		
 		setInterval(function(){				//네이버에서 경제기사 가져오기...
 			new articleUpdate(name, url);
-		}, 300000);
+		}, 5000);
 		
 	});
 }
@@ -475,7 +475,21 @@ function updateSubmit(){
 				<div class="dash-unit">
 	      			<dtitle>User Profile</dtitle><hr>
 					<div class="thumbnail">
-						<img src="resources/images/team/simjy.jpg" style="width: 100px; height: 100px" alt="Marcel Newman" class="img-circle">
+					<c:set var="picture" value='<%=session.getAttribute("adno")%>'/>
+						<c:choose>
+							<c:when test="${picture eq 1}">
+								<img src="resources/images/team/parkbh.jpg" style="width: 100px; height: 100px" alt="Marcel Newman" class="img-circle">
+							</c:when>
+							<c:when test="${picture eq 2}">
+								<img src="resources/images/team/simjy.jpg" style="width: 100px; height: 100px" alt="Marcel Newman" class="img-circle">
+							</c:when>
+							<c:when test="${picture eq 3}">
+								<img src="resources/images/team/baejs.jpg" style="width: 100px; height: 100px" alt="Marcel Newman" class="img-circle">
+							</c:when>
+							<c:when test="${picture eq 4}">
+								<img src="resources/images/team/choiyw.jpg" style="width: 100px; height: 100px" alt="Marcel Newman" class="img-circle">
+							</c:when>
+						</c:choose>
 					</div>
 					<h1>Copy Right by Sim</h1>
 					<h3>Seoul, Korea</h3><br>

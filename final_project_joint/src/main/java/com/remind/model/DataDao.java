@@ -624,4 +624,11 @@ public class DataDao implements DaoInter {
 			// TODO Auto-generated method stub
 			return annoInter.lostPassMemeber(m_email);
 		}
+		
+		@Override
+		public boolean Adminmemberout(String w_mno) throws DataAccessException {
+			// TODO Auto-generated method stub
+			return annoInter.Adminmemberout(w_mno);
+		}
+		
 }

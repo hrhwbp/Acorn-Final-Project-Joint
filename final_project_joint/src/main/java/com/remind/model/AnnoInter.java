@@ -244,6 +244,9 @@ public interface AnnoInter {
    @Update("update admin set ad_name=#{ad_name}, ad_password= #{ad_password} where ad_no= #{ad_no}")
    boolean AdminUpdate(AdminBean bean);
    
+   @Delete("delete from wishlist where w_mno = #{w_mno}")
+   boolean Adminmemberout(String w_mno);
+   
    
    
    

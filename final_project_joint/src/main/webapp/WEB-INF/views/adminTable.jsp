@@ -216,6 +216,7 @@ function outmember(){
 									<%if (session.getAttribute("adno") != ""){ %>
 									<form action="adminmemberout" method="post" name="adminGroupForm">
 										<input type="hidden" name="m_no" value="${Member.m_no}">
+										<input type="hidden" name="m_name" value="${Member.m_name}">
 										<button type="submit" class="btn btn-default" style="width:100%" >강퇴</button>
 									</form>
 									<%}%>
