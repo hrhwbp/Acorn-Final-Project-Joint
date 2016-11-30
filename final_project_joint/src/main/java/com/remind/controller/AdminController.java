@@ -102,7 +102,8 @@ public class AdminController {
 	//Member 강퇴
 	@RequestMapping(value="adminmemberout", method = RequestMethod.POST)
 	public ModelAndView memberDrop(@RequestParam("m_no") String m_no){
-		System.out.println(m_no + " 강퇴용");
+		
+		boolean a = daoInter.Adminmemberout(m_no);
 		boolean b = daoInter.outMember(m_no);
 		if(b){
 			ModelAndView modelAndView = new ModelAndView();
