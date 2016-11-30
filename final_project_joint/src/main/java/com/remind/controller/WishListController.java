@@ -75,8 +75,8 @@ public class WishListController {
    //물품 입력
    @RequestMapping(value="insertWishList", method = RequestMethod.POST)
    public String insertWishListsubmit(WishlistBean bean){
-      //System.out.println(bean.w_mno + " @@ " + bean.w_pname + " ## " + bean.w_addr + " $$ " + bean.w_lock + " %% " + bean.w_image + " @@ " + bean.g_num + " ## " + bean.wg_detail);
-      //System.out.println(bean.wg_detail + " @@페이지 열기에 사용");
+      System.out.println(bean.w_mno + " @@ " + bean.w_pname + " ## " + bean.w_addr + " $$ " + bean.w_lock + " %% " + bean.w_image + " @@ " + bean.g_num + " ## " + bean.wg_detail);
+      System.out.println(bean.wg_detail + " @@페이지 열기에 사용");
       boolean b = daoInter.writeWishlist(bean);
       if(b)
          return "redirect:/showWishList?w_mno=" +bean.getW_mno() + "&wg_detail=" + bean.getWg_detail() + "&wg_no=" + bean.getWg_no();

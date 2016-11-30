@@ -679,7 +679,7 @@ function wgopen(wg_no, wg_detail){
                                                             </div>
                                                             <div class="footer">
                                                                <button class="btn btn-simple" rel="tooltip" title="Flip Card" onclick="rotateCard(this)">
-                                                                  <i class="fa fa-reply"></i> Back
+                                                                  <i class="fa fa-reply"></i> Back 
                                                                </button>
                                                                <c:if test="${mno == wlist.w_mno }">
                                                                   <div class="social-links text-center">
@@ -696,11 +696,12 @@ function wgopen(wg_no, wg_detail){
                                                       </div><!-- end card -->
                                                    </div><!-- end card-container -->
                                                 </div><!-- end col-sm-3 -->
-                                                <c:set var="user_mno" value="${wlist.w_mno}" />
+                                                <%-- <c:set var="user_mno" value="${wlist.w_mno}"/> --%>
                                                 <c:set var="lock" value="${lock + 1}"/>
                                              </c:if>
                                           </c:forEach>
                                           
+                                          <c:set var="user_mno" value='<%=session.getAttribute("mno")%>'/>
                                           <!--추가카드 시작~~~~~~  -->
                                           <c:if test="${mno eq userwg_mno}">
                                              <div class="col-md-4 col-sm-4">
